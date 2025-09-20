@@ -1,0 +1,11 @@
+[
+  {
+    "source": "UoW-001-CONTRACT",
+    "target": "UoW-001",
+    "type": "validates",
+    "metadata": {
+      "created": "2025-09-18T19:26:08.428796",
+      "source_file": "contracts/uow-001-contract"
+    }
+  }
+]

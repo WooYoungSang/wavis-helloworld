@@ -1,0 +1,187 @@
+# 📋 SDD /specify Command Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Feature/Requirement**: {{FEATURE_NAME}}
+- **Input**: {{FEATURE_DESCRIPTION}}
+
+## 🎯 GitHub SDD /specify Implementation
+
+This template implements the GitHub SDD `/specify` command for creating precise, unambiguous specifications from high-level feature descriptions.
+
+### Constitutional Principles Applied
+All specifications must comply with these 9 constitutional principles:
+1. **Library-First**: Identify existing libraries to leverage
+2. **CLI Interface Mandate**: Define CLI access for all features
+3. **Test-First Imperative**: Specify test requirements before implementation
+4. **Simplicity Guidelines**: Choose simplest viable approach
+5. **Anti-Abstraction Rules**: Avoid premature abstraction
+6. **Integration-First Testing**: Prioritize integration over unit tests
+7. **Minimal Project Structure**: Keep structure flat and simple
+8. **Framework Direct Usage**: Use frameworks without abstraction layers
+9. **Comprehensive Testing**: Ensure complete test coverage
+
+### Feature Specification Generation
+
+#### 1. Specification Header
+```yaml
+specification_id: "SPEC-{{PROJECT_NAME}}-{{FEATURE_ID}}"
+feature_name: "{{FEATURE_NAME}}"
+created_date: "{{CURRENT_DATE}}"
+methodology: "GitHub SDD v1.0"
+constitutional_compliance: true
+```
+
+#### 2. User Story Development
+Transform feature description into structured user stories:
+```yaml
+user_stories:
+  - id: "US-001"
+    as_a: "[User type from feature description]"
+    i_want: "[Specific functionality from description]"
+    so_that: "[Business value/outcome from description]"
+    priority: "Critical|High|Medium|Low"
+    acceptance_criteria:
+      - criterion: "[Specific, testable criterion]"
+        test_method: "[How to verify this criterion]"
+        success_metric: "[Measurable outcome]"
+      - criterion: "[Additional criterion]"
+        test_method: "[Verification method]"
+        success_metric: "[Measurable outcome]"
+    clarifications_needed:
+      - "[CLARIFY] Any ambiguous aspects that need definition"
+```
+
+#### 3. Constitutional Compliance Analysis
+For each user story, specify constitutional compliance:
+```yaml
+constitutional_approach:
+  library_first:
+    libraries_to_use: "[Existing libraries that can fulfill this requirement]"
+    justification: "[Why these libraries are appropriate]"
+  cli_interface:
+    command_structure: "[CLI command syntax for this feature]"
+    parameters: "[Required and optional parameters]"
+    output_format: "[Expected CLI output format]"
+  test_first:
+    test_types_required: "[Unit|Integration|E2E|Performance tests needed]"
+    test_framework: "[Testing framework to use]"
+    test_coverage_target: "[Percentage coverage required]"
+  simplicity:
+    simple_approach: "[Simplest implementation strategy]"
+    complexity_avoided: "[Complex alternatives deliberately avoided]"
+  integration_first:
+    integration_points: "[External systems/services to integrate with]"
+    integration_tests: "[Key integration scenarios to test]"
+```
+
+#### 4. Technical Specification
+```yaml
+technical_requirements:
+  interfaces:
+    cli:
+      commands:
+        - command: "[CLI command name]"
+          description: "[What this command does]"
+          parameters: "[Required parameters]"
+          examples: "[Usage examples]"
+    api:
+      endpoints: "[If API access needed]"
+      data_formats: "[Input/output formats]"
+
+  dependencies:
+    libraries: "[Required external libraries]"
+    services: "[External services needed]"
+    data_stores: "[Database/storage requirements]"
+
+  non_functional_requirements:
+    performance:
+      response_time: "[Maximum acceptable response time]"
+      throughput: "[Required transaction volume]"
+    reliability:
+      availability: "[Uptime requirement]"
+      error_handling: "[Error response strategy]"
+    security:
+      authentication: "[Auth requirements if any]"
+      authorization: "[Access control needs]"
+      data_protection: "[Sensitive data handling]"
+```
+
+#### 5. Quality Assurance Specification
+```yaml
+quality_gates:
+  specification_completeness:
+    - [ ] All user stories have acceptance criteria
+    - [ ] All acceptance criteria are testable
+    - [ ] All ambiguities marked with [CLARIFY]
+    - [ ] Constitutional compliance specified
+    - [ ] CLI interface defined
+
+  implementation_readiness:
+    - [ ] Libraries and dependencies identified
+    - [ ] Test strategy specified
+    - [ ] Performance criteria defined
+    - [ ] Error handling approach specified
+
+  validation_criteria:
+    - [ ] Specification maps to concrete implementation tasks
+    - [ ] All constitutional principles addressed
+    - [ ] Quality metrics are measurable
+    - [ ] Integration points are well-defined
+```
+
+#### 6. Implementation Preview
+Generate high-level implementation approach:
+```yaml
+implementation_strategy:
+  approach: "[High-level implementation strategy following constitutional principles]"
+  phases:
+    - phase: "Test Suite Creation"
+      tasks: "[Tests to create based on acceptance criteria]"
+      constitutional_focus: "Test-First, CLI Interface"
+    - phase: "Core Implementation"
+      tasks: "[Implementation tasks using specified libraries]"
+      constitutional_focus: "Library-First, Simplicity"
+    - phase: "Integration & Validation"
+      tasks: "[Integration and validation tasks]"
+      constitutional_focus: "Integration-First, Comprehensive Testing"
+
+  risks_and_mitigations:
+    - risk: "[Potential implementation risk]"
+      mitigation: "[How constitutional principles mitigate this risk]"
+```
+
+### Specification Validation Checklist
+
+Before completing specification:
+- [ ] Every user story has clear acceptance criteria
+- [ ] All acceptance criteria are testable and measurable
+- [ ] Constitutional compliance is specified for each requirement
+- [ ] CLI interface is fully defined
+- [ ] Libraries and dependencies are identified
+- [ ] Ambiguous elements are marked with [CLARIFY]
+- [ ] Quality gates are specific and measurable
+- [ ] Implementation strategy aligns with constitutional principles
+
+### Output Instructions
+
+Generate a complete, unambiguous specification that:
+1. Transforms the input feature description into structured user stories
+2. Defines precise acceptance criteria for each story
+3. Specifies constitutional compliance approach
+4. Identifies all [CLARIFY] items that need further definition
+5. Provides clear CLI interface definition
+6. Creates foundation for `/plan` and `/tasks` phases
+
+The specification should be detailed enough that implementation can proceed without additional requirements gathering, while flagging any ambiguities that require clarification.
+
+## Success Criteria
+- [ ] Specification is complete and unambiguous
+- [ ] All constitutional principles are addressed
+- [ ] CLI interface is fully specified
+- [ ] Test requirements are clear
+- [ ] Implementation path is evident
+- [ ] Quality gates are measurable
+
+Execute this specification process for the provided feature description.

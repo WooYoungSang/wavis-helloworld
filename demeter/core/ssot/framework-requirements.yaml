@@ -1,0 +1,1049 @@
+framework_requirements:
+  version: 1.0.0
+  description: Universal requirements that apply to all projects using Demeter template
+  created: '2025-01-18'
+  philosophy: Language and project-type independent foundation requirements
+functional_requirements:
+  FR-001:
+    id: FR-001
+    title: Configuration Management
+    description: 프로젝트는 환경별 설정을 관리할 수 있어야 함
+    priority: Critical
+    category: Foundation
+    acceptance_criteria:
+      AC-1: 환경별 설정 파일 분리 (dev, staging, prod)
+      AC-2: 설정값 검증 및 기본값 제공
+      AC-3: 민감정보 보안 처리 (환경변수 또는 암호화)
+      AC-4: 설정 변경 시 재시작 없이 반영 가능
+    business_value: 운영 환경별 유연한 배포와 관리
+    dependencies: []
+    estimated_effort: medium
+  FR-002:
+    id: FR-002
+    title: Interface Layer
+    description: 외부와의 통신을 위한 인터페이스 제공
+    priority: High
+    category: Interface
+    acceptance_criteria:
+      AC-1: 명확한 입력/출력 인터페이스 정의
+      AC-2: 에러 응답 표준화
+      AC-3: 인터페이스 문서화 (스키마/계약)
+      AC-4: 인터페이스 버전 관리
+    business_value: 외부 시스템과의 안정적인 통합
+    dependencies: []
+    estimated_effort: high
+  FR-003:
+    id: FR-003
+    title: Data Persistence
+    description: 데이터 저장 및 조회 기능
+    priority: High
+    category: Data
+    acceptance_criteria:
+      AC-1: 데이터 모델 정의 및 스키마 관리
+      AC-2: CRUD 기본 연산 지원
+      AC-3: 트랜잭션 처리
+      AC-4: 데이터 마이그레이션 지원
+    business_value: 안정적인 데이터 관리
+    dependencies:
+    - FR-001
+    estimated_effort: high
+  FR-004:
+    id: FR-004
+    title: Caching Layer
+    description: 성능 최적화를 위한 캐싱 기능
+    priority: Medium
+    category: Performance
+    acceptance_criteria:
+      AC-1: 캐시 저장/조회/삭제 기능
+      AC-2: 캐시 만료 정책 설정
+      AC-3: 캐시 무효화 전략
+      AC-4: 캐시 히트율 모니터링
+    business_value: 응답 시간 개선 및 시스템 부하 감소
+    dependencies:
+    - FR-001
+    estimated_effort: medium
+  FR-005:
+    id: FR-005
+    title: Authentication & Authorization
+    description: 사용자 인증 및 권한 관리
+    priority: High
+    category: Security
+    acceptance_criteria:
+      AC-1: 사용자 인증 메커니즘
+      AC-2: 권한 기반 접근 제어
+      AC-3: 세션/토큰 관리
+      AC-4: 보안 감사 로깅
+    business_value: 보안 요구사항 충족
+    dependencies:
+    - FR-002
+    estimated_effort: high
+  FR-006:
+    id: FR-006
+    title: Business Logic Layer
+    description: 핵심 비즈니스 로직 구현
+    priority: Critical
+    category: Business
+    acceptance_criteria:
+      AC-1: 비즈니스 규칙 구현
+      AC-2: 도메인 모델 정의
+      AC-3: 비즈니스 프로세스 워크플로우
+      AC-4: 비즈니스 로직 테스트
+    business_value: 핵심 비즈니스 가치 제공
+    dependencies: []
+    estimated_effort: critical
+  FR-007:
+    id: FR-007
+    title: External Integration
+    description: 외부 시스템과의 통합
+    priority: Medium
+    category: Integration
+    acceptance_criteria:
+      AC-1: 외부 API 클라이언트 구현
+      AC-2: 연결 상태 모니터링
+      AC-3: 재시도 및 회로차단기 패턴
+      AC-4: 외부 의존성 추상화
+    business_value: 외부 시스템과의 안정적인 연동
+    dependencies:
+    - FR-002
+    estimated_effort: medium
+  FR-008:
+    id: FR-008
+    title: Monitoring & Observability
+    description: 시스템 모니터링 및 관찰 가능성
+    priority: High
+    category: Operations
+    acceptance_criteria:
+      AC-1: 로그 수집 및 구조화
+      AC-2: 메트릭 수집 및 대시보드
+      AC-3: 분산 추적 (OpenTelemetry)
+      AC-4: 헬스체크 엔드포인트
+    business_value: 운영 안정성 및 장애 대응 능력
+    dependencies:
+    - FR-001
+    estimated_effort: medium
+  FR-009:
+    id: FR-009
+    title: Event Processing
+    description: 이벤트 기반 처리
+    priority: Medium
+    category: Architecture
+    acceptance_criteria:
+      AC-1: 이벤트 발행/구독 메커니즘
+      AC-2: 이벤트 스키마 정의
+      AC-3: 이벤트 순서 보장
+      AC-4: 이벤트 재처리 로직
+    business_value: 느슨한 결합과 확장성
+    dependencies:
+    - FR-006
+    estimated_effort: high
+  FR-010:
+    id: FR-010
+    title: Deployment & DevOps
+    description: 배포 및 운영 자동화
+    priority: High
+    category: Operations
+    acceptance_criteria:
+      AC-1: 자동화된 빌드 파이프라인
+      AC-2: 컨테이너화 지원
+      AC-3: 무중단 배포 전략
+      AC-4: 인프라스트럭처 as Code
+    business_value: 안정적이고 효율적인 배포
+    dependencies:
+    - FR-001
+    - FR-008
+    estimated_effort: high
+non_functional_requirements:
+  NFR-001:
+    id: NFR-001
+    title: Performance
+    description: 시스템 성능 요구사항
+    category: Quality
+    requirements:
+    - '응답 시간: 평균 < 200ms, 95% < 500ms'
+    - '처리량: 초당 최소 100 요청 처리'
+    - '동시 사용자: 최소 1000명 지원'
+    - '리소스 사용률: CPU < 70%, Memory < 80%'
+    measurement:
+    - 부하 테스트를 통한 성능 검증
+    - APM 도구를 통한 실시간 모니터링
+    priority: High
+  NFR-002:
+    id: NFR-002
+    title: Reliability
+    description: 시스템 안정성 요구사항
+    category: Quality
+    requirements:
+    - '가용성: 99.9% 이상'
+    - 'MTBF: 평균 30일 이상'
+    - 'MTTR: 평균 4시간 이하'
+    - '데이터 무결성: 100% 보장'
+    measurement:
+    - SLA 모니터링
+    - 장애 발생 빈도 및 복구 시간 추적
+    priority: Critical
+  NFR-003:
+    id: NFR-003
+    title: Security
+    description: 보안 요구사항
+    category: Security
+    requirements:
+    - 인증/인가 메커니즘 구현
+    - 데이터 암호화 (전송/저장)
+    - 보안 취약점 Zero tolerance
+    - 감사 로그 기록 및 보관
+    measurement:
+    - 보안 스캔 도구를 통한 취약점 검사
+    - 침투 테스트 수행
+    priority: Critical
+  NFR-004:
+    id: NFR-004
+    title: Scalability
+    description: 확장성 요구사항
+    category: Architecture
+    requirements:
+    - 수평 확장 지원
+    - 부하 분산 가능
+    - 데이터베이스 샤딩 지원
+    - 마이크로서비스 아키텍처 준비
+    measurement:
+    - 확장 테스트 수행
+    - 리소스 사용량 모니터링
+    priority: Medium
+  NFR-005:
+    id: NFR-005
+    title: Maintainability
+    description: 유지보수성 요구사항
+    category: Quality
+    requirements:
+    - '코드 커버리지: 80% 이상'
+    - '코드 복잡도: Cyclomatic complexity < 10'
+    - '문서화: API 문서 100% 완성'
+    - '코딩 표준 준수: Linter 통과'
+    measurement:
+    - 정적 분석 도구 (SonarQube)
+    - 코드 리뷰 프로세스
+    priority: High
+  NFR-006:
+    id: NFR-006
+    title: Usability
+    description: 사용성 요구사항
+    category: User Experience
+    requirements:
+    - 직관적인 인터페이스 설계
+    - 에러 메시지 명확성
+    - 응답 피드백 제공
+    - 도움말 및 문서 제공
+    measurement:
+    - 사용자 피드백 수집
+    - 인터페이스 테스트
+    priority: Medium
+  NFR-007:
+    id: NFR-007
+    title: Portability
+    description: 이식성 요구사항
+    category: Deployment
+    requirements:
+    - 다중 플랫폼 지원
+    - 컨테이너 환경 지원
+    - 클라우드 네이티브 설계
+    - 표준 프로토콜 사용
+    measurement:
+    - 다양한 환경에서의 배포 테스트
+    - 호환성 매트릭스 검증
+    priority: Medium
+universal_uows:
+  UoW-000:
+    id: UoW-000
+    title: Project Structure Setup
+    description: 기본 프로젝트 구조 및 디렉토리 설정
+    category: Foundation
+    priority: Critical
+    estimated_effort: small
+    dependencies: []
+    related_frs: []
+    related_nfrs:
+    - NFR-005
+    acceptance_criteria:
+      AC-1:
+        description: 표준 디렉토리 구조 생성
+        scenario:
+          given: 새로운 프로젝트 초기화가 요청될 때
+          when: 프로젝트 구조 설정이 실행되면
+          then: 표준 디렉토리들이 생성되어야 한다
+          and:
+          - src, tests, configs, docs 디렉토리가 존재해야 한다
+          - 각 디렉토리가 적절한 권한으로 설정되어야 한다
+      AC-2:
+        description: 설정 파일 템플릿 배치
+        scenario:
+          given: 프로젝트 디렉토리 구조가 생성된 후
+          when: 설정 파일 템플릿 배치가 실행되면
+          then: 기본 설정 파일들이 생성되어야 한다
+          and:
+          - 설정 파일이 올바른 형식이어야 한다
+          - 환경별 설정 파일이 구분되어야 한다
+      AC-3:
+        description: 문서 디렉토리 구성
+        scenario:
+          given: 프로젝트 구조가 준비된 상태에서
+          when: 문서 디렉토리 설정이 실행되면
+          then: 문서 디렉토리와 기본 파일들이 생성되어야 한다
+          and:
+          - README.md 파일이 생성되어야 한다
+          - API 문서 디렉토리가 준비되어야 한다
+      AC-4:
+        description: 기본 무시 파일 (.gitignore 등) 설정
+        scenario:
+          given: 프로젝트 파일들이 준비된 상태에서
+          when: 무시 파일 설정이 실행되면
+          then: 적절한 .gitignore 파일이 생성되어야 한다
+          and:
+          - 언어별 무시 패턴이 포함되어야 한다
+          - IDE 및 OS 특화 패턴이 포함되어야 한다
+  UoW-001A:
+    id: UoW-001A
+    title: Dependency Management Setup
+    description: 의존성 관리 도구 설정 및 기본 의존성 추가
+    category: Foundation
+    priority: Critical
+    estimated_effort: small
+    dependencies:
+    - UoW-000
+    related_frs:
+    - FR-001
+    related_nfrs:
+    - NFR-003
+    - NFR-005
+    acceptance_criteria:
+      AC-1:
+        description: 의존성 관리 파일 생성 (package.json, requirements.txt, go.mod 등)
+        scenario:
+          given: 새로운 프로젝트가 초기화된 상태에서
+          when: 의존성 관리 시스템 설정이 실행되면
+          then: 적절한 의존성 관리 파일이 생성되어야 한다
+          and:
+          - 언어별 표준 의존성 파일이 생성되어야 한다
+          - 파일이 올바른 형식으로 작성되어야 한다
+      AC-2:
+        description: 기본 라이브러리 의존성 추가
+        scenario:
+          given: 의존성 관리 파일이 생성된 후
+          when: 기본 라이브러리들이 추가되면
+          then: 필수 라이브러리들이 의존성 파일에 포함되어야 한다
+          and:
+          - 로깅, 설정, 테스트 관련 기본 라이브러리가 포함되어야 한다
+          - 버전이 명시되어야 한다
+      AC-3:
+        description: 보안 스캔 도구 설정
+        scenario:
+          given: 의존성이 설정된 프로젝트에서
+          when: 보안 스캔 도구가 설정되면
+          then: 의존성 보안 취약점을 검사할 수 있어야 한다
+          and:
+          - 자동 보안 스캔이 가능해야 한다
+          - 취약한 의존성에 대한 알림이 설정되어야 한다
+      AC-4:
+        description: 의존성 버전 고정 정책 적용
+        scenario:
+          given: 의존성들이 추가된 상태에서
+          when: 버전 고정 정책이 적용되면
+          then: 모든 의존성이 특정 버전으로 고정되어야 한다
+          and:
+          - lockfile이 생성되어야 한다
+          - 재현 가능한 빌드가 보장되어야 한다
+  UoW-001B:
+    id: UoW-001B
+    title: Testing Framework Setup
+    description: 테스트 프레임워크 설정 및 기본 테스트 구조
+    category: Foundation
+    priority: Critical
+    estimated_effort: medium
+    dependencies:
+    - UoW-001A
+    related_frs:
+    - FR-006
+    related_nfrs:
+    - NFR-005
+    acceptance_criteria:
+      AC-1:
+        description: 단위 테스트 프레임워크 설정
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-2:
+        description: 통합 테스트 프레임워크 설정
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-3:
+        description: 테스트 커버리지 도구 설정
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-4:
+        description: 테스트 실행 자동화 스크립트
+        scenario:
+          given: 처리할 데이터가 준비된 상태에서
+          when: 처리 작업이 실행되면
+          then: 처리 결과가 올바르게 생성되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+  UoW-001C:
+    id: UoW-001C
+    title: Configuration System
+    description: 환경별 설정 관리 시스템 구현
+    category: Foundation
+    priority: Critical
+    estimated_effort: medium
+    dependencies:
+    - UoW-001A
+    related_frs:
+    - FR-001
+    related_nfrs:
+    - NFR-003
+    - NFR-005
+    acceptance_criteria:
+      AC-1:
+        description: 환경별 설정 파일 구조
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-2:
+        description: 설정값 유효성 검증
+        scenario:
+          given: 검증할 데이터가 준비된 상태에서
+          when: 검증 작업이 실행되면
+          then: 검증 결과가 올바르게 반환되어야 한다
+          and:
+          - 입력값이 유효성 검사를 통과해야 한다
+      AC-3:
+        description: 민감정보 보안 처리
+        scenario:
+          given: 처리할 데이터가 준비된 상태에서
+          when: 처리 작업이 실행되면
+          then: 처리 결과가 올바르게 생성되어야 한다
+          and:
+          - 보안 요구사항이 충족되어야 한다
+      AC-4:
+        description: 설정 변경 감지 및 반영
+        scenario:
+          given: 수정할 대상이 존재하는 상태에서
+          when: 수정 작업이 실행되면
+          then: 대상이 성공적으로 수정되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+  UoW-001:
+    id: UoW-001
+    title: Configuration Loader Implementation
+    description: 설정 로더 구현
+    category: Foundation
+    priority: Critical
+    estimated_effort: medium
+    dependencies:
+    - UoW-001C
+    related_frs:
+    - FR-001
+    related_nfrs:
+    - NFR-002
+    - NFR-005
+    acceptance_criteria:
+      AC-1:
+        description: 환경별 설정 로드 기능
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-2:
+        description: 기본값 설정 및 오버라이드
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-3:
+        description: 설정 검증 및 에러 처리
+        scenario:
+          given: 검증할 데이터가 준비된 상태에서
+          when: 검증 작업이 실행되면
+          then: 검증 결과가 올바르게 반환되어야 한다
+          and:
+          - 입력값이 유효성 검사를 통과해야 한다
+      AC-4:
+        description: 런타임 설정 변경 지원
+        scenario:
+          given: 수정할 대상이 존재하는 상태에서
+          when: 수정 작업이 실행되면
+          then: 대상이 성공적으로 수정되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+  UoW-101:
+    id: UoW-101
+    title: Database Connection Management
+    description: 데이터베이스 연결 및 관리
+    category: Infrastructure
+    priority: High
+    estimated_effort: medium
+    dependencies:
+    - UoW-001
+    related_frs:
+    - FR-003
+    related_nfrs:
+    - NFR-001
+    - NFR-002
+    acceptance_criteria:
+      AC-1:
+        description: 데이터베이스 연결 풀 설정
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-2:
+        description: 연결 상태 모니터링
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 연결 상태 모니터링
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 트랜잭션 관리
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 트랜잭션 관리
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 연결 복구 메커니즘
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 연결 복구 메커니즘
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-102:
+    id: UoW-102
+    title: Cache Integration
+    description: 캐시 시스템 통합
+    category: Infrastructure
+    priority: Medium
+    estimated_effort: medium
+    dependencies:
+    - UoW-001
+    related_frs:
+    - FR-004
+    related_nfrs:
+    - NFR-001
+    acceptance_criteria:
+      AC-1:
+        description: 캐시 클라이언트 설정
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-2:
+        description: 캐시 정책 구성
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-3:
+        description: 캐시 무효화 전략
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 캐시 무효화 전략
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 캐시 성능 모니터링
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 캐시 성능 모니터링
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-103:
+    id: UoW-103
+    title: Interface Foundation
+    description: 기본 인터페이스 레이어 구현
+    category: Interface
+    priority: High
+    estimated_effort: high
+    dependencies:
+    - UoW-001
+    related_frs:
+    - FR-002
+    related_nfrs:
+    - NFR-006
+    acceptance_criteria:
+      AC-1:
+        description: 기본 인터페이스 구조
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 기본 인터페이스 구조
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 요청/응답 스키마 정의
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 요청/응답 스키마 정의
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 에러 핸들링 표준화
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 에러 핸들링 표준화
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 인터페이스 문서 자동 생성
+        scenario:
+          given: 필요한 전제조건이 충족된 상태에서
+          when: 생성 작업이 실행되면
+          then: 대상이 성공적으로 생성되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+  UoW-104:
+    id: UoW-104
+    title: Authentication Implementation
+    description: 인증 시스템 구현
+    category: Security
+    priority: High
+    estimated_effort: high
+    dependencies:
+    - UoW-103
+    related_frs:
+    - FR-005
+    related_nfrs:
+    - NFR-003
+    acceptance_criteria:
+      AC-1:
+        description: 사용자 인증 메커니즘
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 사용자 인증 메커니즘
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 토큰 관리
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 토큰 관리
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 권한 검증
+        scenario:
+          given: 검증할 데이터가 준비된 상태에서
+          when: 검증 작업이 실행되면
+          then: 검증 결과가 올바르게 반환되어야 한다
+          and:
+          - 입력값이 유효성 검사를 통과해야 한다
+      AC-4:
+        description: 보안 감사 로깅
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 보안 감사 로깅
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-105:
+    id: UoW-105
+    title: Error Handling System
+    description: 통합 에러 처리 시스템
+    category: Foundation
+    priority: High
+    estimated_effort: medium
+    dependencies:
+    - UoW-103
+    related_frs:
+    - FR-002
+    related_nfrs:
+    - NFR-002
+    - NFR-006
+    acceptance_criteria:
+      AC-1:
+        description: 에러 타입 분류 체계
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 에러 타입 분류 체계
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 에러 응답 표준화
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 에러 응답 표준화
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 에러 로깅 및 추적
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 에러 로깅 및 추적
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 사용자 친화적 에러 메시지
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 사용자 친화적 에러 메시지
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-106:
+    id: UoW-106
+    title: Async Processing
+    description: 비동기 처리 시스템
+    category: Architecture
+    priority: Medium
+    estimated_effort: high
+    dependencies:
+    - UoW-001
+    related_frs:
+    - FR-009
+    related_nfrs:
+    - NFR-001
+    - NFR-004
+    acceptance_criteria:
+      AC-1:
+        description: 비동기 작업 큐
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 비동기 작업 큐
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 작업 상태 추적
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 작업 상태 추적
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 실패 처리 및 재시도
+        scenario:
+          given: 처리할 데이터가 준비된 상태에서
+          when: 처리 작업이 실행되면
+          then: 처리 결과가 올바르게 생성되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-4:
+        description: 백그라운드 작업 모니터링
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 백그라운드 작업 모니터링
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-107:
+    id: UoW-107
+    title: Monitoring & Observability
+    description: 모니터링 및 관찰 가능성 구현
+    category: Operations
+    priority: High
+    estimated_effort: high
+    dependencies:
+    - UoW-001
+    related_frs:
+    - FR-008
+    related_nfrs:
+    - NFR-002
+    acceptance_criteria:
+      AC-1:
+        description: 구조화된 로깅
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 구조화된 로깅
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 메트릭 수집
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 메트릭 수집
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 분산 추적 (OpenTelemetry)
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 분산 추적 (OpenTelemetry)
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 헬스체크 구현
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 헬스체크 구현
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-201:
+    id: UoW-201
+    title: Core Business Logic
+    description: 핵심 비즈니스 로직 구현
+    category: Business
+    priority: Critical
+    estimated_effort: critical
+    dependencies:
+    - UoW-001
+    - UoW-103
+    related_frs:
+    - FR-006
+    related_nfrs:
+    - NFR-001
+    - NFR-005
+    acceptance_criteria:
+      AC-1:
+        description: 비즈니스 규칙 구현
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 비즈니스 규칙 구현
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 도메인 모델 정의
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 도메인 모델 정의
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 비즈니스 프로세스 워크플로우
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 비즈니스 프로세스 워크플로우
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 비즈니스 로직 단위 테스트
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 비즈니스 로직 단위 테스트
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-202:
+    id: UoW-202
+    title: External System Integration
+    description: 외부 시스템 연동
+    category: Integration
+    priority: Medium
+    estimated_effort: high
+    dependencies:
+    - UoW-201
+    related_frs:
+    - FR-007
+    related_nfrs:
+    - NFR-002
+    - NFR-004
+    acceptance_criteria:
+      AC-1:
+        description: 외부 API 클라이언트
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 외부 API 클라이언트
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 연결 상태 모니터링
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 연결 상태 모니터링
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 재시도 및 회로차단기
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 재시도 및 회로차단기
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 외부 의존성 추상화
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 외부 의존성 추상화
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+  UoW-210:
+    id: UoW-210
+    title: Deployment Pipeline
+    description: 배포 파이프라인 구축
+    category: DevOps
+    priority: High
+    estimated_effort: high
+    dependencies:
+    - UoW-001B
+    - UoW-107
+    related_frs:
+    - FR-010
+    related_nfrs:
+    - NFR-002
+    - NFR-007
+    acceptance_criteria:
+      AC-1:
+        description: 자동화된 빌드 파이프라인
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 자동화된 빌드 파이프라인
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-2:
+        description: 컨테이너화
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 컨테이너화
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-3:
+        description: 무중단 배포
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 무중단 배포
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-4:
+        description: 배포 모니터링
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: 배포 모니터링
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+quality_standards:
+  code_quality:
+    test_coverage_minimum: 80
+    static_analysis_rating: A
+    security_vulnerabilities: 0
+    code_complexity_max: 10
+    documentation_coverage: 100
+  performance_benchmarks:
+    response_time_avg: < 200ms
+    response_time_95p: < 500ms
+    throughput_min: 100 req/s
+    cpu_utilization_max: 70%
+    memory_utilization_max: 80%
+  reliability_metrics:
+    availability_target: 99.9%
+    mtbf_target: 30 days
+    mttr_target: 4 hours
+    error_rate_max: 0.1%
+technology_guidelines:
+  selection_criteria:
+  - 커뮤니티 지원 및 생태계
+  - 장기 지원 및 안정성
+  - 성능 및 확장성
+  - 보안 및 컴플라이언스
+  - 팀 역량 및 학습 곡선
+  - 운영 및 유지보수 비용
+  evaluation_process: 1. "요구사항 분석 및 우선순위 설정" 2. "후보 기술 조사 및 평가" 3. "프로토타입 개발 및 검증"
+    4. "비용 효익 분석" 5. "최종 기술 선택 및 문서화"
+  common_patterns:
+    configuration: 환경변수 + 설정파일 조합
+    logging: 구조화된 JSON 로깅
+    monitoring: OpenTelemetry 표준
+    testing: 피라미드 테스트 전략
+    deployment: 컨테이너 + IaC
+    security: Zero Trust 원칙
+integration_points:
+  ssot_merge_strategy: Framework requirements는 기본으로 포함, 프로젝트별 SSOT는 추가/확장
+  technology_binding: Framework 요구사항은 기술 중립적, 구현 시 기술스택 결정
+  extension_mechanism: 프로젝트별 FR/NFR/UoW 추가 가능
+  validation_criteria: 모든 Critical/High priority 요구사항 구현 필수

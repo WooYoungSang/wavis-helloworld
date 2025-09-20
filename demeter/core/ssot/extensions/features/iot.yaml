@@ -1,0 +1,231 @@
+# IoT Features Extension
+# Additional requirements for IoT device integration
+
+extension:
+  id: "features-iot"
+  name: "IoT Integration Extension"
+  version: "1.0.0"
+  description: "IoT 디바이스 연동을 위한 기능 확장"
+  category: "features"
+  compatibility:
+    mvp_phases: ["phase_2", "phase_3"]
+    conflicts: []
+    requires: []
+
+functional_requirements:
+  FR-IOT-001:
+    id: "FR-IOT-001"
+    title: "Device Management"
+    description: "IoT 디바이스 등록 및 관리"
+    priority: "High"
+    category: "IoT"
+    acceptance_criteria:
+      AC-1: "디바이스 등록 및 인증"
+      AC-2: "디바이스 상태 모니터링"
+      AC-3: "디바이스 그룹 관리"
+      AC-4: "펌웨어 업데이트 관리"
+    business_value: "IoT 디바이스 통합 관리"
+    dependencies: ["FR-003", "FR-005"]
+    estimated_effort: "high"
+
+  FR-IOT-002:
+    id: "FR-IOT-002"
+    title: "Data Collection"
+    description: "IoT 센서 데이터 수집 및 처리"
+    priority: "High"
+    category: "IoT"
+    acceptance_criteria:
+      AC-1: "실시간 센서 데이터 수집"
+      AC-2: "데이터 전처리 및 검증"
+      AC-3: "데이터 배치 처리"
+      AC-4: "데이터 품질 모니터링"
+    business_value: "IoT 데이터 활용 기반"
+    dependencies: ["FR-003", "FR-006"]
+    estimated_effort: "high"
+
+  FR-IOT-003:
+    id: "FR-IOT-003"
+    title: "Real-time Communication"
+    description: "IoT 디바이스와 실시간 통신"
+    priority: "High"
+    category: "IoT"
+    acceptance_criteria:
+      AC-1: "MQTT/CoAP 프로토콜 지원"
+      AC-2: "양방향 메시징"
+      AC-3: "연결 상태 관리"
+      AC-4: "메시지 큐 관리"
+    business_value: "실시간 IoT 제어"
+    dependencies: ["FR-006", "FR-002"]
+    estimated_effort: "medium"
+
+  FR-IOT-004:
+    id: "FR-IOT-004"
+    title: "Edge Computing"
+    description: "엣지 디바이스에서 데이터 처리"
+    priority: "Medium"
+    category: "IoT"
+    acceptance_criteria:
+      AC-1: "엣지 디바이스 데이터 처리"
+      AC-2: "로컬 데이터 저장"
+      AC-3: "네트워크 대역폭 최적화"
+      AC-4: "엣지-클라우드 동기화"
+    business_value: "네트워크 효율성 향상"
+    dependencies: ["FR-003", "FR-004"]
+    estimated_effort: "high"
+
+  FR-IOT-005:
+    id: "FR-IOT-005"
+    title: "Alert and Automation"
+    description: "IoT 데이터 기반 알림 및 자동화"
+    priority: "Medium"
+    category: "IoT"
+    acceptance_criteria:
+      AC-1: "임계값 기반 알림"
+      AC-2: "자동화 규칙 엔진"
+      AC-3: "다중 채널 알림"
+      AC-4: "알림 이력 관리"
+    business_value: "자동화된 IoT 운영"
+    dependencies: ["FR-008", "FR-006"]
+    estimated_effort: "medium"
+
+non_functional_requirements:
+  NFR-IOT-001:
+    id: "NFR-IOT-001"
+    title: "IoT Security"
+    description: "IoT 보안 요구사항"
+    category: "Security"
+    requirements:
+      - "디바이스 인증서 기반 보안"
+      - "데이터 전송 암호화 (TLS/DTLS)"
+      - "디바이스 무결성 검증"
+      - "보안 부팅 지원"
+    measurement:
+      - "인증되지 않은 디바이스 접근 차단율 100%"
+      - "데이터 전송 암호화율 100%"
+    priority: "Critical"
+    extends: "NFR-003"
+
+  NFR-IOT-002:
+    id: "NFR-IOT-002"
+    title: "IoT Scalability"
+    description: "IoT 확장성 요구사항"
+    category: "Performance"
+    requirements:
+      - "동시 연결 디바이스 수 100,000대"
+      - "초당 메시지 처리량 1,000,000건"
+      - "수평 확장 지원"
+      - "부하 분산 기능"
+    measurement:
+      - "디바이스 연결 성공률 99.9%"
+      - "메시지 처리 지연 < 100ms"
+    priority: "High"
+    extends: "NFR-004"
+
+  NFR-IOT-003:
+    id: "NFR-IOT-003"
+    title: "IoT Reliability"
+    description: "IoT 안정성 요구사항"
+    category: "Reliability"
+    requirements:
+      - "네트워크 단절 시 로컬 동작"
+      - "자동 재연결 기능"
+      - "데이터 손실 방지"
+      - "장애 복구 시간 < 30초"
+    measurement:
+      - "데이터 손실률 < 0.1%"
+      - "시스템 가용성 99.9%"
+    priority: "High"
+    extends: "NFR-002"
+
+units_of_work:
+  UoW-IOT-601:
+    id: "UoW-IOT-601"
+    title: "IoT Device Registry"
+    description: "IoT 디바이스 레지스트리 구현"
+    category: "IoT"
+    priority: "High"
+    estimated_effort: "medium"
+    dependencies: ["UoW-101", "UoW-104"]
+    related_frs: ["FR-IOT-001"]
+    related_nfrs: ["NFR-IOT-001"]
+    acceptance_criteria:
+      AC-1: "디바이스 등록 API"
+      AC-2: "인증서 관리 시스템"
+      AC-3: "디바이스 상태 추적"
+      AC-4: "그룹 관리 기능"
+
+  UoW-IOT-602:
+    id: "UoW-IOT-602"
+    title: "Data Ingestion Pipeline"
+    description: "IoT 데이터 수집 파이프라인"
+    category: "IoT"
+    priority: "High"
+    estimated_effort: "high"
+    dependencies: ["UoW-106", "UoW-101"]
+    related_frs: ["FR-IOT-002"]
+    related_nfrs: ["NFR-IOT-002"]
+    acceptance_criteria:
+      AC-1: "실시간 데이터 스트리밍"
+      AC-2: "데이터 검증 로직"
+      AC-3: "배치 처리 시스템"
+      AC-4: "품질 모니터링"
+
+  UoW-IOT-603:
+    id: "UoW-IOT-603"
+    title: "Message Broker"
+    description: "IoT 메시지 브로커 구현"
+    category: "IoT"
+    priority: "High"
+    estimated_effort: "medium"
+    dependencies: ["UoW-103", "UoW-106"]
+    related_frs: ["FR-IOT-003"]
+    related_nfrs: ["NFR-IOT-002", "NFR-IOT-003"]
+    acceptance_criteria:
+      AC-1: "MQTT/CoAP 프로토콜 지원"
+      AC-2: "메시지 큐 관리"
+      AC-3: "연결 상태 추적"
+      AC-4: "부하 분산 기능"
+
+  UoW-IOT-604:
+    id: "UoW-IOT-604"
+    title: "Edge Computing Module"
+    description: "엣지 컴퓨팅 모듈 구현"
+    category: "IoT"
+    priority: "Medium"
+    estimated_effort: "high"
+    dependencies: ["UoW-102", "UoW-106"]
+    related_frs: ["FR-IOT-004"]
+    related_nfrs: ["NFR-IOT-002", "NFR-IOT-003"]
+    acceptance_criteria:
+      AC-1: "엣지 데이터 처리 엔진"
+      AC-2: "로컬 스토리지 관리"
+      AC-3: "동기화 메커니즘"
+      AC-4: "대역폭 최적화"
+
+  UoW-IOT-605:
+    id: "UoW-IOT-605"
+    title: "IoT Automation Engine"
+    description: "IoT 자동화 엔진 구현"
+    category: "IoT"
+    priority: "Medium"
+    estimated_effort: "medium"
+    dependencies: ["UoW-107", "UoW-106"]
+    related_frs: ["FR-IOT-005"]
+    related_nfrs: ["NFR-IOT-003"]
+    acceptance_criteria:
+      AC-1: "규칙 엔진 구현"
+      AC-2: "알림 시스템"
+      AC-3: "자동화 워크플로"
+      AC-4: "이력 관리"
+
+integration:
+  framework_requirements:
+    extends:
+      - "FR-003"  # Data Persistence - IoT 데이터 저장
+      - "FR-005"  # Authentication - 디바이스 인증
+      - "FR-006"  # Message Queue - 실시간 통신
+      - "FR-008"  # Monitoring - IoT 모니터링
+    modifies:
+      - "NFR-003": "IoT 디바이스 보안 요구사항 추가"
+      - "NFR-004": "IoT 확장성 요구사항 추가"
+      - "NFR-002": "IoT 안정성 요구사항 추가"

@@ -1,0 +1,181 @@
+# 🧠 Requirements Analysis Template (SDD-Enhanced)
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Generated SSOT**: docs/SSOT.md, docs/merged-ssot.yaml
+- **Methodology**: GitHub Specification-Driven Development (SDD)
+
+## 📝 Natural Language Requirements
+```markdown
+{{REQUIREMENTS_CONTENT}}
+```
+
+## 🎯 SDD-Based Requirements Analysis
+
+### SDD Analysis Workflow
+Follow the `/specify` → `/plan` → `/tasks` workflow:
+
+1. **`/specify` Phase**: Create precise specifications from natural language
+2. **`/plan` Phase**: Generate implementation plan with constitutional compliance
+3. **`/tasks` Phase**: Create executable task list with parallelization markers
+
+### 1. Specification-Driven Analysis
+Apply SDD principles to parse requirements:
+
+#### Constitutional Validation
+For each identified requirement, validate against SDD constitutional principles:
+- **Library-First**: Can existing libraries fulfill this requirement?
+- **CLI Interface**: How will this be accessible via command line?
+- **Test-First**: What tests must be written before implementation?
+- **Simplicity**: What's the simplest approach to implement this?
+- **Integration-First**: What integration tests are needed?
+
+#### Requirement Classification
+- **Functional Requirements**: Features with clear user stories and acceptance criteria
+- **Non-Functional Requirements**: Quality attributes with measurable criteria
+- **Business Rules**: Domain constraints with validation logic
+- **User Stories**: Actor-based scenarios with Given-When-Then structure
+- **Integration Points**: External dependencies with interface specifications
+
+#### Ambiguity Detection
+Mark unclear requirements with [CLARIFY] markers:
+- Vague performance requirements → [CLARIFY] specific metrics needed
+- Undefined user roles → [CLARIFY] user persona definitions
+- Missing success criteria → [CLARIFY] measurable outcomes
+- Unclear dependencies → [CLARIFY] external system interfaces
+
+### 2. Create SDD-Compliant Custom SSOT Extension
+Generate `demeter/core/ssot/custom/{{PROJECT_NAME}}.yaml` with enhanced SDD structure:
+
+```yaml
+extends: "{{EXTENSIONS}}"
+custom: "{{PROJECT_NAME}}"
+methodology: "GitHub SDD v1.0"
+
+functional_requirements:
+  FR-CUSTOM-001:
+    specification:
+      user_story: "As a [extracted from requirements], I want [specific functionality] so that [business value]"
+      acceptance_criteria:
+        - [ ] "Testable criterion 1 with specific metric"
+        - [ ] "Testable criterion 2 with measurable outcome"
+      clarifications_needed:
+        - "[CLARIFY] Specific unclear aspects from natural language"
+      constitutional_compliance:
+        library_first: "Identify existing libraries to use"
+        cli_interface: "Define CLI command structure"
+        test_first: "Specify test cases to write first"
+        simplicity: "Simplest implementation approach"
+    name: "Clear, unambiguous requirement name"
+    description: "Detailed description based on natural language analysis"
+    priority: "Critical|High|Medium|Low"
+    business_value: "Quantifiable business impact"
+    derived_from: "Natural language requirement section X"
+    test_scenarios:
+      - scenario: "Happy path from user story"
+        given: "Initial state from requirements"
+        when: "User action from requirements"
+        then: "Expected outcome with metrics"
+
+non_functional_requirements:
+  NFR-CUSTOM-001:
+    specification:
+      quality_attribute: "Performance|Security|Usability|Reliability|Scalability"
+      measurable_criteria:
+        - metric: "Response time"
+          target: "< Xms (from requirements)"
+          test_method: "Load testing approach"
+        - metric: "Availability"
+          target: "X% uptime"
+          test_method: "Monitoring strategy"
+      constitutional_compliance:
+        simplicity: "Simple approach to achieve quality"
+        testing: "Integration-first testing strategy"
+      clarifications_needed:
+        - "[CLARIFY] Performance targets not specified in requirements"
+    name: "Quality attribute name"
+    category: "Performance|Security|Usability|Reliability"
+    derived_from: "Natural language requirement section Y"
+    measurement_criteria: "Specific, measurable criteria"
+    testing_method: "How to validate this requirement"
+    priority: "Critical|High|Medium|Low"
+
+units_of_work:
+  UoW-CUSTOM-301:
+    specification:
+      derived_from: ["FR-CUSTOM-001", "NFR-CUSTOM-001"]
+      user_story_mapping: "Maps to user story Z from requirements"
+      constitutional_approach:
+        library_first: "Specific libraries identified for this UoW"
+        cli_first: "CLI commands this UoW will provide"
+        test_first: "Test suite structure and approach"
+        simplicity: "Simplest implementation strategy"
+      implementation_plan:
+        approach: "Step-by-step implementation based on requirements"
+        dependencies: "Required libraries and external services"
+        interfaces: "CLI/API interfaces to implement"
+      executable_tasks:
+        - task: "Write comprehensive test suite"
+          parallel: false
+          estimated_hours: "X"
+          completion_criteria:
+            - [ ] "All test cases from acceptance criteria written"
+            - [ ] "Tests fail appropriately (RED phase)"
+        - task: "Implement core functionality"
+          parallel: true
+          estimated_hours: "Y"
+          completion_criteria:
+            - [ ] "Functionality matches specification exactly"
+            - [ ] "All tests pass (GREEN phase)"
+            - [ ] "CLI interface working as specified"
+      quality_checklist:
+        - [ ] "Specification implemented completely"
+        - [ ] "All acceptance criteria met"
+        - [ ] "CLI interface accessible and documented"
+        - [ ] "Integration tests pass"
+        - [ ] "Constitutional principles followed"
+        - [ ] "No [CLARIFY] items remaining"
+    name: "Implementation task name"
+    goal: "Specific, measurable implementation outcome"
+    layer: "Application|Infrastructure|Integration|Deployment"
+    priority: "Critical|High|Medium|Low"
+    dependencies: ["Existing-UoW-IDs"]
+    implements: ["FR-CUSTOM-001", "NFR-CUSTOM-001"]
+    estimated_effort_hours: "Sum of executable tasks"
+```
+
+### 3. Integrate with Existing SSOT
+1. **Re-merge SSOT**: Use merge-ssot.py to combine base + domain + custom
+2. **Update Documentation**: Regenerate docs/SSOT.md with integrated requirements
+3. **Refresh Execution Plan**: Update batch/execution-plan.yaml with new UoWs
+
+### 4. Validation & Gap Analysis
+- **Coverage Check**: Ensure all natural language requirements are captured
+- **Dependency Analysis**: Verify UoW dependencies are correct
+- **Priority Alignment**: Check priority assignments match business importance
+- **Missing Elements**: Identify any requirements not yet addressed
+
+### 5. GraphRAG Integration Preparation
+- **Entity Extraction**: Identify key business entities and relationships
+- **Knowledge Structuring**: Prepare for GraphRAG indexing
+- **Context Mapping**: Map requirements to implementation contexts
+
+## 🔄 Execution Steps
+
+1. **Analyze** natural language requirements above
+2. **Generate** custom SSOT YAML file: `demeter/core/ssot/custom/{{PROJECT_NAME}}.yaml`
+3. **Generate merge prompt**: Use merge-ssot.py to create merge prompt with custom extension
+4. **Execute merge prompt**: Run the generated prompt to create updated merged-ssot.yaml
+5. **Regenerate** SSOT documentation using template generation prompt
+6. **Update** execution plan with new custom UoWs
+7. **Prepare** for GraphRAG indexing
+
+## ✅ Success Criteria
+- [ ] All natural language requirements mapped to FR/NFR/UoW
+- [ ] Custom SSOT YAML file created and validated
+- [ ] Merged SSOT includes project-specific requirements
+- [ ] Execution plan updated with custom UoWs
+- [ ] No requirement gaps or conflicts identified
+
+Transform the natural language requirements into a fully integrated, development-ready SSOT system.

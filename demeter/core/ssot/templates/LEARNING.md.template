@@ -1,0 +1,195 @@
+# Learning Log - Development Knowledge Base for {{PROJECT_NAME}}
+
+## Purpose
+This document captures development learnings, patterns, and discoveries during the implementation of {{PROJECT_DESCRIPTION}}. All significant findings should be documented here and periodically incorporated into the SSOT for GraphRAG indexing.
+
+## Format
+Each entry should follow this structure:
+- **Date**: YYYY-MM-DD
+- **Category**: Pattern | Anti-pattern | Optimization | Security | Architecture | Performance
+- **Related**: FR-xxx, UoW-yyy, NFR-zzz
+- **Context**: What was being worked on
+- **Discovery**: What was learned
+- **Solution**: How it was addressed
+- **Impact**: Changes to SSOT or future considerations
+- **Code Example**: (if applicable)
+
+## Categories Explained
+
+### Pattern
+Reusable solutions that work well and should be adopted elsewhere.
+
+### Anti-pattern
+Approaches that seem logical but cause problems and should be avoided.
+
+### Optimization
+Performance improvements and resource usage enhancements.
+
+### Security
+Security vulnerabilities discovered and their mitigations.
+
+### Architecture
+Design decisions and structural insights.
+
+### Performance
+Measured performance characteristics and baselines.
+
+---
+
+## Entries
+
+### {{GENERATION_DATE}} - {{PROJECT_NAME}} Project Setup Framework Established
+- **Date**: {{GENERATION_DATE}}
+- **Category**: Architecture
+- **Related**: All UoWs, NFR-005 (maintainability)
+- **Context**: Initial project setup using SSOT-driven development framework template
+- **Discovery**: Complete project setup framework with GraphRAG integration creates robust foundation for {{PROJECT_TYPE}} projects
+- **Solution**:
+  - Comprehensive SSOT document with {{FR_COUNT}} FRs, {{NFR_COUNT}} NFRs, and {{UOW_COUNT}} UoWs
+  - GraphRAG knowledge management system for context-aware development
+  - Agent collaboration patterns tailored for {{PROJECT_TYPE}} development
+  - Quality gates and CI/CD integration specific to {{TECH_STACK}}
+- **Impact**: Establishes foundation for consistent, high-quality development with {{EXPECTED_VELOCITY}} improvement in development velocity
+- **Key Components**:
+  - {{UOW_COUNT}} UoWs with detailed acceptance criteria
+  - Agent collaboration patterns for {{PROJECT_TYPE}} development phases
+  - GraphRAG integration for context-aware development decisions
+  - Comprehensive quality gates achieving {{TARGET_QUALITY}} quality score
+
+---
+
+## Sprint Summaries
+
+### Sprint 0 - Project Initialization ({{GENERATION_DATE}})
+**Key Learnings**:
+- SSOT-driven development provides clear requirements traceability for {{PROJECT_TYPE}} projects
+- GraphRAG enables context-aware development decisions specific to {{DOMAIN}} domain
+- Agent collaboration patterns improve code quality by {{QUALITY_IMPROVEMENT}}%
+- Comprehensive setup pays dividends in development velocity ({{VELOCITY_IMPROVEMENT}} faster)
+
+**SSOT Updates Required**:
+- Monitor UoW completion patterns for {{PROJECT_TYPE}} projects
+- Refine acceptance criteria based on {{DOMAIN}} implementation requirements
+- Document effective agent collaboration combinations for {{TECH_STACK}}
+- Track performance baselines specific to {{PERFORMANCE_TARGETS}}
+
+**GraphRAG Re-indexing**: [x] Required after initial setup
+
+---
+
+## Performance Baselines
+
+### Measured Values (Update as discovered)
+- **Setup Time**: ~{{SETUP_TIME_MANUAL}} minutes (manual), ~{{SETUP_TIME_AUTO}} minutes (automated)
+- **GraphRAG Indexing**: ~{{GRAPHRAG_INDEX_TIME}} minutes for initial corpus
+- **Initial Build Time**: {{BUILD_TIME}} (target: < {{TARGET_BUILD_TIME}})
+- **Test Execution Time**: {{TEST_TIME}} (target: < {{TARGET_TEST_TIME}})
+- **{{PROJECT_TYPE}} Specific Metrics**:
+  {{PROJECT_SPECIFIC_METRICS}}
+
+### Performance Targets
+- **API Response Time**: < {{API_RESPONSE_TARGET}}ms (95th percentile)
+- **Throughput**: > {{THROUGHPUT_TARGET}} requests/second
+- **Memory Usage**: < {{MEMORY_TARGET}}MB baseline
+- **CPU Usage**: < {{CPU_TARGET}}% under normal load
+- **{{DOMAIN}} Specific**: {{DOMAIN_SPECIFIC_TARGETS}}
+
+---
+
+## Common Issues & Solutions
+
+### Issue Template
+**Problem**: Issue description
+**Root Cause**: Technical or process cause
+**Solution**: How it was resolved
+**Prevention**: How to avoid in future
+
+### {{PROJECT_TYPE}} Specific Issues
+{{PROJECT_SPECIFIC_ISSUES}}
+
+---
+
+## Technical Debt Log
+
+### Debt Item Template
+- **Identified**: YYYY-MM-DD
+- **Component**: Area of codebase
+- **Description**: What needs improvement
+- **Impact**: Low | Medium | High
+- **Proposed Solution**: How to address
+- **Effort Estimate**: Time required
+
+### Current Technical Debt
+{{INITIAL_TECH_DEBT}}
+
+---
+
+## Integration Notes
+
+### External System Quirks
+Document any unexpected behaviors from external systems, APIs, or tools specific to {{DOMAIN}}.
+
+### Library/Framework Gotchas
+Note any surprising behaviors or limitations discovered in libraries used for {{PROJECT_TYPE}} development.
+
+### {{TECH_STACK}} Specific Notes
+{{TECH_STACK_NOTES}}
+
+---
+
+## Review Schedule
+
+- **Daily**: Individual developer reviews new entries
+- **Weekly**: Team reviews accumulated entries every {{REVIEW_DAY}}
+- **Sprint End**: Consolidate learnings into SSOT updates
+- **{{REVIEW_FREQUENCY}}**: Full GraphRAG re-indexing with accumulated knowledge
+
+---
+
+## Project-Specific Learning Areas
+
+### {{DOMAIN}} Domain Knowledge
+- {{DOMAIN_LEARNING_AREA_1}}
+- {{DOMAIN_LEARNING_AREA_2}}
+- {{DOMAIN_LEARNING_AREA_3}}
+
+### {{TECH_STACK}} Technology Patterns
+- {{TECH_PATTERN_1}}
+- {{TECH_PATTERN_2}}
+- {{TECH_PATTERN_3}}
+
+### Performance Optimization Areas
+- {{PERF_AREA_1}}
+- {{PERF_AREA_2}}
+- {{PERF_AREA_3}}
+
+---
+
+## Team Learning Metrics
+
+### Success Indicators
+- ✓ Developers actively querying GraphRAG: Target {{GRAPHRAG_QUERY_TARGET}}/week
+- ✓ Reduced duplicate problem-solving: Target {{DUPLICATE_REDUCTION}}% reduction
+- ✓ Faster onboarding with context: Target {{ONBOARDING_TARGET}} days
+- ✓ Consistent pattern application: Target {{PATTERN_CONSISTENCY}}% consistency
+- ✓ Living documentation stays current: Target {{DOC_FRESHNESS}} update frequency
+
+### Learning Velocity Metrics
+- **Learning Entries/Week**: Target {{LEARNING_ENTRIES_TARGET}}
+- **Pattern Identification Rate**: Target {{PATTERN_ID_RATE}}/sprint
+- **Knowledge Application**: Target {{KNOWLEDGE_APPLICATION}}% reuse rate
+- **Context Query Success Rate**: Target >{{QUERY_SUCCESS_RATE}}%
+
+---
+
+## Tags Index
+<!-- Maintain a list of frequently used tags for easy searching -->
+#{{PROJECT_NAME_TAG}} #{{DOMAIN_TAG}} #{{TECH_STACK_TAG}} #ssot #graphrag #uow #quality #architecture #patterns #{{CUSTOM_TAGS}}
+
+---
+
+**Project**: {{PROJECT_NAME}}
+**Domain**: {{DOMAIN}}
+**Technology Stack**: {{TECH_STACK}}
+**Team Size**: {{TEAM_SIZE}}
+**Learning Framework Version**: 1.0.0

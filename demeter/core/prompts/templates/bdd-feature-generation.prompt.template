@@ -1,0 +1,365 @@
+# 🧪 BDD Feature Generation with Constitutional Compliance
+
+## Overview
+Generate comprehensive BDD (Behavior-Driven Development) Feature files from UoW definitions with constitutional SDD integration, AI-enhanced scenario discovery, and governance-aware test specification.
+
+## Input Context
+- **SSOT Directory**: `{{SSOT_DIR}}`
+- **Output Directory**: `{{OUTPUT_DIR}}`
+- **Target UoW**: {{UOW_ID}} (optional, generates all if not specified)
+- **Constitutional Mode**: {{CONSTITUTIONAL_ENABLED}} (true|false)
+- **Domain Context**: {{DOMAIN_CONTEXT}} (e-commerce|fintech|healthcare|iot|general)
+
+## Constitutional SDD Integration
+
+### Principle-Driven Scenario Generation
+Transform constitutional compliance into executable Gherkin scenarios:
+
+1. **Library-First Test Scenarios**
+   ```gherkin
+   Scenario: Validate library-first implementation
+     Given the {{LIBRARY_NAME}} library is configured
+     And no custom implementations exist for {{FUNCTIONALITY}}
+     When the {{UOW_FUNCTION}} is executed
+     Then the result should utilize {{LIBRARY_NAME}} exclusively
+     And no custom logic should be invoked
+   ```
+
+2. **CLI Interface Test Scenarios**
+   ```gherkin
+   Scenario: Validate CLI interface compliance
+     Given the CLI command {{CLI_COMMAND}} is available
+     And the subcommands {{CLI_SUBCOMMANDS}} are registered
+     When {{CLI_COMMAND}} {{SUBCOMMAND}} is executed
+     Then the interface should follow constitutional patterns
+     And help documentation should be accessible
+   ```
+
+3. **Test-First Compliance Scenarios**
+   ```gherkin
+   Scenario: Validate test-first implementation
+     Given tests exist for {{UOW_FUNCTIONALITY}}
+     And tests were written before implementation
+     When the implementation is executed
+     Then all tests should pass
+     And code coverage should meet constitutional requirements
+   ```
+
+## AI-Enhanced Scenario Discovery
+
+### Semantic Analysis of Acceptance Criteria
+```yaml
+ai_scenario_inference:
+  natural_language_processing:
+    - Extract entities, actions, and outcomes from AC descriptions
+    - Identify implicit test scenarios not explicitly stated
+    - Discover edge cases based on domain patterns
+    - Generate error scenarios from requirement analysis
+
+  constitutional_pattern_recognition:
+    - Identify constitutional principle violations as test scenarios
+    - Generate governance compliance test cases
+    - Create principle adherence validation scenarios
+    - Add constitutional quality gate tests
+
+  domain_specific_enhancement:
+    e_commerce:
+      - Cart functionality scenarios
+      - Payment processing edge cases
+      - Inventory management tests
+      - Customer journey validations
+
+    fintech:
+      - Transaction integrity scenarios
+      - Compliance validation tests
+      - Security audit scenarios
+      - Regulatory requirement tests
+```
+
+## Multi-Modal Scenario Generation
+
+### 1. Acceptance Criteria Scenarios
+Transform UoW acceptance criteria into executable scenarios:
+
+```yaml
+ac_to_scenario_mapping:
+  explicit_gherkin:
+    input: "scenario.given/when/then structure"
+    output: "Direct Gherkin conversion with constitutional enhancements"
+
+  descriptive_text:
+    input: "Natural language acceptance criteria"
+    processing: "AI semantic analysis + constitutional pattern matching"
+    output: "Inferred Gherkin scenarios with principle compliance"
+
+  action_based:
+    patterns:
+      create: "Given system ready -> When creation requested -> Then entity created"
+      update: "Given entity exists -> When update requested -> Then changes applied"
+      delete: "Given entity exists -> When deletion requested -> Then entity removed"
+      validate: "Given data provided -> When validation performed -> Then result correct"
+```
+
+### 2. Constitutional Compliance Scenarios
+Auto-generate scenarios for each constitutional principle:
+
+```yaml
+constitutional_scenarios:
+  library_first:
+    scenario_template: |
+      Scenario: {{UOW_ID}} uses approved libraries only
+        Given the {{DOMAIN}} library ecosystem is configured
+        And {{REQUIRED_LIBRARIES}} are available
+        When {{UOW_FUNCTIONALITY}} is implemented
+        Then only approved libraries should be used
+        And custom implementations should be minimal
+
+  cli_interface:
+    scenario_template: |
+      Scenario: {{UOW_ID}} provides constitutional CLI interface
+        Given the CLI framework is initialized
+        When {{CLI_COMMAND}} is invoked
+        Then command should follow naming conventions
+        And help text should be comprehensive
+        And error handling should be consistent
+
+  test_first:
+    scenario_template: |
+      Scenario: {{UOW_ID}} follows test-first implementation
+        Given comprehensive test suite exists
+        When {{UOW_FUNCTIONALITY}} is developed
+        Then tests should have been written first
+        And implementation should satisfy all tests
+        And coverage should meet constitutional thresholds
+```
+
+### 3. AI-Discovered Edge Case Scenarios
+Generate scenarios for discovered edge cases:
+
+```yaml
+edge_case_discovery:
+  error_scenarios:
+    - Invalid input handling
+    - Service unavailability
+    - Network connectivity issues
+    - Resource exhaustion scenarios
+    - Security violation attempts
+
+  performance_scenarios:
+    - Load testing scenarios
+    - Stress testing scenarios
+    - Memory usage validation
+    - Response time compliance
+
+  security_scenarios:
+    - Authentication failure handling
+    - Authorization boundary testing
+    - Data privacy compliance
+    - Audit trail validation
+
+  constitutional_violation_scenarios:
+    - Library-first principle violations
+    - CLI interface non-compliance
+    - Test-first violations
+    - Simplicity principle breaches
+```
+
+## Feature File Structure with Constitutional Enhancement
+
+### Enhanced Feature Template
+```gherkin
+Feature: {{UOW_TITLE}} - {{CONSTITUTIONAL_STATUS}}
+  As a {{STAKEHOLDER_ROLE}}
+  I want {{UOW_DESCRIPTION}}
+  So that {{BUSINESS_VALUE}}
+
+  # Constitutional Compliance Metadata
+  @constitutional-compliance
+  @principle-{{PRIMARY_PRINCIPLES}}
+  @governance-level-{{GOVERNANCE_LEVEL}}
+  @domain-{{DOMAIN_CONTEXT}}
+
+  Background:
+    Given the system follows constitutional principles
+    And {{PRIMARY_LIBRARIES}} are properly configured
+    And the CLI interface for {{CLI_COMMAND}} is available
+    And all constitutional quality gates are enabled
+
+  # Primary Acceptance Scenarios
+  {{ACCEPTANCE_SCENARIOS}}
+
+  # Constitutional Compliance Scenarios
+  {{CONSTITUTIONAL_SCENARIOS}}
+
+  # AI-Discovered Edge Cases
+  {{EDGE_CASE_SCENARIOS}}
+
+  # Domain-Specific Scenarios
+  {{DOMAIN_SCENARIOS}}
+
+  # Performance and Quality Scenarios
+  {{QUALITY_SCENARIOS}}
+```
+
+### Scenario Categories and Tags
+```yaml
+scenario_categorization:
+  acceptance:
+    tag: "@acceptance-criteria"
+    priority: "critical"
+    source: "UoW acceptance criteria"
+
+  constitutional:
+    tag: "@constitutional-compliance"
+    priority: "high"
+    source: "Constitutional principle analysis"
+
+  edge_cases:
+    tag: "@edge-cases"
+    priority: "medium"
+    source: "AI scenario discovery"
+
+  performance:
+    tag: "@performance"
+    priority: "medium"
+    source: "NFR analysis"
+
+  security:
+    tag: "@security"
+    priority: "high"
+    source: "Security requirement analysis"
+
+  domain_specific:
+    tag: "@domain-{{DOMAIN}}"
+    priority: "medium"
+    source: "Domain pattern analysis"
+```
+
+## AI-Driven Scenario Enhancement
+
+### 1. Semantic Scenario Analysis
+```python
+# Analyze acceptance criteria for implicit scenarios
+semantic_analysis = {
+    'entity_extraction': extract_domain_entities(ac_description),
+    'action_identification': identify_actions(ac_description),
+    'outcome_prediction': predict_outcomes(ac_description),
+    'constraint_detection': detect_constraints(ac_description),
+    'constitutional_mapping': map_to_principles(ac_description)
+}
+```
+
+### 2. Constitutional Pattern Recognition
+```python
+# Identify constitutional compliance requirements
+constitutional_analysis = {
+    'principle_coverage': analyze_principle_implementation(),
+    'governance_requirements': extract_governance_needs(),
+    'compliance_gaps': identify_compliance_gaps(),
+    'enforcement_scenarios': generate_enforcement_tests()
+}
+```
+
+### 3. Domain-Specific Enhancement
+```python
+# Apply domain-specific scenario patterns
+domain_enhancement = {
+    'domain_patterns': load_domain_patterns(domain_context),
+    'industry_requirements': apply_industry_standards(),
+    'regulatory_scenarios': generate_compliance_scenarios(),
+    'best_practice_tests': add_best_practice_validations()
+}
+```
+
+## Output Specification
+
+### Generated Feature Files
+```yaml
+feature_file_structure:
+  filename: "{{uow_id_lowercase}}_{{constitutional_status}}.feature"
+
+  content_sections:
+    feature_header:
+      - Title with constitutional status
+      - User story format
+      - Constitutional compliance tags
+      - Governance metadata
+
+    background:
+      - Constitutional setup requirements
+      - Library initialization
+      - CLI interface preparation
+      - Quality gate activation
+
+    scenario_groups:
+      acceptance_scenarios:
+        count: "{{AC_COUNT}}"
+        source: "UoW acceptance criteria"
+        constitutional_enhancement: true
+
+      constitutional_scenarios:
+        count: "{{PRINCIPLE_COUNT}}"
+        source: "Constitutional principle analysis"
+        coverage: "All applicable principles"
+
+      edge_case_scenarios:
+        count: "{{AI_DISCOVERED_COUNT}}"
+        source: "AI semantic analysis"
+        types: ["error", "performance", "security", "boundary"]
+
+      domain_scenarios:
+        count: "{{DOMAIN_SPECIFIC_COUNT}}"
+        source: "Domain pattern analysis"
+        customization: "{{DOMAIN_CONTEXT}}-specific"
+```
+
+### Comprehensive Scenario Coverage
+```yaml
+scenario_coverage_matrix:
+  functional_coverage:
+    acceptance_criteria: "100%"
+    happy_path: "100%"
+    error_paths: "80%"
+    edge_cases: "60%"
+
+  constitutional_coverage:
+    library_first: "{{LIBRARY_SCENARIOS}}%"
+    cli_interface: "{{CLI_SCENARIOS}}%"
+    test_first: "{{TEST_SCENARIOS}}%"
+    simplicity: "{{SIMPLICITY_SCENARIOS}}%"
+    anti_abstraction: "{{ANTI_ABSTRACTION_SCENARIOS}}%"
+
+  quality_coverage:
+    performance: "{{PERFORMANCE_SCENARIOS}}%"
+    security: "{{SECURITY_SCENARIOS}}%"
+    usability: "{{USABILITY_SCENARIOS}}%"
+    maintainability: "{{MAINTAINABILITY_SCENARIOS}}%"
+```
+
+## Implementation Instructions
+
+### 1. Constitutional-Aware Processing
+- Load PROJECT-constitution.yaml to understand principle requirements
+- Extract constitutional compliance specifications from UoWs
+- Map UoW functionality to constitutional principles
+- Generate principle-specific test scenarios
+
+### 2. AI-Enhanced Scenario Discovery
+- Apply NLP to acceptance criteria for implicit scenario extraction
+- Use domain knowledge to generate domain-specific scenarios
+- Identify constitutional compliance gaps and generate validation scenarios
+- Create edge case scenarios based on error pattern analysis
+
+### 3. Multi-Level Scenario Generation
+- Primary scenarios from explicit acceptance criteria
+- Constitutional scenarios for principle compliance
+- AI-discovered scenarios for comprehensive coverage
+- Domain-specific scenarios for industry requirements
+
+### 4. Quality-Assured Output
+- Validate Gherkin syntax and structure
+- Ensure constitutional metadata completeness
+- Verify scenario coverage completeness
+- Generate scenario execution priority recommendations
+
+Generate comprehensive BDD feature files that combine traditional acceptance testing with constitutional governance compliance and AI-enhanced scenario discovery.

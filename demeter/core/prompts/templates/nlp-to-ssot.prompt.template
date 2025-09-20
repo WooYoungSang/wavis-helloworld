@@ -1,0 +1,455 @@
+# 🧠 Natural Language to Constitutional SSOT Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Requirements File**: {{REQUIREMENTS_FILE}}
+- **Domain**: {{PROJECT_DOMAIN}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Framework**: Demeter WAVIS v1.3 + SDD Constitutional Compliance + AI-Enhanced Analysis
+
+## 🎯 Constitutional NLP-to-SSOT Philosophy
+
+This template implements AI-powered conversion of natural language requirements to constitutional SSOT structure, where every extracted requirement is analyzed for constitutional compliance, SDD specification quality, and GraphRAG optimization. The conversion process creates specifications that are ready for executable specification generation and constitutional governance.
+
+### Constitutional NLP Conversion Principles
+- **Constitutional Analysis First**: Every requirement analyzed against constitutional principles
+- **SDD Specification Integration**: Requirements converted to SDD-compliant format with [CLARIFY] markers
+- **GraphRAG Optimization**: SSOT structure optimized for knowledge graph indexing
+- **AI-Enhanced Quality**: AI-driven requirement extraction with constitutional guidance
+
+## 🧠 Natural Language Requirements Analysis
+
+### Requirements Content
+```markdown
+{{REQUIREMENTS_CONTENT}}
+```
+
+## 🔧 Constitutional NLP-to-SSOT Conversion Process
+
+### 1. AI-Powered Requirement Extraction with Constitutional Analysis
+```yaml
+constitutional_nlp_analysis:
+  ai_extraction_engine:
+    approach: "AI-powered requirement extraction with constitutional compliance analysis"
+
+    functional_requirement_detection:
+      detection_patterns:
+        user_stories: "As a [actor], I want [action] so that [benefit]"
+        action_patterns: "Users should/must/can..., System allows/enables..."
+        feature_descriptions: "Bullet points describing capabilities"
+        business_rules: "Domain-specific constraints and logic"
+
+      constitutional_analysis_per_requirement:
+        library_first_assessment: |
+          For each detected functional requirement:
+          - Analyze if requirement can leverage existing libraries
+          - Identify potential library candidates
+          - Assess custom implementation necessity
+          - Generate library-first constitutional approach
+
+        cli_interface_specification: |
+          For each functional requirement:
+          - Design CLI command structure
+          - Define command parameters and options
+          - Specify CLI output format
+          - Ensure constitutional CLI interface compliance
+
+        test_first_strategy: |
+          For each functional requirement:
+          - Generate testable acceptance criteria
+          - Design test-first implementation approach
+          - Identify integration testing opportunities
+          - Ensure constitutional testing compliance
+
+        simplicity_optimization: |
+          For each functional requirement:
+          - Assess complexity and simplification opportunities
+          - Identify over-engineering risks
+          - Design simple, direct implementation approach
+          - Ensure constitutional simplicity compliance
+
+    non_functional_requirement_detection:
+      detection_patterns:
+        performance_indicators: "Response time (ms), throughput (rps), load (users)"
+        security_requirements: "Encryption, authentication, compliance (GDPR, PCI, HIPAA)"
+        scalability_needs: "Auto-scaling, peak traffic, concurrent users"
+        reliability_standards: "Uptime %, error rates, recovery time"
+
+      constitutional_quality_analysis:
+        performance_constitutional_requirements: |
+          For each performance requirement:
+          - Map to constitutional performance standards
+          - Define measurable constitutional criteria
+          - Specify constitutional testing approach
+          - Ensure constitutional performance compliance
+
+        security_constitutional_compliance: |
+          For each security requirement:
+          - Apply constitutional security principles
+          - Define constitutional security validation
+          - Specify constitutional audit requirements
+          - Ensure constitutional security compliance
+
+    units_of_work_generation:
+      grouping_strategy:
+        constitutional_layer_organization: |
+          Group UoWs by constitutional architectural layers:
+          - Foundation Layer: Core infrastructure, constitutional setup
+          - Infrastructure Layer: Database, external services, constitutional compliance
+          - Application Layer: Business logic, constitutional implementation
+          - Integration Layer: APIs, CLI interface, constitutional integration
+          - Deployment Layer: Constitutional deployment, monitoring
+
+      constitutional_implementation_planning:
+        library_first_implementation: |
+          For each UoW:
+          - Identify constitutional library selections
+          - Plan library-first implementation approach
+          - Define constitutional integration strategy
+          - Ensure constitutional library compliance
+
+        test_first_development: |
+          For each UoW:
+          - Design test-first development approach
+          - Plan constitutional testing strategy
+          - Define constitutional quality gates
+          - Ensure constitutional testing compliance
+```
+
+### 2. SDD Specification Enhancement
+```yaml
+sdd_specification_enhancement:
+  ai_specification_refinement:
+    approach: "AI-enhanced SDD specification with constitutional compliance"
+
+    user_story_optimization:
+      enhancement_pattern: |
+        For each extracted functional requirement:
+
+        # AI-Enhanced User Story
+        original_detection: "{{detected_requirement_text}}"
+
+        # Constitutional User Story Enhancement
+        constitutional_user_story: |
+          As a {{user_persona}},
+          I want {{constitutional_feature_description}}
+          so that {{business_value_with_constitutional_benefits}}
+
+        # Constitutional Approach Integration
+        constitutional_approach: |
+          This user story will be implemented following constitutional principles:
+          - Library-First: {{library_first_implementation_approach}}
+          - CLI Interface: {{cli_interface_design}}
+          - Test-First: {{test_first_development_strategy}}
+          - Simplicity: {{simplicity_optimization_approach}}
+
+    acceptance_criteria_generation:
+      ai_criteria_enhancement: |
+        For each functional requirement, generate constitutional acceptance criteria:
+
+        # Constitutional Acceptance Criteria
+        constitutional_acceptance_criteria:
+          functional_criteria:
+            {{#each functional_acceptance_points}}
+            - "{{ai_enhanced_testable_criterion}}"
+              constitutional_validation: "{{constitutional_compliance_check}}"
+              test_strategy: "{{constitutional_testing_approach}}"
+            {{/each}}
+
+          constitutional_criteria:
+            - "Feature accessible via CLI interface following constitutional CLI mandate"
+              cli_command: "{{constitutional_cli_command}}"
+              cli_validation: "{{cli_interface_testing_strategy}}"
+
+            - "Implementation uses library-first approach per constitutional principle"
+              library_usage: "{{constitutional_library_implementation}}"
+              library_validation: "{{library_integration_testing}}"
+
+            - "Test-first development completed per constitutional imperative"
+              test_coverage: "{{constitutional_test_coverage_requirement}}"
+              test_validation: "{{constitutional_test_quality_gates}}"
+
+    clarification_marker_identification:
+      ai_ambiguity_detection: |
+        Use AI to identify ambiguous elements requiring clarification:
+
+        # [CLARIFY] Marker Generation
+        clarifications_needed:
+          {{#each identified_ambiguities}}
+          - marker_id: "CLARIFY-{{ambiguity_id}}"
+            ambiguous_element: "{{ambiguous_requirement_text}}"
+            ambiguity_type: "{{type_of_ambiguity}}"
+            constitutional_implications: "{{constitutional_impact_of_ambiguity}}"
+            suggested_clarifications:
+              - "{{clarification_option_1}}"
+              - "{{clarification_option_2}}"
+              - "{{constitutional_guided_clarification}}"
+            resolution_priority: "{{clarification_priority_level}}"
+          {{/each}}
+```
+
+### 3. Constitutional SSOT Structure Generation
+```yaml
+constitutional_ssot_generation:
+  output_structure:
+    project_metadata: |
+      # Constitutional SSOT for {{PROJECT_NAME}}
+
+      metadata:
+        project_name: "{{PROJECT_NAME}}"
+        domain: "{{PROJECT_DOMAIN}}"
+        generated_from: "Natural language requirements with constitutional analysis"
+        generation_timestamp: "{{CURRENT_TIMESTAMP}}"
+        constitutional_compliance_version: "{{CONSTITUTION_VERSION}}"
+        sdd_methodology_version: "v1.3"
+
+        # AI Analysis Summary
+        ai_analysis_summary:
+          total_requirements_detected: {{total_detected_requirements}}
+          functional_requirements_extracted: {{functional_requirements_count}}
+          non_functional_requirements_extracted: {{nfr_count}}
+          units_of_work_generated: {{uow_count}}
+          clarification_markers_identified: {{clarify_markers_count}}
+
+        # Constitutional Compliance Summary
+        constitutional_compliance_analysis:
+          overall_constitutional_readiness: "{{constitutional_readiness_percentage}}%"
+          library_first_opportunities: {{library_first_count}}
+          cli_interface_definitions: {{cli_interface_count}}
+          test_first_strategies: {{test_first_count}}
+          simplicity_optimizations: {{simplicity_optimizations_count}}
+
+        # GraphRAG Optimization
+        graphrag_optimization:
+          entity_relationship_mapping: "{{entity_relationship_completeness}}%"
+          knowledge_graph_readiness: "{{knowledge_graph_readiness}}%"
+          domain_context_enrichment: "{{domain_context_score}}%"
+
+    functional_requirements_structure:
+      generation_pattern: |
+        functional_requirements:
+          {{#each extracted_functional_requirements}}
+          FR-{{PROJECT_PREFIX}}-{{fr_sequence_number}}:
+            name: "{{ai_refined_requirement_name}}"
+            description: "{{constitutional_enhanced_description}}"
+            priority: "{{ai_inferred_priority}}"  # Critical|High|Medium|Low
+            business_value: "{{constitutional_business_value_statement}}"
+
+            # Constitutional Compliance
+            constitutional_compliance:
+              library_first: "{{constitutional_library_strategy}}"
+              cli_interface: "{{constitutional_cli_specification}}"
+              test_first: "{{constitutional_testing_strategy}}"
+              simplicity: "{{constitutional_simplicity_approach}}"
+              compliance_score: "{{fr_constitutional_score}}%"
+
+            # SDD Specification
+            specification:
+              user_story: "{{sdd_enhanced_user_story}}"
+              acceptance_criteria: [{{constitutional_acceptance_criteria}}]
+              clarifications_needed: [{{clarify_markers_for_fr}}]
+              constitutional_validation: [{{constitutional_validation_criteria}}]
+
+            # GraphRAG Metadata
+            graphrag_metadata:
+              entity_type: "functional_requirement"
+              domain_context: "{{PROJECT_DOMAIN}}"
+              source_text: "{{original_nlp_text}}"
+              constitutional_tags: [{{constitutional_principle_tags}}]
+              business_entities: [{{related_business_entities}}]
+              relationships: [{{requirement_relationships}}]
+
+            tags: ["{{PROJECT_DOMAIN}}", "constitutional", "sdd-generated"]
+          {{/each}}
+
+    non_functional_requirements_structure:
+      generation_pattern: |
+        non_functional_requirements:
+          {{#each extracted_nfr_requirements}}
+          NFR-{{PROJECT_PREFIX}}-{{nfr_sequence_number}}:
+            name: "{{ai_refined_nfr_name}}"
+            category: "{{quality_category}}"  # Performance|Security|Usability|Reliability
+            description: "{{constitutional_enhanced_nfr_description}}"
+            priority: "{{ai_inferred_nfr_priority}}"
+
+            # Constitutional Compliance
+            constitutional_compliance:
+              quality_standards: "{{constitutional_quality_requirements}}"
+              measurement_approach: "{{constitutional_measurement_strategy}}"
+              validation_method: "{{constitutional_validation_approach}}"
+              compliance_score: "{{nfr_constitutional_score}}%"
+
+            # Measurable Criteria
+            measurable_criteria:
+              {{#each constitutional_enhanced_criteria}}
+              - criterion: "{{constitutional_measurement_criterion}}"
+                measurement_method: "{{constitutional_measurement_approach}}"
+                target_value: "{{constitutional_target_threshold}}"
+                validation_approach: "{{constitutional_validation_method}}"
+              {{/each}}
+
+            testing_method: "{{constitutional_testing_approach}}"
+
+            # GraphRAG Metadata
+            graphrag_metadata:
+              entity_type: "non_functional_requirement"
+              quality_dimension: "{{quality_category}}"
+              source_text: "{{original_nlp_text}}"
+              constitutional_compliance_level: "{{compliance_level}}"
+              measurement_patterns: [{{measurement_pattern_tags}}]
+
+            tags: ["{{PROJECT_DOMAIN}}", "quality", "constitutional", "{{quality_category}}"]
+          {{/each}}
+
+    units_of_work_structure:
+      generation_pattern: |
+        units_of_work:
+          {{#each generated_units_of_work}}
+          UoW-{{PROJECT_PREFIX}}-{{uow_sequence_number}}:
+            name: "{{constitutional_uow_name}}"
+            goal: "{{constitutional_implementation_objective}}"
+            layer: "{{constitutional_architectural_layer}}"  # Foundation|Infrastructure|Application|Integration|Deployment
+            priority: "{{ai_inferred_uow_priority}}"
+
+            # Constitutional Compliance
+            constitutional_compliance:
+              implementation_approach: "{{constitutional_implementation_strategy}}"
+              library_selections: [{{constitutional_library_choices}}]
+              testing_strategy: "{{constitutional_testing_approach}}"
+              architectural_alignment: "{{constitutional_architecture_compliance}}"
+              compliance_score: "{{uow_constitutional_score}}%"
+
+            # Implementation Details
+            dependencies: [{{resolved_uow_dependencies}}]
+            implements: [{{implemented_requirement_ids}}]
+            estimated_effort_hours: "{{ai_estimated_effort}}"
+
+            # Acceptance Criteria
+            acceptance_criteria:
+              {{#each constitutional_uow_criteria}}
+              - "{{constitutional_implementation_criterion}}"
+              {{/each}}
+              - "Constitutional compliance validated through automated checks"
+              - "CLI interface implemented per constitutional mandate"
+              - "Test-first development completed per constitutional imperative"
+
+            # GraphRAG Metadata
+            graphrag_metadata:
+              entity_type: "unit_of_work"
+              implementation_layer: "{{constitutional_architectural_layer}}"
+              source_requirements: [{{source_requirement_ids}}]
+              constitutional_tags: [{{constitutional_principle_tags}}]
+              dependency_graph: [{{dependency_relationships}}]
+
+            tags: ["{{PROJECT_DOMAIN}}", "implementation", "constitutional", "{{constitutional_architectural_layer}}"]
+          {{/each}}
+```
+
+### 4. Quality Validation and Enhancement
+```yaml
+quality_validation:
+  constitutional_quality_assessment:
+    validation_criteria:
+      constitutional_compliance_validation:
+        library_first_compliance: |
+          Validate that all functional requirements specify library-first approach:
+          - Check for library selection strategy
+          - Verify custom implementation justification
+          - Ensure constitutional library compliance
+
+        cli_interface_compliance: |
+          Validate CLI interface mandate compliance:
+          - Verify CLI command specification for all features
+          - Check CLI parameter design
+          - Ensure constitutional CLI compliance
+
+        test_first_compliance: |
+          Validate test-first imperative compliance:
+          - Check testable acceptance criteria
+          - Verify test strategy specification
+          - Ensure constitutional testing compliance
+
+      sdd_specification_quality:
+        user_story_quality: |
+          Validate SDD user story quality:
+          - Check user story format compliance
+          - Verify business value clarity
+          - Ensure constitutional integration
+
+        acceptance_criteria_quality: |
+          Validate acceptance criteria quality:
+          - Check testability of criteria
+          - Verify constitutional compliance integration
+          - Ensure measurable outcomes
+
+        clarification_completeness: |
+          Validate [CLARIFY] marker completeness:
+          - Identify remaining ambiguities
+          - Verify clarification suggestions
+          - Ensure constitutional resolution guidance
+
+  enhancement_recommendations:
+    ai_improvement_suggestions: |
+      Based on constitutional analysis, provide improvement recommendations:
+
+      # Constitutional Enhancement Opportunities
+      constitutional_improvements:
+        {{#each improvement_opportunities}}
+        improvement_{{improvement_id}}:
+          area: "{{improvement_area}}"
+          current_state: "{{current_constitutional_compliance}}"
+          recommended_enhancement: "{{constitutional_improvement_suggestion}}"
+          implementation_approach: "{{constitutional_enhancement_approach}}"
+          expected_improvement: "{{expected_constitutional_benefit}}"
+        {{/each}}
+
+      # SDD Specification Enhancements
+      sdd_improvements:
+        {{#each sdd_enhancement_opportunities}}
+        sdd_improvement_{{improvement_id}}:
+          specification_element: "{{sdd_element}}"
+          quality_gap: "{{identified_quality_gap}}"
+          enhancement_suggestion: "{{sdd_improvement_recommendation}}"
+          constitutional_alignment: "{{constitutional_compliance_enhancement}}"
+        {{/each}}
+```
+
+## 🎯 Constitutional NLP-to-SSOT Execution Instructions
+
+### Step 1: AI-Powered Requirement Extraction
+1. **Natural Language Analysis**: Use AI to extract functional and non-functional requirements
+2. **Constitutional Analysis**: Analyze each requirement against constitutional principles
+3. **Priority Inference**: Determine requirement priorities using AI analysis
+4. **Business Value Extraction**: Identify and articulate business value statements
+
+### Step 2: SDD Specification Enhancement
+1. **User Story Generation**: Create SDD-compliant user stories with constitutional integration
+2. **Acceptance Criteria Refinement**: Generate testable criteria with constitutional compliance
+3. **Ambiguity Detection**: Identify and mark ambiguous elements with [CLARIFY] markers
+4. **Constitutional Validation**: Ensure all specifications align with constitutional principles
+
+### Step 3: Constitutional SSOT Generation
+1. **Functional Requirements**: Generate constitutional FR structure with SDD specification
+2. **Non-Functional Requirements**: Create constitutional NFR with measurable criteria
+3. **Units of Work**: Generate implementation tasks with constitutional compliance
+4. **GraphRAG Optimization**: Add metadata for knowledge graph indexing
+
+### Step 4: Quality Validation and Enhancement
+1. **Constitutional Compliance Check**: Validate all requirements against constitutional principles
+2. **SDD Quality Assessment**: Verify SDD specification quality and completeness
+3. **Enhancement Recommendations**: Provide AI-driven improvement suggestions
+4. **Final Validation**: Ensure output meets constitutional and SDD standards
+
+## ✅ Success Criteria
+
+- [ ] All natural language requirements successfully extracted and analyzed
+- [ ] Constitutional compliance analysis completed for all requirements
+- [ ] SDD specification format applied to all requirements
+- [ ] [CLARIFY] markers identified for all ambiguous elements
+- [ ] GraphRAG metadata added for knowledge graph optimization
+- [ ] Constitutional compliance score above 80%
+- [ ] All acceptance criteria are testable and constitutionally compliant
+- [ ] Units of work organized by constitutional architectural layers
+- [ ] Quality validation confirms constitutional and SDD compliance
+
+Execute this constitutional NLP-to-SSOT conversion for {{PROJECT_NAME}} requirements from {{REQUIREMENTS_FILE}} with domain context {{PROJECT_DOMAIN}} and constitutional compliance from {{CONSTITUTION_FILE}}.

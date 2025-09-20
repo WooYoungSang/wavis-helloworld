@@ -1,0 +1,232 @@
+# UoW YAML Template for {{PROJECT_NAME}}
+# This template defines the structure for Unit of Work definitions
+
+id: "{{UOW_ID}}"
+name: "{{UOW_NAME}}"
+description: "{{UOW_DESCRIPTION}}"
+
+# Metadata
+type: "{{UOW_TYPE}}"  # development | integration | deployment | quality
+layer: "{{UOW_LAYER}}"  # prerequisites | foundation | infrastructure | business | deployment
+priority: "{{UOW_PRIORITY}}"  # critical | high | medium | low
+status: "{{UOW_STATUS}}"  # planned | in_progress | completed | blocked
+
+# Requirements mapping
+implements:
+  functional_requirements:
+    {{#IMPLEMENTS_FR}}
+    - "{{FR_ID}}"  # {{FR_DESCRIPTION}}
+    {{/IMPLEMENTS_FR}}
+  non_functional_requirements:
+    {{#IMPLEMENTS_NFR}}
+    - "{{NFR_ID}}"  # {{NFR_DESCRIPTION}}
+    {{/IMPLEMENTS_NFR}}
+
+# Dependencies
+dependencies:
+  required:
+    {{#REQUIRED_DEPS}}
+    - "{{DEP_ID}}"  # {{DEP_DESCRIPTION}}
+    {{/REQUIRED_DEPS}}
+  optional:
+    {{#OPTIONAL_DEPS}}
+    - "{{DEP_ID}}"  # {{DEP_DESCRIPTION}}
+    {{/OPTIONAL_DEPS}}
+
+# Implementation details
+goal: "{{UOW_GOAL}}"
+scope: |
+  {{UOW_SCOPE}}
+
+business_value: "{{BUSINESS_VALUE}}"
+
+# Acceptance criteria
+acceptance_criteria:
+  ac_1:
+    description: "{{AC_1_DESCRIPTION}}"
+    validation_method: "{{AC_1_VALIDATION}}"
+    success_criteria: "{{AC_1_SUCCESS}}"
+  ac_2:
+    description: "{{AC_2_DESCRIPTION}}"
+    validation_method: "{{AC_2_VALIDATION}}"
+    success_criteria: "{{AC_2_SUCCESS}}"
+  ac_3:
+    description: "{{AC_3_DESCRIPTION}}"
+    validation_method: "{{AC_3_VALIDATION}}"
+    success_criteria: "{{AC_3_SUCCESS}}"
+  ac_4:
+    description: "{{AC_4_DESCRIPTION}}"
+    validation_method: "{{AC_4_VALIDATION}}"
+    success_criteria: "{{AC_4_SUCCESS}}"
+
+# Technical specifications
+technical_details:
+  files_to_modify:
+    {{#FILES_TO_MODIFY}}
+    - "{{FILE_PATH}}"  # {{FILE_DESCRIPTION}}
+    {{/FILES_TO_MODIFY}}
+  files_to_create:
+    {{#FILES_TO_CREATE}}
+    - "{{FILE_PATH}}"  # {{FILE_DESCRIPTION}}
+    {{/FILES_TO_CREATE}}
+  interfaces:
+    {{#INTERFACES}}
+    - name: "{{INTERFACE_NAME}}"
+      description: "{{INTERFACE_DESCRIPTION}}"
+      methods: {{INTERFACE_METHODS}}
+    {{/INTERFACES}}
+  dependencies_external:
+    {{#EXTERNAL_DEPS}}
+    - name: "{{DEP_NAME}}"
+      version: "{{DEP_VERSION}}"
+      purpose: "{{DEP_PURPOSE}}"
+    {{/EXTERNAL_DEPS}}
+
+# Testing requirements
+testing:
+  unit_tests:
+    coverage_target: "{{UNIT_COVERAGE_TARGET}}%"
+    test_files:
+      {{#UNIT_TEST_FILES}}
+      - "{{TEST_FILE_PATH}}"
+      {{/UNIT_TEST_FILES}}
+    key_scenarios:
+      {{#UNIT_SCENARIOS}}
+      - "{{SCENARIO_DESCRIPTION}}"
+      {{/UNIT_SCENARIOS}}
+  integration_tests:
+    coverage_target: "{{INTEGRATION_COVERAGE_TARGET}}%"
+    test_files:
+      {{#INTEGRATION_TEST_FILES}}
+      - "{{TEST_FILE_PATH}}"
+      {{/INTEGRATION_TEST_FILES}}
+    external_systems:
+      {{#EXTERNAL_SYSTEMS}}
+      - "{{SYSTEM_NAME}}"
+      {{/EXTERNAL_SYSTEMS}}
+  performance_tests:
+    metrics:
+      {{#PERFORMANCE_METRICS}}
+      - metric: "{{METRIC_NAME}}"
+        target: "{{METRIC_TARGET}}"
+        measurement: "{{METRIC_MEASUREMENT}}"
+      {{/PERFORMANCE_METRICS}}
+
+# Quality gates
+quality_gates:
+  code_coverage:
+    minimum: "{{MIN_COVERAGE}}%"
+    target: "{{TARGET_COVERAGE}}%"
+  code_quality:
+    sonarqube_rating: "{{SONAR_RATING}}"
+    complexity_limit: "{{COMPLEXITY_LIMIT}}"
+  security:
+    vulnerability_scan: "{{VULNERABILITY_SCAN_REQUIRED}}"
+    security_review: "{{SECURITY_REVIEW_REQUIRED}}"
+  performance:
+    load_test: "{{LOAD_TEST_REQUIRED}}"
+    benchmarks: "{{BENCHMARKS_REQUIRED}}"
+
+# Documentation requirements
+documentation:
+  api_documentation:
+    required: {{API_DOC_REQUIRED}}
+    format: "{{API_DOC_FORMAT}}"
+  architectural_decisions:
+    adr_required: {{ADR_REQUIRED}}
+    adr_topics:
+      {{#ADR_TOPICS}}
+      - "{{ADR_TOPIC}}"
+      {{/ADR_TOPICS}}
+  user_documentation:
+    required: {{USER_DOC_REQUIRED}}
+    documents:
+      {{#USER_DOCS}}
+      - "{{DOC_NAME}}"
+      {{/USER_DOCS}}
+
+# Effort estimation
+estimation:
+  development_hours: {{DEV_HOURS}}
+  testing_hours: {{TEST_HOURS}}
+  documentation_hours: {{DOC_HOURS}}
+  review_hours: {{REVIEW_HOURS}}
+  total_hours: {{TOTAL_HOURS}}
+  complexity_factor: {{COMPLEXITY_FACTOR}}
+
+# Risk assessment
+risks:
+  {{#RISKS}}
+  - risk: "{{RISK_DESCRIPTION}}"
+    probability: "{{RISK_PROBABILITY}}"  # low | medium | high
+    impact: "{{RISK_IMPACT}}"  # low | medium | high
+    mitigation: "{{RISK_MITIGATION}}"
+  {{/RISKS}}
+
+# Agent collaboration
+agent_collaboration:
+  primary_agents:
+    {{#PRIMARY_AGENTS}}
+    - "{{AGENT_NAME}}"  # {{AGENT_ROLE}}
+    {{/PRIMARY_AGENTS}}
+  workflow_pattern: "{{WORKFLOW_PATTERN}}"  # parallel | sequential | review_cycle
+  handoff_points:
+    {{#HANDOFF_POINTS}}
+    - from: "{{FROM_AGENT}}"
+      to: "{{TO_AGENT}}"
+      criteria: "{{HANDOFF_CRITERIA}}"
+    {{/HANDOFF_POINTS}}
+
+# Success metrics
+success_metrics:
+  functional:
+    {{#FUNCTIONAL_METRICS}}
+    - metric: "{{METRIC_NAME}}"
+      target: "{{METRIC_TARGET}}"
+      measurement: "{{METRIC_MEASUREMENT}}"
+    {{/FUNCTIONAL_METRICS}}
+  non_functional:
+    {{#NON_FUNCTIONAL_METRICS}}
+    - metric: "{{METRIC_NAME}}"
+      target: "{{METRIC_TARGET}}"
+      measurement: "{{METRIC_MEASUREMENT}}"
+    {{/NON_FUNCTIONAL_METRICS}}
+
+# Definition of done
+definition_of_done:
+  {{#DOD_ITEMS}}
+  - "{{DOD_ITEM}}"
+  {{/DOD_ITEMS}}
+
+# Notes and comments
+notes: |
+  {{UOW_NOTES}}
+
+# Metadata for tracking
+metadata:
+  created_date: "{{CREATION_DATE}}"
+  created_by: "{{CREATOR}}"
+  last_modified: "{{LAST_MODIFIED}}"
+  modified_by: "{{MODIFIER}}"
+  version: "{{UOW_VERSION}}"
+  template_version: "1.0.0"
+  project: "{{PROJECT_NAME}}"
+
+# GraphRAG integration
+graphrag_tags:
+  {{#GRAPHRAG_TAGS}}
+  - "{{TAG}}"
+  {{/GRAPHRAG_TAGS}}
+
+# Cross-references
+cross_references:
+  related_uows:
+    {{#RELATED_UOWS}}
+    - "{{RELATED_UOW_ID}}"  # {{RELATIONSHIP_TYPE}}
+    {{/RELATED_UOWS}}
+  related_documents:
+    {{#RELATED_DOCS}}
+    - document: "{{DOC_NAME}}"
+      section: "{{DOC_SECTION}}"
+      relationship: "{{DOC_RELATIONSHIP}}"
+    {{/RELATED_DOCS}}

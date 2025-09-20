@@ -1,0 +1,360 @@
+# Go Language Adapter Configuration
+# Defines Go-specific settings, dependencies, and project structure
+
+language:
+  name: "go"
+  display_name: "Go"
+  version_range: ">=1.21.0"
+  default_version: "1.22.1"
+
+  # Language Characteristics
+  characteristics:
+    compiled: true
+    statically_typed: true
+    garbage_collected: true
+    concurrent: true
+
+  # File Extensions
+  file_extensions:
+    source: [".go"]
+    test: ["_test.go"]
+    build: ["go.mod", "go.sum"]
+    config: [".go", ".yaml", ".json"]
+
+# Project Structure
+project_structure:
+  # Standard Go project layout
+  directories:
+    source:
+      - "cmd/"
+      - "internal/"
+      - "pkg/"
+
+    documentation:
+      - "docs/"
+      - "examples/"
+
+    testing:
+      - "test/"
+      - "testdata/"
+
+    build:
+      - "build/"
+      - "scripts/"
+
+    deployment:
+      - "deployments/"
+      - "configs/"
+
+  # Required Files
+  required_files:
+    - "go.mod"
+    - "cmd/server/main.go"
+    - "internal/.gitkeep"
+    - "pkg/.gitkeep"
+
+  # Clean Architecture Structure
+  clean_architecture:
+    domain: "internal/domain"
+    application: "internal/application"
+    infrastructure: "internal/infrastructure"
+    interfaces: "internal/interfaces"
+
+# Dependencies
+dependencies:
+  # Core Dependencies
+  core:
+    - name: "github.com/gin-gonic/gin"
+      version: "v1.10.0"
+      purpose: "HTTP web framework"
+      category: "web"
+
+    - name: "github.com/rs/zerolog"
+      version: "v1.32.0"
+      purpose: "Structured logging"
+      category: "logging"
+
+    - name: "github.com/spf13/viper"
+      version: "v1.18.2"
+      purpose: "Configuration management"
+      category: "config"
+
+  # Database Dependencies
+  database:
+    - name: "github.com/jmoiron/sqlx"
+      version: "v1.3.5"
+      purpose: "SQL extensions"
+      category: "database"
+
+    - name: "github.com/lib/pq"
+      version: "v1.10.9"
+      purpose: "PostgreSQL driver"
+      category: "database"
+
+    - name: "github.com/golang-migrate/migrate/v4"
+      version: "v4.17.0"
+      purpose: "Database migrations"
+      category: "database"
+
+  # Cache Dependencies
+  cache:
+    - name: "github.com/redis/go-redis/v9"
+      version: "v9.4.0"
+      purpose: "Redis client"
+      category: "cache"
+
+  # Testing Dependencies
+  testing:
+    - name: "github.com/stretchr/testify"
+      version: "v1.8.4"
+      purpose: "Testing toolkit"
+      category: "testing"
+
+    - name: "github.com/golang/mock"
+      version: "v1.6.0"
+      purpose: "Mock generation"
+      category: "testing"
+
+    - name: "github.com/testcontainers/testcontainers-go"
+      version: "v0.26.0"
+      purpose: "Integration testing"
+      category: "testing"
+
+  # OpenTelemetry Dependencies
+  observability:
+    - name: "go.opentelemetry.io/otel"
+      version: "v1.21.0"
+      purpose: "OpenTelemetry API"
+      category: "observability"
+
+    - name: "go.opentelemetry.io/otel/sdk"
+      version: "v1.21.0"
+      purpose: "OpenTelemetry SDK"
+      category: "observability"
+
+    - name: "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+      version: "v1.21.0"
+      purpose: "OTLP HTTP trace exporter"
+      category: "observability"
+
+    - name: "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
+      version: "v1.21.0"
+      purpose: "OTLP HTTP metric exporter"
+      category: "observability"
+
+    - name: "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+      version: "v0.46.1"
+      purpose: "Gin OpenTelemetry middleware"
+      category: "observability"
+
+    - name: "go.opentelemetry.io/contrib/instrumentation/database/sql/otelsql"
+      version: "v0.46.1"
+      purpose: "SQL OpenTelemetry instrumentation"
+      category: "observability"
+
+  # Development Dependencies
+  development:
+    - name: "github.com/air-verse/air"
+      version: "v1.49.0"
+      purpose: "Hot reload"
+      category: "development"
+
+# Build Configuration
+build:
+  # Build Commands
+  commands:
+    build: "go build -o bin/{{PROJECT_NAME}} ./cmd/server"
+    test: "go test ./... -cover"
+    lint: "golangci-lint run"
+    format: "go fmt ./..."
+    tidy: "go mod tidy"
+    generate: "go generate ./..."
+
+  # Build Options
+  options:
+    optimization: "-ldflags='-s -w'"
+    race_detection: "-race"
+    cross_compile: true
+
+  # Output Configuration
+  output:
+    binary_name: "{{PROJECT_NAME}}"
+    output_dir: "bin/"
+
+# Testing Configuration
+testing:
+  # Test Framework
+  framework: "testify"
+
+  # Test Commands
+  commands:
+    unit: "go test ./internal/... -short"
+    integration: "go test ./test/integration/... -tags=integration"
+    e2e: "go test ./test/e2e/... -tags=e2e"
+    coverage: "go test ./... -coverprofile=coverage.out"
+    coverage_html: "go tool cover -html=coverage.out"
+
+  # Coverage Requirements
+  coverage:
+    foundation_threshold: 80
+    business_threshold: 60
+    integration_threshold: 70
+
+  # Test Configuration
+  configuration:
+    timeout: "10m"
+    parallel: true
+    race_detection: true
+
+# Linting Configuration
+linting:
+  # Primary Linter
+  primary: "golangci-lint"
+
+  # Linter Configuration
+  config_file: ".golangci.yml"
+
+  # Enabled Linters
+  linters:
+    - "errcheck"
+    - "gosimple"
+    - "govet"
+    - "ineffassign"
+    - "staticcheck"
+    - "typecheck"
+    - "unused"
+    - "gofmt"
+    - "goimports"
+    - "gocritic"
+    - "gosec"
+    - "misspell"
+    - "revive"
+
+# Development Tools
+dev_tools:
+  # Required Tools
+  required:
+    - name: "go"
+      version: ">=1.21.0"
+      install_url: "https://golang.org/dl/"
+
+    - name: "golangci-lint"
+      version: ">=1.54.0"
+      install_cmd: "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest"
+
+  # Optional Tools
+  optional:
+    - name: "air"
+      purpose: "Hot reload development"
+      install_cmd: "go install github.com/air-verse/air@latest"
+
+    - name: "mockgen"
+      purpose: "Mock generation"
+      install_cmd: "go install github.com/golang/mock/mockgen@latest"
+
+# Docker Configuration
+docker:
+  # Base Images
+  base_images:
+    build: "golang:1.22.1-alpine"
+    runtime: "alpine:3.19"
+
+  # Dockerfile Template
+  dockerfile_template: "languages/go/templates/Dockerfile.template"
+
+  # Docker Compose Services
+  services:
+    - postgres
+    - redis
+    - app
+
+# Environment Configuration
+environment:
+  # Environment Variables (minimal, prefer JSON config)
+  variables:
+    GO_VERSION: "{{GO_VERSION}}"
+    CGO_ENABLED: "0"
+    GOOS: "linux"
+    GOARCH: "amd64"
+
+  # Configuration Management
+  config:
+    format: "json"
+    location: "configs/"
+    schema_validation: true
+    hot_reload: true
+
+# Template Variables
+variables:
+  # Go-specific variables
+  GO_VERSION: "1.22.1"
+  MODULE_PATH: "github.com/{{GITHUB_USERNAME}}/{{PROJECT_NAME}}"
+  PACKAGE_NAME: "{{PROJECT_NAME}}"
+
+  # Build variables
+  BINARY_NAME: "{{PROJECT_NAME}}"
+  BUILD_DIR: "bin"
+
+  # Testing variables
+  TEST_TIMEOUT: "10m"
+  COVERAGE_THRESHOLD: "80"
+
+  # Development variables
+  DEV_PORT: "8080"
+  HEALTH_CHECK_PATH: "/health"
+
+# Code Generation
+code_generation:
+  # Templates
+  templates:
+    main: "languages/go/templates/main.go.template"
+    handler: "languages/go/templates/handler.go.template"
+    service: "languages/go/templates/service.go.template"
+    repository: "languages/go/templates/repository.go.template"
+    model: "languages/go/templates/model.go.template"
+    test: "languages/go/templates/test.go.template"
+
+  # Generation Rules
+  rules:
+    package_naming: "lowercase"
+    file_naming: "snake_case"
+    interface_prefix: "I"
+    test_suffix: "_test"
+
+# Integration
+integrations:
+  # Claude Code Integration
+  claude_code:
+    settings_template: "languages/go/templates/claude-settings.json.template"
+    commands:
+      test: "go test ./... -cover"
+      build: "go build -o bin/{{PROJECT_NAME}} ./cmd/server"
+      lint: "golangci-lint run"
+      format: "go fmt ./..."
+      tidy: "go mod tidy"
+
+  # IDE Integration
+  ide:
+    vscode:
+      settings_template: "languages/go/templates/vscode-settings.json.template"
+      extensions:
+        - "golang.go"
+        - "ms-vscode.vscode-go"
+
+  # CI/CD Integration
+  cicd:
+    github_actions:
+      workflow_template: "languages/go/templates/go-ci.yml.template"
+
+# Documentation
+documentation:
+  # Language-specific docs
+  readme_template: "languages/go/templates/README.md.template"
+
+  # Code Documentation
+  godoc: true
+
+  # Examples
+  examples:
+    - "examples/basic-usage"
+    - "examples/advanced-patterns"

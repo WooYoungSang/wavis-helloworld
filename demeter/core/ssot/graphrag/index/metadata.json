@@ -1,0 +1,22 @@
+{
+  "indexed_at": "2025-09-18T19:26:08.430870",
+  "total_entities": 29,
+  "total_relationships": 1,
+  "entity_types": {
+    "functional_requirement": 10,
+    "non_functional_requirement": 7,
+    "unit_of_work": 0,
+    "contract": 2,
+    "bdd_scenario": 0,
+    "extension": 10,
+    "dependency": 0
+  },
+  "relationship_types": {
+    "implements": 0,
+    "depends_on": 0,
+    "extends": 0,
+    "validates": 1,
+    "covers": 0,
+    "conflicts_with": 0
+  }
+}

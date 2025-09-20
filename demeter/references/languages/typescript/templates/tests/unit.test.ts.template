@@ -1,0 +1,482 @@
+/**
+ * Unit tests for {{MODULE_NAME}} module
+ */
+
+import { describe, it, expect, beforeEach, afterEach, vi, beforeAll, afterAll } from 'vitest';
+import { trace, context } from '@opentelemetry/api';
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { InMemorySpanExporter } from '@opentelemetry/sdk-trace-base';
+import { Resource } from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+
+// Import modules to test
+import {
+  // Import your module functions/classes here
+  processData,
+  ServiceClass,
+  CustomError,
+  validateInput,
+} from '../src/{{MODULE_NAME}}';
+
+// Mock setup
+vi.mock('redis', () => ({
+  createClient: vi.fn(() => ({
+    connect: vi.fn(),
+    disconnect: vi.fn(),
+    get: vi.fn(),
+    set: vi.fn(),
+    del: vi.fn(),
+  })),
+}));
+
+vi.mock('pg', () => ({
+  Pool: vi.fn(() => ({
+    connect: vi.fn(),
+    end: vi.fn(),
+    query: vi.fn(),
+  })),
+}));
+
+// Global test setup
+let spanExporter: InMemorySpanExporter;
+let sdk: NodeSDK;
+
+beforeAll(async () => {
+  // Set up OpenTelemetry for testing
+  spanExporter = new InMemorySpanExporter();
+
+  sdk = new NodeSDK({
+    resource: new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: 'test-service',
+      [SemanticResourceAttributes.SERVICE_VERSION]: '1.0.0',
+    }),
+    spanProcessors: [spanExporter],
+  });
+
+  sdk.start();
+});
+
+afterAll(async () => {
+  await sdk.shutdown();
+});
+
+describe('ServiceClass', () => {
+  let service: ServiceClass;
+  let mockDatabase: any;
+  let mockCache: any;
+
+  beforeEach(() => {
+    // Reset mocks before each test
+    vi.clearAllMocks();
+
+    // Create mock dependencies
+    mockDatabase = {
+      query: vi.fn(),
+      connect: vi.fn(),
+      end: vi.fn(),
+    };
+
+    mockCache = {
+      get: vi.fn(),
+      set: vi.fn(),
+      del: vi.fn(),
+    };
+
+    // Initialize service with mocks
+    service = new ServiceClass({
+      database: mockDatabase,
+      cache: mockCache,
+      config: { timeout: 5000, retryCount: 3 },
+    });
+  });
+
+  afterEach(() => {
+    // Clear spans after each test
+    spanExporter.reset();
+  });
+
+  describe('initialization', () => {
+    it('should initialize with correct configuration', () => {
+      const config = { key: 'value' };
+      const newService = new ServiceClass({ config });
+
+      expect(newService.config).toEqual(config);
+      expect(newService.isReady).toBe(true);
+    });
+
+    it('should throw error with invalid configuration', () => {
+      expect(() => {
+        new ServiceClass({ config: null });
+      }).toThrow('Invalid configuration');
+    });
+  });
+
+  describe('async operations', () => {
+    it('should handle async operation successfully', async () => {
+      // Arrange
+      const expected = { result: 'success' };
+      mockDatabase.query.mockResolvedValue(expected);
+
+      // Act
+      const result = await service.asyncOperation('test_input');
+
+      // Assert
+      expect(result).toEqual(expected);
+      expect(mockDatabase.query).toHaveBeenCalledWith('test_input');
+      expect(mockDatabase.query).toHaveBeenCalledTimes(1);
+    });
+
+    it('should handle async operation failure', async () => {
+      // Arrange
+      const error = new Error('Database error');
+      mockDatabase.query.mockRejectedValue(error);
+
+      // Act & Assert
+      await expect(service.asyncOperation('test_input')).rejects.toThrow('Database error');
+    });
+
+    it('should handle timeout scenarios', async () => {
+      // Arrange
+      const slowOperation = vi.fn(() =>
+        new Promise(resolve => setTimeout(resolve, 10000))
+      );
+      service.slowOperation = slowOperation;
+
+      // Act & Assert
+      await expect(
+        Promise.race([
+          service.slowOperation(),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Timeout')), 1000)
+          ),
+        ])
+      ).rejects.toThrow('Timeout');
+    });
+  });
+
+  describe('OpenTelemetry integration', () => {
+    it('should create spans for traced operations', async () => {
+      const tracer = trace.getTracer('test');
+
+      await tracer.startActiveSpan('test_operation', async (span) => {
+        // Act
+        const result = await service.tracedOperation('test_data');
+
+        // Add span attributes
+        span.setAttributes({
+          'test.input': 'test_data',
+          'test.result': JSON.stringify(result),
+        });
+
+        span.end();
+      });
+
+      // Get exported spans
+      const spans = spanExporter.getFinishedSpans();
+
+      // Assert
+      expect(spans).toHaveLength(1);
+      expect(spans[0].name).toBe('test_operation');
+      expect(spans[0].attributes['test.input']).toBe('test_data');
+    });
+
+    it('should handle span errors correctly', async () => {
+      const tracer = trace.getTracer('test');
+
+      await tracer.startActiveSpan('error_operation', async (span) => {
+        try {
+          throw new Error('Test error');
+        } catch (error) {
+          span.recordException(error as Error);
+          span.setStatus({ code: 2, message: 'Error occurred' });
+        } finally {
+          span.end();
+        }
+      });
+
+      const spans = spanExporter.getFinishedSpans();
+      expect(spans[0].status?.code).toBe(2);
+    });
+  });
+
+  describe('parameterized tests', () => {
+    const testCases = [
+      { input: 'valid', expected: 'processed_valid', shouldThrow: false },
+      { input: '', expected: null, shouldThrow: true },
+      { input: 'special!@#', expected: 'processed_special', shouldThrow: false },
+      { input: null, expected: null, shouldThrow: true },
+      { input: 123, expected: 'processed_123', shouldThrow: false },
+    ];
+
+    testCases.forEach(({ input, expected, shouldThrow }) => {
+      it(`should handle input: ${JSON.stringify(input)}`, async () => {
+        if (shouldThrow) {
+          await expect(service.process(input)).rejects.toThrow();
+        } else {
+          const result = await service.process(input);
+          expect(result).toBe(expected);
+        }
+      });
+    });
+  });
+
+  describe('error handling', () => {
+    it('should throw custom error with correct properties', () => {
+      expect(() => {
+        service.triggerError();
+      }).toThrow(CustomError);
+
+      try {
+        service.triggerError();
+      } catch (error) {
+        expect(error).toBeInstanceOf(CustomError);
+        expect((error as CustomError).message).toContain('Custom error message');
+        expect((error as CustomError).errorCode).toBe('ERR_001');
+      }
+    });
+
+    it('should handle network errors gracefully', async () => {
+      const networkError = new Error('ECONNREFUSED');
+      mockDatabase.query.mockRejectedValue(networkError);
+
+      await expect(service.networkOperation()).rejects.toThrow('ECONNREFUSED');
+    });
+  });
+
+  describe('retry mechanism', () => {
+    it('should retry failed operations with exponential backoff', async () => {
+      const mockFunc = vi.fn()
+        .mockRejectedValueOnce(new Error('First attempt'))
+        .mockRejectedValueOnce(new Error('Second attempt'))
+        .mockResolvedValueOnce('Success');
+
+      service.unstableOperation = mockFunc;
+
+      const result = await service.retryOperation({ maxRetries: 3 });
+
+      expect(result).toBe('Success');
+      expect(mockFunc).toHaveBeenCalledTimes(3);
+    });
+
+    it('should fail after max retries', async () => {
+      const mockFunc = vi.fn().mockRejectedValue(new Error('Always fails'));
+      service.unstableOperation = mockFunc;
+
+      await expect(
+        service.retryOperation({ maxRetries: 2 })
+      ).rejects.toThrow('Always fails');
+
+      expect(mockFunc).toHaveBeenCalledTimes(3); // Initial + 2 retries
+    });
+  });
+
+  describe('concurrent operations', () => {
+    it('should handle multiple concurrent requests', async () => {
+      const tasks = Array.from({ length: 10 }, (_, i) =>
+        service.asyncOperation(`task_${i}`)
+      );
+
+      const results = await Promise.all(tasks);
+
+      expect(results).toHaveLength(10);
+      results.forEach((result, index) => {
+        expect(result).toBeDefined();
+      });
+    });
+
+    it('should handle partial failures in concurrent operations', async () => {
+      mockDatabase.query
+        .mockResolvedValueOnce('success_1')
+        .mockRejectedValueOnce(new Error('fail_2'))
+        .mockResolvedValueOnce('success_3');
+
+      const tasks = [
+        service.asyncOperation('task_1'),
+        service.asyncOperation('task_2'),
+        service.asyncOperation('task_3'),
+      ];
+
+      const results = await Promise.allSettled(tasks);
+
+      expect(results[0].status).toBe('fulfilled');
+      expect(results[1].status).toBe('rejected');
+      expect(results[2].status).toBe('fulfilled');
+    });
+  });
+
+  describe('caching behavior', () => {
+    it('should check cache before database call', async () => {
+      // Cache miss scenario
+      mockCache.get.mockResolvedValue(null);
+      mockDatabase.query.mockResolvedValue('fresh_data');
+
+      const result = await service.cachedOperation('key1');
+
+      expect(mockCache.get).toHaveBeenCalledWith('key1');
+      expect(mockDatabase.query).toHaveBeenCalledTimes(1);
+      expect(mockCache.set).toHaveBeenCalledWith('key1', 'fresh_data');
+    });
+
+    it('should return cached value when available', async () => {
+      // Cache hit scenario
+      mockCache.get.mockResolvedValue('cached_value');
+
+      const result = await service.cachedOperation('key1');
+
+      expect(result).toBe('cached_value');
+      expect(mockDatabase.query).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('external API integration', () => {
+    beforeEach(() => {
+      // Mock fetch globally
+      global.fetch = vi.fn();
+    });
+
+    it('should handle successful API calls', async () => {
+      const mockResponse = {
+        ok: true,
+        json: () => Promise.resolve({ status: 'success', data: [1, 2, 3] }),
+      };
+      (global.fetch as any).mockResolvedValue(mockResponse);
+
+      const result = await service.fetchExternalData();
+
+      expect(result.status).toBe('success');
+      expect(result.data).toHaveLength(3);
+      expect(global.fetch).toHaveBeenCalledWith('https://api.example.com/data');
+    });
+
+    it('should handle API errors', async () => {
+      const mockResponse = {
+        ok: false,
+        status: 500,
+        statusText: 'Internal Server Error',
+      };
+      (global.fetch as any).mockResolvedValue(mockResponse);
+
+      await expect(service.fetchExternalData()).rejects.toThrow('API Error: 500');
+    });
+  });
+});
+
+describe('Helper Functions', () => {
+  describe('processData', () => {
+    it('should process data correctly', () => {
+      const inputData = { key: 'value' };
+      const result = processData(inputData);
+
+      expect(result).toHaveProperty('processed');
+      expect(result.original).toEqual(inputData);
+    });
+
+    it('should handle empty data', () => {
+      const result = processData({});
+
+      expect(result).toHaveProperty('processed');
+      expect(result.original).toEqual({});
+    });
+  });
+
+  describe('validateInput', () => {
+    it('should validate correct input', () => {
+      const validInput = { required_field: 'value' };
+      expect(validateInput(validInput)).toBe(true);
+    });
+
+    it('should reject missing required fields', () => {
+      expect(() => validateInput({})).toThrow('Missing required field');
+    });
+
+    it('should reject invalid input types', () => {
+      expect(() => validateInput('not_an_object')).toThrow('Invalid input type');
+    });
+  });
+});
+
+// Integration tests
+describe('Integration Tests', () => {
+  let service: ServiceClass;
+
+  beforeEach(() => {
+    service = new ServiceClass({
+      database: mockDatabase,
+      cache: mockCache,
+      config: { timeout: 5000 },
+    });
+  });
+
+  it('should complete full workflow successfully', async () => {
+    const tracer = trace.getTracer('integration-test');
+
+    await tracer.startActiveSpan('full_workflow', async (span) => {
+      // Step 1: Process input
+      const processed = await service.processInput({ data: 'test' });
+
+      // Step 2: Store in database
+      const stored = await service.storeData(processed);
+
+      // Step 3: Cache result
+      const cached = await service.cacheResult(stored);
+
+      // Step 4: Retrieve and verify
+      const retrieved = await service.getData(stored.id);
+
+      // Verify workflow completed
+      expect(retrieved).toEqual(stored);
+
+      span.end();
+    });
+
+    // Verify tracing
+    const spans = spanExporter.getFinishedSpans();
+    expect(spans.some(span => span.name === 'full_workflow')).toBe(true);
+  });
+});
+
+// Performance/Benchmark tests
+describe('Performance Tests', () => {
+  it('should complete operations within acceptable time', async () => {
+    const start = Date.now();
+
+    await service.performanceOperation('test_data');
+
+    const duration = Date.now() - start;
+    expect(duration).toBeLessThan(1000); // Should complete within 1 second
+  });
+
+  it('should handle high concurrency', async () => {
+    const concurrentRequests = 100;
+    const tasks = Array.from({ length: concurrentRequests }, (_, i) =>
+      service.asyncOperation(`concurrent_${i}`)
+    );
+
+    const start = Date.now();
+    const results = await Promise.all(tasks);
+    const duration = Date.now() - start;
+
+    expect(results).toHaveLength(concurrentRequests);
+    expect(duration).toBeLessThan(5000); // Should complete within 5 seconds
+  });
+});
+
+// Test data fixtures
+const sampleData = {
+  id: 1,
+  name: 'Test Item',
+  created_at: new Date().toISOString(),
+  metadata: {
+    version: '1.0',
+    tags: ['test', 'sample'],
+  },
+};
+
+const mockEvent = {
+  event_type: 'user.created',
+  timestamp: new Date().toISOString(),
+  data: {
+    user_id: '123',
+    email: 'test@example.com',
+  },
+};

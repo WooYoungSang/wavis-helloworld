@@ -1,0 +1,470 @@
+# Contract Definition Language (CDL) Schema
+# Formal contract specifications for SSOT-based development
+
+contract_schema:
+  version: "1.0.0"
+  description: "Schema for defining formal contracts with pre/post conditions and invariants"
+
+# Contract Template Structure
+contract_template:
+  contract_id:
+    type: "string"
+    pattern: "^[A-Z]{2,4}-[0-9]{3,4}(-[A-Z0-9]{1,10})?$"
+    description: "Unique contract identifier (e.g., CTR-001, UOW-001-CREATE)"
+    required: true
+
+  title:
+    type: "string"
+    min_length: 5
+    max_length: 100
+    description: "Human-readable contract title"
+    required: true
+
+  description:
+    type: "string"
+    min_length: 20
+    max_length: 500
+    description: "Detailed contract description"
+    required: true
+
+  applies_to:
+    type: "object"
+    description: "What this contract applies to"
+    properties:
+      entity_type:
+        type: "string"
+        enum: ["function", "method", "class", "service", "workflow", "uow"]
+        description: "Type of entity being contracted"
+      entity_name:
+        type: "string"
+        description: "Name or identifier of the entity"
+      layer:
+        type: "string"
+        enum: ["Foundation", "Infrastructure", "Application", "Deployment"]
+        description: "Architecture layer"
+    required: ["entity_type", "entity_name"]
+
+  preconditions:
+    type: "array"
+    description: "Conditions that must be true before execution"
+    items:
+      type: "object"
+      properties:
+        condition_id:
+          type: "string"
+          pattern: "^PRE-[0-9]{3}$"
+        description:
+          type: "string"
+          min_length: 10
+        predicate:
+          type: "string"
+          description: "Formal logical predicate (in CDL syntax)"
+        validation_method:
+          type: "string"
+          enum: ["assert", "validate", "check", "guard"]
+        error_handling:
+          type: "object"
+          properties:
+            error_code:
+              type: "string"
+            error_message:
+              type: "string"
+            error_type:
+              type: "string"
+              enum: ["ValidationError", "ContractViolationError", "PreconditionError"]
+      required: ["condition_id", "description", "predicate"]
+
+  postconditions:
+    type: "array"
+    description: "Conditions that must be true after execution"
+    items:
+      type: "object"
+      properties:
+        condition_id:
+          type: "string"
+          pattern: "^POST-[0-9]{3}$"
+        description:
+          type: "string"
+          min_length: 10
+        predicate:
+          type: "string"
+          description: "Formal logical predicate (in CDL syntax)"
+        validation_method:
+          type: "string"
+          enum: ["assert", "validate", "verify", "ensure"]
+        success_criteria:
+          type: "array"
+          items:
+            type: "string"
+      required: ["condition_id", "description", "predicate"]
+
+  invariants:
+    type: "array"
+    description: "Conditions that must always remain true"
+    items:
+      type: "object"
+      properties:
+        invariant_id:
+          type: "string"
+          pattern: "^INV-[0-9]{3}$"
+        description:
+          type: "string"
+          min_length: 10
+        predicate:
+          type: "string"
+          description: "Formal logical predicate (in CDL syntax)"
+        scope:
+          type: "string"
+          enum: ["global", "instance", "transaction", "session"]
+        monitoring:
+          type: "object"
+          properties:
+            check_frequency:
+              type: "string"
+              enum: ["always", "on_entry", "on_exit", "periodic"]
+            alert_on_violation:
+              type: "boolean"
+              default: true
+      required: ["invariant_id", "description", "predicate"]
+
+  side_effects:
+    type: "array"
+    description: "Documented side effects of the operation"
+    items:
+      type: "object"
+      properties:
+        effect_id:
+          type: "string"
+          pattern: "^EFF-[0-9]{3}$"
+        description:
+          type: "string"
+        effect_type:
+          type: "string"
+          enum: ["state_change", "io_operation", "external_call", "resource_allocation"]
+        scope:
+          type: "string"
+          description: "What is affected by this side effect"
+        reversible:
+          type: "boolean"
+          description: "Whether this side effect can be undone"
+      required: ["effect_id", "description", "effect_type"]
+
+  dependencies:
+    type: "array"
+    description: "Contract dependencies"
+    items:
+      type: "object"
+      properties:
+        dependency_type:
+          type: "string"
+          enum: ["requires", "assumes", "depends_on"]
+        contract_id:
+          type: "string"
+          description: "Referenced contract ID"
+        description:
+          type: "string"
+      required: ["dependency_type", "contract_id"]
+
+  performance_guarantees:
+    type: "object"
+    description: "Performance-related contractual guarantees"
+    properties:
+      time_complexity:
+        type: "string"
+        description: "Big O notation for time complexity"
+      space_complexity:
+        type: "string"
+        description: "Big O notation for space complexity"
+      max_execution_time:
+        type: "string"
+        description: "Maximum execution time (e.g., '500ms', '2s')"
+      throughput:
+        type: "string"
+        description: "Expected throughput (e.g., '1000 req/sec')"
+      availability:
+        type: "string"
+        description: "Availability guarantee (e.g., '99.9%')"
+
+  security_constraints:
+    type: "object"
+    description: "Security-related contractual constraints"
+    properties:
+      authentication_required:
+        type: "boolean"
+        default: false
+      authorization_rules:
+        type: "array"
+        items:
+          type: "string"
+      data_classification:
+        type: "string"
+        enum: ["public", "internal", "confidential", "restricted"]
+      encryption_required:
+        type: "boolean"
+        default: false
+      audit_required:
+        type: "boolean"
+        default: false
+
+  testing_requirements:
+    type: "object"
+    description: "Testing requirements for contract validation"
+    properties:
+      unit_tests:
+        type: "array"
+        items:
+          type: "string"
+          description: "Required unit test scenarios"
+      integration_tests:
+        type: "array"
+        items:
+          type: "string"
+          description: "Required integration test scenarios"
+      property_tests:
+        type: "array"
+        items:
+          type: "string"
+          description: "Property-based test scenarios"
+      performance_tests:
+        type: "array"
+        items:
+          type: "string"
+          description: "Performance test scenarios"
+
+  metadata:
+    type: "object"
+    properties:
+      created_by:
+        type: "string"
+      created_date:
+        type: "string"
+        format: "date"
+      version:
+        type: "string"
+        pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+      status:
+        type: "string"
+        enum: ["draft", "review", "approved", "deprecated"]
+      related_uows:
+        type: "array"
+        items:
+          type: "string"
+      related_frs:
+        type: "array"
+        items:
+          type: "string"
+      related_nfrs:
+        type: "array"
+        items:
+          type: "string"
+
+# CDL Predicate Language Syntax
+cdl_syntax:
+  description: "Contract Definition Language predicate syntax"
+
+  primitive_types:
+    - "boolean"
+    - "integer"
+    - "float"
+    - "string"
+    - "array"
+    - "object"
+    - "null"
+
+  operators:
+    logical:
+      - "and"        # Logical AND
+      - "or"         # Logical OR
+      - "not"        # Logical NOT
+      - "implies"    # Logical implication
+      - "iff"        # If and only if
+
+    comparison:
+      - "eq"         # Equal to
+      - "ne"         # Not equal to
+      - "lt"         # Less than
+      - "le"         # Less than or equal
+      - "gt"         # Greater than
+      - "ge"         # Greater than or equal
+      - "in"         # Element in collection
+      - "not_in"     # Element not in collection
+
+    quantifiers:
+      - "forall"     # Universal quantifier
+      - "exists"     # Existential quantifier
+      - "count"      # Count of elements matching condition
+
+  functions:
+    state:
+      - "old(expr)"      # Value of expression before operation
+      - "current(expr)"  # Current value of expression
+      - "changed(expr)"  # Whether expression value changed
+      - "unchanged(expr)" # Whether expression value unchanged
+
+    validation:
+      - "valid(expr)"    # Whether expression is valid
+      - "defined(expr)"  # Whether expression is defined/not null
+      - "empty(expr)"    # Whether collection is empty
+      - "length(expr)"   # Length/size of collection or string
+
+    type:
+      - "type(expr)"     # Type of expression
+      - "instanceof(expr, type)" # Whether expression is instance of type
+
+  examples:
+    precondition_examples:
+      - "defined(input) and not empty(input)"
+      - "length(items) gt 0 and length(items) le 1000"
+      - "forall item in items: valid(item.id)"
+      - "user.authenticated eq true"
+
+    postcondition_examples:
+      - "length(result) eq length(old(input))"
+      - "changed(user.last_login_time)"
+      - "result.status in ['success', 'pending']"
+      - "unchanged(input)"
+
+    invariant_examples:
+      - "balance ge 0"
+      - "forall account in accounts: account.balance ge account.minimum_balance"
+      - "count(active_sessions) le max_concurrent_sessions"
+
+# Contract Validation Rules
+validation_rules:
+  precondition_validation:
+    - "All precondition predicates must be valid CDL syntax"
+    - "Precondition IDs must be unique within contract"
+    - "All referenced variables must be defined in context"
+
+  postcondition_validation:
+    - "All postcondition predicates must be valid CDL syntax"
+    - "Postcondition IDs must be unique within contract"
+    - "old() function can only be used in postconditions"
+
+  invariant_validation:
+    - "All invariant predicates must be valid CDL syntax"
+    - "Invariant IDs must be unique within contract"
+    - "Global invariants cannot reference local variables"
+
+  consistency_rules:
+    - "Preconditions and postconditions must be logically consistent"
+    - "Invariants must not contradict each other"
+    - "Performance guarantees must be measurable and testable"
+
+# Integration with SSOT
+ssot_integration:
+  uow_contracts:
+    description: "How contracts integrate with Units of Work"
+    mapping:
+      - "Each UoW can have one or more associated contracts"
+      - "UoW acceptance criteria can be derived from contract postconditions"
+      - "UoW dependencies reflected in contract preconditions"
+
+  bdd_integration:
+    description: "How contracts integrate with BDD scenarios"
+    mapping:
+      - "Given clauses mapped to preconditions"
+      - "When clauses represent the contracted operation"
+      - "Then clauses mapped to postconditions"
+      - "Invariants become background conditions"
+
+  testing_integration:
+    description: "How contracts drive test generation"
+    approaches:
+      - "Property-based testing from predicates"
+      - "Boundary value testing from constraints"
+      - "Negative testing from precondition violations"
+      - "Performance testing from guarantees"
+
+# Usage Examples
+usage_examples:
+  simple_function_contract: |
+    contract_id: "CTR-001"
+    title: "User Authentication Contract"
+    description: "Contract for user authentication function"
+    applies_to:
+      entity_type: "function"
+      entity_name: "authenticate_user"
+      layer: "Infrastructure"
+
+    preconditions:
+      - condition_id: "PRE-001"
+        description: "Username must be provided and non-empty"
+        predicate: "defined(username) and not empty(username)"
+        validation_method: "assert"
+        error_handling:
+          error_code: "INVALID_USERNAME"
+          error_message: "Username cannot be empty"
+          error_type: "ValidationError"
+
+    postconditions:
+      - condition_id: "POST-001"
+        description: "Returns valid authentication result"
+        predicate: "defined(result) and result.type in ['success', 'failure']"
+        validation_method: "ensure"
+
+    side_effects:
+      - effect_id: "EFF-001"
+        description: "Updates user's last login timestamp"
+        effect_type: "state_change"
+        scope: "user.last_login_time"
+        reversible: false
+
+  complex_uow_contract: |
+    contract_id: "UOW-001-CONTRACT"
+    title: "Configuration Loader Contract"
+    description: "Formal contract for configuration loading operations"
+    applies_to:
+      entity_type: "uow"
+      entity_name: "UoW-001"
+      layer: "Foundation"
+
+    preconditions:
+      - condition_id: "PRE-001"
+        description: "Configuration file must exist and be readable"
+        predicate: "exists(config_file) and readable(config_file)"
+      - condition_id: "PRE-002"
+        description: "Schema file must be valid JSON Schema"
+        predicate: "valid_json_schema(schema_file)"
+
+    postconditions:
+      - condition_id: "POST-001"
+        description: "Configuration is loaded and validated"
+        predicate: "defined(config) and validates_against(config, schema)"
+      - condition_id: "POST-002"
+        description: "Configuration cache is updated"
+        predicate: "changed(config_cache) and config_cache.timestamp gt old(config_cache.timestamp)"
+
+    invariants:
+      - invariant_id: "INV-001"
+        description: "Configuration always matches schema"
+        predicate: "validates_against(current_config, config_schema)"
+        scope: "global"
+        monitoring:
+          check_frequency: "always"
+          alert_on_violation: true
+
+    performance_guarantees:
+      time_complexity: "O(n)"
+      max_execution_time: "500ms"
+
+    security_constraints:
+      data_classification: "internal"
+      audit_required: true
+
+# Contract Generation Templates
+generation_templates:
+  from_uow:
+    description: "Generate contract from UoW definition"
+    inputs: ["uow_id", "uow_data"]
+    outputs: ["contract_definition"]
+
+  from_gherkin:
+    description: "Generate contract from Gherkin scenarios"
+    inputs: ["feature_file", "scenario_data"]
+    outputs: ["contract_definition"]
+
+  from_code:
+    description: "Extract contract from annotated code"
+    inputs: ["source_code", "annotations"]
+    outputs: ["contract_definition"]

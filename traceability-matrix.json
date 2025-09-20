@@ -1,0 +1,5837 @@
+{
+  "metadata": {
+    "generated_date": "2025-09-18T17:11:56.140598",
+    "generator_version": "1.0.0",
+    "project_root": "/home/jang/Workspace/wavis-template",
+    "ssot_dir": "/home/jang/Workspace/wavis-template/demeter/core/ssot"
+  },
+  "requirements": {
+    "FR-001": {
+      "type": "functional",
+      "title": "Configuration Management",
+      "description": "프로젝트는 환경별 설정을 관리할 수 있어야 함",
+      "category": "Foundation",
+      "priority": "Critical",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-002": {
+      "type": "functional",
+      "title": "Interface Layer",
+      "description": "외부와의 통신을 위한 인터페이스 제공",
+      "category": "Interface",
+      "priority": "High",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-003": {
+      "type": "functional",
+      "title": "Data Persistence",
+      "description": "데이터 저장 및 조회 기능",
+      "category": "Data",
+      "priority": "High",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-004": {
+      "type": "functional",
+      "title": "Caching Layer",
+      "description": "성능 최적화를 위한 캐싱 기능",
+      "category": "Performance",
+      "priority": "Medium",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-005": {
+      "type": "functional",
+      "title": "Authentication & Authorization",
+      "description": "사용자 인증 및 권한 관리",
+      "category": "Security",
+      "priority": "High",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-006": {
+      "type": "functional",
+      "title": "Business Logic Layer",
+      "description": "핵심 비즈니스 로직 구현",
+      "category": "Business",
+      "priority": "Critical",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-007": {
+      "type": "functional",
+      "title": "External Integration",
+      "description": "외부 시스템과의 통합",
+      "category": "Integration",
+      "priority": "Medium",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-008": {
+      "type": "functional",
+      "title": "Monitoring & Observability",
+      "description": "시스템 모니터링 및 관찰 가능성",
+      "category": "Operations",
+      "priority": "High",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-009": {
+      "type": "functional",
+      "title": "Event Processing",
+      "description": "이벤트 기반 처리",
+      "category": "Architecture",
+      "priority": "Medium",
+      "source_file": "framework-requirements.yaml"
+    },
+    "FR-010": {
+      "type": "functional",
+      "title": "Deployment & DevOps",
+      "description": "배포 및 운영 자동화",
+      "category": "Operations",
+      "priority": "High",
+      "source_file": "framework-requirements.yaml"
+    },
+    "NFR-001": {
+      "type": "non_functional",
+      "title": "Performance",
+      "description": "시스템 성능 요구사항",
+      "category": "Quality",
+      "priority": "High",
+      "requirements": [
+        "응답 시간: 평균 < 200ms, 95% < 500ms",
+        "처리량: 초당 최소 100 요청 처리",
+        "동시 사용자: 최소 1000명 지원",
+        "리소스 사용률: CPU < 70%, Memory < 80%"
+      ],
+      "source_file": "framework-requirements.yaml"
+    },
+    "NFR-002": {
+      "type": "non_functional",
+      "title": "Reliability",
+      "description": "시스템 안정성 요구사항",
+      "category": "Quality",
+      "priority": "Critical",
+      "requirements": [
+        "가용성: 99.9% 이상",
+        "MTBF: 평균 30일 이상",
+        "MTTR: 평균 4시간 이하",
+        "데이터 무결성: 100% 보장"
+      ],
+      "source_file": "framework-requirements.yaml"
+    },
+    "NFR-003": {
+      "type": "non_functional",
+      "title": "Security",
+      "description": "보안 요구사항",
+      "category": "Security",
+      "priority": "Critical",
+      "requirements": [
+        "인증/인가 메커니즘 구현",
+        "데이터 암호화 (전송/저장)",
+        "보안 취약점 Zero tolerance",
+        "감사 로그 기록 및 보관"
+      ],
+      "source_file": "framework-requirements.yaml"
+    },
+    "NFR-004": {
+      "type": "non_functional",
+      "title": "Scalability",
+      "description": "확장성 요구사항",
+      "category": "Architecture",
+      "priority": "Medium",
+      "requirements": [
+        "수평 확장 지원",
+        "부하 분산 가능",
+        "데이터베이스 샤딩 지원",
+        "마이크로서비스 아키텍처 준비"
+      ],
+      "source_file": "framework-requirements.yaml"
+    },
+    "NFR-005": {
+      "type": "non_functional",
+      "title": "Maintainability",
+      "description": "유지보수성 요구사항",
+      "category": "Quality",
+      "priority": "High",
+      "requirements": [
+        "코드 커버리지: 80% 이상",
+        "코드 복잡도: Cyclomatic complexity < 10",
+        "문서화: API 문서 100% 완성",
+        "코딩 표준 준수: Linter 통과"
+      ],
+      "source_file": "framework-requirements.yaml"
+    },
+    "NFR-006": {
+      "type": "non_functional",
+      "title": "Usability",
+      "description": "사용성 요구사항",
+      "category": "User Experience",
+      "priority": "Medium",
+      "requirements": [
+        "직관적인 인터페이스 설계",
+        "에러 메시지 명확성",
+        "응답 피드백 제공",
+        "도움말 및 문서 제공"
+      ],
+      "source_file": "framework-requirements.yaml"
+    },
+    "NFR-007": {
+      "type": "non_functional",
+      "title": "Portability",
+      "description": "이식성 요구사항",
+      "category": "Deployment",
+      "priority": "Medium",
+      "requirements": [
+        "다중 플랫폼 지원",
+        "컨테이너 환경 지원",
+        "클라우드 네이티브 설계",
+        "표준 프로토콜 사용"
+      ],
+      "source_file": "framework-requirements.yaml"
+    }
+  },
+  "units_of_work": {
+    "UoW-000": {
+      "name": "Project Structure Setup",
+      "goal": "Establish architecture foundation",
+      "layer": "Foundation",
+      "priority": "Critical",
+      "dependencies": [],
+      "implements": [
+        "NFR-005"
+      ],
+      "estimated_effort_hours": "{{UOW_000_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Standard project layout with clear directory structure",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Standard project layout with clear directory structure",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Architecture layers clearly defined and documented",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Architecture layers clearly defined and documented",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Module interfaces defined for dependency injection",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Module interfaces defined for dependency injection",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Documentation structure and standards established",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Documentation structure and standards established",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "foundation",
+        "architecture",
+        "setup"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-001A": {
+      "name": "Dependencies Installation",
+      "goal": "Install and configure project dependencies with security scanning",
+      "layer": "Foundation",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-000"
+      ],
+      "implements": [
+        "NFR-003",
+        "NFR-005"
+      ],
+      "estimated_effort_hours": "{{UOW_001A_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Core dependencies installed (framework, database, cache)",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Core dependencies installed (framework, database, cache)",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Development tools configured (testing, linting, security)",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "보안 요구사항이 충족되어야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Dependency security scanning integrated",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Dependency security scanning integrated",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Version pinning for reproducible builds",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Version pinning for reproducible builds",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "dependencies",
+        "security",
+        "tooling"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-001B": {
+      "name": "Testing Framework Setup",
+      "goal": "Establish comprehensive testing framework with TDD support",
+      "layer": "Foundation",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-001A"
+      ],
+      "implements": [
+        "NFR-005"
+      ],
+      "estimated_effort_hours": "{{UOW_001B_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Unit testing framework configured",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Integration testing setup with test containers",
+          "scenario": {
+            "given": "필요한 전제조건이 충족된 상태에서",
+            "when": "생성 작업이 실행되면",
+            "then": "대상이 성공적으로 생성되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Coverage reporting and thresholds configured",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Mock generation tools installed",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Mock generation tools installed",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "testing",
+        "tdd",
+        "quality"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-001C": {
+      "name": "Configuration System",
+      "goal": "Implement structured configuration system (no ENV variables)",
+      "layer": "Foundation",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-001B"
+      ],
+      "implements": [
+        "FR-001",
+        "NFR-003"
+      ],
+      "estimated_effort_hours": "{{UOW_001C_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Structured configuration with schema validation",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Environment-specific configuration files",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Hot-reload capability without service restart",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Hot-reload capability without service restart",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Comprehensive validation and error reporting",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Comprehensive validation and error reporting",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "config",
+        "security",
+        "validation"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-001D": {
+      "name": "CI/CD Pipeline",
+      "goal": "Establish automated workflows for continuous integration",
+      "layer": "Foundation",
+      "priority": "High",
+      "dependencies": [
+        "UoW-001C"
+      ],
+      "implements": [
+        "NFR-005"
+      ],
+      "estimated_effort_hours": "{{UOW_001D_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Automated testing on pull requests",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Automated testing on pull requests",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Code quality gates with linting",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Code quality gates with linting",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Security scanning automation",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Security scanning automation",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Automated deployment workflows",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Automated deployment workflows",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "ci-cd",
+        "automation",
+        "quality"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-001": {
+      "name": "Configuration Loader",
+      "goal": "Robust configuration loading with validation",
+      "layer": "Foundation",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-001D"
+      ],
+      "implements": [
+        "FR-001"
+      ],
+      "estimated_effort_hours": "{{UOW_001_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Load and validate configuration files against schema",
+          "scenario": {
+            "given": "검증할 데이터가 준비된 상태에서",
+            "when": "검증 작업이 실행되면",
+            "then": "검증 결과가 올바르게 반환되어야 한다",
+            "and": [
+              "입력값이 유효성 검사를 통과해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Support for environment-specific configuration resolution",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Configuration caching and reload capability",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Comprehensive error handling and detailed messages",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Comprehensive error handling and detailed messages",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "config",
+        "validation",
+        "foundation"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-002": {
+      "name": "Advanced Config Validation",
+      "goal": "Business rule validation for configuration beyond schema",
+      "layer": "Foundation",
+      "priority": "High",
+      "dependencies": [
+        "UoW-001"
+      ],
+      "implements": [
+        "FR-001"
+      ],
+      "estimated_effort_hours": "{{UOW_002_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Cross-field validation and dependency checking",
+          "scenario": {
+            "given": "검증할 데이터가 준비된 상태에서",
+            "when": "검증 작업이 실행되면",
+            "then": "검증 결과가 올바르게 반환되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Business rule validation (ports, URLs, formats)",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Business rule validation (ports, URLs, formats)",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Configuration health check endpoints",
+          "scenario": {
+            "given": "검증할 데이터가 준비된 상태에서",
+            "when": "검증 작업이 실행되면",
+            "then": "검증 결과가 올바르게 반환되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Validation error reporting with field specifics",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Validation error reporting with field specifics",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "config",
+        "validation",
+        "business-rules"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-003": {
+      "name": "Configuration Manager",
+      "goal": "Centralized configuration management with hot-reload",
+      "layer": "Foundation",
+      "priority": "High",
+      "dependencies": [
+        "UoW-002"
+      ],
+      "implements": [
+        "FR-001",
+        "NFR-001"
+      ],
+      "estimated_effort_hours": "{{UOW_003_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Centralized configuration access interface",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Hot-reload capability without service interruption",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Hot-reload capability without service interruption",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Configuration change event notifications",
+          "scenario": {
+            "given": "수정할 대상이 존재하는 상태에서",
+            "when": "수정 작업이 실행되면",
+            "then": "대상이 성공적으로 수정되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Configuration backup and rollback capability",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "config",
+        "management",
+        "hot-reload"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-101": {
+      "name": "Database Connection",
+      "goal": "Reliable database connectivity with connection pooling",
+      "layer": "Infrastructure",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-003"
+      ],
+      "implements": [
+        "FR-003"
+      ],
+      "estimated_effort_hours": "{{UOW_101_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Database connection pool management with health monitoring",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Database connection pool management with health monitoring",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Transaction support with proper error handling",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Transaction support with proper error handling",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Database migration framework integration",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Database migration framework integration",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Connection resilience and automatic reconnection",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Connection resilience and automatic reconnection",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "database",
+        "persistence",
+        "reliability"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-102": {
+      "name": "Cache Integration",
+      "goal": "Caching implementation with resilience",
+      "layer": "Infrastructure",
+      "priority": "High",
+      "dependencies": [
+        "UoW-101"
+      ],
+      "implements": [
+        "FR-004"
+      ],
+      "estimated_effort_hours": "{{UOW_102_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Cache client configuration with connection pooling",
+          "scenario": {
+            "given": "설정 가능한 환경이 준비된 상태에서",
+            "when": "설정 작업이 실행되면",
+            "then": "설정이 올바르게 적용되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Cache operations (CRUD) with error handling",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Cache operations (CRUD) with error handling",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "TTL management and cache invalidation strategies",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "TTL management and cache invalidation strategies",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Connection resilience and fallback mechanisms",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Connection resilience and fallback mechanisms",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "cache",
+        "performance",
+        "resilience"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-103": {
+      "name": "HTTP Server Foundation",
+      "goal": "Secure HTTP server with middleware chain",
+      "layer": "Infrastructure",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-102"
+      ],
+      "implements": [
+        "FR-002"
+      ],
+      "estimated_effort_hours": "{{UOW_103_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "HTTP server setup with configurable middleware",
+          "scenario": {
+            "given": "필요한 전제조건이 충족된 상태에서",
+            "when": "생성 작업이 실행되면",
+            "then": "대상이 성공적으로 생성되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Security headers and rate limiting middleware",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Security headers and rate limiting middleware",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Request/response logging with structured format",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Request/response logging with structured format",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Graceful shutdown and connection draining",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Graceful shutdown and connection draining",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "http",
+        "server",
+        "middleware"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-104": {
+      "name": "Authentication System",
+      "goal": "Token-based authentication and authorization",
+      "layer": "Infrastructure",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-103"
+      ],
+      "implements": [
+        "FR-005"
+      ],
+      "estimated_effort_hours": "{{UOW_104_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Token validation and generation",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Token validation and generation",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Role-based access control middleware",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Role-based access control middleware",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Session management with secure storage",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Session management with secure storage",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Audit logging for authentication events",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Audit logging for authentication events",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "auth",
+        "security",
+        "rbac"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-105": {
+      "name": "Error Handling Infrastructure",
+      "goal": "Comprehensive error handling and recovery",
+      "layer": "Infrastructure",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104"
+      ],
+      "implements": [
+        "FR-006"
+      ],
+      "estimated_effort_hours": "{{UOW_105_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Structured error responses with correlation IDs",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Structured error responses with correlation IDs",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Error categorization and HTTP status mapping",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Error categorization and HTTP status mapping",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Retry mechanisms for transient failures",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Retry mechanisms for transient failures",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Circuit breaker patterns for external deps",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Circuit breaker patterns for external deps",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "error-handling",
+        "reliability",
+        "resilience"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-106": {
+      "name": "Async Processing Infrastructure",
+      "goal": "Background job processing and queuing",
+      "layer": "Infrastructure",
+      "priority": "High",
+      "dependencies": [
+        "UoW-105"
+      ],
+      "implements": [
+        "FR-007"
+      ],
+      "estimated_effort_hours": "{{UOW_106_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Queue-based task processing implementation",
+          "scenario": {
+            "given": "처리할 데이터가 준비된 상태에서",
+            "when": "처리 작업이 실행되면",
+            "then": "처리 결과가 올바르게 생성되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Job retry and dead letter queue handling",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Job retry and dead letter queue handling",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Task status tracking and monitoring",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Task status tracking and monitoring",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Priority-based task scheduling",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Priority-based task scheduling",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "async",
+        "queues",
+        "background-jobs"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-107": {
+      "name": "OpenTelemetry Integration",
+      "goal": "Observability through OpenTelemetry instrumentation",
+      "layer": "Infrastructure",
+      "priority": "High",
+      "dependencies": [
+        "UoW-106"
+      ],
+      "implements": [
+        "FR-008",
+        "NFR-007"
+      ],
+      "estimated_effort_hours": "{{UOW_107_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Distributed tracing implementation",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Distributed tracing implementation",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Metrics collection and export",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Metrics collection and export",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Correlation IDs across service boundaries",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Correlation IDs across service boundaries",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Performance monitoring and alerting",
+          "scenario": {
+            "given": "처리할 데이터가 준비된 상태에서",
+            "when": "처리 작업이 실행되면",
+            "then": "처리 결과가 올바르게 생성되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "observability",
+        "tracing",
+        "metrics"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-201": {
+      "name": "Core Business Logic",
+      "goal": "Main business logic implementation with validation",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-107"
+      ],
+      "implements": [
+        "FR-009"
+      ],
+      "estimated_effort_hours": "{{UOW_201_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Business rules implementation with validation",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Business rules implementation with validation",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Input sanitization and output encoding",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Input sanitization and output encoding",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Error handling with business-specific codes",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Error handling with business-specific codes",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Comprehensive audit trail for operations",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Comprehensive audit trail for operations",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "business-logic",
+        "validation",
+        "audit"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-202": {
+      "name": "External API Integration",
+      "goal": "Third-party service integration with resilience",
+      "layer": "Application",
+      "priority": "High",
+      "dependencies": [
+        "UoW-201"
+      ],
+      "implements": [
+        "FR-010"
+      ],
+      "estimated_effort_hours": "{{UOW_202_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "HTTP client with circuit breaker and retry",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "HTTP client with circuit breaker and retry",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "API response caching and validation",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "API response caching and validation",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Rate limiting for external API calls",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Rate limiting for external API calls",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Fallback strategies and error handling",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Fallback strategies and error handling",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "integration",
+        "external-api",
+        "resilience"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-210": {
+      "name": "Docker Deployment",
+      "goal": "Production-ready containerization and deployment",
+      "layer": "Deployment",
+      "priority": "High",
+      "dependencies": [
+        "UoW-202"
+      ],
+      "implements": [
+        "NFR-002",
+        "NFR-004",
+        "NFR-007"
+      ],
+      "estimated_effort_hours": "{{UOW_210_EFFORT}}",
+      "acceptance_criteria": {
+        "AC-001": {
+          "description": "Multi-stage Docker build with optimized size",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Multi-stage Docker build with optimized size",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-002": {
+          "description": "Security hardening with non-root execution",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Security hardening with non-root execution",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        },
+        "AC-003": {
+          "description": "Health check integration and readiness probes",
+          "scenario": {
+            "given": "검증할 데이터가 준비된 상태에서",
+            "when": "검증 작업이 실행되면",
+            "then": "검증 결과가 올바르게 반환되어야 한다",
+            "and": [
+              "성능 요구사항이 충족되어야 한다",
+              "오류 처리가 적절해야 한다"
+            ]
+          }
+        },
+        "AC-004": {
+          "description": "Container orchestration support",
+          "scenario": {
+            "given": "시스템이 정상적으로 동작하는 상태에서",
+            "when": "요구된 기능이 실행되면",
+            "then": "Container orchestration support",
+            "and": [
+              "결과가 예상된 형태로 반환되어야 한다",
+              "시스템 상태가 일관성을 유지해야 한다"
+            ]
+          }
+        }
+      },
+      "tags": [
+        "deployment",
+        "docker",
+        "containerization"
+      ],
+      "source_file": "base/uow-base.yaml"
+    },
+    "UoW-IOT-601": {
+      "name": "UoW-IOT-601",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-101",
+        "UoW-104"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "디바이스 등록 API",
+        "AC-2": "인증서 관리 시스템",
+        "AC-3": "디바이스 상태 추적",
+        "AC-4": "그룹 관리 기능"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "iot",
+      "source_file": "extensions/features/iot.yaml"
+    },
+    "UoW-IOT-602": {
+      "name": "UoW-IOT-602",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-106",
+        "UoW-101"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "실시간 데이터 스트리밍",
+        "AC-2": "데이터 검증 로직",
+        "AC-3": "배치 처리 시스템",
+        "AC-4": "품질 모니터링"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "iot",
+      "source_file": "extensions/features/iot.yaml"
+    },
+    "UoW-IOT-603": {
+      "name": "UoW-IOT-603",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-103",
+        "UoW-106"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "MQTT/CoAP 프로토콜 지원",
+        "AC-2": "메시지 큐 관리",
+        "AC-3": "연결 상태 추적",
+        "AC-4": "부하 분산 기능"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "iot",
+      "source_file": "extensions/features/iot.yaml"
+    },
+    "UoW-IOT-604": {
+      "name": "UoW-IOT-604",
+      "goal": "",
+      "layer": "",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-102",
+        "UoW-106"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "엣지 데이터 처리 엔진",
+        "AC-2": "로컬 스토리지 관리",
+        "AC-3": "동기화 메커니즘",
+        "AC-4": "대역폭 최적화"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "iot",
+      "source_file": "extensions/features/iot.yaml"
+    },
+    "UoW-IOT-605": {
+      "name": "UoW-IOT-605",
+      "goal": "",
+      "layer": "",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-107",
+        "UoW-106"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "규칙 엔진 구현",
+        "AC-2": "알림 시스템",
+        "AC-3": "자동화 워크플로",
+        "AC-4": "이력 관리"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "iot",
+      "source_file": "extensions/features/iot.yaml"
+    },
+    "UoW-AI-401": {
+      "name": "ML Model Management Platform",
+      "goal": "Implement model lifecycle management system",
+      "layer": "Application",
+      "priority": "High",
+      "dependencies": [
+        "UoW-201",
+        "UoW-102"
+      ],
+      "implements": [
+        "FR-AI-001"
+      ],
+      "estimated_effort_hours": "40",
+      "acceptance_criteria": [
+        "Model registry and versioning system",
+        "Model deployment automation",
+        "A/B testing framework for models",
+        "Model performance monitoring dashboard",
+        "Automated rollback capabilities"
+      ],
+      "tags": [
+        "ml-ops",
+        "model-registry",
+        "automation"
+      ],
+      "extension_category": "features",
+      "extension_name": "ai-ml",
+      "source_file": "extensions/features/ai-ml.yaml"
+    },
+    "UoW-AI-402": {
+      "name": "Data Pipeline Infrastructure",
+      "goal": "Build data processing pipeline for ML workflows",
+      "layer": "Infrastructure",
+      "priority": "High",
+      "dependencies": [
+        "UoW-106",
+        "UoW-107"
+      ],
+      "implements": [
+        "FR-AI-002"
+      ],
+      "estimated_effort_hours": "48",
+      "acceptance_criteria": [
+        "Real-time data streaming pipeline",
+        "Batch data processing jobs",
+        "Data quality validation framework",
+        "Feature store implementation",
+        "Data lineage tracking system"
+      ],
+      "tags": [
+        "data-pipeline",
+        "streaming",
+        "feature-store"
+      ],
+      "extension_category": "features",
+      "extension_name": "ai-ml",
+      "source_file": "extensions/features/ai-ml.yaml"
+    },
+    "UoW-AI-403": {
+      "name": "Inference API Service",
+      "goal": "Implement real-time model inference endpoints",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-AI-401",
+        "UoW-103"
+      ],
+      "implements": [
+        "FR-AI-003",
+        "NFR-AI-001"
+      ],
+      "estimated_effort_hours": "32",
+      "acceptance_criteria": [
+        "RESTful inference API endpoints",
+        "Request validation and preprocessing",
+        "Model serving with load balancing",
+        "Response caching and optimization",
+        "Inference monitoring and logging"
+      ],
+      "tags": [
+        "inference",
+        "api",
+        "serving"
+      ],
+      "extension_category": "features",
+      "extension_name": "ai-ml",
+      "source_file": "extensions/features/ai-ml.yaml"
+    },
+    "UoW-AI-404": {
+      "name": "Training Automation System",
+      "goal": "Automated ML training and retraining pipeline",
+      "layer": "Application",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-AI-402",
+        "UoW-106"
+      ],
+      "implements": [
+        "FR-AI-004"
+      ],
+      "estimated_effort_hours": "56",
+      "acceptance_criteria": [
+        "Automated training job orchestration",
+        "Hyperparameter tuning framework",
+        "Model validation and testing pipeline",
+        "Training metrics collection and analysis",
+        "Distributed training support"
+      ],
+      "tags": [
+        "training",
+        "automation",
+        "orchestration"
+      ],
+      "extension_category": "features",
+      "extension_name": "ai-ml",
+      "source_file": "extensions/features/ai-ml.yaml"
+    },
+    "UoW-AI-405": {
+      "name": "Vector Database Integration",
+      "goal": "Implement vector storage and similarity search",
+      "layer": "Infrastructure",
+      "priority": "High",
+      "dependencies": [
+        "UoW-101",
+        "UoW-102"
+      ],
+      "implements": [
+        "FR-AI-005"
+      ],
+      "estimated_effort_hours": "32",
+      "acceptance_criteria": [
+        "Vector database setup and configuration",
+        "Embedding storage and indexing",
+        "Similarity search API endpoints",
+        "Vector database scaling and optimization",
+        "Integration with existing data systems"
+      ],
+      "tags": [
+        "vector-db",
+        "embeddings",
+        "search"
+      ],
+      "extension_category": "features",
+      "extension_name": "ai-ml",
+      "source_file": "extensions/features/ai-ml.yaml"
+    },
+    "UoW-AI-406": {
+      "name": "LLM Integration Service",
+      "goal": "Large Language Model integration and management",
+      "layer": "Application",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-202",
+        "UoW-105"
+      ],
+      "implements": [
+        "FR-AI-006"
+      ],
+      "estimated_effort_hours": "40",
+      "acceptance_criteria": [
+        "LLM provider abstraction layer",
+        "Prompt template management system",
+        "Response caching and optimization",
+        "Usage monitoring and cost tracking",
+        "Content safety and moderation"
+      ],
+      "tags": [
+        "llm",
+        "integration",
+        "prompt-management"
+      ],
+      "extension_category": "features",
+      "extension_name": "ai-ml",
+      "source_file": "extensions/features/ai-ml.yaml"
+    },
+    "UoW-BC-801": {
+      "name": "UoW-BC-801",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-103",
+        "UoW-104"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "컨트랙트 ABI 관리",
+        "AC-2": "함수 호출 인터페이스",
+        "AC-3": "이벤트 모니터링",
+        "AC-4": "가스비 추정 기능"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "blockchain",
+      "source_file": "extensions/features/blockchain.yaml"
+    },
+    "UoW-BC-802": {
+      "name": "UoW-BC-802",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-104",
+        "UoW-105"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "HD 지갑 생성",
+        "AC-2": "개인키 암호화 저장",
+        "AC-3": "다중 체인 지원",
+        "AC-4": "백업 및 복구 기능"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "blockchain",
+      "source_file": "extensions/features/blockchain.yaml"
+    },
+    "UoW-BC-803": {
+      "name": "UoW-BC-803",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-106",
+        "UoW-107"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "트랜잭션 빌더",
+        "AC-2": "상태 추적 시스템",
+        "AC-3": "확인 대기 로직",
+        "AC-4": "재시도 메커니즘"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "blockchain",
+      "source_file": "extensions/features/blockchain.yaml"
+    },
+    "UoW-BC-804": {
+      "name": "UoW-BC-804",
+      "goal": "",
+      "layer": "",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-BC-801",
+        "UoW-101"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "NFT 민팅 인터페이스",
+        "AC-2": "메타데이터 IPFS 저장",
+        "AC-3": "소유권 검증",
+        "AC-4": "거래 내역 추적"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "blockchain",
+      "source_file": "extensions/features/blockchain.yaml"
+    },
+    "UoW-BC-805": {
+      "name": "UoW-BC-805",
+      "goal": "",
+      "layer": "",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-BC-801",
+        "UoW-BC-802"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "DEX 거래 기능",
+        "AC-2": "유동성 제공 관리",
+        "AC-3": "수익률 계산",
+        "AC-4": "리스크 평가 도구"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "blockchain",
+      "source_file": "extensions/features/blockchain.yaml"
+    },
+    "UoW-STR-701": {
+      "name": "UoW-STR-701",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-106",
+        "UoW-101"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "이벤트 스트림 처리 파이프라인",
+        "AC-2": "패턴 매칭 엔진",
+        "AC-3": "윈도우 연산 구현",
+        "AC-4": "상태 관리 시스템"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "streaming",
+      "source_file": "extensions/features/streaming.yaml"
+    },
+    "UoW-STR-702": {
+      "name": "UoW-STR-702",
+      "goal": "",
+      "layer": "",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-101",
+        "UoW-102"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "이벤트 저장 시스템",
+        "AC-2": "이벤트 재생 기능",
+        "AC-3": "스냅샷 관리",
+        "AC-4": "버전 관리 시스템"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "streaming",
+      "source_file": "extensions/features/streaming.yaml"
+    },
+    "UoW-STR-703": {
+      "name": "UoW-STR-703",
+      "goal": "",
+      "layer": "",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-103",
+        "UoW-106"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "실시간 차트 업데이트",
+        "AC-2": "메트릭 계산 엔진",
+        "AC-3": "알림 시스템",
+        "AC-4": "사용자 정의 위젯"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "streaming",
+      "source_file": "extensions/features/streaming.yaml"
+    },
+    "UoW-STR-704": {
+      "name": "UoW-STR-704",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-101",
+        "UoW-106"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "CDC 구현",
+        "AC-2": "충돌 해결 로직",
+        "AC-3": "일관성 검증",
+        "AC-4": "동기화 모니터링"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "streaming",
+      "source_file": "extensions/features/streaming.yaml"
+    },
+    "UoW-STR-705": {
+      "name": "UoW-STR-705",
+      "goal": "",
+      "layer": "",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-103",
+        "UoW-106"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "WebSocket 서버 구현",
+        "AC-2": "구독/발행 시스템",
+        "AC-3": "백프레셔 처리",
+        "AC-4": "연결 관리"
+      },
+      "tags": [],
+      "extension_category": "features",
+      "extension_name": "streaming",
+      "source_file": "extensions/features/streaming.yaml"
+    },
+    "UoW-EC-301": {
+      "name": "Product Catalog Implementation",
+      "goal": "Implement comprehensive product catalog system",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-201",
+        "UoW-102"
+      ],
+      "implements": [
+        "FR-EC-001"
+      ],
+      "estimated_effort_hours": "40",
+      "acceptance_criteria": [
+        "Product CRUD API endpoints",
+        "Category hierarchy management",
+        "Inventory tracking system",
+        "Product search and filtering",
+        "Media upload and management"
+      ],
+      "tags": [
+        "product",
+        "catalog",
+        "api"
+      ],
+      "extension_category": "domain",
+      "extension_name": "e-commerce",
+      "source_file": "extensions/domain/e-commerce.yaml"
+    },
+    "UoW-EC-302": {
+      "name": "Shopping Cart System",
+      "goal": "Implement persistent shopping cart functionality",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-EC-301",
+        "UoW-104"
+      ],
+      "implements": [
+        "FR-EC-002"
+      ],
+      "estimated_effort_hours": "24",
+      "acceptance_criteria": [
+        "Cart management API",
+        "Session-based cart persistence",
+        "Cart validation and business rules",
+        "Guest cart to user cart migration",
+        "Cart abandonment tracking"
+      ],
+      "tags": [
+        "cart",
+        "session",
+        "persistence"
+      ],
+      "extension_category": "domain",
+      "extension_name": "e-commerce",
+      "source_file": "extensions/domain/e-commerce.yaml"
+    },
+    "UoW-EC-303": {
+      "name": "Order Processing Engine",
+      "goal": "Implement order lifecycle management",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-EC-302",
+        "UoW-106"
+      ],
+      "implements": [
+        "FR-EC-003"
+      ],
+      "estimated_effort_hours": "32",
+      "acceptance_criteria": [
+        "Order creation and validation",
+        "Order state machine implementation",
+        "Inventory reservation system",
+        "Order modification workflows",
+        "Order history and tracking"
+      ],
+      "tags": [
+        "orders",
+        "state-machine",
+        "workflow"
+      ],
+      "extension_category": "domain",
+      "extension_name": "e-commerce",
+      "source_file": "extensions/domain/e-commerce.yaml"
+    },
+    "UoW-EC-304": {
+      "name": "Payment Gateway Integration",
+      "goal": "Secure payment processing implementation",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-EC-303",
+        "UoW-202"
+      ],
+      "implements": [
+        "FR-EC-004",
+        "NFR-EC-002"
+      ],
+      "estimated_effort_hours": "48",
+      "acceptance_criteria": [
+        "Multiple payment provider integration",
+        "PCI compliant payment flows",
+        "Payment retry and failure handling",
+        "Refund processing system",
+        "Payment audit and reconciliation"
+      ],
+      "tags": [
+        "payment",
+        "pci-dss",
+        "integration"
+      ],
+      "extension_category": "domain",
+      "extension_name": "e-commerce",
+      "source_file": "extensions/domain/e-commerce.yaml"
+    },
+    "UoW-EC-305": {
+      "name": "Customer Profile System",
+      "goal": "Customer management and profile functionality",
+      "layer": "Application",
+      "priority": "High",
+      "dependencies": [
+        "UoW-104",
+        "UoW-201"
+      ],
+      "implements": [
+        "FR-EC-005"
+      ],
+      "estimated_effort_hours": "24",
+      "acceptance_criteria": [
+        "Customer registration and authentication",
+        "Profile management API",
+        "Address book functionality",
+        "Order history integration",
+        "Preference management"
+      ],
+      "tags": [
+        "customer",
+        "profile",
+        "management"
+      ],
+      "extension_category": "domain",
+      "extension_name": "e-commerce",
+      "source_file": "extensions/domain/e-commerce.yaml"
+    },
+    "UoW-EC-306": {
+      "name": "Notification Infrastructure",
+      "goal": "Multi-channel notification system",
+      "layer": "Application",
+      "priority": "High",
+      "dependencies": [
+        "UoW-106",
+        "UoW-202"
+      ],
+      "implements": [
+        "FR-EC-006"
+      ],
+      "estimated_effort_hours": "32",
+      "acceptance_criteria": [
+        "Email notification templates",
+        "SMS notification integration",
+        "Push notification support",
+        "Notification preference management",
+        "Delivery tracking and analytics"
+      ],
+      "tags": [
+        "notifications",
+        "communication",
+        "templates"
+      ],
+      "extension_category": "domain",
+      "extension_name": "e-commerce",
+      "source_file": "extensions/domain/e-commerce.yaml"
+    },
+    "UoW-HC-501": {
+      "name": "UoW-HC-501",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104",
+        "UoW-101"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "환자 정보 CRUD 기능",
+        "AC-2": "의료 기록 템플릿",
+        "AC-3": "접근 권한 관리",
+        "AC-4": "감사 로그 기록"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "healthcare",
+      "source_file": "extensions/domain/healthcare.yaml"
+    },
+    "UoW-HC-502": {
+      "name": "UoW-HC-502",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-103",
+        "UoW-107"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "온라인 예약 인터페이스",
+        "AC-2": "스케줄 관리 기능",
+        "AC-3": "알림 시스템",
+        "AC-4": "대기자 관리"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "healthcare",
+      "source_file": "extensions/domain/healthcare.yaml"
+    },
+    "UoW-HC-503": {
+      "name": "UoW-HC-503",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-101",
+        "UoW-102"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "DICOM 파일 처리",
+        "AC-2": "영상 뷰어 구현",
+        "AC-3": "판독 결과 관리",
+        "AC-4": "아카이빙 기능"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "healthcare",
+      "source_file": "extensions/domain/healthcare.yaml"
+    },
+    "UoW-HC-504": {
+      "name": "UoW-HC-504",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-104",
+        "UoW-202"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "처방전 작성 인터페이스",
+        "AC-2": "약물 데이터베이스 연동",
+        "AC-3": "상호작용 검사",
+        "AC-4": "약국 연동 API"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "healthcare",
+      "source_file": "extensions/domain/healthcare.yaml"
+    },
+    "UoW-FT-401": {
+      "name": "UoW-FT-401",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104",
+        "UoW-101"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "다중 결제 수단 지원",
+        "AC-2": "PCI DSS 준수 구현",
+        "AC-3": "결제 상태 추적 시스템",
+        "AC-4": "환불 처리 기능"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "fintech",
+      "source_file": "extensions/domain/fintech.yaml"
+    },
+    "UoW-FT-402": {
+      "name": "UoW-FT-402",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-106",
+        "UoW-201"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "실시간 위험 점수 계산",
+        "AC-2": "ML 기반 이상 탐지",
+        "AC-3": "위험 규칙 엔진 구현",
+        "AC-4": "위험 대시보드 구축"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "fintech",
+      "source_file": "extensions/domain/fintech.yaml"
+    },
+    "UoW-FT-403": {
+      "name": "UoW-FT-403",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104",
+        "UoW-202"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "문서 검증 자동화",
+        "AC-2": "제재 목록 검사",
+        "AC-3": "의심 거래 모니터링",
+        "AC-4": "컴플라이언스 보고"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "fintech",
+      "source_file": "extensions/domain/fintech.yaml"
+    },
+    "UoW-FT-404": {
+      "name": "UoW-FT-404",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-101",
+        "UoW-106"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "실시간 데이터 집계",
+        "AC-2": "보고서 템플릿 시스템",
+        "AC-3": "스케줄링 기능",
+        "AC-4": "다양한 출력 형식 지원"
+      },
+      "tags": [],
+      "extension_category": "domain",
+      "extension_name": "fintech",
+      "source_file": "extensions/domain/fintech.yaml"
+    },
+    "UoW-GDPR-501": {
+      "name": "Data Subject Rights API",
+      "goal": "Implement API endpoints for GDPR data subject rights",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-201",
+        "UoW-104"
+      ],
+      "implements": [
+        "FR-GDPR-001"
+      ],
+      "estimated_effort_hours": "48",
+      "acceptance_criteria": [
+        "Data access API with authentication",
+        "Data rectification endpoints",
+        "Data erasure with cascading deletion",
+        "Data portability export functionality",
+        "Processing restriction mechanisms"
+      ],
+      "tags": [
+        "api",
+        "data-rights",
+        "endpoints"
+      ],
+      "extension_category": "compliance",
+      "extension_name": "gdpr",
+      "source_file": "extensions/compliance/gdpr.yaml"
+    },
+    "UoW-GDPR-502": {
+      "name": "Consent Management System",
+      "goal": "Build comprehensive consent collection and management",
+      "layer": "Application",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-103",
+        "UoW-105"
+      ],
+      "implements": [
+        "FR-GDPR-002"
+      ],
+      "estimated_effort_hours": "40",
+      "acceptance_criteria": [
+        "Consent collection UI components",
+        "Granular consent preferences",
+        "Consent withdrawal mechanisms",
+        "Cookie consent banner and management",
+        "Consent audit trail and history"
+      ],
+      "tags": [
+        "consent",
+        "ui",
+        "cookies"
+      ],
+      "extension_category": "compliance",
+      "extension_name": "gdpr",
+      "source_file": "extensions/compliance/gdpr.yaml"
+    },
+    "UoW-GDPR-503": {
+      "name": "Data Inventory System",
+      "goal": "Implement data processing inventory and mapping",
+      "layer": "Application",
+      "priority": "High",
+      "dependencies": [
+        "UoW-107",
+        "UoW-201"
+      ],
+      "implements": [
+        "FR-GDPR-003"
+      ],
+      "estimated_effort_hours": "32",
+      "acceptance_criteria": [
+        "Data classification and tagging system",
+        "Processing activity documentation",
+        "Data flow visualization and mapping",
+        "Retention policy automation",
+        "Third-party sharing tracking"
+      ],
+      "tags": [
+        "inventory",
+        "mapping",
+        "documentation"
+      ],
+      "extension_category": "compliance",
+      "extension_name": "gdpr",
+      "source_file": "extensions/compliance/gdpr.yaml"
+    },
+    "UoW-GDPR-504": {
+      "name": "Privacy by Design Framework",
+      "goal": "Implement privacy protection mechanisms",
+      "layer": "Infrastructure",
+      "priority": "High",
+      "dependencies": [
+        "UoW-105",
+        "UoW-102"
+      ],
+      "implements": [
+        "FR-GDPR-004",
+        "NFR-GDPR-003"
+      ],
+      "estimated_effort_hours": "56",
+      "acceptance_criteria": [
+        "Data minimization enforcement",
+        "Pseudonymization utilities",
+        "Purpose limitation controls",
+        "Privacy impact assessment tools",
+        "Default privacy configuration"
+      ],
+      "tags": [
+        "privacy-by-design",
+        "minimization",
+        "controls"
+      ],
+      "extension_category": "compliance",
+      "extension_name": "gdpr",
+      "source_file": "extensions/compliance/gdpr.yaml"
+    },
+    "UoW-GDPR-505": {
+      "name": "Breach Detection and Response",
+      "goal": "Automated breach detection and notification system",
+      "layer": "Infrastructure",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-107",
+        "UoW-106"
+      ],
+      "implements": [
+        "FR-GDPR-005"
+      ],
+      "estimated_effort_hours": "40",
+      "acceptance_criteria": [
+        "Breach detection algorithms and monitoring",
+        "Severity assessment automation",
+        "Notification workflow automation",
+        "Incident response documentation",
+        "Breach register and reporting"
+      ],
+      "tags": [
+        "breach-detection",
+        "automation",
+        "response"
+      ],
+      "extension_category": "compliance",
+      "extension_name": "gdpr",
+      "source_file": "extensions/compliance/gdpr.yaml"
+    },
+    "UoW-GDPR-506": {
+      "name": "DPO Dashboard and Tools",
+      "goal": "Data Protection Officer support tools",
+      "layer": "Application",
+      "priority": "Medium",
+      "dependencies": [
+        "UoW-GDPR-503",
+        "UoW-107"
+      ],
+      "implements": [
+        "FR-GDPR-006"
+      ],
+      "estimated_effort_hours": "32",
+      "acceptance_criteria": [
+        "Privacy compliance dashboard",
+        "Risk assessment tools",
+        "Vendor management system",
+        "Training tracking and reporting",
+        "Compliance metrics and KPIs"
+      ],
+      "tags": [
+        "dpo",
+        "dashboard",
+        "tools"
+      ],
+      "extension_category": "compliance",
+      "extension_name": "gdpr",
+      "source_file": "extensions/compliance/gdpr.yaml"
+    },
+    "UoW-HIPAA-901": {
+      "name": "UoW-HIPAA-901",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104",
+        "UoW-105"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "PHI 데이터 분류 시스템",
+        "AC-2": "암호화 스토리지",
+        "AC-3": "접근 권한 매트릭스",
+        "AC-4": "데이터 마스킹 기능"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "hipaa",
+      "source_file": "extensions/compliance/hipaa.yaml"
+    },
+    "UoW-HIPAA-902": {
+      "name": "UoW-HIPAA-902",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-107",
+        "UoW-101"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "포괄적 로깅 시스템",
+        "AC-2": "감사 보고서 생성",
+        "AC-3": "로그 무결성 검증",
+        "AC-4": "장기 보관 시스템"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "hipaa",
+      "source_file": "extensions/compliance/hipaa.yaml"
+    },
+    "UoW-HIPAA-903": {
+      "name": "UoW-HIPAA-903",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-101",
+        "UoW-104"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "변경 추적 시스템",
+        "AC-2": "디지털 서명 구현",
+        "AC-3": "버전 관리 시스템",
+        "AC-4": "무결성 검증 도구"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "hipaa",
+      "source_file": "extensions/compliance/hipaa.yaml"
+    },
+    "UoW-HIPAA-904": {
+      "name": "UoW-HIPAA-904",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104",
+        "UoW-107"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "RBAC 시스템 구현",
+        "AC-2": "접근 권한 관리 도구",
+        "AC-3": "이상 행위 탐지",
+        "AC-4": "권한 검토 자동화"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "hipaa",
+      "source_file": "extensions/compliance/hipaa.yaml"
+    },
+    "UoW-HIPAA-905": {
+      "name": "UoW-HIPAA-905",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-103",
+        "UoW-105"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "TLS/SSL 구현",
+        "AC-2": "종단간 암호화",
+        "AC-3": "무결성 검증",
+        "AC-4": "안전한 API 엔드포인트"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "hipaa",
+      "source_file": "extensions/compliance/hipaa.yaml"
+    },
+    "UoW-HIPAA-906": {
+      "name": "UoW-HIPAA-906",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-107",
+        "UoW-103"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "유출 탐지 시스템",
+        "AC-2": "자동 통지 시스템",
+        "AC-3": "사고 대응 워크플로",
+        "AC-4": "복구 계획 실행"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "hipaa",
+      "source_file": "extensions/compliance/hipaa.yaml"
+    },
+    "UoW-PCI-1001": {
+      "name": "UoW-PCI-1001",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104",
+        "UoW-105"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "PAN 토큰화 시스템",
+        "AC-2": "카드 데이터 암호화",
+        "AC-3": "키 관리 시스템",
+        "AC-4": "데이터 보관 정책 구현"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "pci-dss",
+      "source_file": "extensions/compliance/pci-dss.yaml"
+    },
+    "UoW-PCI-1002": {
+      "name": "UoW-PCI-1002",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-103",
+        "UoW-107"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "방화벽 규칙 구성",
+        "AC-2": "CDE 네트워크 분리",
+        "AC-3": "침입 탐지 시스템",
+        "AC-4": "네트워크 모니터링"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "pci-dss",
+      "source_file": "extensions/compliance/pci-dss.yaml"
+    },
+    "UoW-PCI-1003": {
+      "name": "UoW-PCI-1003",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-001D",
+        "UoW-107"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "취약점 스캔 자동화",
+        "AC-2": "패치 관리 시스템",
+        "AC-3": "보안 개발 도구",
+        "AC-4": "안티바이러스 통합"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "pci-dss",
+      "source_file": "extensions/compliance/pci-dss.yaml"
+    },
+    "UoW-PCI-1004": {
+      "name": "UoW-PCI-1004",
+      "goal": "",
+      "layer": "",
+      "priority": "Critical",
+      "dependencies": [
+        "UoW-104",
+        "UoW-107"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "고유 사용자 ID 시스템",
+        "AC-2": "MFA 인증 구현",
+        "AC-3": "역할 기반 권한",
+        "AC-4": "접근 권한 관리 도구"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "pci-dss",
+      "source_file": "extensions/compliance/pci-dss.yaml"
+    },
+    "UoW-PCI-1005": {
+      "name": "UoW-PCI-1005",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-107",
+        "UoW-101"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "로그 중앙 집중화",
+        "AC-2": "실시간 알림 시스템",
+        "AC-3": "보안 사고 대응",
+        "AC-4": "감사 보고서 생성"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "pci-dss",
+      "source_file": "extensions/compliance/pci-dss.yaml"
+    },
+    "UoW-PCI-1006": {
+      "name": "UoW-PCI-1006",
+      "goal": "",
+      "layer": "",
+      "priority": "High",
+      "dependencies": [
+        "UoW-000",
+        "UoW-107"
+      ],
+      "implements": [],
+      "estimated_effort_hours": "",
+      "acceptance_criteria": {
+        "AC-1": "정책 문서 관리",
+        "AC-2": "교육 관리 시스템",
+        "AC-3": "준수 모니터링",
+        "AC-4": "정책 업데이트 추적"
+      },
+      "tags": [],
+      "extension_category": "compliance",
+      "extension_name": "pci-dss",
+      "source_file": "extensions/compliance/pci-dss.yaml"
+    }
+  },
+  "contracts": {
+    "UoW-001-CONTRACT": {
+      "title": "Configuration Loader Contract",
+      "description": "Formal contract for Robust configuration loading with validation",
+      "applies_to": {
+        "entity_type": "uow",
+        "entity_name": "UoW-001",
+        "layer": "Foundation"
+      },
+      "preconditions": [
+        {
+          "condition_id": "PRE-001",
+          "description": "All dependent UoWs must be completed",
+          "predicate": "forall dep in ['UoW-001D']: dep.status eq 'completed'",
+          "validation_method": "check",
+          "error_handling": {
+            "error_code": "DEPENDENCIES_NOT_MET",
+            "error_message": "Required dependencies are not completed",
+            "error_type": "PreconditionError"
+          }
+        },
+        {
+          "condition_id": "PRE-002",
+          "description": "Foundation layer services must be available",
+          "predicate": "foundation_services_available eq true",
+          "validation_method": "check"
+        },
+        {
+          "condition_id": "PRE-003",
+          "description": "Precondition from AC-001: 검증할 데이터가 준비된 상태에서",
+          "predicate": "valid(input_data)",
+          "validation_method": "assert"
+        },
+        {
+          "condition_id": "PRE-004",
+          "description": "Precondition from AC-002: 설정 가능한 환경이 준비된 상태에서",
+          "predicate": "defined(configuration) and valid(configuration)",
+          "validation_method": "assert"
+        },
+        {
+          "condition_id": "PRE-005",
+          "description": "Precondition from AC-003: 설정 가능한 환경이 준비된 상태에서",
+          "predicate": "defined(configuration) and valid(configuration)",
+          "validation_method": "assert"
+        },
+        {
+          "condition_id": "PRE-006",
+          "description": "Precondition from AC-004: 시스템이 정상적으로 동작하는 상태에서",
+          "predicate": "operation_completed eq true",
+          "validation_method": "assert"
+        }
+      ],
+      "postconditions": [
+        {
+          "condition_id": "POST-001",
+          "description": "Result from AC-001: 검증 결과가 올바르게 반환되어야 한다",
+          "predicate": "valid(input_data)",
+          "validation_method": "ensure",
+          "success_criteria": [
+            "검증 결과가 올바르게 반환되어야 한다"
+          ]
+        },
+        {
+          "condition_id": "POST-002",
+          "description": "Additional condition from AC-001: 입력값이 유효성 검사를 통과해야 한다",
+          "predicate": "operation_completed eq true",
+          "validation_method": "verify"
+        },
+        {
+          "condition_id": "POST-003",
+          "description": "Result from AC-002: 설정이 올바르게 적용되어야 한다",
+          "predicate": "defined(configuration) and valid(configuration)",
+          "validation_method": "ensure",
+          "success_criteria": [
+            "설정이 올바르게 적용되어야 한다"
+          ]
+        },
+        {
+          "condition_id": "POST-004",
+          "description": "Additional condition from AC-002: 성능 요구사항이 충족되어야 한다",
+          "predicate": "operation_completed eq true",
+          "validation_method": "verify"
+        },
+        {
+          "condition_id": "POST-005",
+          "description": "Additional condition from AC-002: 오류 처리가 적절해야 한다",
+          "predicate": "defined(error_info)",
+          "validation_method": "verify"
+        },
+        {
+          "condition_id": "POST-006",
+          "description": "Result from AC-003: 설정이 올바르게 적용되어야 한다",
+          "predicate": "defined(configuration) and valid(configuration)",
+          "validation_method": "ensure",
+          "success_criteria": [
+            "설정이 올바르게 적용되어야 한다"
+          ]
+        },
+        {
+          "condition_id": "POST-007",
+          "description": "Additional condition from AC-003: 성능 요구사항이 충족되어야 한다",
+          "predicate": "operation_completed eq true",
+          "validation_method": "verify"
+        },
+        {
+          "condition_id": "POST-008",
+          "description": "Additional condition from AC-003: 오류 처리가 적절해야 한다",
+          "predicate": "defined(error_info)",
+          "validation_method": "verify"
+        },
+        {
+          "condition_id": "POST-009",
+          "description": "Result from AC-004: Comprehensive error handling and detailed messages",
+          "predicate": "defined(error_info)",
+          "validation_method": "ensure",
+          "success_criteria": [
+            "Comprehensive error handling and detailed messages"
+          ]
+        },
+        {
+          "condition_id": "POST-010",
+          "description": "Additional condition from AC-004: 결과가 예상된 형태로 반환되어야 한다",
+          "predicate": "operation_completed eq true",
+          "validation_method": "verify"
+        },
+        {
+          "condition_id": "POST-011",
+          "description": "Additional condition from AC-004: 시스템 상태가 일관성을 유지해야 한다",
+          "predicate": "operation_completed eq true",
+          "validation_method": "verify"
+        }
+      ],
+      "invariants": [
+        {
+          "invariant_id": "INV-001",
+          "description": "System configuration remains valid",
+          "predicate": "valid(system_config)",
+          "scope": "global",
+          "monitoring": {
+            "check_frequency": "always",
+            "alert_on_violation": true
+          }
+        },
+        {
+          "invariant_id": "INV-999",
+          "description": "Security context is maintained",
+          "predicate": "security_context_valid eq true",
+          "scope": "transaction",
+          "monitoring": {
+            "check_frequency": "always",
+            "alert_on_violation": true
+          }
+        }
+      ],
+      "side_effects": [
+        {
+          "effect_id": "EFF-001",
+          "description": "Updates system state as specified in acceptance criteria",
+          "effect_type": "state_change",
+          "scope": "system_state",
+          "reversible": true
+        }
+      ],
+      "performance_guarantees": {
+        "max_execution_time": "100ms",
+        "availability": "99.99%",
+        "time_complexity": "O(n)",
+        "space_complexity": "O(1)"
+      },
+      "security_constraints": {
+        "authentication_required": true,
+        "authorization_rules": [
+          "user.authenticated"
+        ],
+        "data_classification": "internal",
+        "encryption_required": false,
+        "audit_required": true
+      },
+      "source_file": "contracts/uow-001-contract.yaml"
+    }
+  },
+  "bdd_scenarios": {
+    "FEATURE-UOW-000": {
+      "title": "UoW-000",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_000.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-01",
+          "name": "Validate Standard project layout with clear directory structure",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-02",
+          "name": "Validate Architecture layers clearly defined and documented",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-03",
+          "name": "Validate Module interfaces defined for dependency injection",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-04",
+          "name": "Validate Documentation structure and standards established",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-000-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-107": {
+      "title": "UoW-107",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_107.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-01",
+          "name": "Validate Distributed tracing implementation",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-02",
+          "name": "Validate Metrics collection and export",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-03",
+          "name": "Validate Correlation IDs across service boundaries",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-04",
+          "name": "Validate Performance monitoring and alerting",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-107-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-001A": {
+      "title": "UoW-001A",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_001a.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-01",
+          "name": "Validate Core dependencies installed (framework, database, cache)",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-02",
+          "name": "Validate Development tools configured (testing, linting, security)",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-03",
+          "name": "Validate Dependency security scanning integrated",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-04",
+          "name": "Validate Version pinning for reproducible builds",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001A-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-105": {
+      "title": "UoW-105",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_105.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-01",
+          "name": "Validate Structured error responses with correlation IDs",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-02",
+          "name": "Validate Error categorization and HTTP status mapping",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-03",
+          "name": "Validate Retry mechanisms for transient failures",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-04",
+          "name": "Validate Circuit breaker patterns for external deps",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-105-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-202": {
+      "title": "UoW-202",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_202.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-01",
+          "name": "Validate HTTP client with circuit breaker and retry",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-02",
+          "name": "Validate API response caching and validation",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-03",
+          "name": "Validate Rate limiting for external API calls",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-04",
+          "name": "Validate Fallback strategies and error handling",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-202-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-102": {
+      "title": "UoW-102",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_102.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-01",
+          "name": "Validate Cache client configuration with connection pooling",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-02",
+          "name": "Validate Cache operations (CRUD) with error handling",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-03",
+          "name": "Validate TTL management and cache invalidation strategies",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-04",
+          "name": "Validate Connection resilience and fallback mechanisms",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-102-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-001B": {
+      "title": "UoW-001B",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_001b.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-01",
+          "name": "Validate Unit testing framework configured",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-02",
+          "name": "Validate Integration testing setup with test containers",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-03",
+          "name": "Validate Coverage reporting and thresholds configured",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-04",
+          "name": "Validate Mock generation tools installed",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001B-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-001C": {
+      "title": "UoW-001C",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_001c.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-01",
+          "name": "Validate Structured configuration with schema validation",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-02",
+          "name": "Validate Environment-specific configuration files",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-03",
+          "name": "Validate Hot-reload capability without service restart",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-04",
+          "name": "Validate Comprehensive validation and error reporting",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001C-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-103": {
+      "title": "UoW-103",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_103.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-01",
+          "name": "Validate HTTP server setup with configurable middleware",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-02",
+          "name": "Validate Security headers and rate limiting middleware",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-03",
+          "name": "Validate Request/response logging with structured format",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-04",
+          "name": "Validate Graceful shutdown and connection draining",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-103-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-001D": {
+      "title": "UoW-001D",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_001d.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-01",
+          "name": "Validate Automated testing on pull requests",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-02",
+          "name": "Validate Code quality gates with linting",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-03",
+          "name": "Validate Security scanning automation",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-04",
+          "name": "Validate Automated deployment workflows",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001D-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-101": {
+      "title": "UoW-101",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_101.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-01",
+          "name": "Validate Database connection pool management with health monitoring",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-02",
+          "name": "Validate Transaction support with proper error handling",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-03",
+          "name": "Validate Database migration framework integration",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-04",
+          "name": "Validate Connection resilience and automatic reconnection",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-101-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-201": {
+      "title": "UoW-201",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_201.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-01",
+          "name": "Validate Business rules implementation with validation",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-02",
+          "name": "Validate Input sanitization and output encoding",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-03",
+          "name": "Validate Error handling with business-specific codes",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-04",
+          "name": "Validate Comprehensive audit trail for operations",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-201-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-002": {
+      "title": "UoW-002",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_002.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-01",
+          "name": "Validate Cross-field validation and dependency checking",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-02",
+          "name": "Validate Business rule validation (ports, URLs, formats)",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-03",
+          "name": "Validate Configuration health check endpoints",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-04",
+          "name": "Validate Validation error reporting with field specifics",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-002-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-104": {
+      "title": "UoW-104",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_104.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-01",
+          "name": "Validate Token validation and generation",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-02",
+          "name": "Validate Role-based access control middleware",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-03",
+          "name": "Validate Session management with secure storage",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-04",
+          "name": "Validate Audit logging for authentication events",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-104-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-001": {
+      "title": "UoW-001",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_001.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-01",
+          "name": "Validate Load and validate configuration files against schema",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-02",
+          "name": "Validate Support for environment-specific configuration resolution",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-03",
+          "name": "Validate Configuration caching and reload capability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-04",
+          "name": "Validate Comprehensive error handling and detailed messages",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-001-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-210": {
+      "title": "UoW-210",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_210.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-01",
+          "name": "Validate Multi-stage Docker build with optimized size",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-02",
+          "name": "Validate Security hardening with non-root execution",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-03",
+          "name": "Validate Health check integration and readiness probes",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-04",
+          "name": "Validate Container orchestration support",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-210-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-106": {
+      "title": "UoW-106",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_106.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-01",
+          "name": "Validate Queue-based task processing implementation",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-02",
+          "name": "Validate Job retry and dead letter queue handling",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-03",
+          "name": "Validate Task status tracking and monitoring",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-04",
+          "name": "Validate Priority-based task scheduling",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-106-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    },
+    "FEATURE-UOW-003": {
+      "title": "UoW-003",
+      "file_path": "/home/jang/Workspace/wavis-template/features/uow_003.feature",
+      "tags": [
+        "phase_1",
+        "General",
+        "UoW"
+      ],
+      "scenarios": [
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-01",
+          "name": "Validate Centralized configuration access interface",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-02",
+          "name": "Validate Hot-reload capability without service interruption",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-03",
+          "name": "Validate Configuration change event notifications",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-04",
+          "name": "Validate Configuration backup and rollback capability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-05",
+          "name": "Handle invalid input",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-06",
+          "name": "Handle system unavailability",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-07",
+          "name": "{{ERROR_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        },
+        {
+          "id": "FEATURE-UOW-003-SCENARIO-08",
+          "name": "{{PERFORMANCE_SCENARIO_NAME}}",
+          "steps": [],
+          "tags": []
+        }
+      ]
+    }
+  },
+  "implementation_artifacts": {
+    "IMPL-UoW-000": {
+      "type": "module",
+      "module_path": "src/foundation/uow_000.py",
+      "estimated_loc": 100,
+      "functions": [
+        "project_structure_setup"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_000.py"
+      ],
+      "implements_uow": "UoW-000",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-001A": {
+      "type": "module",
+      "module_path": "src/foundation/uow_001a.py",
+      "estimated_loc": 100,
+      "functions": [
+        "dependencies_installation"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_001a.py"
+      ],
+      "implements_uow": "UoW-001A",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-001B": {
+      "type": "module",
+      "module_path": "src/foundation/uow_001b.py",
+      "estimated_loc": 100,
+      "functions": [
+        "testing_framework_setup"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_001b.py"
+      ],
+      "implements_uow": "UoW-001B",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-001C": {
+      "type": "module",
+      "module_path": "src/foundation/uow_001c.py",
+      "estimated_loc": 100,
+      "functions": [
+        "configuration_system"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_001c.py"
+      ],
+      "implements_uow": "UoW-001C",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-001D": {
+      "type": "module",
+      "module_path": "src/foundation/uow_001d.py",
+      "estimated_loc": 100,
+      "functions": [
+        "ci/cd_pipeline"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_001d.py"
+      ],
+      "implements_uow": "UoW-001D",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-001": {
+      "type": "module",
+      "module_path": "src/foundation/uow_001.py",
+      "estimated_loc": 100,
+      "functions": [
+        "configuration_loader"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_001.py"
+      ],
+      "implements_uow": "UoW-001",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-002": {
+      "type": "module",
+      "module_path": "src/foundation/uow_002.py",
+      "estimated_loc": 100,
+      "functions": [
+        "advanced_config_validation"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_002.py"
+      ],
+      "implements_uow": "UoW-002",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-003": {
+      "type": "module",
+      "module_path": "src/foundation/uow_003.py",
+      "estimated_loc": 100,
+      "functions": [
+        "configuration_manager"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_003.py"
+      ],
+      "implements_uow": "UoW-003",
+      "layer": "foundation"
+    },
+    "IMPL-UoW-101": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_101.py",
+      "estimated_loc": 100,
+      "functions": [
+        "database_connection"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_101.py"
+      ],
+      "implements_uow": "UoW-101",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-102": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_102.py",
+      "estimated_loc": 100,
+      "functions": [
+        "cache_integration"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_102.py"
+      ],
+      "implements_uow": "UoW-102",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-103": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_103.py",
+      "estimated_loc": 100,
+      "functions": [
+        "http_server_foundation"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_103.py"
+      ],
+      "implements_uow": "UoW-103",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-104": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_104.py",
+      "estimated_loc": 100,
+      "functions": [
+        "authentication_system"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_104.py"
+      ],
+      "implements_uow": "UoW-104",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-105": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_105.py",
+      "estimated_loc": 100,
+      "functions": [
+        "error_handling_infrastructure"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_105.py"
+      ],
+      "implements_uow": "UoW-105",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-106": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_106.py",
+      "estimated_loc": 100,
+      "functions": [
+        "async_processing_infrastructure"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_106.py"
+      ],
+      "implements_uow": "UoW-106",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-107": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_107.py",
+      "estimated_loc": 100,
+      "functions": [
+        "opentelemetry_integration"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_107.py"
+      ],
+      "implements_uow": "UoW-107",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-201": {
+      "type": "module",
+      "module_path": "src/application/uow_201.py",
+      "estimated_loc": 100,
+      "functions": [
+        "core_business_logic"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_201.py"
+      ],
+      "implements_uow": "UoW-201",
+      "layer": "application"
+    },
+    "IMPL-UoW-202": {
+      "type": "module",
+      "module_path": "src/application/uow_202.py",
+      "estimated_loc": 100,
+      "functions": [
+        "external_api_integration"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_202.py"
+      ],
+      "implements_uow": "UoW-202",
+      "layer": "application"
+    },
+    "IMPL-UoW-210": {
+      "type": "module",
+      "module_path": "src/uow_210.py",
+      "estimated_loc": 100,
+      "functions": [
+        "docker_deployment"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_210.py"
+      ],
+      "implements_uow": "UoW-210",
+      "layer": "deployment"
+    },
+    "IMPL-UoW-IOT-601": {
+      "type": "module",
+      "module_path": "src/uow_iot_601.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-iot-601"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_iot_601.py"
+      ],
+      "implements_uow": "UoW-IOT-601",
+      "layer": ""
+    },
+    "IMPL-UoW-IOT-602": {
+      "type": "module",
+      "module_path": "src/uow_iot_602.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-iot-602"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_iot_602.py"
+      ],
+      "implements_uow": "UoW-IOT-602",
+      "layer": ""
+    },
+    "IMPL-UoW-IOT-603": {
+      "type": "module",
+      "module_path": "src/uow_iot_603.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-iot-603"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_iot_603.py"
+      ],
+      "implements_uow": "UoW-IOT-603",
+      "layer": ""
+    },
+    "IMPL-UoW-IOT-604": {
+      "type": "module",
+      "module_path": "src/uow_iot_604.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-iot-604"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_iot_604.py"
+      ],
+      "implements_uow": "UoW-IOT-604",
+      "layer": ""
+    },
+    "IMPL-UoW-IOT-605": {
+      "type": "module",
+      "module_path": "src/uow_iot_605.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-iot-605"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_iot_605.py"
+      ],
+      "implements_uow": "UoW-IOT-605",
+      "layer": ""
+    },
+    "IMPL-UoW-AI-401": {
+      "type": "module",
+      "module_path": "src/application/uow_ai_401.py",
+      "estimated_loc": 100,
+      "functions": [
+        "ml_model_management_platform"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ai_401.py"
+      ],
+      "implements_uow": "UoW-AI-401",
+      "layer": "application"
+    },
+    "IMPL-UoW-AI-402": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_ai_402.py",
+      "estimated_loc": 100,
+      "functions": [
+        "data_pipeline_infrastructure"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ai_402.py"
+      ],
+      "implements_uow": "UoW-AI-402",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-AI-403": {
+      "type": "module",
+      "module_path": "src/application/uow_ai_403.py",
+      "estimated_loc": 100,
+      "functions": [
+        "inference_api_service"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ai_403.py"
+      ],
+      "implements_uow": "UoW-AI-403",
+      "layer": "application"
+    },
+    "IMPL-UoW-AI-404": {
+      "type": "module",
+      "module_path": "src/application/uow_ai_404.py",
+      "estimated_loc": 100,
+      "functions": [
+        "training_automation_system"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ai_404.py"
+      ],
+      "implements_uow": "UoW-AI-404",
+      "layer": "application"
+    },
+    "IMPL-UoW-AI-405": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_ai_405.py",
+      "estimated_loc": 100,
+      "functions": [
+        "vector_database_integration"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ai_405.py"
+      ],
+      "implements_uow": "UoW-AI-405",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-AI-406": {
+      "type": "module",
+      "module_path": "src/application/uow_ai_406.py",
+      "estimated_loc": 100,
+      "functions": [
+        "llm_integration_service"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ai_406.py"
+      ],
+      "implements_uow": "UoW-AI-406",
+      "layer": "application"
+    },
+    "IMPL-UoW-BC-801": {
+      "type": "module",
+      "module_path": "src/uow_bc_801.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-bc-801"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_bc_801.py"
+      ],
+      "implements_uow": "UoW-BC-801",
+      "layer": ""
+    },
+    "IMPL-UoW-BC-802": {
+      "type": "module",
+      "module_path": "src/uow_bc_802.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-bc-802"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_bc_802.py"
+      ],
+      "implements_uow": "UoW-BC-802",
+      "layer": ""
+    },
+    "IMPL-UoW-BC-803": {
+      "type": "module",
+      "module_path": "src/uow_bc_803.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-bc-803"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_bc_803.py"
+      ],
+      "implements_uow": "UoW-BC-803",
+      "layer": ""
+    },
+    "IMPL-UoW-BC-804": {
+      "type": "module",
+      "module_path": "src/uow_bc_804.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-bc-804"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_bc_804.py"
+      ],
+      "implements_uow": "UoW-BC-804",
+      "layer": ""
+    },
+    "IMPL-UoW-BC-805": {
+      "type": "module",
+      "module_path": "src/uow_bc_805.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-bc-805"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_bc_805.py"
+      ],
+      "implements_uow": "UoW-BC-805",
+      "layer": ""
+    },
+    "IMPL-UoW-STR-701": {
+      "type": "module",
+      "module_path": "src/uow_str_701.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-str-701"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_str_701.py"
+      ],
+      "implements_uow": "UoW-STR-701",
+      "layer": ""
+    },
+    "IMPL-UoW-STR-702": {
+      "type": "module",
+      "module_path": "src/uow_str_702.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-str-702"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_str_702.py"
+      ],
+      "implements_uow": "UoW-STR-702",
+      "layer": ""
+    },
+    "IMPL-UoW-STR-703": {
+      "type": "module",
+      "module_path": "src/uow_str_703.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-str-703"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_str_703.py"
+      ],
+      "implements_uow": "UoW-STR-703",
+      "layer": ""
+    },
+    "IMPL-UoW-STR-704": {
+      "type": "module",
+      "module_path": "src/uow_str_704.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-str-704"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_str_704.py"
+      ],
+      "implements_uow": "UoW-STR-704",
+      "layer": ""
+    },
+    "IMPL-UoW-STR-705": {
+      "type": "module",
+      "module_path": "src/uow_str_705.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-str-705"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_str_705.py"
+      ],
+      "implements_uow": "UoW-STR-705",
+      "layer": ""
+    },
+    "IMPL-UoW-EC-301": {
+      "type": "module",
+      "module_path": "src/application/uow_ec_301.py",
+      "estimated_loc": 100,
+      "functions": [
+        "product_catalog_implementation"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ec_301.py"
+      ],
+      "implements_uow": "UoW-EC-301",
+      "layer": "application"
+    },
+    "IMPL-UoW-EC-302": {
+      "type": "module",
+      "module_path": "src/application/uow_ec_302.py",
+      "estimated_loc": 100,
+      "functions": [
+        "shopping_cart_system"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ec_302.py"
+      ],
+      "implements_uow": "UoW-EC-302",
+      "layer": "application"
+    },
+    "IMPL-UoW-EC-303": {
+      "type": "module",
+      "module_path": "src/application/uow_ec_303.py",
+      "estimated_loc": 100,
+      "functions": [
+        "order_processing_engine"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ec_303.py"
+      ],
+      "implements_uow": "UoW-EC-303",
+      "layer": "application"
+    },
+    "IMPL-UoW-EC-304": {
+      "type": "module",
+      "module_path": "src/application/uow_ec_304.py",
+      "estimated_loc": 100,
+      "functions": [
+        "payment_gateway_integration"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ec_304.py"
+      ],
+      "implements_uow": "UoW-EC-304",
+      "layer": "application"
+    },
+    "IMPL-UoW-EC-305": {
+      "type": "module",
+      "module_path": "src/application/uow_ec_305.py",
+      "estimated_loc": 100,
+      "functions": [
+        "customer_profile_system"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ec_305.py"
+      ],
+      "implements_uow": "UoW-EC-305",
+      "layer": "application"
+    },
+    "IMPL-UoW-EC-306": {
+      "type": "module",
+      "module_path": "src/application/uow_ec_306.py",
+      "estimated_loc": 100,
+      "functions": [
+        "notification_infrastructure"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ec_306.py"
+      ],
+      "implements_uow": "UoW-EC-306",
+      "layer": "application"
+    },
+    "IMPL-UoW-HC-501": {
+      "type": "module",
+      "module_path": "src/uow_hc_501.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hc-501"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hc_501.py"
+      ],
+      "implements_uow": "UoW-HC-501",
+      "layer": ""
+    },
+    "IMPL-UoW-HC-502": {
+      "type": "module",
+      "module_path": "src/uow_hc_502.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hc-502"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hc_502.py"
+      ],
+      "implements_uow": "UoW-HC-502",
+      "layer": ""
+    },
+    "IMPL-UoW-HC-503": {
+      "type": "module",
+      "module_path": "src/uow_hc_503.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hc-503"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hc_503.py"
+      ],
+      "implements_uow": "UoW-HC-503",
+      "layer": ""
+    },
+    "IMPL-UoW-HC-504": {
+      "type": "module",
+      "module_path": "src/uow_hc_504.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hc-504"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hc_504.py"
+      ],
+      "implements_uow": "UoW-HC-504",
+      "layer": ""
+    },
+    "IMPL-UoW-FT-401": {
+      "type": "module",
+      "module_path": "src/uow_ft_401.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-ft-401"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ft_401.py"
+      ],
+      "implements_uow": "UoW-FT-401",
+      "layer": ""
+    },
+    "IMPL-UoW-FT-402": {
+      "type": "module",
+      "module_path": "src/uow_ft_402.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-ft-402"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ft_402.py"
+      ],
+      "implements_uow": "UoW-FT-402",
+      "layer": ""
+    },
+    "IMPL-UoW-FT-403": {
+      "type": "module",
+      "module_path": "src/uow_ft_403.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-ft-403"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ft_403.py"
+      ],
+      "implements_uow": "UoW-FT-403",
+      "layer": ""
+    },
+    "IMPL-UoW-FT-404": {
+      "type": "module",
+      "module_path": "src/uow_ft_404.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-ft-404"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_ft_404.py"
+      ],
+      "implements_uow": "UoW-FT-404",
+      "layer": ""
+    },
+    "IMPL-UoW-GDPR-501": {
+      "type": "module",
+      "module_path": "src/application/uow_gdpr_501.py",
+      "estimated_loc": 100,
+      "functions": [
+        "data_subject_rights_api"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_gdpr_501.py"
+      ],
+      "implements_uow": "UoW-GDPR-501",
+      "layer": "application"
+    },
+    "IMPL-UoW-GDPR-502": {
+      "type": "module",
+      "module_path": "src/application/uow_gdpr_502.py",
+      "estimated_loc": 100,
+      "functions": [
+        "consent_management_system"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_gdpr_502.py"
+      ],
+      "implements_uow": "UoW-GDPR-502",
+      "layer": "application"
+    },
+    "IMPL-UoW-GDPR-503": {
+      "type": "module",
+      "module_path": "src/application/uow_gdpr_503.py",
+      "estimated_loc": 100,
+      "functions": [
+        "data_inventory_system"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_gdpr_503.py"
+      ],
+      "implements_uow": "UoW-GDPR-503",
+      "layer": "application"
+    },
+    "IMPL-UoW-GDPR-504": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_gdpr_504.py",
+      "estimated_loc": 100,
+      "functions": [
+        "privacy_by_design_framework"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_gdpr_504.py"
+      ],
+      "implements_uow": "UoW-GDPR-504",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-GDPR-505": {
+      "type": "module",
+      "module_path": "src/infrastructure/uow_gdpr_505.py",
+      "estimated_loc": 100,
+      "functions": [
+        "breach_detection_and_response"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_gdpr_505.py"
+      ],
+      "implements_uow": "UoW-GDPR-505",
+      "layer": "infrastructure"
+    },
+    "IMPL-UoW-GDPR-506": {
+      "type": "module",
+      "module_path": "src/application/uow_gdpr_506.py",
+      "estimated_loc": 100,
+      "functions": [
+        "dpo_dashboard_and_tools"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_gdpr_506.py"
+      ],
+      "implements_uow": "UoW-GDPR-506",
+      "layer": "application"
+    },
+    "IMPL-UoW-HIPAA-901": {
+      "type": "module",
+      "module_path": "src/uow_hipaa_901.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hipaa-901"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hipaa_901.py"
+      ],
+      "implements_uow": "UoW-HIPAA-901",
+      "layer": ""
+    },
+    "IMPL-UoW-HIPAA-902": {
+      "type": "module",
+      "module_path": "src/uow_hipaa_902.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hipaa-902"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hipaa_902.py"
+      ],
+      "implements_uow": "UoW-HIPAA-902",
+      "layer": ""
+    },
+    "IMPL-UoW-HIPAA-903": {
+      "type": "module",
+      "module_path": "src/uow_hipaa_903.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hipaa-903"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hipaa_903.py"
+      ],
+      "implements_uow": "UoW-HIPAA-903",
+      "layer": ""
+    },
+    "IMPL-UoW-HIPAA-904": {
+      "type": "module",
+      "module_path": "src/uow_hipaa_904.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hipaa-904"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hipaa_904.py"
+      ],
+      "implements_uow": "UoW-HIPAA-904",
+      "layer": ""
+    },
+    "IMPL-UoW-HIPAA-905": {
+      "type": "module",
+      "module_path": "src/uow_hipaa_905.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hipaa-905"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hipaa_905.py"
+      ],
+      "implements_uow": "UoW-HIPAA-905",
+      "layer": ""
+    },
+    "IMPL-UoW-HIPAA-906": {
+      "type": "module",
+      "module_path": "src/uow_hipaa_906.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-hipaa-906"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_hipaa_906.py"
+      ],
+      "implements_uow": "UoW-HIPAA-906",
+      "layer": ""
+    },
+    "IMPL-UoW-PCI-1001": {
+      "type": "module",
+      "module_path": "src/uow_pci_1001.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-pci-1001"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_pci_1001.py"
+      ],
+      "implements_uow": "UoW-PCI-1001",
+      "layer": ""
+    },
+    "IMPL-UoW-PCI-1002": {
+      "type": "module",
+      "module_path": "src/uow_pci_1002.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-pci-1002"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_pci_1002.py"
+      ],
+      "implements_uow": "UoW-PCI-1002",
+      "layer": ""
+    },
+    "IMPL-UoW-PCI-1003": {
+      "type": "module",
+      "module_path": "src/uow_pci_1003.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-pci-1003"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_pci_1003.py"
+      ],
+      "implements_uow": "UoW-PCI-1003",
+      "layer": ""
+    },
+    "IMPL-UoW-PCI-1004": {
+      "type": "module",
+      "module_path": "src/uow_pci_1004.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-pci-1004"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_pci_1004.py"
+      ],
+      "implements_uow": "UoW-PCI-1004",
+      "layer": ""
+    },
+    "IMPL-UoW-PCI-1005": {
+      "type": "module",
+      "module_path": "src/uow_pci_1005.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-pci-1005"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_pci_1005.py"
+      ],
+      "implements_uow": "UoW-PCI-1005",
+      "layer": ""
+    },
+    "IMPL-UoW-PCI-1006": {
+      "type": "module",
+      "module_path": "src/uow_pci_1006.py",
+      "estimated_loc": 100,
+      "functions": [
+        "uow-pci-1006"
+      ],
+      "classes": [],
+      "tests": [
+        "test_uow_pci_1006.py"
+      ],
+      "implements_uow": "UoW-PCI-1006",
+      "layer": ""
+    }
+  },
+  "relationships": {
+    "fr_to_uow": {
+      "FR-001": [
+        "UoW-001C",
+        "UoW-001",
+        "UoW-002",
+        "UoW-003"
+      ],
+      "FR-003": [
+        "UoW-101"
+      ],
+      "FR-004": [
+        "UoW-102"
+      ],
+      "FR-002": [
+        "UoW-103"
+      ],
+      "FR-005": [
+        "UoW-104"
+      ],
+      "FR-006": [
+        "UoW-105"
+      ],
+      "FR-007": [
+        "UoW-106"
+      ],
+      "FR-008": [
+        "UoW-107"
+      ],
+      "FR-009": [
+        "UoW-201"
+      ],
+      "FR-010": [
+        "UoW-202"
+      ],
+      "FR-AI-001": [
+        "UoW-AI-401"
+      ],
+      "FR-AI-002": [
+        "UoW-AI-402"
+      ],
+      "FR-AI-003": [
+        "UoW-AI-403"
+      ],
+      "FR-AI-004": [
+        "UoW-AI-404"
+      ],
+      "FR-AI-005": [
+        "UoW-AI-405"
+      ],
+      "FR-AI-006": [
+        "UoW-AI-406"
+      ],
+      "FR-EC-001": [
+        "UoW-EC-301"
+      ],
+      "FR-EC-002": [
+        "UoW-EC-302"
+      ],
+      "FR-EC-003": [
+        "UoW-EC-303"
+      ],
+      "FR-EC-004": [
+        "UoW-EC-304"
+      ],
+      "FR-EC-005": [
+        "UoW-EC-305"
+      ],
+      "FR-EC-006": [
+        "UoW-EC-306"
+      ],
+      "FR-GDPR-001": [
+        "UoW-GDPR-501"
+      ],
+      "FR-GDPR-002": [
+        "UoW-GDPR-502"
+      ],
+      "FR-GDPR-003": [
+        "UoW-GDPR-503"
+      ],
+      "FR-GDPR-004": [
+        "UoW-GDPR-504"
+      ],
+      "FR-GDPR-005": [
+        "UoW-GDPR-505"
+      ],
+      "FR-GDPR-006": [
+        "UoW-GDPR-506"
+      ]
+    },
+    "nfr_to_uow": {
+      "NFR-005": [
+        "UoW-000",
+        "UoW-001A",
+        "UoW-001B",
+        "UoW-001D"
+      ],
+      "NFR-003": [
+        "UoW-001A",
+        "UoW-001C"
+      ],
+      "NFR-001": [
+        "UoW-003"
+      ],
+      "NFR-007": [
+        "UoW-107",
+        "UoW-210"
+      ],
+      "NFR-002": [
+        "UoW-210"
+      ],
+      "NFR-004": [
+        "UoW-210"
+      ],
+      "NFR-AI-001": [
+        "UoW-AI-403"
+      ],
+      "NFR-EC-002": [
+        "UoW-EC-304"
+      ],
+      "NFR-GDPR-003": [
+        "UoW-GDPR-504"
+      ]
+    },
+    "uow_to_contract": {
+      "UoW-001": "UoW-001-CONTRACT"
+    },
+    "uow_to_bdd": {
+      "UoW-000": "FEATURE-UOW-000",
+      "UoW-107": "FEATURE-UOW-107",
+      "UoW-001A": "FEATURE-UOW-001A",
+      "UoW-105": "FEATURE-UOW-105",
+      "UoW-202": "FEATURE-UOW-202",
+      "UoW-102": "FEATURE-UOW-102",
+      "UoW-001B": "FEATURE-UOW-001B",
+      "UoW-001C": "FEATURE-UOW-001C",
+      "UoW-103": "FEATURE-UOW-103",
+      "UoW-001D": "FEATURE-UOW-001D",
+      "UoW-101": "FEATURE-UOW-101",
+      "UoW-201": "FEATURE-UOW-201",
+      "UoW-002": "FEATURE-UOW-002",
+      "UoW-104": "FEATURE-UOW-104",
+      "UoW-001": "FEATURE-UOW-001",
+      "UoW-210": "FEATURE-UOW-210",
+      "UoW-106": "FEATURE-UOW-106",
+      "UoW-003": "FEATURE-UOW-003"
+    },
+    "uow_to_implementation": {
+      "UoW-000": "IMPL-UoW-000",
+      "UoW-001A": "IMPL-UoW-001A",
+      "UoW-001B": "IMPL-UoW-001B",
+      "UoW-001C": "IMPL-UoW-001C",
+      "UoW-001D": "IMPL-UoW-001D",
+      "UoW-001": "IMPL-UoW-001",
+      "UoW-002": "IMPL-UoW-002",
+      "UoW-003": "IMPL-UoW-003",
+      "UoW-101": "IMPL-UoW-101",
+      "UoW-102": "IMPL-UoW-102",
+      "UoW-103": "IMPL-UoW-103",
+      "UoW-104": "IMPL-UoW-104",
+      "UoW-105": "IMPL-UoW-105",
+      "UoW-106": "IMPL-UoW-106",
+      "UoW-107": "IMPL-UoW-107",
+      "UoW-201": "IMPL-UoW-201",
+      "UoW-202": "IMPL-UoW-202",
+      "UoW-210": "IMPL-UoW-210",
+      "UoW-IOT-601": "IMPL-UoW-IOT-601",
+      "UoW-IOT-602": "IMPL-UoW-IOT-602",
+      "UoW-IOT-603": "IMPL-UoW-IOT-603",
+      "UoW-IOT-604": "IMPL-UoW-IOT-604",
+      "UoW-IOT-605": "IMPL-UoW-IOT-605",
+      "UoW-AI-401": "IMPL-UoW-AI-401",
+      "UoW-AI-402": "IMPL-UoW-AI-402",
+      "UoW-AI-403": "IMPL-UoW-AI-403",
+      "UoW-AI-404": "IMPL-UoW-AI-404",
+      "UoW-AI-405": "IMPL-UoW-AI-405",
+      "UoW-AI-406": "IMPL-UoW-AI-406",
+      "UoW-BC-801": "IMPL-UoW-BC-801",
+      "UoW-BC-802": "IMPL-UoW-BC-802",
+      "UoW-BC-803": "IMPL-UoW-BC-803",
+      "UoW-BC-804": "IMPL-UoW-BC-804",
+      "UoW-BC-805": "IMPL-UoW-BC-805",
+      "UoW-STR-701": "IMPL-UoW-STR-701",
+      "UoW-STR-702": "IMPL-UoW-STR-702",
+      "UoW-STR-703": "IMPL-UoW-STR-703",
+      "UoW-STR-704": "IMPL-UoW-STR-704",
+      "UoW-STR-705": "IMPL-UoW-STR-705",
+      "UoW-EC-301": "IMPL-UoW-EC-301",
+      "UoW-EC-302": "IMPL-UoW-EC-302",
+      "UoW-EC-303": "IMPL-UoW-EC-303",
+      "UoW-EC-304": "IMPL-UoW-EC-304",
+      "UoW-EC-305": "IMPL-UoW-EC-305",
+      "UoW-EC-306": "IMPL-UoW-EC-306",
+      "UoW-HC-501": "IMPL-UoW-HC-501",
+      "UoW-HC-502": "IMPL-UoW-HC-502",
+      "UoW-HC-503": "IMPL-UoW-HC-503",
+      "UoW-HC-504": "IMPL-UoW-HC-504",
+      "UoW-FT-401": "IMPL-UoW-FT-401",
+      "UoW-FT-402": "IMPL-UoW-FT-402",
+      "UoW-FT-403": "IMPL-UoW-FT-403",
+      "UoW-FT-404": "IMPL-UoW-FT-404",
+      "UoW-GDPR-501": "IMPL-UoW-GDPR-501",
+      "UoW-GDPR-502": "IMPL-UoW-GDPR-502",
+      "UoW-GDPR-503": "IMPL-UoW-GDPR-503",
+      "UoW-GDPR-504": "IMPL-UoW-GDPR-504",
+      "UoW-GDPR-505": "IMPL-UoW-GDPR-505",
+      "UoW-GDPR-506": "IMPL-UoW-GDPR-506",
+      "UoW-HIPAA-901": "IMPL-UoW-HIPAA-901",
+      "UoW-HIPAA-902": "IMPL-UoW-HIPAA-902",
+      "UoW-HIPAA-903": "IMPL-UoW-HIPAA-903",
+      "UoW-HIPAA-904": "IMPL-UoW-HIPAA-904",
+      "UoW-HIPAA-905": "IMPL-UoW-HIPAA-905",
+      "UoW-HIPAA-906": "IMPL-UoW-HIPAA-906",
+      "UoW-PCI-1001": "IMPL-UoW-PCI-1001",
+      "UoW-PCI-1002": "IMPL-UoW-PCI-1002",
+      "UoW-PCI-1003": "IMPL-UoW-PCI-1003",
+      "UoW-PCI-1004": "IMPL-UoW-PCI-1004",
+      "UoW-PCI-1005": "IMPL-UoW-PCI-1005",
+      "UoW-PCI-1006": "IMPL-UoW-PCI-1006"
+    },
+    "contract_to_bdd": {},
+    "bdd_to_implementation": {}
+  },
+  "coverage_metrics": {
+    "fr_coverage": {
+      "total": 10,
+      "covered": 28,
+      "percentage": 280.0
+    },
+    "nfr_coverage": {
+      "total": 7,
+      "covered": 9,
+      "percentage": 128.57142857142858
+    },
+    "uow_coverage": {
+      "total": 71,
+      "with_contracts": 1,
+      "with_bdd": 18,
+      "with_implementation": 71,
+      "contracts_percentage": 1.4084507042253522,
+      "bdd_percentage": 25.352112676056336,
+      "implementation_percentage": 100.0
+    }
+  },
+  "gaps": [
+    {
+      "type": "uncovered_requirement",
+      "requirement_id": "NFR-006",
+      "requirement_type": "non_functional",
+      "description": "Non-functional requirement NFR-006 is not implemented by any UoW"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-PCI-1005",
+      "description": "UoW UoW-PCI-1005 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HIPAA-905",
+      "description": "UoW UoW-HIPAA-905 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-AI-403",
+      "description": "UoW UoW-AI-403 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-BC-801",
+      "description": "UoW UoW-BC-801 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-AI-402",
+      "description": "UoW UoW-AI-402 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-107",
+      "description": "UoW UoW-107 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-001C",
+      "description": "UoW UoW-001C does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HIPAA-904",
+      "description": "UoW UoW-HIPAA-904 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-FT-404",
+      "description": "UoW UoW-FT-404 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-FT-403",
+      "description": "UoW UoW-FT-403 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HIPAA-906",
+      "description": "UoW UoW-HIPAA-906 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-105",
+      "description": "UoW UoW-105 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-PCI-1001",
+      "description": "UoW UoW-PCI-1001 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-FT-401",
+      "description": "UoW UoW-FT-401 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-201",
+      "description": "UoW UoW-201 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-BC-804",
+      "description": "UoW UoW-BC-804 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-001A",
+      "description": "UoW UoW-001A does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-000",
+      "description": "UoW UoW-000 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-EC-301",
+      "description": "UoW UoW-EC-301 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-BC-802",
+      "description": "UoW UoW-BC-802 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-EC-305",
+      "description": "UoW UoW-EC-305 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HIPAA-901",
+      "description": "UoW UoW-HIPAA-901 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HIPAA-903",
+      "description": "UoW UoW-HIPAA-903 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-PCI-1002",
+      "description": "UoW UoW-PCI-1002 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-001D",
+      "description": "UoW UoW-001D does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-103",
+      "description": "UoW UoW-103 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-STR-705",
+      "description": "UoW UoW-STR-705 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-IOT-603",
+      "description": "UoW UoW-IOT-603 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-STR-701",
+      "description": "UoW UoW-STR-701 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-EC-302",
+      "description": "UoW UoW-EC-302 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-FT-402",
+      "description": "UoW UoW-FT-402 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-BC-803",
+      "description": "UoW UoW-BC-803 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-102",
+      "description": "UoW UoW-102 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-GDPR-502",
+      "description": "UoW UoW-GDPR-502 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HC-502",
+      "description": "UoW UoW-HC-502 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-GDPR-501",
+      "description": "UoW UoW-GDPR-501 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-EC-304",
+      "description": "UoW UoW-EC-304 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HC-501",
+      "description": "UoW UoW-HC-501 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-GDPR-503",
+      "description": "UoW UoW-GDPR-503 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-EC-306",
+      "description": "UoW UoW-EC-306 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-GDPR-505",
+      "description": "UoW UoW-GDPR-505 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-GDPR-504",
+      "description": "UoW UoW-GDPR-504 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HC-503",
+      "description": "UoW UoW-HC-503 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-PCI-1004",
+      "description": "UoW UoW-PCI-1004 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-001B",
+      "description": "UoW UoW-001B does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-STR-703",
+      "description": "UoW UoW-STR-703 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-IOT-602",
+      "description": "UoW UoW-IOT-602 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-PCI-1003",
+      "description": "UoW UoW-PCI-1003 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-STR-704",
+      "description": "UoW UoW-STR-704 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-AI-401",
+      "description": "UoW UoW-AI-401 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-GDPR-506",
+      "description": "UoW UoW-GDPR-506 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-AI-404",
+      "description": "UoW UoW-AI-404 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-IOT-605",
+      "description": "UoW UoW-IOT-605 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-202",
+      "description": "UoW UoW-202 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-002",
+      "description": "UoW UoW-002 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-106",
+      "description": "UoW UoW-106 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-STR-702",
+      "description": "UoW UoW-STR-702 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-PCI-1006",
+      "description": "UoW UoW-PCI-1006 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-EC-303",
+      "description": "UoW UoW-EC-303 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-AI-406",
+      "description": "UoW UoW-AI-406 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-210",
+      "description": "UoW UoW-210 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-IOT-601",
+      "description": "UoW UoW-IOT-601 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-003",
+      "description": "UoW UoW-003 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-IOT-604",
+      "description": "UoW UoW-IOT-604 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-BC-805",
+      "description": "UoW UoW-BC-805 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-101",
+      "description": "UoW UoW-101 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HIPAA-902",
+      "description": "UoW UoW-HIPAA-902 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-104",
+      "description": "UoW UoW-104 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-AI-405",
+      "description": "UoW UoW-AI-405 does not have a formal contract"
+    },
+    {
+      "type": "missing_contract",
+      "uow_id": "UoW-HC-504",
+      "description": "UoW UoW-HC-504 does not have a formal contract"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-PCI-1005",
+      "description": "UoW UoW-PCI-1005 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HIPAA-905",
+      "description": "UoW UoW-HIPAA-905 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-AI-403",
+      "description": "UoW UoW-AI-403 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HC-501",
+      "description": "UoW UoW-HC-501 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-BC-801",
+      "description": "UoW UoW-BC-801 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-GDPR-503",
+      "description": "UoW UoW-GDPR-503 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-EC-306",
+      "description": "UoW UoW-EC-306 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-GDPR-505",
+      "description": "UoW UoW-GDPR-505 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-AI-402",
+      "description": "UoW UoW-AI-402 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-GDPR-504",
+      "description": "UoW UoW-GDPR-504 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HIPAA-904",
+      "description": "UoW UoW-HIPAA-904 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HC-503",
+      "description": "UoW UoW-HC-503 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-PCI-1004",
+      "description": "UoW UoW-PCI-1004 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-FT-404",
+      "description": "UoW UoW-FT-404 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-FT-403",
+      "description": "UoW UoW-FT-403 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-STR-703",
+      "description": "UoW UoW-STR-703 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HIPAA-906",
+      "description": "UoW UoW-HIPAA-906 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-IOT-602",
+      "description": "UoW UoW-IOT-602 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-PCI-1001",
+      "description": "UoW UoW-PCI-1001 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-PCI-1003",
+      "description": "UoW UoW-PCI-1003 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-STR-704",
+      "description": "UoW UoW-STR-704 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-FT-401",
+      "description": "UoW UoW-FT-401 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-AI-401",
+      "description": "UoW UoW-AI-401 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-GDPR-506",
+      "description": "UoW UoW-GDPR-506 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-AI-404",
+      "description": "UoW UoW-AI-404 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-IOT-605",
+      "description": "UoW UoW-IOT-605 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-BC-804",
+      "description": "UoW UoW-BC-804 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-EC-301",
+      "description": "UoW UoW-EC-301 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-BC-802",
+      "description": "UoW UoW-BC-802 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-STR-702",
+      "description": "UoW UoW-STR-702 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-PCI-1006",
+      "description": "UoW UoW-PCI-1006 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-EC-305",
+      "description": "UoW UoW-EC-305 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HIPAA-901",
+      "description": "UoW UoW-HIPAA-901 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HIPAA-903",
+      "description": "UoW UoW-HIPAA-903 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-PCI-1002",
+      "description": "UoW UoW-PCI-1002 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-EC-303",
+      "description": "UoW UoW-EC-303 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-EC-304",
+      "description": "UoW UoW-EC-304 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-AI-406",
+      "description": "UoW UoW-AI-406 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-STR-705",
+      "description": "UoW UoW-STR-705 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-IOT-603",
+      "description": "UoW UoW-IOT-603 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-IOT-601",
+      "description": "UoW UoW-IOT-601 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-STR-701",
+      "description": "UoW UoW-STR-701 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-EC-302",
+      "description": "UoW UoW-EC-302 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-FT-402",
+      "description": "UoW UoW-FT-402 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-BC-803",
+      "description": "UoW UoW-BC-803 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-IOT-604",
+      "description": "UoW UoW-IOT-604 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-BC-805",
+      "description": "UoW UoW-BC-805 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-GDPR-502",
+      "description": "UoW UoW-GDPR-502 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HC-502",
+      "description": "UoW UoW-HC-502 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-GDPR-501",
+      "description": "UoW UoW-GDPR-501 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HIPAA-902",
+      "description": "UoW UoW-HIPAA-902 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-AI-405",
+      "description": "UoW UoW-AI-405 does not have BDD scenarios"
+    },
+    {
+      "type": "missing_bdd",
+      "uow_id": "UoW-HC-504",
+      "description": "UoW UoW-HC-504 does not have BDD scenarios"
+    }
+  ]
+}

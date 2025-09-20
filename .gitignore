@@ -1,0 +1,59 @@
+# Demeter template system (uncomment to exclude from project)
+# demeter/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Build artifacts
+dist/
+build/
+*.o
+*.so
+*.exe
+
+# Language specific
+node_modules/
+.npm
+.yarn-integrity
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.env
+.venv/
+pip-log.txt
+
+# Go specific
+*.test
+*.prof
+vendor/
+
+# Development-only directories (not part of product code)
+.demeter-dev/
+*.dev-knowledge
+.graphrag_cache/
+
+# GraphRAG output (if used)
+grag/output/
+grag/cache/
+grag/logs/

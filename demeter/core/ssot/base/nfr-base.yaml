@@ -1,0 +1,126 @@
+# Base Non-Functional Requirements (NFR)
+# These define the quality attributes and system constraints
+
+non_functional_requirements:
+  NFR-001:
+    name: "Performance"
+    description: "System must handle specified load with acceptable latency"
+    category: "Performance"
+    measurement_criteria:
+      - "Response time: < 200ms (95th percentile) for API calls"
+      - "Throughput: > {{EXPECTED_THROUGHPUT}} requests/second"
+      - "Memory usage: < {{MAX_MEMORY}}MB baseline"
+      - "CPU usage: < 70% under normal load"
+      - "Database query time: < 50ms average"
+    testing_method: "Load testing, performance profiling"
+    tools: ["Apache Bench", "k6", "Artillery", "Profiling tools"]
+    priority: "High"
+
+  NFR-002:
+    name: "Reliability"
+    description: "System must be highly available and fault-tolerant"
+    category: "Reliability"
+    measurement_criteria:
+      - "Uptime: {{TARGET_UPTIME}}% availability"
+      - "Error rate: < 0.1% for business operations"
+      - "Recovery time: < 30 seconds from failures"
+      - "Data consistency: 100% for critical operations"
+      - "Backup recovery: < 15 minutes RTO"
+    testing_method: "Chaos engineering, failure injection, monitoring"
+    tools: ["Chaos Monkey", "Circuit breakers", "Health checks"]
+    priority: "Critical"
+
+  NFR-003:
+    name: "Security"
+    description: "Comprehensive security measures and compliance"
+    category: "Security"
+    measurement_criteria:
+      - "Zero known vulnerabilities in dependencies"
+      - "All data encrypted in transit (TLS 1.3+)"
+      - "Sensitive data encrypted at rest"
+      - "Audit trail completeness: 100% for critical operations"
+      - "Security scan compliance: 100% pass rate"
+    testing_method: "Security scanning, penetration testing, audit reviews"
+    tools: ["OWASP ZAP", "Snyk", "SonarQube Security", "Vulnerability scanners"]
+    priority: "Critical"
+
+  NFR-004:
+    name: "Scalability"
+    description: "System must scale horizontally and vertically"
+    category: "Scalability"
+    measurement_criteria:
+      - "Horizontal scaling: Support 10x instance increase"
+      - "Database scaling: Read replica support"
+      - "Cache scaling: Cluster support"
+      - "Load balancing: Multiple node distribution"
+      - "Auto-scaling: CPU/memory threshold-based"
+    testing_method: "Horizontal scaling tests, load distribution analysis"
+    tools: ["Kubernetes", "Docker Swarm", "Load balancers", "Auto-scaling groups"]
+    priority: "High"
+
+  NFR-005:
+    name: "Maintainability"
+    description: "Code must be maintainable and well-documented"
+    category: "Maintainability"
+    measurement_criteria:
+      - "Test coverage: > 80% (foundation), > 60% (business logic)"
+      - "Code quality: SonarQube A rating minimum"
+      - "Documentation coverage: 100% for public APIs"
+      - "Technical debt: < 5% of total development effort"
+      - "Code review: 100% of changes reviewed"
+    testing_method: "Code quality analysis, documentation review, technical debt assessment"
+    tools: ["SonarQube", "ESLint/golangci-lint", "Coverage tools", "Documentation generators"]
+    priority: "High"
+
+  NFR-006:
+    name: "Usability"
+    description: "APIs and interfaces must be intuitive and well-documented"
+    category: "Usability"
+    measurement_criteria:
+      - "API documentation completeness: 100%"
+      - "Error message clarity: Clear and actionable"
+      - "Response format consistency: 100% across endpoints"
+      - "Developer onboarding time: < 1 day for new team members"
+      - "API design: RESTful conventions followed"
+    testing_method: "API documentation review, usability testing, developer feedback"
+    tools: ["OpenAPI/Swagger", "Postman", "API documentation tools"]
+    priority: "Medium"
+
+  NFR-007:
+    name: "Observability"
+    description: "System must provide comprehensive monitoring and diagnostics"
+    category: "Observability"
+    measurement_criteria:
+      - "Metrics coverage: 100% of critical components"
+      - "Log completeness: All errors and business events captured"
+      - "Trace coverage: End-to-end request tracing"
+      - "Alert response time: < 5 minutes for critical issues"
+      - "Dashboard availability: 99.9% uptime"
+    testing_method: "Monitoring validation, alerting testing, trace analysis"
+    tools: ["Prometheus", "Grafana", "Jaeger", "OpenTelemetry", "ELK Stack"]
+    priority: "High"
+
+# Quality Attributes Mapping
+quality_attributes:
+  performance: ["NFR-001", "NFR-004"]
+  reliability: ["NFR-002", "NFR-003", "NFR-007"]
+  security: ["NFR-003"]
+  maintainability: ["NFR-005"]
+  usability: ["NFR-006"]
+  observability: ["NFR-007"]
+
+# Metadata
+metadata:
+  version: "1.0.0"
+  created: "2025-01-18"
+  description: "Base non-functional requirements for WAVIS projects"
+  total_requirements: 7
+  iso_25010_mapping:
+    functional_suitability: ["NFR-006"]
+    performance_efficiency: ["NFR-001", "NFR-004"]
+    compatibility: []
+    usability: ["NFR-006"]
+    reliability: ["NFR-002"]
+    security: ["NFR-003"]
+    maintainability: ["NFR-005"]
+    portability: ["NFR-004"]

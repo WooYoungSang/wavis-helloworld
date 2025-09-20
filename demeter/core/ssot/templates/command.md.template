@@ -1,0 +1,315 @@
+# {{COMMAND_NAME}} - {{COMMAND_DESCRIPTION}}
+
+## Overview
+{{COMMAND_OVERVIEW}}
+
+**Implements**: {{IMPLEMENTS_FR}}, {{IMPLEMENTS_UOW}}
+**Dependencies**: {{COMMAND_DEPENDENCIES}}
+**Agent Collaboration**: {{AGENT_PATTERN}}
+
+## Prerequisites
+
+### Required Tools
+{{#REQUIRED_TOOLS}}
+- **{{TOOL_NAME}}** ({{TOOL_VERSION}}): {{TOOL_PURPOSE}}
+{{/REQUIRED_TOOLS}}
+
+### Environment Setup
+{{#ENV_REQUIREMENTS}}
+- {{ENV_REQUIREMENT}}
+{{/ENV_REQUIREMENTS}}
+
+### GraphRAG Context
+Before executing this command, query GraphRAG for relevant context:
+
+```bash
+# Query for UoW context and requirements
+python -m graphrag query --root ./grag --method local \
+  --query "What are the requirements and acceptance criteria for {{IMPLEMENTS_UOW}}?"
+
+# Query for related patterns and dependencies
+python -m graphrag query --root ./grag --method local \
+  --query "What patterns and dependencies are relevant for {{COMMAND_SCOPE}}?"
+```
+
+## Command Usage
+
+### Basic Syntax
+```bash
+{{COMMAND_SYNTAX}}
+```
+
+### Parameters
+{{#PARAMETERS}}
+- **{{PARAM_NAME}}** ({{PARAM_TYPE}}): {{PARAM_DESCRIPTION}}
+  - Required: {{PARAM_REQUIRED}}
+  - Default: {{PARAM_DEFAULT}}
+  - Example: {{PARAM_EXAMPLE}}
+{{/PARAMETERS}}
+
+### Examples
+
+#### Example 1: {{EXAMPLE_1_NAME}}
+```bash
+{{EXAMPLE_1_COMMAND}}
+```
+{{EXAMPLE_1_DESCRIPTION}}
+
+#### Example 2: {{EXAMPLE_2_NAME}}
+```bash
+{{EXAMPLE_2_COMMAND}}
+```
+{{EXAMPLE_2_DESCRIPTION}}
+
+## Agent Collaboration Workflow
+
+### Recommended Agent Pattern: {{AGENT_PATTERN}}
+
+{{#AGENT_WORKFLOW}}
+#### Step {{STEP_NUMBER}}: {{STEP_NAME}}
+**Agent**: `{{AGENT_NAME}}`
+**Purpose**: {{STEP_PURPOSE}}
+**Input**: {{STEP_INPUT}}
+**Output**: {{STEP_OUTPUT}}
+
+{{#STEP_COMMANDS}}
+```bash
+{{COMMAND_LINE}}
+```
+{{/STEP_COMMANDS}}
+
+**Quality Gates**:
+{{#STEP_QUALITY_GATES}}
+- {{QUALITY_GATE}}
+{{/STEP_QUALITY_GATES}}
+
+{{/AGENT_WORKFLOW}}
+
+### Agent Handoff Points
+{{#HANDOFF_POINTS}}
+- **From {{FROM_AGENT}} to {{TO_AGENT}}**: {{HANDOFF_CRITERIA}}
+{{/HANDOFF_POINTS}}
+
+## TDD Workflow Integration
+
+### Phase 1: RED (Write Failing Tests)
+{{#TDD_RED_STEPS}}
+- {{RED_STEP}}
+{{/TDD_RED_STEPS}}
+
+```bash
+# Run tests to ensure they fail
+{{TDD_TEST_COMMAND}}
+```
+
+### Phase 2: GREEN (Make Tests Pass)
+{{#TDD_GREEN_STEPS}}
+- {{GREEN_STEP}}
+{{/TDD_GREEN_STEPS}}
+
+```bash
+# Run tests continuously during implementation
+{{TDD_WATCH_COMMAND}}
+```
+
+### Phase 3: REFACTOR (Improve Code Quality)
+{{#TDD_REFACTOR_STEPS}}
+- {{REFACTOR_STEP}}
+{{/TDD_REFACTOR_STEPS}}
+
+```bash
+# Verify tests still pass after refactoring
+{{TDD_VERIFY_COMMAND}}
+```
+
+## Implementation Process
+
+### Step-by-Step Guide
+
+{{#IMPLEMENTATION_STEPS}}
+#### {{STEP_NUMBER}}. {{STEP_TITLE}}
+**Duration**: {{STEP_DURATION}}
+**Responsible Agent**: {{STEP_AGENT}}
+
+{{STEP_DESCRIPTION}}
+
+**Commands**:
+```bash
+{{#STEP_COMMANDS}}
+{{COMMAND}}
+{{/STEP_COMMANDS}}
+```
+
+**Verification**:
+{{#STEP_VERIFICATION}}
+- {{VERIFICATION_ITEM}}
+{{/STEP_VERIFICATION}}
+
+**Artifacts Created**:
+{{#STEP_ARTIFACTS}}
+- {{ARTIFACT_NAME}}: {{ARTIFACT_DESCRIPTION}}
+{{/STEP_ARTIFACTS}}
+
+{{/IMPLEMENTATION_STEPS}}
+
+## Quality Gates
+
+### Code Quality Requirements
+- **Test Coverage**: {{COVERAGE_REQUIREMENT}}% minimum
+- **SonarQube Rating**: {{SONAR_RATING}} or better
+- **Security Scan**: {{SECURITY_SCAN_REQUIREMENT}}
+- **Performance Benchmark**: {{PERFORMANCE_REQUIREMENT}}
+
+### Validation Commands
+```bash
+# Run comprehensive test suite
+{{TEST_SUITE_COMMAND}}
+
+# Check code coverage
+{{COVERAGE_CHECK_COMMAND}}
+
+# Run static analysis
+{{STATIC_ANALYSIS_COMMAND}}
+
+# Security vulnerability scan
+{{SECURITY_SCAN_COMMAND}}
+```
+
+### Acceptance Criteria Validation
+{{#ACCEPTANCE_CRITERIA}}
+#### AC-{{AC_NUMBER}}: {{AC_DESCRIPTION}}
+**Validation Method**: {{AC_VALIDATION}}
+**Success Criteria**: {{AC_SUCCESS}}
+
+```bash
+{{AC_VALIDATION_COMMAND}}
+```
+{{/ACCEPTANCE_CRITERIA}}
+
+## Troubleshooting
+
+### Common Issues
+
+{{#COMMON_ISSUES}}
+#### Issue: {{ISSUE_TITLE}}
+**Symptoms**: {{ISSUE_SYMPTOMS}}
+**Root Cause**: {{ISSUE_CAUSE}}
+**Solution**: {{ISSUE_SOLUTION}}
+
+```bash
+{{#ISSUE_COMMANDS}}
+{{COMMAND}}
+{{/ISSUE_COMMANDS}}
+```
+{{/COMMON_ISSUES}}
+
+### Debug Commands
+```bash
+# Enable verbose logging
+{{DEBUG_VERBOSE_COMMAND}}
+
+# Check system status
+{{DEBUG_STATUS_COMMAND}}
+
+# Validate configuration
+{{DEBUG_CONFIG_COMMAND}}
+
+# Test connectivity
+{{DEBUG_CONNECTIVITY_COMMAND}}
+```
+
+### Log Analysis
+```bash
+# View recent logs
+{{LOG_VIEW_COMMAND}}
+
+# Search for errors
+{{LOG_ERROR_SEARCH}}
+
+# Monitor real-time logs
+{{LOG_MONITOR_COMMAND}}
+```
+
+## Success Criteria
+
+### Functional Success
+{{#FUNCTIONAL_SUCCESS}}
+- {{SUCCESS_CRITERION}}
+{{/FUNCTIONAL_SUCCESS}}
+
+### Non-Functional Success
+{{#NON_FUNCTIONAL_SUCCESS}}
+- {{SUCCESS_CRITERION}}
+{{/NON_FUNCTIONAL_SUCCESS}}
+
+### Knowledge Capture
+{{#KNOWLEDGE_CAPTURE}}
+- {{KNOWLEDGE_ITEM}}
+{{/KNOWLEDGE_CAPTURE}}
+
+## Post-Execution Tasks
+
+### Documentation Updates
+```bash
+# Update LEARNING.md with discoveries
+echo "### {{CURRENT_DATE}} - {{COMMAND_NAME}} Implementation" >> LEARNING.md
+echo "- **Category**: {{LEARNING_CATEGORY}}" >> LEARNING.md
+echo "- **Discovery**: {{LEARNING_DISCOVERY}}" >> LEARNING.md
+
+# Update GraphRAG with new knowledge
+./grag/scripts/reindex-graphrag.sh --verbose
+```
+
+### Knowledge Management
+1. **Capture Learnings**: Document any patterns or anti-patterns discovered
+2. **Update SSOT**: If new requirements or constraints were identified
+3. **Agent Feedback**: Record effectiveness of agent collaboration patterns
+4. **Performance Metrics**: Document actual vs. expected performance
+
+### Next Steps
+{{#NEXT_STEPS}}
+- {{NEXT_STEP}}
+{{/NEXT_STEPS}}
+
+## Integration with Other Commands
+
+### Prerequisite Commands
+{{#PREREQUISITE_COMMANDS}}
+- `{{COMMAND_NAME}}`: {{COMMAND_PURPOSE}}
+{{/PREREQUISITE_COMMANDS}}
+
+### Follow-up Commands
+{{#FOLLOWUP_COMMANDS}}
+- `{{COMMAND_NAME}}`: {{COMMAND_PURPOSE}}
+{{/FOLLOWUP_COMMANDS}}
+
+### Related Commands
+{{#RELATED_COMMANDS}}
+- `{{COMMAND_NAME}}`: {{COMMAND_PURPOSE}}
+{{/RELATED_COMMANDS}}
+
+## Performance Metrics
+
+### Expected Performance
+- **Execution Time**: {{EXPECTED_EXECUTION_TIME}}
+- **Resource Usage**: {{EXPECTED_RESOURCE_USAGE}}
+- **Success Rate**: {{EXPECTED_SUCCESS_RATE}}
+
+### Actual Performance (Updated After Implementation)
+- **Execution Time**: {{ACTUAL_EXECUTION_TIME}}
+- **Resource Usage**: {{ACTUAL_RESOURCE_USAGE}}
+- **Success Rate**: {{ACTUAL_SUCCESS_RATE}}
+
+## Version History
+
+| Version | Date | Changes | Author |
+|---------|------|---------|---------|
+| {{VERSION}} | {{LAST_UPDATED}} | {{CHANGE_DESCRIPTION}} | {{AUTHOR}} |
+
+---
+
+**Command**: {{COMMAND_NAME}}
+**Project**: {{PROJECT_NAME}}
+**UoW Reference**: {{IMPLEMENTS_UOW}}
+**Framework**: SSOT-Driven Development
+**Template Version**: 1.0.0

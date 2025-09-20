@@ -1,0 +1,364 @@
+# Domain-Specific Step Definitions
+# Specialized Gherkin steps for different domain extensions
+
+domain_step_definitions:
+  # E-Commerce Domain Steps
+  e_commerce:
+    given_steps:
+      - pattern: "a product catalog with {count} products"
+        description: "Product catalog setup with specified number of products"
+        domain: "e-commerce"
+        parameters: ["count"]
+
+      - pattern: "a customer with email {email}"
+        description: "Customer account setup"
+        domain: "e-commerce"
+        parameters: ["email"]
+
+      - pattern: "a shopping cart with {count} items totaling {amount}"
+        description: "Pre-populated shopping cart"
+        domain: "e-commerce"
+        parameters: ["count", "amount"]
+
+      - pattern: "inventory level for product {product_id} is {quantity}"
+        description: "Product inventory setup"
+        domain: "e-commerce"
+        parameters: ["product_id", "quantity"]
+
+    when_steps:
+      - pattern: "a product with price {price} is added to the catalog"
+        description: "Product creation in catalog"
+        domain: "e-commerce"
+        parameters: ["price"]
+
+      - pattern: "the customer adds product {product_id} to cart"
+        description: "Add to cart action"
+        domain: "e-commerce"
+        parameters: ["product_id"]
+
+      - pattern: "the customer proceeds to checkout"
+        description: "Checkout process initiation"
+        domain: "e-commerce"
+
+      - pattern: "payment of {amount} is processed using {payment_method}"
+        description: "Payment processing"
+        domain: "e-commerce"
+        parameters: ["amount", "payment_method"]
+
+    then_steps:
+      - pattern: "the product should appear in search results"
+        description: "Product searchability verification"
+        domain: "e-commerce"
+
+      - pattern: "the cart total should be {amount}"
+        description: "Cart total calculation verification"
+        domain: "e-commerce"
+        parameters: ["amount"]
+
+      - pattern: "the order status should be {status}"
+        description: "Order status verification"
+        domain: "e-commerce"
+        parameters: ["status"]
+
+      - pattern: "inventory for product {product_id} should be reduced by {quantity}"
+        description: "Inventory adjustment verification"
+        domain: "e-commerce"
+        parameters: ["product_id", "quantity"]
+
+  # FinTech Domain Steps
+  fintech:
+    given_steps:
+      - pattern: "a user account with balance {balance}"
+        description: "User account with initial balance"
+        domain: "fintech"
+        parameters: ["balance"]
+
+      - pattern: "KYC verification is {status} for user {user_id}"
+        description: "KYC status setup"
+        domain: "fintech"
+        parameters: ["status", "user_id"]
+
+      - pattern: "the daily transaction limit is {limit}"
+        description: "Transaction limit configuration"
+        domain: "fintech"
+        parameters: ["limit"]
+
+      - pattern: "fraud detection rules are configured"
+        description: "Fraud detection system setup"
+        domain: "fintech"
+
+    when_steps:
+      - pattern: "a transaction of {amount} is initiated from account {from_account} to account {to_account}"
+        description: "Transaction initiation"
+        domain: "fintech"
+        parameters: ["amount", "from_account", "to_account"]
+
+      - pattern: "KYC verification is requested for user {user_id}"
+        description: "KYC process trigger"
+        domain: "fintech"
+        parameters: ["user_id"]
+
+      - pattern: "the risk assessment is performed"
+        description: "Risk evaluation trigger"
+        domain: "fintech"
+
+      - pattern: "suspicious activity is detected"
+        description: "Fraud detection trigger"
+        domain: "fintech"
+
+    then_steps:
+      - pattern: "the transaction should be {status}"
+        description: "Transaction status verification"
+        domain: "fintech"
+        parameters: ["status"]
+
+      - pattern: "the account balance should be {balance}"
+        description: "Account balance verification"
+        domain: "fintech"
+        parameters: ["balance"]
+
+      - pattern: "a risk score should be calculated"
+        description: "Risk assessment completion verification"
+        domain: "fintech"
+
+      - pattern: "compliance reporting should be triggered"
+        description: "Regulatory reporting verification"
+        domain: "fintech"
+
+  # Healthcare Domain Steps
+  healthcare:
+    given_steps:
+      - pattern: "a patient record exists for patient {patient_id}"
+        description: "Patient record setup"
+        domain: "healthcare"
+        parameters: ["patient_id"]
+
+      - pattern: "medical device {device_id} is registered and active"
+        description: "Medical device setup"
+        domain: "healthcare"
+        parameters: ["device_id"]
+
+      - pattern: "a healthcare provider with role {role}"
+        description: "Healthcare provider setup"
+        domain: "healthcare"
+        parameters: ["role"]
+
+      - pattern: "HIPAA compliance policies are configured"
+        description: "HIPAA compliance setup"
+        domain: "healthcare"
+
+    when_steps:
+      - pattern: "medical data is recorded for patient {patient_id}"
+        description: "Medical data entry"
+        domain: "healthcare"
+        parameters: ["patient_id"]
+
+      - pattern: "device {device_id} sends vital signs data"
+        description: "Medical device data transmission"
+        domain: "healthcare"
+        parameters: ["device_id"]
+
+      - pattern: "a prescription is created for patient {patient_id}"
+        description: "Prescription creation"
+        domain: "healthcare"
+        parameters: ["patient_id"]
+
+      - pattern: "PHI data is accessed by provider {provider_id}"
+        description: "PHI data access"
+        domain: "healthcare"
+        parameters: ["provider_id"]
+
+    then_steps:
+      - pattern: "the patient record should be updated"
+        description: "Patient record update verification"
+        domain: "healthcare"
+
+      - pattern: "PHI data should be encrypted at rest"
+        description: "Data encryption verification"
+        domain: "healthcare"
+
+      - pattern: "access should be logged for audit purposes"
+        description: "Access logging verification"
+        domain: "healthcare"
+
+      - pattern: "HIPAA compliance should be maintained"
+        description: "Compliance verification"
+        domain: "healthcare"
+
+  # IoT Domain Steps
+  iot:
+    given_steps:
+      - pattern: "IoT device {device_id} is registered with the platform"
+        description: "IoT device registration"
+        domain: "iot"
+        parameters: ["device_id"]
+
+      - pattern: "device {device_id} has sensor type {sensor_type}"
+        description: "Device sensor configuration"
+        domain: "iot"
+        parameters: ["device_id", "sensor_type"]
+
+      - pattern: "data collection is configured for every {interval}"
+        description: "Data collection interval setup"
+        domain: "iot"
+        parameters: ["interval"]
+
+      - pattern: "alert thresholds are set for sensor {sensor_type}"
+        description: "Alert threshold configuration"
+        domain: "iot"
+        parameters: ["sensor_type"]
+
+    when_steps:
+      - pattern: "device {device_id} sends sensor data with value {value}"
+        description: "Sensor data transmission"
+        domain: "iot"
+        parameters: ["device_id", "value"]
+
+      - pattern: "device {device_id} goes offline"
+        description: "Device disconnection"
+        domain: "iot"
+        parameters: ["device_id"]
+
+      - pattern: "sensor reading exceeds threshold"
+        description: "Threshold breach"
+        domain: "iot"
+
+      - pattern: "bulk data processing is triggered"
+        description: "Batch processing initiation"
+        domain: "iot"
+
+    then_steps:
+      - pattern: "the sensor data should be stored"
+        description: "Data storage verification"
+        domain: "iot"
+
+      - pattern: "device status should be {status}"
+        description: "Device status verification"
+        domain: "iot"
+        parameters: ["status"]
+
+      - pattern: "an alert should be generated"
+        description: "Alert generation verification"
+        domain: "iot"
+
+      - pattern: "real-time dashboard should be updated"
+        description: "Dashboard update verification"
+        domain: "iot"
+
+  # AI/ML Feature Steps
+  ai_ml:
+    given_steps:
+      - pattern: "a trained model {model_name} is available"
+        description: "ML model setup"
+        domain: "ai-ml"
+        parameters: ["model_name"]
+
+      - pattern: "training data is loaded"
+        description: "Training data preparation"
+        domain: "ai-ml"
+
+      - pattern: "model accuracy threshold is set to {threshold}"
+        description: "Model quality threshold"
+        domain: "ai-ml"
+        parameters: ["threshold"]
+
+    when_steps:
+      - pattern: "prediction is requested for input {input_data}"
+        description: "Model prediction request"
+        domain: "ai-ml"
+        parameters: ["input_data"]
+
+      - pattern: "model retraining is triggered"
+        description: "Model retraining process"
+        domain: "ai-ml"
+
+      - pattern: "feature engineering is performed"
+        description: "Data preprocessing"
+        domain: "ai-ml"
+
+    then_steps:
+      - pattern: "prediction confidence should be above {threshold}"
+        description: "Prediction confidence verification"
+        domain: "ai-ml"
+        parameters: ["threshold"]
+
+      - pattern: "model performance metrics should be logged"
+        description: "Model monitoring verification"
+        domain: "ai-ml"
+
+      - pattern: "the model should be deployed to production"
+        description: "Model deployment verification"
+        domain: "ai-ml"
+
+  # Blockchain Feature Steps
+  blockchain:
+    given_steps:
+      - pattern: "a smart contract {contract_name} is deployed"
+        description: "Smart contract deployment"
+        domain: "blockchain"
+        parameters: ["contract_name"]
+
+      - pattern: "wallet {wallet_address} has balance {balance}"
+        description: "Wallet balance setup"
+        domain: "blockchain"
+        parameters: ["wallet_address", "balance"]
+
+      - pattern: "gas price is set to {gas_price}"
+        description: "Gas price configuration"
+        domain: "blockchain"
+        parameters: ["gas_price"]
+
+    when_steps:
+      - pattern: "function {function_name} is called on contract {contract_name}"
+        description: "Smart contract function call"
+        domain: "blockchain"
+        parameters: ["function_name", "contract_name"]
+
+      - pattern: "transaction is signed with private key"
+        description: "Transaction signing"
+        domain: "blockchain"
+
+      - pattern: "NFT {token_id} is minted"
+        description: "NFT creation"
+        domain: "blockchain"
+        parameters: ["token_id"]
+
+    then_steps:
+      - pattern: "transaction should be confirmed on blockchain"
+        description: "Transaction confirmation verification"
+        domain: "blockchain"
+
+      - pattern: "contract state should be updated"
+        description: "Contract state verification"
+        domain: "blockchain"
+
+      - pattern: "gas cost should be within estimated range"
+        description: "Gas cost verification"
+        domain: "blockchain"
+
+# Step Mapping Rules
+step_mapping:
+  # Map domain steps to common steps when applicable
+  mappings:
+    "the e-commerce order should be created":
+      common_step: "the {entity} should be {state}"
+      parameters:
+        entity: "order"
+        state: "created"
+
+    "the fintech transaction should be processed":
+      common_step: "the {entity} should be {state}"
+      parameters:
+        entity: "transaction"
+        state: "processed"
+
+# Validation Rules for Domain Steps
+validation_rules:
+  required_domains:
+    healthcare: ["compliance/hipaa.yaml"]
+    fintech: ["compliance/pci-dss.yaml"]
+
+  incompatible_combinations:
+    - domains: ["healthcare"]
+      features: ["blockchain"]
+      reason: "Medical data regulations conflict with blockchain immutability"

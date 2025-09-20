@@ -1,0 +1,181 @@
+#!/bin/bash
+
+# GraphRAG Setup Script for {{PROJECT_NAME}}
+# Initializes GraphRAG knowledge management system
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+GRAG_DIR="$(dirname "$SCRIPT_DIR")"
+PROJECT_ROOT="$(dirname "$GRAG_DIR")"
+
+# Color output
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+log() {
+    echo -e "${GREEN}✓ $1${NC}"
+}
+
+warn() {
+    echo -e "${YELLOW}⚠ $1${NC}"
+}
+
+error() {
+    echo -e "${RED}✗ $1${NC}"
+}
+
+echo "Setting up GraphRAG for {{PROJECT_NAME}} ({{LANGUAGE}})"
+echo "=================================================================="
+
+# Check prerequisites
+if ! command -v python3 &> /dev/null; then
+    error "Python 3 is required but not installed"
+    exit 1
+fi
+
+# Create virtual environment if it doesn't exist
+if [ ! -d "$PROJECT_ROOT/.venv" ]; then
+    warn "Creating Python virtual environment..."
+    python3 -m venv "$PROJECT_ROOT/.venv"
+    log "Virtual environment created"
+fi
+
+# Activate virtual environment
+source "$PROJECT_ROOT/.venv/bin/activate"
+
+# Install GraphRAG if not already installed
+if ! python -c "import graphrag" 2>/dev/null; then
+    warn "Installing GraphRAG..."
+    pip install graphrag python-dotenv pyyaml
+    log "GraphRAG installed"
+fi
+
+# Create GraphRAG directory structure
+mkdir -p "$GRAG_DIR"/{input,output,cache,logs,prompts,backups}
+
+# Create .gitkeep files for empty directories
+touch "$GRAG_DIR"/{output,cache,logs,backups}/.gitkeep
+
+# Copy configuration files
+if [ ! -f "$GRAG_DIR/settings.yaml" ]; then
+    cp "$GRAG_DIR/templates/settings.yaml.template" "$GRAG_DIR/settings.yaml"
+    log "GraphRAG settings.yaml created"
+fi
+
+if [ ! -f "$GRAG_DIR/.env" ]; then
+    cp "$GRAG_DIR/templates/.env.template" "$GRAG_DIR/.env"
+    warn "GraphRAG .env file created - please configure your API key"
+fi
+
+# Create input files from project documentation
+if [ -f "$PROJECT_ROOT/docs/SSOT.md" ]; then
+    cp "$PROJECT_ROOT/docs/SSOT.md" "$GRAG_DIR/input/ssot.txt"
+    log "SSOT.md copied to GraphRAG input"
+fi
+
+if [ -f "$PROJECT_ROOT/CLAUDE.md" ]; then
+    cp "$PROJECT_ROOT/CLAUDE.md" "$GRAG_DIR/input/claude.txt"
+    log "CLAUDE.md copied to GraphRAG input"
+fi
+
+if [ -f "$PROJECT_ROOT/LEARNING.md" ]; then
+    cp "$PROJECT_ROOT/LEARNING.md" "$GRAG_DIR/input/learning.txt"
+    log "LEARNING.md copied to GraphRAG input"
+fi
+
+if [ -f "$PROJECT_ROOT/README.md" ]; then
+    cp "$PROJECT_ROOT/README.md" "$GRAG_DIR/input/readme.txt"
+    log "README.md copied to GraphRAG input"
+fi
+
+# Create basic prompts for {{PROJECT_NAME}}
+cat > "$GRAG_DIR/prompts/extract_graph.txt" << 'EOF'
+-Goal-
+Given a text document that contains information about a {{LANGUAGE}} project, identify and extract key entities and their relationships.
+
+-Steps-
+1. Identify functional requirements (FR), non-functional requirements (NFR), and units of work (UoW)
+2. Extract technical components, APIs, data models, and configurations
+3. Identify relationships between entities (implements, depends_on, uses, etc.)
+4. Focus on project-specific terminology and {{LANGUAGE}} concepts
+
+-Entity Types-
+- HTTP endpoints and API methods
+- Database schemas and models
+- Middleware and authentication systems
+- External service integrations
+- Service boundaries and communication patterns
+- Event types and message schemas
+- Configuration options and patterns
+- Business rules and domain concepts
+
+-Real Data-
+Use the actual text provided below to extract entities and relationships.
+EOF
+
+log "GraphRAG prompts created for {{PROJECT_NAME}}"
+
+# Create query examples file
+cat > "$GRAG_DIR/query-examples.md" << 'EOF'
+# GraphRAG Query Examples for {{PROJECT_NAME}}
+
+## Basic Queries
+
+### Requirements Analysis
+```bash
+python -m graphrag query --root . --method local \
+  --query "What functional requirements are defined for this project?"
+
+python -m graphrag query --root . --method local \
+  --query "List all UoWs that implement FR-001"
+
+python -m graphrag query --root . --method local \
+  --query "What are the acceptance criteria for NFR-003?"
+```
+
+### Development Queries
+```bash
+python -m graphrag query --root . --method local \
+  --query "What HTTP endpoints need to be implemented?"
+
+python -m graphrag query --root . --method local \
+  --query "How should authentication be implemented?"
+
+python -m graphrag query --root . --method local \
+  --query "What are the service boundaries and communication patterns?"
+
+python -m graphrag query --root . --method local \
+  --query "What public APIs should be exposed?"
+```
+
+### Implementation Guidance
+```bash
+python -m graphrag query --root . --method local \
+  --query "What {{LANGUAGE}} patterns should I follow for error handling?"
+
+python -m graphrag query --root . --method local \
+  --query "How should OpenTelemetry be integrated?"
+```
+
+### Testing Strategy
+```bash
+python -m graphrag query --root . --method global \
+  --query "What testing strategies are recommended for this project?"
+
+python -m graphrag query --root . --method local \
+  --query "What are the coverage requirements for different components?"
+```
+EOF
+
+log "Query examples created"
+
+echo ""
+echo "GraphRAG setup completed! Next steps:"
+echo "1. Configure your API key in grag/.env"
+echo "2. Run: cd grag && ./scripts/reindex-graphrag.sh"
+echo "3. Test with: cd grag && python -m graphrag query --root . --method local --query \"What is this project about?\""
+echo ""
+warn "Don't forget to add your API key to grag/.env before running indexing!"

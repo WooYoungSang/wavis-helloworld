@@ -1,0 +1,424 @@
+package {{PACKAGE_NAME}}_test
+
+// Contract-Based Testing Template for WAVIS Demeter Template System
+//
+// @Implements: {{IMPLEMENTS_FR}}
+// @Validates: {{VALIDATES_AC}}
+// @UoW: {{UOW_ID}}
+// @Layer: {{LAYER}}
+// @Priority: {{PRIORITY}}
+//
+// This test file validates the implementation against the acceptance criteria
+// defined in the SSOT for the specified UoW.
+
+import (
+	"context"
+	"testing"
+	"time"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"github.com/stretchr/testify/suite"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
+	"go.opentelemetry.io/otel/trace/noop"
+
+	"{{MODULE_PATH}}/{{PACKAGE_PATH}}"
+)
+
+// TestSuite defines the test suite for {{PACKAGE_NAME}}
+type TestSuite struct {
+	suite.Suite
+	ctx    context.Context
+	cancel context.CancelFunc
+	tracer trace.Tracer
+}
+
+// SetupSuite runs once before all tests
+func (s *TestSuite) SetupSuite() {
+	// Set up OpenTelemetry tracer for testing
+	s.tracer = otel.Tracer("test")
+}
+
+// SetupTest runs before each test
+func (s *TestSuite) SetupTest() {
+	// Create context with timeout for individual tests
+	s.ctx, s.cancel = context.WithTimeout(context.Background(), 5*time.Second)
+}
+
+// TearDownTest runs after each test
+func (s *TestSuite) TearDownTest() {
+	s.cancel()
+}
+
+// TestAC1_FunctionalCompleteness validates AC-1: Functional Completeness
+// Verifies that all specified functionality is implemented according to acceptance criteria
+func (s *TestSuite) TestAC1_FunctionalCompleteness() {
+	// @ValidatesAC: AC-1
+	// @Criteria: All specified functionality implemented
+	// @Criteria: Edge cases handled appropriately
+	// @Criteria: Error conditions managed gracefully
+	// @Criteria: User workflows completed end-to-end
+
+	// Arrange
+	expected := "expected_value"
+	input := "test_input"
+
+	// Act
+	result := {{PACKAGE_NAME}}.ProcessData(s.ctx, input)
+
+	// Assert - AC-1 Requirements
+	s.Equal(expected, result, "Core functionality must work as specified")
+	s.NotEmpty(result, "Function must return meaningful results")
+
+	// Edge case validation
+	emptyResult := {{PACKAGE_NAME}}.ProcessData(s.ctx, "")
+	s.NotNil(emptyResult, "Must handle empty input gracefully")
+}
+
+// TestWithOpenTelemetry demonstrates testing with OpenTelemetry
+func (s *TestSuite) TestWithOpenTelemetry() {
+	// Start a span for the test
+	ctx, span := s.tracer.Start(s.ctx, "test_operation")
+	defer span.End()
+
+	// Test code that uses tracing
+	result := {{PACKAGE_NAME}}.TracedOperation(ctx, "test_data")
+
+	// Assert the result
+	s.NotNil(result)
+	s.NoError(result.Error)
+
+	// Verify span attributes if needed
+	// Note: In production tests, you might want to use a mock tracer
+	// to verify specific span attributes and events
+}
+
+// TestAC2_QualityStandards validates AC-2: Quality Standards
+// Verifies test coverage, code quality, integration testing, and documentation
+func (s *TestSuite) TestAC2_QualityStandards() {
+	// @ValidatesAC: AC-2
+	// @Criteria: Unit tests with required coverage (80% foundation, 60% others)
+	// @Criteria: Integration tests for external dependencies
+	// @Criteria: Code quality passes SonarQube analysis
+	// @Criteria: Documentation updated
+
+	testCases := []struct {
+		name     string
+		input    string
+		expected string
+		wantErr  bool
+	}{
+		{
+			name:     "valid input - standard case",
+			input:    "valid",
+			expected: "processed_valid",
+			wantErr:  false,
+		},
+		{
+			name:     "empty input - boundary condition",
+			input:    "",
+			expected: "",
+			wantErr:  true,
+		},
+		{
+			name:     "special characters - edge case",
+			input:    "!@#$%",
+			expected: "processed_special",
+			wantErr:  false,
+		},
+		{
+			name:     "unicode input - internationalization",
+			input:    "测试输入",
+			expected: "processed_unicode",
+			wantErr:  false,
+		},
+		{
+			name:     "large input - performance boundary",
+			input:    string(make([]byte, 10000)),
+			expected: "processed_large",
+			wantErr:  false,
+		},
+	}
+
+	for _, tc := range testCases {
+		s.Run(tc.name, func() {
+			// Act
+			result, err := {{PACKAGE_NAME}}.Process(s.ctx, tc.input)
+
+			// Assert - AC-2 Quality Requirements
+			if tc.wantErr {
+				s.Error(err, "Error cases must be properly handled")
+				s.NotPanics(func() {
+					{{PACKAGE_NAME}}.Process(s.ctx, tc.input)
+				}, "Code must not panic on error conditions")
+			} else {
+				s.NoError(err, "Valid inputs must not produce errors")
+				s.Equal(tc.expected, result, "Results must match specifications")
+				s.NotEmpty(result, "Valid results must be meaningful")
+			}
+		})
+	}
+}
+
+// TestErrorHandling demonstrates error handling tests
+func (s *TestSuite) TestErrorHandling() {
+	// Test specific error conditions
+	testCases := []struct {
+		name        string
+		setupFunc   func()
+		input       interface{}
+		expectedErr error
+	}{
+		{
+			name: "nil input error",
+			setupFunc: func() {
+				// Setup any mocks or state
+			},
+			input:       nil,
+			expectedErr: {{PACKAGE_NAME}}.ErrInvalidInput,
+		},
+		{
+			name: "timeout error",
+			setupFunc: func() {
+				// Create a context that's already cancelled
+				ctx, cancel := context.WithCancel(s.ctx)
+				cancel()
+				s.ctx = ctx
+			},
+			input:       "valid",
+			expectedErr: context.Canceled,
+		},
+	}
+
+	for _, tc := range testCases {
+		s.Run(tc.name, func() {
+			// Setup
+			if tc.setupFunc != nil {
+				tc.setupFunc()
+			}
+
+			// Act
+			_, err := {{PACKAGE_NAME}}.ProcessWithError(s.ctx, tc.input)
+
+			// Assert
+			s.ErrorIs(err, tc.expectedErr)
+		})
+	}
+}
+
+// TestConcurrency demonstrates concurrent testing
+func (s *TestSuite) TestConcurrency() {
+	const numGoroutines = 10
+
+	// Use a channel to collect results
+	results := make(chan string, numGoroutines)
+	errors := make(chan error, numGoroutines)
+
+	// Launch concurrent operations
+	for i := 0; i < numGoroutines; i++ {
+		go func(id int) {
+			result, err := {{PACKAGE_NAME}}.ConcurrentOperation(s.ctx, id)
+			if err != nil {
+				errors <- err
+				return
+			}
+			results <- result
+		}(i)
+	}
+
+	// Collect results
+	var collectedResults []string
+	for i := 0; i < numGoroutines; i++ {
+		select {
+		case result := <-results:
+			collectedResults = append(collectedResults, result)
+		case err := <-errors:
+			s.FailNow("Concurrent operation failed", err.Error())
+		case <-s.ctx.Done():
+			s.FailNow("Test timeout")
+		}
+	}
+
+	// Assert
+	s.Len(collectedResults, numGoroutines)
+}
+
+// TestAC3_PerformanceRequirements validates AC-3: Performance Requirements
+// Verifies response times, throughput, resource usage within defined limits
+func (s *TestSuite) TestAC3_PerformanceRequirements() {
+	// @ValidatesAC: AC-3
+	// @Criteria: Response times meet NFR specifications
+	// @Criteria: Resource usage within defined limits
+	// @Criteria: Scalability requirements validated
+	// @Criteria: Performance baselines established
+
+	// Performance baseline test
+	start := time.Now()
+	result := {{PACKAGE_NAME}}.ProcessData(s.ctx, "performance_test")
+	duration := time.Since(start)
+
+	// Assert - AC-3 Performance Requirements
+	s.NotEmpty(result, "Performance test must produce results")
+	s.Less(duration, 200*time.Millisecond, "Response time must be < 200ms (NFR-001)")
+
+	// Memory usage test (basic check)
+	// Note: For detailed memory profiling, use go test -memprofile
+	s.NotPanics(func() {
+		for i := 0; i < 1000; i++ {
+			{{PACKAGE_NAME}}.ProcessData(s.ctx, "memory_test")
+		}
+	}, "Must handle repeated calls without memory issues")
+
+	// Concurrency test for scalability
+	const numRoutines = 10
+	results := make(chan bool, numRoutines)
+
+	for i := 0; i < numRoutines; i++ {
+		go func() {
+			result := {{PACKAGE_NAME}}.ProcessData(s.ctx, "concurrent_test")
+			results <- len(result) > 0
+		}()
+	}
+
+	// Collect results with timeout
+	successCount := 0
+	timeout := time.After(5 * time.Second)
+	for i := 0; i < numRoutines; i++ {
+		select {
+		case success := <-results:
+			if success {
+				successCount++
+			}
+		case <-timeout:
+			s.FailNow("Performance test timed out")
+		}
+	}
+
+	s.Equal(numRoutines, successCount, "All concurrent operations must succeed")
+}
+
+// TestAC4_SecurityCompliance validates AC-4: Security & Compliance
+// Verifies security scanning, input validation, audit logging, compliance requirements
+func (s *TestSuite) TestAC4_SecurityCompliance() {
+	// @ValidatesAC: AC-4
+	// @Criteria: Security scanning passes with no critical issues
+	// @Criteria: Input validation implemented
+	// @Criteria: Audit logging configured
+	// @Criteria: Compliance requirements met
+
+	// Input validation tests
+	maliciousInputs := []string{
+		"<script>alert('xss')</script>",
+		"'; DROP TABLE users; --",
+		"../../../etc/passwd",
+		string([]byte{0x00, 0x01, 0x02}), // null bytes
+		strings.Repeat("A", 100000),       // extremely large input
+	}
+
+	for _, input := range maliciousInputs {
+		s.Run(fmt.Sprintf("malicious_input_%x", input), func() {
+			// Act - test with potentially malicious input
+			result, err := {{PACKAGE_NAME}}.ProcessWithValidation(s.ctx, input)
+
+			// Assert - AC-4 Security Requirements
+			if err != nil {
+				s.Error(err, "Malicious input should be rejected")
+			} else {
+				s.NotContains(result, input, "Output must be sanitized")
+			}
+			s.NotPanics(func() {
+				{{PACKAGE_NAME}}.ProcessWithValidation(s.ctx, input)
+			}, "Malicious input must not cause panics")
+		})
+	}
+
+	// Audit logging test
+	s.Run("audit_logging", func() {
+		// This would typically check if audit events are logged
+		// In a real implementation, you'd verify logs or audit trail
+		result := {{PACKAGE_NAME}}.ProcessWithAudit(s.ctx, "audit_test")
+		s.NotEmpty(result, "Audit operations must complete successfully")
+		// Note: In real tests, verify audit logs are created
+	})
+}
+
+// BenchmarkAC3_PerformanceBaseline establishes performance baselines for AC-3
+func BenchmarkAC3_PerformanceBaseline(b *testing.B) {
+	// @ValidatesAC: AC-3
+	// @Purpose: Establish performance baselines for monitoring
+	ctx := context.Background()
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = {{PACKAGE_NAME}}.ProcessData(ctx, "benchmark_input")
+	}
+}
+
+// BenchmarkParallel demonstrates parallel benchmark testing
+func BenchmarkParallel(b *testing.B) {
+	ctx := context.Background()
+
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			_ = {{PACKAGE_NAME}}.ProcessData(ctx, "parallel_benchmark")
+		}
+	})
+}
+
+// TestMain allows for global setup and teardown
+func TestMain(m *testing.M) {
+	// Global setup
+	// Initialize any global state, connections, etc.
+
+	// Run tests
+	code := m.Run()
+
+	// Global teardown
+	// Clean up any resources
+
+	// Exit with the test result code
+	os.Exit(code)
+}
+
+// Run the test suite
+func Test{{PACKAGE_NAME}}Suite(t *testing.T) {
+	suite.Run(t, new(TestSuite))
+}
+
+// Example of a simple test without suite
+func TestSimpleFunction(t *testing.T) {
+	// Arrange
+	input := "test"
+	expected := "result"
+
+	// Act
+	result := {{PACKAGE_NAME}}.SimpleFunction(input)
+
+	// Assert
+	assert.Equal(t, expected, result)
+	require.NotEmpty(t, result) // require stops test on failure
+}
+
+// Example of testing with mocks
+func TestWithMocks(t *testing.T) {
+	// Create mock dependencies
+	// mockDB := mocks.NewMockDatabase(t)
+	// mockCache := mocks.NewMockCache(t)
+
+	// Set expectations
+	// mockDB.EXPECT().Get(mock.Anything, "key").Return("value", nil)
+	// mockCache.EXPECT().Set(mock.Anything, "key", "value").Return(nil)
+
+	// Create service with mocks
+	// service := {{PACKAGE_NAME}}.NewService(mockDB, mockCache)
+
+	// Test the service
+	// result, err := service.DoSomething(context.Background())
+
+	// Assert
+	// assert.NoError(t, err)
+	// assert.Equal(t, "expected", result)
+
+	// Mocks are automatically verified by testify
+}

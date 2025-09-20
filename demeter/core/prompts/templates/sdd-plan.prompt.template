@@ -1,0 +1,266 @@
+# 🏗️ SDD /plan Command Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Specification File**: {{SPECIFICATION_FILE}}
+- **Framework**: Demeter WAVIS v1.3 + GitHub SDD
+
+## 🎯 GitHub SDD /plan Implementation
+
+This template implements the GitHub SDD `/plan` command for generating detailed implementation plans from specifications.
+
+### Constitutional Implementation Planning
+All implementation plans must demonstrate compliance with the 9 constitutional principles:
+1. **Library-First**: Concrete library selection and usage
+2. **CLI Interface Mandate**: Complete CLI implementation approach
+3. **Test-First Imperative**: Detailed testing strategy
+4. **Simplicity Guidelines**: Simple, direct implementation paths
+5. **Anti-Abstraction Rules**: Avoid unnecessary abstractions
+6. **Integration-First Testing**: Integration testing priority
+7. **Minimal Project Structure**: Flat, simple project structure
+8. **Framework Direct Usage**: Direct framework usage without wrappers
+9. **Comprehensive Testing**: Complete test coverage strategy
+
+### Implementation Plan Generation
+
+#### 1. Plan Header
+```yaml
+implementation_plan_id: "PLAN-{{PROJECT_NAME}}-{{SPECIFICATION_ID}}"
+based_on_specification: "{{SPECIFICATION_FILE}}"
+created_date: "{{CURRENT_DATE}}"
+methodology: "GitHub SDD v1.0"
+constitutional_validation: "complete"
+```
+
+#### 2. Constitutional Architecture Design
+```yaml
+constitutional_architecture:
+  library_first_design:
+    core_libraries:
+      - library: "[Primary library name]"
+        purpose: "[What it provides for this specification]"
+        usage_approach: "[How it will be used directly]"
+        constitutional_compliance: "[How it supports constitutional principles]"
+    dependency_strategy:
+      approach: "[Minimal dependencies, maximum library leverage]"
+      alternatives_avoided: "[Complex dependencies deliberately avoided]"
+
+  cli_interface_design:
+    command_architecture:
+      - command: "[CLI command from specification]"
+        implementation_approach: "[How to implement this command]"
+        library_usage: "[Which libraries handle CLI concerns]"
+        testing_strategy: "[How to test CLI interface]"
+    interface_patterns:
+      input_handling: "[How to process CLI inputs]"
+      output_formatting: "[How to format CLI outputs]"
+      error_handling: "[CLI error response strategy]"
+
+  test_first_architecture:
+    testing_layers:
+      integration_tests:
+        priority: "highest"
+        coverage: "[Integration scenarios from specification]"
+        framework: "[Integration testing framework to use]"
+      cli_tests:
+        priority: "high"
+        coverage: "[CLI interface testing approach]"
+        automation: "[CLI testing automation strategy]"
+      unit_tests:
+        priority: "supplementary"
+        coverage: "[Unit testing for complex logic only]"
+        focus: "[Specific units requiring isolated testing]"
+
+  simplicity_architecture:
+    implementation_approach: "[Simplest viable implementation strategy]"
+    complexity_avoided: "[Complex patterns deliberately avoided]"
+    direct_paths: "[Direct implementation without over-engineering]"
+```
+
+#### 3. Technical Implementation Plan
+```yaml
+technical_implementation:
+  project_structure:
+    approach: "minimal"
+    directories:
+      - path: "[Essential directory path]"
+        purpose: "[Why this directory is necessary]"
+        constitutional_alignment: "[How it supports constitutional principles]"
+
+  implementation_layers:
+    foundation:
+      description: "[Base infrastructure setup]"
+      constitutional_focus: "Library-First, Simplicity"
+      deliverables:
+        - item: "[Specific deliverable]"
+          success_criteria: "[How to validate completion]"
+          testing_approach: "[How to test this deliverable]"
+
+    application:
+      description: "[Core business logic implementation]"
+      constitutional_focus: "CLI Interface, Test-First"
+      deliverables:
+        - item: "[Application component]"
+          success_criteria: "[Validation criteria]"
+          testing_approach: "[Testing strategy]"
+
+    integration:
+      description: "[External system integration]"
+      constitutional_focus: "Integration-First Testing"
+      deliverables:
+        - item: "[Integration component]"
+          success_criteria: "[Integration success criteria]"
+          testing_approach: "[Integration testing approach]"
+
+  implementation_sequence:
+    phase_1_tests:
+      description: "Create failing test suite"
+      constitutional_principles: ["Test-First", "CLI Interface", "Integration-First"]
+      tasks:
+        - task: "[Specific test creation task]"
+          output: "[Expected test deliverable]"
+          constitutional_compliance: "[How this supports constitutional principles]"
+
+    phase_2_implementation:
+      description: "Implement to pass tests"
+      constitutional_principles: ["Library-First", "Simplicity", "Framework Direct"]
+      tasks:
+        - task: "[Implementation task]"
+          approach: "[Implementation approach using specified libraries]"
+          constitutional_compliance: "[Constitutional principle alignment]"
+
+    phase_3_integration:
+      description: "Integration and validation"
+      constitutional_principles: ["Integration-First", "Comprehensive Testing"]
+      tasks:
+        - task: "[Integration task]"
+          validation: "[How to validate integration]"
+          constitutional_compliance: "[Constitutional alignment]"
+```
+
+#### 4. Quality Assurance Plan
+```yaml
+quality_assurance:
+  constitutional_compliance_validation:
+    library_first_validation:
+      - check: "[Verify library usage over custom implementation]"
+        method: "[How to validate this]"
+    cli_interface_validation:
+      - check: "[Verify complete CLI access]"
+        method: "[CLI testing method]"
+    test_first_validation:
+      - check: "[Verify tests written before implementation]"
+        method: "[Test-first validation approach]"
+    simplicity_validation:
+      - check: "[Verify simple approach chosen]"
+        method: "[Simplicity validation method]"
+
+  specification_compliance:
+    acceptance_criteria_mapping:
+      - criterion: "[Acceptance criterion from specification]"
+        implementation_approach: "[How implementation satisfies this]"
+        validation_method: "[How to verify satisfaction]"
+
+  quality_gates:
+    development_quality:
+      - gate: "All tests pass"
+        validation: "[Test execution and results]"
+      - gate: "CLI interface functional"
+        validation: "[CLI testing validation]"
+      - gate: "Constitutional principles followed"
+        validation: "[Constitutional compliance check]"
+
+    specification_quality:
+      - gate: "All acceptance criteria met"
+        validation: "[Acceptance criteria validation approach]"
+      - gate: "Performance requirements satisfied"
+        validation: "[Performance validation method]"
+```
+
+#### 5. Risk Assessment and Mitigation
+```yaml
+risk_assessment:
+  implementation_risks:
+    - risk: "[Potential implementation challenge]"
+      likelihood: "High|Medium|Low"
+      impact: "High|Medium|Low"
+      constitutional_mitigation: "[How constitutional principles reduce this risk]"
+      mitigation_plan: "[Specific mitigation steps]"
+
+  quality_risks:
+    - risk: "[Quality-related risk]"
+      constitutional_prevention: "[How constitutional principles prevent this]"
+      early_detection: "[How to detect this risk early]"
+      response_plan: "[How to respond if risk materializes]"
+
+  dependency_risks:
+    - risk: "[Library or external dependency risk]"
+      library_first_mitigation: "[How library-first approach mitigates this]"
+      backup_plan: "[Alternative library or approach]"
+```
+
+#### 6. Implementation Timeline
+```yaml
+implementation_timeline:
+  estimation_approach: "Constitutional principle-based estimation"
+
+  phases:
+    specification_validation:
+      duration: "[Time to validate specification completeness]"
+      deliverable: "Confirmed specification with no [CLARIFY] items"
+      constitutional_focus: "Comprehensive understanding"
+
+    test_creation:
+      duration: "[Time to create test suite]"
+      deliverable: "Complete failing test suite"
+      constitutional_focus: "Test-First, CLI Interface"
+
+    core_implementation:
+      duration: "[Implementation time using library-first approach]"
+      deliverable: "Working implementation passing all tests"
+      constitutional_focus: "Library-First, Simplicity"
+
+    integration_validation:
+      duration: "[Integration and validation time]"
+      deliverable: "Fully integrated, validated implementation"
+      constitutional_focus: "Integration-First, Comprehensive Testing"
+
+  total_estimated_effort: "[Sum of phase estimates]"
+  confidence_level: "[Estimation confidence based on constitutional approach]"
+```
+
+### Plan Validation Checklist
+
+Before completing implementation plan:
+- [ ] Every specification requirement has implementation approach
+- [ ] All 9 constitutional principles are demonstrated in plan
+- [ ] CLI interface implementation is detailed
+- [ ] Test-first approach is clearly defined
+- [ ] Library selections are justified and constitutional
+- [ ] Integration strategy prioritizes integration testing
+- [ ] Simplicity is demonstrated in all design decisions
+- [ ] Quality gates are specific and measurable
+- [ ] Risk mitigation leverages constitutional principles
+
+### Output Instructions
+
+Generate a complete implementation plan that:
+1. Translates specification requirements into concrete implementation tasks
+2. Demonstrates constitutional compliance in every aspect
+3. Provides detailed technical approach using library-first principles
+4. Defines comprehensive testing strategy prioritizing integration
+5. Creates clear quality gates and validation criteria
+6. Identifies risks and mitigation strategies
+
+The plan should be detailed enough that implementation can proceed immediately with clear constitutional guidance at every step.
+
+## Success Criteria
+- [ ] Implementation plan maps completely to specification
+- [ ] All constitutional principles are demonstrably applied
+- [ ] Technical approach is concrete and actionable
+- [ ] Testing strategy prioritizes integration and CLI interface
+- [ ] Quality gates are measurable and constitutional
+- [ ] Risk mitigation is constitutional principle-based
+
+Execute this planning process for the provided specification.

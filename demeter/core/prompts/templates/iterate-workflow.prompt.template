@@ -1,0 +1,451 @@
+# 🌾 TDD Iteration Workflow with Constitutional SDD Compliance
+
+## Overview
+Execute comprehensive TDD (Test-Driven Development) iteration workflow with constitutional compliance, GraphRAG knowledge integration, and AI-enhanced development assistance for Units of Work (UoWs).
+
+## Input Context
+- **Target UoW**: {{UOW_ID}} (specific UoW or "all" for complete iteration)
+- **Target Phase**: {{PHASE}} (3|4|5|6|7|all for complete workflow)
+- **Execution Plan**: `{{EXECUTION_PLAN}}`
+- **Project Context**: {{PROJECT_NAME}}
+- **Constitutional Mode**: {{CONSTITUTIONAL_ENABLED}} (true|false)
+- **Complexity Level**: {{COMPLEXITY_LEVEL}} (simple|medium|complex)
+
+## Constitutional SDD Integration
+
+### 9 Constitutional Principles in TDD Context
+Transform constitutional compliance into executable TDD practices:
+
+1. **Library-First TDD**
+   ```yaml
+   red_phase:
+     - Write tests that expect library-based solutions
+     - Test against established library APIs
+     - Validate library integration patterns
+
+   green_phase:
+     - Implement using approved libraries only
+     - Minimize custom implementations
+     - Follow library best practices
+
+   refactor_phase:
+     - Extract custom code to library patterns
+     - Improve library usage efficiency
+     - Document library selection rationale
+   ```
+
+2. **CLI Interface TDD**
+   ```yaml
+   red_phase:
+     - Test CLI command availability
+     - Validate command syntax and help text
+     - Test error handling and user feedback
+
+   green_phase:
+     - Implement CLI commands with standardized interface
+     - Follow project CLI conventions
+     - Ensure consistent error messaging
+
+   refactor_phase:
+     - Improve CLI user experience
+     - Add comprehensive help documentation
+     - Optimize command performance
+   ```
+
+3. **Test-First Constitutional Enforcement**
+   ```yaml
+   constitutional_tests:
+     - Test constitutional principle compliance
+     - Validate governance rule adherence
+     - Check for principle violations
+     - Measure constitutional debt
+   ```
+
+## TDD Cycle Implementation
+
+### 🔴 Phase 3: RED (Test Specification)
+
+#### Constitutional-Aware Test Creation
+```yaml
+test_specification_process:
+  constitutional_test_layers:
+    principle_compliance_tests:
+      - Library-first implementation verification
+      - CLI interface standard compliance
+      - Simplicity principle adherence
+      - Anti-abstraction validation
+
+    functional_acceptance_tests:
+      - Convert acceptance criteria to failing tests
+      - Edge case scenario coverage
+      - Error handling validation
+      - Performance requirement tests
+
+    integration_tests:
+      - Constitutional dependency validation
+      - Library integration testing
+      - CLI interface integration
+      - Cross-UoW interaction tests
+
+  graphrag_knowledge_application:
+    testing_pattern_discovery:
+      - Query similar UoWs for testing strategies
+      - Apply domain-specific test patterns
+      - Use proven edge case scenarios
+      - Leverage constitutional testing templates
+
+    test_quality_enhancement:
+      - AI-suggested test scenarios
+      - Constitutional gap identification
+      - Test coverage optimization
+      - Quality gate validation
+```
+
+#### Test Creation Strategy by Complexity
+```yaml
+complexity_based_testing:
+  simple:
+    focus: "Direct functionality validation"
+    patterns:
+      - Single responsibility tests
+      - Clear input/output validation
+      - Basic constitutional compliance
+      - Minimal integration testing
+
+  medium:
+    focus: "Modular component testing"
+    patterns:
+      - Component interaction tests
+      - Interface contract validation
+      - Enhanced constitutional compliance
+      - Multi-layer integration testing
+
+  complex:
+    focus: "System-wide integration testing"
+    patterns:
+      - Distributed component testing
+      - Advanced constitutional validation
+      - Performance and scalability tests
+      - End-to-end workflow testing
+```
+
+### 🟢 Phase 4: GREEN (Minimal Implementation)
+
+#### Constitutional Implementation Strategy
+```yaml
+constitutional_implementation:
+  library_first_approach:
+    implementation_priority:
+      1. Identify established libraries for functionality
+      2. Implement using library APIs exclusively
+      3. Minimize custom implementations
+      4. Document library selection rationale
+
+  cli_interface_compliance:
+    interface_requirements:
+      - Standardized command structure
+      - Consistent parameter naming
+      - Comprehensive help documentation
+      - Error handling with user guidance
+
+  simplicity_enforcement:
+    complexity_constraints:
+      - Single responsibility per implementation unit
+      - Clear and readable code structure
+      - Minimal abstraction layers
+      - Direct problem-solving approach
+
+  anti_abstraction_principles:
+    implementation_guidelines:
+      - Avoid unnecessary design patterns
+      - Prefer composition over inheritance
+      - Direct implementation over framework magic
+      - Clear data flow and transformations
+```
+
+#### Implementation Process by Complexity
+```yaml
+implementation_strategies:
+  simple:
+    approach: "Direct single-agent implementation"
+    constitutional_focus:
+      - Library selection and integration
+      - Basic CLI interface implementation
+      - Simple, clear code structure
+      - Minimal abstraction
+
+  medium:
+    approach: "Modular single-agent development"
+    constitutional_focus:
+      - Enhanced library integration patterns
+      - Comprehensive CLI interface
+      - Component-based architecture
+      - Balanced abstraction
+
+  complex:
+    approach: "Coordinated multi-agent development"
+    constitutional_focus:
+      - Advanced library orchestration
+      - Complex CLI interface hierarchies
+      - Distributed component coordination
+      - Strategic abstraction management
+```
+
+### 🔵 Phase 5: REFACTOR (Code Enhancement)
+
+#### Constitutional Compliance Enhancement
+```yaml
+constitutional_refactoring:
+  library_first_optimization:
+    enhancement_areas:
+      - Improve library integration efficiency
+      - Consolidate custom implementations
+      - Optimize library usage patterns
+      - Document library migration paths
+
+  cli_interface_improvement:
+    enhancement_areas:
+      - Enhance user experience design
+      - Improve command discoverability
+      - Optimize performance and responsiveness
+      - Add advanced help and documentation
+
+  simplicity_refinement:
+    enhancement_areas:
+      - Reduce code complexity metrics
+      - Improve naming and readability
+      - Eliminate unnecessary abstractions
+      - Streamline data flows
+
+  constitutional_debt_reduction:
+    improvement_areas:
+      - Address principle violations
+      - Strengthen governance compliance
+      - Improve constitutional test coverage
+      - Document constitutional decisions
+```
+
+#### GraphRAG Knowledge Capture
+```yaml
+knowledge_capture_process:
+  pattern_documentation:
+    constitutional_patterns:
+      - Successful library-first implementations
+      - Effective CLI interface designs
+      - Simplicity principle applications
+      - Anti-abstraction strategies
+
+    implementation_lessons:
+      - Constitutional compliance challenges
+      - Library integration insights
+      - CLI interface user feedback
+      - Refactoring effectiveness metrics
+
+  knowledge_enhancement:
+    pattern_sharing:
+      - Register reusable constitutional components
+      - Document successful compliance strategies
+      - Create constitutional templates
+      - Build governance best practices library
+```
+
+## Quality and Deployment Phases
+
+### 📊 Phase 6: Quality Verification
+
+#### Constitutional Quality Gates
+```yaml
+constitutional_quality_verification:
+  principle_compliance_audit:
+    library_first_verification:
+      - Audit library usage vs custom implementations
+      - Verify library selection rationale
+      - Check for library-first violations
+      - Measure library integration quality
+
+    cli_interface_validation:
+      - Test CLI interface consistency
+      - Verify help documentation completeness
+      - Validate error handling quality
+      - Check user experience standards
+
+    simplicity_assessment:
+      - Measure code complexity metrics
+      - Evaluate abstraction necessity
+      - Check for over-engineering
+      - Validate readability standards
+
+  constitutional_debt_measurement:
+    debt_categories:
+      - Principle violations count and severity
+      - Governance rule non-compliance
+      - Constitutional test coverage gaps
+      - Documentation completeness issues
+
+  traditional_quality_gates:
+    coverage_requirements:
+      - Foundation layer: >80% test coverage
+      - Business logic layer: >60% test coverage
+      - Constitutional compliance: >90% coverage
+      - Integration testing: >70% coverage
+```
+
+### 🚀 Phase 7: Deployment Preparation
+
+#### Constitutional Production Readiness
+```yaml
+constitutional_deployment_verification:
+  production_compliance:
+    library_deployment_readiness:
+      - Verify production library versions
+      - Check library security updates
+      - Validate library licensing compliance
+      - Ensure library dependency stability
+
+    cli_production_configuration:
+      - Production CLI interface deployment
+      - User access and permission verification
+      - CLI performance optimization
+      - Production error handling validation
+
+  constitutional_monitoring:
+    compliance_monitoring:
+      - Constitutional principle adherence metrics
+      - Governance rule compliance tracking
+      - Constitutional debt monitoring
+      - Principle implementation effectiveness
+```
+
+## AI-Enhanced Development Assistance
+
+### GraphRAG Knowledge Integration
+```yaml
+ai_development_support:
+  contextual_assistance:
+    pattern_recognition:
+      - Identify similar implementation patterns
+      - Suggest constitutional compliance strategies
+      - Recommend library alternatives
+      - Provide refactoring guidance
+
+    predictive_insights:
+      - Predict constitutional compliance risks
+      - Suggest optimal implementation approaches
+      - Identify potential quality issues
+      - Recommend testing strategies
+
+  continuous_learning:
+    knowledge_evolution:
+      - Learn from constitutional successes
+      - Adapt to governance rule changes
+      - Improve compliance recommendations
+      - Enhance pattern recognition accuracy
+```
+
+### Constitutional Decision Support
+```yaml
+decision_support_system:
+  library_selection_guidance:
+    evaluation_criteria:
+      - Constitutional alignment assessment
+      - Technical capability evaluation
+      - Community support and maintenance
+      - Security and performance metrics
+
+  implementation_strategy_recommendation:
+    complexity_based_guidance:
+      - Simple: Direct library integration
+      - Medium: Modular library orchestration
+      - Complex: Advanced library coordination
+
+  governance_compliance_assistance:
+    compliance_automation:
+      - Automated constitutional checks
+      - Governance rule validation
+      - Compliance gap identification
+      - Remediation strategy suggestions
+```
+
+## Execution Workflow
+
+### Sequential TDD Execution
+```python
+# Constitutional TDD execution pipeline
+def execute_constitutional_tdd_cycle(uow_id, phase, execution_plan):
+    constitutional_context = load_constitutional_context()
+    graphrag_knowledge = initialize_graphrag_connection()
+
+    if phase in ["3", "all"]:
+        red_phase_result = execute_red_phase(
+            uow_id, constitutional_context, graphrag_knowledge
+        )
+
+    if phase in ["4", "all"]:
+        green_phase_result = execute_green_phase(
+            uow_id, constitutional_context, graphrag_knowledge
+        )
+
+    if phase in ["5", "all"]:
+        refactor_phase_result = execute_refactor_phase(
+            uow_id, constitutional_context, graphrag_knowledge
+        )
+
+    if phase in ["6", "all"]:
+        quality_verification_result = execute_quality_verification(
+            constitutional_context, graphrag_knowledge
+        )
+
+    if phase in ["7", "all"]:
+        deployment_preparation_result = execute_deployment_preparation(
+            constitutional_context, graphrag_knowledge
+        )
+
+    return consolidate_results(all_phase_results)
+```
+
+## Success Criteria and Metrics
+
+### Constitutional Success Metrics
+```yaml
+constitutional_success_criteria:
+  principle_compliance:
+    library_first: ">95% library usage vs custom implementations"
+    cli_interface: "100% CLI standards compliance"
+    test_first: "100% test-first development adherence"
+    simplicity: "<10 cyclomatic complexity average"
+    anti_abstraction: "<3 abstraction layers maximum"
+
+  quality_metrics:
+    constitutional_test_coverage: ">90%"
+    governance_compliance_score: ">85%"
+    constitutional_debt_ratio: "<5%"
+    principle_violation_count: "0 critical violations"
+
+  knowledge_metrics:
+    pattern_capture_completeness: ">80%"
+    knowledge_reuse_effectiveness: ">70%"
+    constitutional_template_usage: ">60%"
+    governance_decision_documentation: "100%"
+```
+
+## Implementation Instructions
+
+### 1. Constitutional Context Initialization
+- Load project constitution and governance rules
+- Initialize GraphRAG knowledge connection
+- Set up constitutional compliance monitoring
+- Prepare constitutional testing frameworks
+
+### 2. TDD Cycle Execution
+- Execute RED-GREEN-REFACTOR cycles with constitutional awareness
+- Apply complexity-based implementation strategies
+- Integrate GraphRAG knowledge throughout
+- Maintain constitutional compliance at each step
+
+### 3. Quality and Deployment Integration
+- Perform constitutional quality verification
+- Prepare constitutionally-compliant deployment
+- Set up constitutional monitoring and alerting
+- Document constitutional decisions and lessons
+
+Execute comprehensive TDD iteration workflow that seamlessly integrates constitutional governance, GraphRAG knowledge, and AI-enhanced development assistance for superior software quality and governance compliance.

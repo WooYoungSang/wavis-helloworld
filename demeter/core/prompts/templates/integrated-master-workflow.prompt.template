@@ -1,0 +1,438 @@
+# 🌊 Integrated Master Workflow Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Requirements Source**: {{REQUIREMENTS_SOURCE}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Framework**: Demeter WAVIS v1.3 + Constitutional SDD + GraphRAG + Spec-Kit Integration
+
+## 🎯 Integrated Master Workflow Philosophy
+
+This template orchestrates the complete unified workflow that seamlessly integrates Requirements → Constitutional SSOT → GraphRAG Knowledge → SDD Specification → Constitutional Implementation → AI Refinement. Every step is constitutionally governed, GraphRAG-enhanced, and SDD-compliant.
+
+### Unified Flow Principles
+- **Constitutional Governance First**: Every step validates constitutional compliance
+- **GraphRAG Knowledge Continuity**: Knowledge captured and injected throughout workflow
+- **SDD Methodology Integration**: Specification-driven approach with executable specifications
+- **AI-Enhanced Quality**: Continuous AI improvement and constitutional optimization
+- **Seamless Automation**: Each step automatically prepares the next step
+
+## 🌊 Integrated Master Workflow Execution
+
+### Phase 1: Constitutional Foundation Setup
+```yaml
+phase_1_constitutional_foundation:
+  description: "Establish constitutional governance and GraphRAG foundation"
+
+  step_1_project_constitution:
+    template: "constitution.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      PROJECT_DOMAIN: "{{PROJECT_DOMAIN}}"
+      TEAM_SIZE: "{{TEAM_SIZE}}"
+    output: "{{PROJECT_NAME}}-constitution.yaml"
+    constitutional_gates:
+      - "Project constitution established with 9+ constitutional principles"
+      - "Domain-specific constitutional extensions integrated"
+      - "Constitutional governance framework operational"
+
+  step_2_constitutional_validation_setup:
+    template: "constitution-validator.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+      VALIDATION_TARGET: "project_setup"
+      VALIDATION_TYPE: "foundational_compliance"
+    output: "constitutional-compliance-system"
+    constitutional_gates:
+      - "Constitutional validation system operational"
+      - "Compliance monitoring established"
+      - "Quality gates configured"
+
+  graphrag_initialization:
+    knowledge_base_setup: "Initialize .demeter-dev/knowledge/ structure"
+    constitutional_entities_preparation: "Prepare constitutional principle entities"
+    domain_context_setup: "Setup {{EXTENSIONS}} domain knowledge foundation"
+
+  success_criteria:
+    - [ ] Project constitution established and validated
+    - [ ] Constitutional compliance system operational
+    - [ ] GraphRAG foundation initialized
+    - [ ] Domain-specific constitutional framework ready
+```
+
+### Phase 2: Requirements to Constitutional SSOT
+```yaml
+phase_2_requirements_to_constitutional_ssot:
+  description: "Transform requirements into constitutionally compliant SSOT"
+
+  step_1_natural_language_processing:
+    template: "nlp-to-ssot.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      REQUIREMENTS_FILE: "{{REQUIREMENTS_SOURCE}}"
+      PROJECT_DOMAIN: "{{EXTENSIONS}}"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    output: "requirements-ssot.yaml"
+    constitutional_enhancement:
+      - "AI-powered constitutional compliance analysis"
+      - "SDD specification structure integration"
+      - "[CLARIFY] marker identification and constitutional resolution"
+
+  step_2_constitutional_ssot_generation:
+    template: "ssot-generation.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    output: "docs/constitutional-ssot.md"
+    constitutional_enhancement:
+      - "Complete constitutional compliance fields"
+      - "GraphRAG metadata integration"
+      - "SDD specification quality validation"
+
+  step_3_ssot_merge_and_validation:
+    template: "ssot-merge.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      BASE_SSOT_DIR: "demeter/core/ssot/base"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      OUTPUT_FILE: "docs/merged-constitutional-ssot.yaml"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    output: "docs/merged-constitutional-ssot.yaml"
+    constitutional_enhancement:
+      - "Constitutional compliance scoring (target: 85%+)"
+      - "GraphRAG optimization for knowledge indexing"
+      - "SDD specification quality metrics"
+
+  success_criteria:
+    - [ ] Requirements processed with constitutional compliance
+    - [ ] Constitutional SSOT generated with full compliance metadata
+    - [ ] GraphRAG metadata integrated for knowledge indexing
+    - [ ] Constitutional compliance score achieved (85%+)
+```
+
+### Phase 3: Constitutional GraphRAG Knowledge Integration
+```yaml
+phase_3_constitutional_graphrag_integration:
+  description: "Create constitutional knowledge graph from SSOT"
+
+  step_1_constitutional_knowledge_extraction:
+    template: "graphrag-index.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      MERGED_SSOT_FILE: "docs/merged-constitutional-ssot.yaml"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    output: ".demeter-dev/knowledge/index/"
+    constitutional_enhancement:
+      - "Constitutional entity extraction with compliance metadata"
+      - "Constitutional relationship mapping"
+      - "Domain-specific constitutional pattern capture"
+
+  step_2_constitutional_context_generation:
+    template: "constitutional development context generation"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      KNOWLEDGE_INDEX: ".demeter-dev/knowledge/index/"
+    output: ".demeter-dev/knowledge/patterns/"
+    constitutional_enhancement:
+      - "Constitutional implementation patterns documentation"
+      - "Domain-specific constitutional guidance"
+      - "Constitutional development queries preparation"
+
+  step_3_knowledge_validation:
+    template: "constitutional knowledge validation"
+    validation_targets:
+      - "Constitutional entity completeness"
+      - "Constitutional relationship accuracy"
+      - "Domain constitutional pattern coverage"
+      - "Query readiness for development assistance"
+
+  success_criteria:
+    - [ ] Constitutional knowledge graph created with full entity coverage
+    - [ ] Constitutional relationships properly mapped
+    - [ ] Domain-specific constitutional patterns captured
+    - [ ] Development queries functional for constitutional guidance
+```
+
+### Phase 4: SDD Specification-Driven Development
+```yaml
+phase_4_sdd_specification_driven_development:
+  description: "Execute SDD workflow with constitutional compliance"
+
+  step_1_sdd_specify_with_constitutional_compliance:
+    template: "sdd-specification.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      FEATURE_NAME: "{{FEATURE_NAME}}"
+      FEATURE_DESCRIPTION: "{{FEATURE_DESCRIPTION}}"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    graphrag_context_injection:
+      - "Constitutional implementation patterns from knowledge graph"
+      - "Domain-specific constitutional requirements"
+      - "Similar feature constitutional compliance examples"
+    output: "specifications/{{FEATURE_NAME}}-constitutional-spec.yaml"
+
+  step_2_sdd_plan_with_constitutional_architecture:
+    template: "sdd-plan.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      SPECIFICATION_FILE: "specifications/{{FEATURE_NAME}}-constitutional-spec.yaml"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    graphrag_context_injection:
+      - "Constitutional architecture patterns"
+      - "Constitutional implementation success patterns"
+      - "Domain-specific constitutional best practices"
+    output: "plans/{{FEATURE_NAME}}-constitutional-plan.yaml"
+
+  step_3_sdd_tasks_with_constitutional_execution:
+    template: "sdd-tasks.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      EXTENSIONS: "{{EXTENSIONS}}"
+      IMPLEMENTATION_PLAN_FILE: "plans/{{FEATURE_NAME}}-constitutional-plan.yaml"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    graphrag_context_injection:
+      - "Constitutional task execution patterns"
+      - "Constitutional quality gate validation"
+      - "Constitutional parallel execution strategies"
+    output: "tasks/{{FEATURE_NAME}}-constitutional-tasks.yaml"
+
+  success_criteria:
+    - [ ] SDD specifications created with constitutional compliance
+    - [ ] Implementation plans align with constitutional principles
+    - [ ] Task execution includes constitutional validation gates
+    - [ ] GraphRAG context successfully injected throughout SDD workflow
+```
+
+### Phase 5: Executable Specification and Intent-to-Code
+```yaml
+phase_5_executable_specification_and_code_generation:
+  description: "Generate executable specifications and working code"
+
+  step_1_executable_specification_generation:
+    template: "executable-spec.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      SPECIFICATION_FILE: "specifications/{{FEATURE_NAME}}-constitutional-spec.yaml"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    graphrag_context_injection:
+      - "Constitutional test generation patterns"
+      - "Constitutional scaffolding patterns"
+      - "Domain-specific constitutional implementation patterns"
+    output: "executable-specs/{{FEATURE_NAME}}-executable-spec.yaml"
+
+  step_2_intent_to_code_generation:
+    template: "spec-to-code.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      SPECIFICATION_FILE: "executable-specs/{{FEATURE_NAME}}-executable-spec.yaml"
+      TARGET_TECHNOLOGY: "{{TARGET_TECHNOLOGY}}"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    graphrag_context_injection:
+      - "Constitutional code generation patterns"
+      - "Constitutional library selection guidance"
+      - "Constitutional testing implementation patterns"
+    output: "generated-code/{{FEATURE_NAME}}/"
+
+  step_3_constitutional_code_validation:
+    template: "constitution-validator.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+      VALIDATION_TARGET: "generated-code/{{FEATURE_NAME}}/"
+      VALIDATION_TYPE: "implementation_compliance"
+    output: "validation-reports/{{FEATURE_NAME}}-compliance-report.yaml"
+
+  success_criteria:
+    - [ ] Executable specifications generated with constitutional compliance
+    - [ ] Working code generated following constitutional principles
+    - [ ] Constitutional compliance validated in generated code
+    - [ ] GraphRAG patterns successfully applied in code generation
+```
+
+### Phase 6: AI-Driven Constitutional Refinement
+```yaml
+phase_6_ai_driven_constitutional_refinement:
+  description: "Continuously improve specifications and code with AI"
+
+  step_1_ai_specification_refinement:
+    template: "ai-refinement.prompt.template"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      SPECIFICATION_FILE: "specifications/{{FEATURE_NAME}}-constitutional-spec.yaml"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+      REFINEMENT_TYPE: "constitutional_optimization"
+    graphrag_context_injection:
+      - "Constitutional refinement patterns"
+      - "Constitutional quality improvement patterns"
+      - "AI-driven constitutional enhancement examples"
+    output: "refined-specs/{{FEATURE_NAME}}-refined-constitutional-spec.yaml"
+
+  step_2_implementation_feedback_integration:
+    template: "ai-refinement with implementation feedback"
+    input_variables:
+      PROJECT_NAME: "{{PROJECT_NAME}}"
+      IMPLEMENTATION_FEEDBACK: "{{IMPLEMENTATION_FEEDBACK_SOURCE}}"
+      CONSTITUTION_FILE: "{{PROJECT_NAME}}-constitution.yaml"
+    graphrag_knowledge_update:
+      - "Capture constitutional implementation patterns"
+      - "Update constitutional success patterns"
+      - "Enhance domain-specific constitutional guidance"
+
+  step_3_constitutional_compliance_optimization:
+    template: "constitutional compliance optimization"
+    optimization_targets:
+      - "Constitutional compliance score improvement"
+      - "Constitutional principle adherence enhancement"
+      - "Constitutional quality metric optimization"
+
+  success_criteria:
+    - [ ] AI-driven specification refinement completed
+    - [ ] Implementation feedback integrated into specifications
+    - [ ] Constitutional compliance scores improved
+    - [ ] GraphRAG knowledge updated with refinement patterns
+```
+
+### Phase 7: Continuous Constitutional Knowledge Evolution
+```yaml
+phase_7_continuous_constitutional_knowledge_evolution:
+  description: "Evolve constitutional knowledge through implementation experience"
+
+  step_1_constitutional_pattern_capture:
+    pattern_extraction:
+      - "Successful constitutional implementation patterns"
+      - "Constitutional compliance optimization strategies"
+      - "Domain-specific constitutional best practices"
+      - "Constitutional quality achievement patterns"
+
+  step_2_graphrag_knowledge_enhancement:
+    knowledge_evolution:
+      - "Update constitutional entity relationships"
+      - "Enhance constitutional implementation patterns"
+      - "Expand domain-specific constitutional guidance"
+      - "Improve constitutional query effectiveness"
+
+  step_3_constitutional_governance_evolution:
+    governance_improvement:
+      - "Constitutional principle refinement based on experience"
+      - "Constitutional validation process optimization"
+      - "Constitutional quality gate enhancement"
+      - "Constitutional compliance automation improvement"
+
+  success_criteria:
+    - [ ] Constitutional patterns captured and documented
+    - [ ] GraphRAG knowledge enhanced with implementation experience
+    - [ ] Constitutional governance framework evolved and improved
+    - [ ] Continuous constitutional knowledge evolution established
+```
+
+## 🔗 Workflow Integration Points
+
+### Constitutional Compliance Validation Gates
+```yaml
+constitutional_gates:
+  phase_completion_gates:
+    - gate: "Constitutional compliance score maintained above 85%"
+    - gate: "All constitutional principles addressed and validated"
+    - gate: "GraphRAG knowledge successfully captured and indexed"
+    - gate: "SDD specification quality standards met"
+
+  inter_phase_validation:
+    - validation: "Previous phase outputs meet constitutional standards"
+    - validation: "GraphRAG context successfully injected"
+    - validation: "Constitutional governance maintained"
+    - validation: "Quality metrics within constitutional bounds"
+```
+
+### GraphRAG Context Injection Points
+```yaml
+graphrag_context_injection:
+  specification_phase:
+    - context: "Constitutional implementation patterns"
+    - context: "Domain-specific constitutional requirements"
+    - context: "Constitutional quality standards"
+
+  planning_phase:
+    - context: "Constitutional architecture patterns"
+    - context: "Constitutional implementation success examples"
+    - context: "Constitutional risk mitigation patterns"
+
+  implementation_phase:
+    - context: "Constitutional code generation patterns"
+    - context: "Constitutional testing strategies"
+    - context: "Constitutional quality validation approaches"
+
+  refinement_phase:
+    - context: "Constitutional optimization patterns"
+    - context: "Constitutional improvement success examples"
+    - context: "Constitutional evolution best practices"
+```
+
+### Knowledge Evolution Loop
+```yaml
+knowledge_evolution_loop:
+  capture_points:
+    - "Constitutional compliance achievements"
+    - "Constitutional implementation successes"
+    - "Constitutional quality improvements"
+    - "Constitutional pattern discoveries"
+
+  enhancement_targets:
+    - "Constitutional guidance accuracy"
+    - "Constitutional pattern effectiveness"
+    - "Constitutional compliance automation"
+    - "Constitutional knowledge completeness"
+
+  feedback_integration:
+    - "Implementation experience to specification improvement"
+    - "Constitutional compliance lessons to governance enhancement"
+    - "Quality achievements to standard refinement"
+    - "Pattern discoveries to methodology evolution"
+```
+
+## ✅ Integrated Master Workflow Success Criteria
+
+### Constitutional Integration Success
+- [ ] Constitutional governance integrated throughout entire workflow
+- [ ] Constitutional compliance maintained above 85% across all phases
+- [ ] Constitutional principles validated and enforced at every step
+- [ ] Constitutional quality gates operational and effective
+
+### GraphRAG Knowledge Management Success
+- [ ] Knowledge captured and indexed at every workflow phase
+- [ ] Context injection functional and effective throughout workflow
+- [ ] Knowledge evolution loop operational for continuous improvement
+- [ ] Constitutional patterns successfully captured and reused
+
+### SDD Methodology Integration Success
+- [ ] SDD workflow seamlessly integrated with constitutional governance
+- [ ] Executable specifications generated with constitutional compliance
+- [ ] Intent-to-code automation successful with constitutional adherence
+- [ ] Specification-driven development maintained throughout workflow
+
+### AI-Enhanced Quality Success
+- [ ] AI-driven refinement improves constitutional compliance over time
+- [ ] Implementation feedback successfully integrated into specification improvement
+- [ ] Constitutional optimization achieved through AI analysis
+- [ ] Quality metrics demonstrate continuous constitutional improvement
+
+### Workflow Automation Success
+- [ ] Each phase automatically prepares inputs for subsequent phases
+- [ ] Constitutional validation gates prevent non-compliant progression
+- [ ] GraphRAG context injection enhances every decision point
+- [ ] Knowledge evolution occurs continuously without manual intervention
+
+### Domain Integration Success
+- [ ] {{EXTENSIONS}} domain requirements successfully integrated throughout workflow
+- [ ] Domain-specific constitutional principles applied consistently
+- [ ] Domain expertise captured and enhanced through GraphRAG evolution
+- [ ] Domain constitutional compliance maintained across all phases
+
+Execute this integrated master workflow to achieve seamless constitutional specification-driven development with continuous knowledge evolution and AI-enhanced quality optimization.

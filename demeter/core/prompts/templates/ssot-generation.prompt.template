@@ -1,0 +1,594 @@
+# 📋 Constitutional SSOT Generation Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Framework**: Demeter WAVIS v1.3 + SDD Constitutional Compliance + GraphRAG Integration
+
+## 🎯 Constitutional Specification-Driven SSOT Generation
+
+This template generates a comprehensive SSOT with full constitutional compliance, SDD methodology integration, and GraphRAG optimization for knowledge management.
+
+### Constitutional Governance Framework
+All requirements must demonstrate adherence to project constitutional principles:
+1. **Library-First**: Prefer existing, well-maintained libraries over custom implementations
+2. **CLI Interface Mandate**: All functionality must be accessible via command-line interface
+3. **Test-First Imperative**: Tests must be written before implementation (non-negotiable)
+4. **Simplicity Over Complexity**: Choose simple, direct solutions over complex architectures
+5. **Anti-Premature Abstraction**: Avoid abstractions until concrete need is demonstrated
+6. **Integration-First Testing**: Prioritize integration tests over unit tests
+7. **Minimal Project Structure**: Keep project structure flat and simple
+8. **Framework Direct Usage**: Use frameworks directly without abstraction layers
+9. **Comprehensive Test Coverage**: Ensure complete test coverage for all functionality
+
+### SDD Specification Quality Gates
+- **Constitutional Compliance**: Every requirement validated against constitutional principles
+- **Clarity Enhancement**: No ambiguous requirements - use [CLARIFY] markers for unclear items
+- **Testability Assurance**: Every requirement must be verifiable through constitutional testing
+- **Measurability Standards**: Include specific, measurable success criteria aligned with constitutional quality
+- **Traceability Maintenance**: Complete links between constitutional principles, user stories, and implementation
+- **GraphRAG Optimization**: SSOT structure optimized for knowledge graph indexing and context injection
+
+### 1. Reference Existing SSOT Structure
+Use the wavis-template SSOT structure as foundation:
+- Base requirements from: {{FRAMEWORK_PATH}}/demeter/core/ssot/base/
+- Domain extensions from: {{FRAMEWORK_PATH}}/demeter/core/ssot/extensions/
+- Apply extension-specific requirements for {{EXTENSIONS}}
+
+### 2. Generate docs/SSOT.md with:
+
+**Project Overview**
+- Technology stack and architecture approach
+- Domain-specific considerations
+- MVP definition and scope
+
+**Constitutional Functional Requirements (FR)**
+Generate each FR with complete constitutional compliance and GraphRAG optimization:
+```yaml
+FR-XXX:
+  # Core requirement definition
+  name: "Clear, constitutionally compliant requirement name"
+  description: "Detailed, unambiguous description with constitutional approach"
+  priority: "Critical|High|Medium|Low"
+  business_value: "Measurable business impact aligned with constitutional principles"
+
+  # Constitutional Compliance (Mandatory)
+  constitutional_compliance:
+    library_first:
+      strategy: "Primary library selection approach"
+      libraries: ["specific-library-1", "specific-library-2"]
+      justification: "Why these libraries align with constitutional principles"
+      custom_implementation_avoided: "How custom coding is minimized"
+
+    cli_interface:
+      command: "primary-command"
+      subcommands: ["sub-cmd-1", "sub-cmd-2"]
+      parameters: ["--param1", "--param2"]
+      output_format: "json|table|plain"
+      examples: ["cli-command --param1 value", "cli-command sub-cmd-1"]
+
+    test_first:
+      test_strategy: "integration-first|unit-focused|end-to-end"
+      test_types: ["integration", "unit", "acceptance"]
+      coverage_target: "95%"
+      test_frameworks: ["jest", "cypress", "supertest"]
+
+    simplicity:
+      complexity_assessment: "low|medium|high"
+      simplification_approach: "How complexity is minimized"
+      alternative_analysis: "Why simple approach was chosen"
+
+    architectural_alignment:
+      anti_abstraction: "How premature abstraction is avoided"
+      integration_first: "Integration testing strategy"
+      minimal_structure: "Project structure impact"
+      framework_direct: "Direct framework usage approach"
+      comprehensive_testing: "Complete testing strategy"
+
+    compliance_score: "85-100%" # Target constitutional compliance percentage
+
+  # SDD Specification Enhancement
+  specification:
+    user_story: "As a [constitutional user type], I want [constitutional functionality] so that [constitutional business value]"
+
+    acceptance_criteria:
+      functional_criteria:
+        - criterion: "Specific, testable functional outcome"
+          constitutional_validation: "How this criterion ensures constitutional compliance"
+          test_method: "integration|unit|acceptance"
+        - criterion: "Another measurable functional criterion"
+          constitutional_validation: "Constitutional compliance validation approach"
+          test_method: "integration|unit|acceptance"
+
+      constitutional_criteria:
+        - criterion: "Feature accessible via CLI interface per constitutional mandate"
+          validation: "CLI interface testing and validation approach"
+        - criterion: "Implementation uses library-first approach per constitutional principle"
+          validation: "Library usage validation and testing"
+        - criterion: "Test-first development completed per constitutional imperative"
+          validation: "Test coverage and quality validation"
+
+    clarifications_needed:
+      - marker_id: "CLARIFY-FR-XXX-001"
+        element: "Specific unclear requirement aspect"
+        options: ["Option 1", "Option 2", "Constitutional guidance option"]
+        constitutional_impact: "How clarification affects constitutional compliance"
+        resolution_priority: "High|Medium|Low"
+
+    constitutional_validation:
+      - validation: "All acceptance criteria must demonstrate constitutional compliance"
+      - validation: "CLI interface must be primary interaction method"
+      - validation: "Library-first implementation must be verifiable"
+      - validation: "Test-first approach must be demonstrable"
+
+  # GraphRAG Optimization
+  graphrag_metadata:
+    entity_type: "functional_requirement"
+    domain_context: "{{EXTENSIONS}}"
+    constitutional_tags: ["library-first", "cli-interface", "test-first", "simplicity"]
+    business_entities: ["User", "Product", "Order"] # Domain-specific entities
+    relationships:
+      - type: "implements"
+        target: "business_capability"
+        weight: 1.0
+      - type: "requires"
+        target: "infrastructure_component"
+        weight: 0.8
+    knowledge_graph_id: "kg_fr_{{FR_ID}}"
+
+  # Implementation Guidance
+  implementation_guidance:
+    library_selections: ["primary-lib", "secondary-lib"]
+    architectural_pattern: "constitutional pattern to follow"
+    integration_points: ["api", "cli", "database"]
+    quality_gates: ["constitutional compliance check", "test coverage validation"]
+
+  tags: ["{{EXTENSIONS}}", "constitutional", "sdd-compliant"]
+```
+
+**Constitutional Non-Functional Requirements (NFR)**
+Generate each NFR with complete constitutional compliance and quality focus:
+```yaml
+NFR-XXX:
+  # Core quality requirement definition
+  name: "Constitutional quality attribute name"
+  category: "Performance|Security|Usability|Reliability|Scalability"
+  description: "Detailed quality requirement with constitutional approach"
+  priority: "Critical|High|Medium|Low"
+
+  # Constitutional Compliance for Quality
+  constitutional_compliance:
+    quality_standards:
+      constitutional_threshold: "Minimum quality level per constitutional principles"
+      measurement_approach: "How quality is measured constitutionally"
+      validation_frequency: "continuous|daily|weekly"
+
+    simplicity_in_quality:
+      simple_metrics: "Straightforward, easy-to-understand quality metrics"
+      complex_metrics_avoided: "How complex quality measures are simplified"
+      monitoring_simplicity: "Simple monitoring and alerting approach"
+
+    testing_strategy:
+      integration_first_quality: "How quality is tested through integration"
+      comprehensive_coverage: "Complete quality validation approach"
+      test_automation: "Automated quality validation strategy"
+
+    library_first_quality:
+      monitoring_libraries: ["prometheus", "grafana", "datadog"]
+      testing_libraries: ["artillery", "k6", "jest"]
+      quality_tools: ["lighthouse", "sonarqube", "eslint"]
+
+    compliance_score: "85-100%" # Constitutional quality compliance
+
+  # Measurable Quality Criteria
+  measurable_criteria:
+    primary_metrics:
+      - metric: "Constitutional quality metric"
+        target_value: "Specific measurable target"
+        measurement_method: "How this metric is measured"
+        constitutional_justification: "Why this target aligns with constitutional principles"
+        validation_approach: "integration|monitoring|testing"
+
+    constitutional_quality_gates:
+      - gate: "Simplicity validation"
+        criteria: "Quality solution must be simple and direct"
+        measurement: "Complexity metrics and review process"
+      - gate: "Library-first validation"
+        criteria: "Quality monitoring must use established libraries"
+        measurement: "Library usage verification"
+      - gate: "Integration-first validation"
+        criteria: "Quality validation through integration testing"
+        measurement: "Integration test coverage for quality"
+
+  # SDD Quality Specification
+  specification:
+    quality_attribute: "Constitutional quality dimension"
+
+    acceptance_criteria:
+      quantitative_criteria:
+        - criterion: "Specific measurable quality outcome"
+          target: "Numerical target with units"
+          measurement_method: "Constitutional measurement approach"
+          validation_frequency: "How often this is validated"
+
+      qualitative_criteria:
+        - criterion: "Subjective quality aspect"
+          evaluation_method: "How subjective quality is assessed"
+          stakeholder_validation: "Who validates this quality aspect"
+
+    constitutional_quality_validation:
+      - validation: "Quality metrics must be simple and directly measurable"
+      - validation: "Quality monitoring must use library-first approach"
+      - validation: "Quality testing must follow integration-first strategy"
+      - validation: "Quality gates must be comprehensive and automated"
+
+    clarifications_needed:
+      - marker_id: "CLARIFY-NFR-XXX-001"
+        element: "Unclear quality aspect"
+        options: ["Quality option 1", "Quality option 2", "Constitutional guidance"]
+        constitutional_impact: "How clarification affects constitutional quality compliance"
+
+  # GraphRAG Quality Optimization
+  graphrag_metadata:
+    entity_type: "non_functional_requirement"
+    quality_dimension: "{{category}}"
+    constitutional_tags: ["quality", "constitutional", "{{category}}"]
+    measurement_patterns: ["monitoring", "testing", "validation"]
+    relationships:
+      - type: "constrains"
+        target: "functional_requirement"
+        weight: 0.9
+      - type: "requires"
+        target: "infrastructure_component"
+        weight: 0.7
+    knowledge_graph_id: "kg_nfr_{{NFR_ID}}"
+
+  # Quality Implementation Guidance
+  implementation_guidance:
+    monitoring_strategy: "Constitutional monitoring approach"
+    testing_strategy: "Constitutional quality testing approach"
+    validation_tools: ["quality-tool-1", "quality-tool-2"]
+    automation_approach: "How quality validation is automated"
+
+  tags: ["{{EXTENSIONS}}", "quality", "constitutional", "{{category}}"]
+```
+
+**Constitutional Units of Work (UoW)**
+Generate each UoW with complete constitutional compliance and implementation guidance:
+```yaml
+UoW-XXX:
+  # Core implementation definition
+  name: "Constitutional implementation objective"
+  goal: "Specific, measurable constitutional outcome"
+  layer: "Foundation|Infrastructure|Application|Integration|Deployment"
+  priority: "Critical|High|Medium|Low"
+  estimated_effort_hours: "Based on constitutional task breakdown"
+
+  # Constitutional Implementation Compliance
+  constitutional_compliance:
+    implementation_approach:
+      library_first_implementation:
+        primary_libraries: ["main-lib", "supporting-lib"]
+        library_selection_rationale: "Why these libraries align with constitutional principles"
+        custom_code_minimization: "How custom implementation is avoided"
+        library_integration_strategy: "Constitutional library integration approach"
+
+      cli_interface_implementation:
+        primary_commands: ["command-1", "command-2"]
+        cli_architecture: "How CLI commands are structured constitutionally"
+        user_experience: "Constitutional CLI user experience design"
+        help_and_documentation: "Constitutional CLI documentation approach"
+
+      test_first_implementation:
+        test_development_sequence: "Tests written before implementation (constitutional imperative)"
+        test_types_priority: ["integration", "unit", "acceptance"]
+        test_coverage_target: "95%+ per constitutional requirement"
+        test_automation_strategy: "Constitutional test automation approach"
+
+      architectural_simplicity:
+        complexity_minimization: "How implementation complexity is minimized"
+        simple_patterns_used: ["pattern-1", "pattern-2"]
+        abstraction_avoidance: "How premature abstraction is prevented"
+        direct_implementation: "Constitutional direct implementation approach"
+
+    constitutional_validation_gates:
+      - gate: "Library-first validation"
+        criteria: "Implementation must demonstrate library-first approach"
+        validation_method: "Code review and dependency analysis"
+      - gate: "CLI interface validation"
+        criteria: "All functionality accessible via CLI"
+        validation_method: "CLI testing and user acceptance"
+      - gate: "Test-first validation"
+        criteria: "Tests written before implementation"
+        validation_method: "Git history analysis and test coverage"
+      - gate: "Simplicity validation"
+        criteria: "Implementation follows constitutional simplicity"
+        validation_method: "Complexity analysis and architectural review"
+
+    compliance_score: "85-100%" # Target constitutional implementation compliance
+
+  # SDD Implementation Specification
+  specification:
+    derived_from: ["FR-XXX", "NFR-XXX"]  # Constitutional traceability
+    user_story_mapping: "Constitutional user stories implemented by this UoW"
+
+    constitutional_implementation_plan:
+      phase_1_test_development:
+        approach: "Write comprehensive test suite following constitutional testing principles"
+        deliverables: ["integration tests", "unit tests", "acceptance tests"]
+        constitutional_alignment: "Test-first imperative compliance"
+
+      phase_2_library_integration:
+        approach: "Integrate constitutional library selections"
+        deliverables: ["library setup", "configuration", "integration tests"]
+        constitutional_alignment: "Library-first principle compliance"
+
+      phase_3_core_implementation:
+        approach: "Implement core functionality using constitutional principles"
+        deliverables: ["core features", "CLI interface", "integration points"]
+        constitutional_alignment: "Simplicity and direct implementation"
+
+      phase_4_constitutional_validation:
+        approach: "Validate constitutional compliance throughout implementation"
+        deliverables: ["compliance report", "quality metrics", "constitutional audit"]
+        constitutional_alignment: "Comprehensive testing and validation"
+
+    executable_tasks:
+      test_first_tasks:
+        - task: "Write failing integration test suite"
+          parallel: false
+          estimated_hours: 3
+          constitutional_principle: "Test-First Imperative"
+          completion_criteria:
+            - [ ] Integration test cases defined per constitutional requirements
+            - [ ] Tests fail appropriately (red phase)
+            - [ ] Test coverage plan documented
+            - [ ] Constitutional test patterns applied
+
+        - task: "Write failing unit test suite"
+          parallel: true
+          estimated_hours: 2
+          constitutional_principle: "Comprehensive Testing"
+          completion_criteria:
+            - [ ] Unit test cases defined for all components
+            - [ ] Tests fail appropriately (red phase)
+            - [ ] Constitutional testing patterns followed
+
+      implementation_tasks:
+        - task: "Implement library-first core functionality"
+          parallel: false
+          estimated_hours: 6
+          constitutional_principle: "Library-First"
+          completion_criteria:
+            - [ ] Constitutional library selections integrated
+            - [ ] Core functionality implemented using libraries
+            - [ ] Custom code minimized per constitutional principle
+            - [ ] Integration tests pass (green phase)
+
+        - task: "Implement constitutional CLI interface"
+          parallel: true
+          estimated_hours: 4
+          constitutional_principle: "CLI Interface Mandate"
+          completion_criteria:
+            - [ ] CLI commands implemented per constitutional specification
+            - [ ] CLI help and documentation complete
+            - [ ] CLI integration tests pass
+            - [ ] User experience follows constitutional patterns
+
+      validation_tasks:
+        - task: "Constitutional compliance validation"
+          parallel: false
+          estimated_hours: 2
+          constitutional_principle: "Comprehensive Testing"
+          completion_criteria:
+            - [ ] All constitutional principles validated
+            - [ ] Compliance score meets target (85%+)
+            - [ ] Quality gates passed
+            - [ ] Constitutional audit complete
+
+    constitutional_quality_checklist:
+      library_first_compliance:
+        - [ ] Primary libraries integrated and functional
+        - [ ] Custom implementation minimized and justified
+        - [ ] Library usage follows constitutional patterns
+        - [ ] Library integration tests pass
+
+      cli_interface_compliance:
+        - [ ] All functionality accessible via CLI
+        - [ ] CLI commands follow constitutional patterns
+        - [ ] CLI help and documentation complete
+        - [ ] CLI integration tests pass
+
+      test_first_compliance:
+        - [ ] Tests written before implementation (verifiable in git history)
+        - [ ] Test coverage meets constitutional requirements (95%+)
+        - [ ] Integration-first testing strategy implemented
+        - [ ] All tests pass and are maintainable
+
+      simplicity_compliance:
+        - [ ] Implementation follows constitutional simplicity principles
+        - [ ] Complexity metrics within constitutional limits
+        - [ ] Abstraction usage justified and minimal
+        - [ ] Code is readable and maintainable
+
+      comprehensive_validation:
+        - [ ] All constitutional principles demonstrably followed
+        - [ ] Quality metrics meet constitutional standards
+        - [ ] Integration with other UoWs validated
+        - [ ] Constitutional compliance score achieved (85%+)
+
+  # Implementation Dependencies and Relationships
+  dependencies: ["Constitutional dependency UoW IDs"]
+  implements: ["FR-XXX", "NFR-XXX"]  # Constitutional requirement implementation
+
+  # GraphRAG Implementation Optimization
+  graphrag_metadata:
+    entity_type: "unit_of_work"
+    implementation_layer: "{{layer}}"
+    constitutional_tags: ["implementation", "constitutional", "{{layer}}"]
+    technology_stack: ["tech-1", "tech-2"]
+    relationships:
+      - type: "implements"
+        target: "functional_requirement"
+        weight: 1.0
+      - type: "depends_on"
+        target: "other_unit_of_work"
+        weight: 0.8
+      - type: "validates"
+        target: "constitutional_principle"
+        weight: 0.9
+    knowledge_graph_id: "kg_uow_{{UOW_ID}}"
+
+  # Constitutional Implementation Guidance
+  implementation_guidance:
+    architectural_patterns: ["constitutional-pattern-1", "constitutional-pattern-2"]
+    library_integration_approach: "Constitutional library integration strategy"
+    testing_strategy: "Constitutional testing implementation approach"
+    quality_assurance: "Constitutional quality validation approach"
+    performance_considerations: "Constitutional performance optimization"
+
+  tags: ["{{EXTENSIONS}}", "implementation", "constitutional", "{{layer}}"]
+```
+
+### 3. Generate Constitutional Execution Plan (batch/execution-plan.yaml)
+Create execution plan with constitutional compliance and GraphRAG integration:
+```yaml
+constitutional_execution_plan:
+  project: "{{PROJECT_NAME}}"
+  constitution_compliance: "{{CONSTITUTION_FILE}}"
+  graphrag_integration: true
+
+  # Constitutional execution phases
+  execution_phases:
+    phase_1_constitutional_foundation:
+      description: "Establish constitutional governance and GraphRAG foundation"
+      uow_sequence: ["UoW-FOUNDATION-001", "UoW-FOUNDATION-002"]
+      constitutional_gates:
+        - gate: "Project constitution established"
+        - gate: "GraphRAG knowledge base initialized"
+        - gate: "Constitutional compliance tooling setup"
+
+    phase_2_library_first_infrastructure:
+      description: "Setup infrastructure using constitutional library-first approach"
+      uow_sequence: ["UoW-INFRA-001", "UoW-INFRA-002", "UoW-INFRA-003"]
+      constitutional_gates:
+        - gate: "All infrastructure libraries selected and justified"
+        - gate: "Constitutional CLI interfaces defined"
+        - gate: "Test-first infrastructure validation complete"
+
+    phase_3_constitutional_application:
+      description: "Implement core application following constitutional principles"
+      uow_sequence: ["UoW-APP-001", "UoW-APP-002", "UoW-APP-003"]
+      constitutional_gates:
+        - gate: "Application features demonstrate constitutional compliance"
+        - gate: "CLI interface mandate fulfilled"
+        - gate: "Integration-first testing complete"
+
+    phase_4_constitutional_integration:
+      description: "Complete integration with constitutional validation"
+      uow_sequence: ["UoW-INTEGRATION-001", "UoW-INTEGRATION-002"]
+      constitutional_gates:
+        - gate: "All constitutional principles validated"
+        - gate: "GraphRAG knowledge updated with implementation patterns"
+        - gate: "Constitutional compliance score achieved (85%+)"
+
+  # Constitutional quality gates
+  constitutional_quality_gates:
+    pre_phase_gates:
+      - "Constitutional compliance plan validated"
+      - "GraphRAG knowledge base accessible"
+      - "Test-first strategy documented"
+
+    post_phase_gates:
+      - "Constitutional compliance metrics meet targets"
+      - "GraphRAG knowledge updated with lessons learned"
+      - "Quality standards maintained per constitutional requirements"
+
+  # GraphRAG integration points
+  graphrag_integration_points:
+    knowledge_capture:
+      - point: "Constitutional pattern identification"
+        frequency: "per_uow_completion"
+      - point: "Implementation success pattern capture"
+        frequency: "per_phase_completion"
+      - point: "Constitutional compliance lesson capture"
+        frequency: "continuous"
+
+    context_injection:
+      - point: "UoW implementation guidance"
+        source: "constitutional_patterns"
+      - point: "Quality gate validation"
+        source: "constitutional_compliance_history"
+      - point: "Integration strategy optimization"
+        source: "implementation_success_patterns"
+```
+
+### 4. Constitutional Validation and GraphRAG Optimization
+Comprehensive validation with knowledge graph preparation:
+```yaml
+constitutional_validation:
+  ssot_completeness:
+    - [ ] All functional requirements include constitutional compliance fields
+    - [ ] All non-functional requirements include constitutional quality standards
+    - [ ] All units of work include constitutional implementation guidance
+    - [ ] GraphRAG metadata included for all SSOT elements
+
+  constitutional_compliance_validation:
+    - [ ] Library-first approach documented for all requirements
+    - [ ] CLI interface mandate addressed for all features
+    - [ ] Test-first strategy defined for all implementations
+    - [ ] Simplicity principle applied to all architectural decisions
+
+  graphrag_optimization_validation:
+    - [ ] Entity relationships properly defined
+    - [ ] Knowledge graph IDs assigned to all elements
+    - [ ] Constitutional tags applied consistently
+    - [ ] Domain context enrichment complete
+
+  traceability_validation:
+    - [ ] Requirements traceability matrix complete
+    - [ ] Constitutional principle traceability maintained
+    - [ ] Implementation dependencies properly mapped
+    - [ ] GraphRAG relationship mapping accurate
+
+  quality_assurance:
+    - [ ] Effort estimates based on constitutional implementation approach
+    - [ ] Quality gates include constitutional compliance validation
+    - [ ] GraphRAG knowledge capture points defined
+    - [ ] Constitutional metrics and measurement approach documented
+```
+
+## ✅ Constitutional SSOT Success Criteria
+
+### Constitutional Compliance Requirements
+- [ ] Complete SSOT documentation with full constitutional compliance integration
+- [ ] All 9 constitutional principles addressed in every requirement and UoW
+- [ ] Constitutional compliance scores calculated for all elements (target: 85%+)
+- [ ] Constitutional quality gates defined and integrated into execution plan
+
+### SDD Specification Quality
+- [ ] All requirements follow SDD specification format with user stories and acceptance criteria
+- [ ] [CLARIFY] markers identify all ambiguous elements with constitutional resolution guidance
+- [ ] Constitutional validation criteria embedded in all acceptance criteria
+- [ ] Specification traceability from constitutional principles to implementation tasks
+
+### GraphRAG Optimization
+- [ ] GraphRAG metadata included for all SSOT elements with proper entity relationships
+- [ ] Knowledge graph IDs assigned for optimal knowledge indexing
+- [ ] Constitutional tags and domain context enrichment complete
+- [ ] Knowledge capture and context injection points integrated into execution plan
+
+### Implementation Readiness
+- [ ] Domain-specific constitutional requirements integrated based on {{EXTENSIONS}}
+- [ ] Execution plan with constitutional dependency management and quality gates
+- [ ] Constitutional implementation guidance provided for all UoWs
+- [ ] GraphRAG integration points defined for continuous knowledge enhancement
+
+### Quality and Governance
+- [ ] Constitutional quality standards measurable and achievable
+- [ ] Constitutional compliance monitoring and validation approach documented
+- [ ] GraphRAG knowledge management strategy integrated
+- [ ] Constitutional governance framework ready for project execution
+
+Create a comprehensive, constitutionally compliant, GraphRAG-optimized SSOT ready for specification-driven development with constitutional governance.

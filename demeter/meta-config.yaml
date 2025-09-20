@@ -1,0 +1,321 @@
+# WAVIS Demeter Meta Configuration
+# Universal template system with MVP-driven development and technology independence
+
+template:
+  version: "1.0.0"
+  type: "universal"
+  description: "Demeter WAVIS v1.0 - Complete AI-driven development framework"
+  framework_version: "1.0.0"
+  release_date: "2024-12-20"
+  philosophy: "From Requirements to Reality, Guided by AI"
+  motto: "SSOT defines WHAT to build, AI helps HOW to build it"
+
+# Project Definition
+project:
+  # Basic Information (Required)
+  name: "${PROJECT_NAME}"                 # Project name (alphanumeric with hyphens)
+  description: "${PROJECT_DESCRIPTION}"   # Brief project description
+  author: "${PROJECT_AUTHOR}"            # Project author/maintainer
+
+  # Repository Configuration
+  repository:
+    provider: "github"                    # github, gitlab, bitbucket
+    username: "${GITHUB_USERNAME}"       # Repository owner
+    organization: ""                     # Optional organization
+    visibility: "public"                 # public, private
+
+  # Versioning
+  version: "0.1.0"
+  license: "MIT"
+
+# MVP Configuration
+mvp_config:
+  # MVP Phases
+  supported_phases:
+    - phase_1         # Core MVP - 핵심 비즈니스 가치 검증
+    - phase_2         # Extended MVP - 사용자 피드백 반영 및 확장 기능
+    - phase_3         # Production Ready - 운영 환경 배포 및 확장성 확보
+
+  # Default phase
+  default_phase: "phase_1"
+
+  # MVP settings loaded from mvp-definition.yaml
+
+# Technology Stack Configuration
+technology_config:
+  # Philosophy: Technology choice is made AFTER SSOT definition
+  selection_strategy: "requirements_first"
+
+  # Available reference templates (not constraints)
+  reference_templates:
+    - go
+    - python
+    - typescript
+
+  # Reference templates location
+  templates_path: "references/languages/"
+
+# Feature Extensions
+extensions:
+  # Domain Extensions
+  domain:
+    enabled: true
+    available:
+      - e-commerce
+      - fintech
+      - healthcare
+    path: "core/ssot/extensions/domain/"
+
+  # Feature Extensions
+  features:
+    enabled: true
+    available:
+      - ai-ml
+      - blockchain
+      - iot
+      - streaming
+    path: "core/ssot/extensions/features/"
+
+  # Compliance Extensions
+  compliance:
+    enabled: true
+    available:
+      - gdpr
+      - hipaa
+      - pci-dss
+    path: "core/ssot/extensions/compliance/"
+
+# Core Framework Features
+features:
+  # SSOT Framework
+  ssot:
+    enabled: true
+    framework_requirements: "core/ssot/framework-requirements.yaml"
+    mvp_definition: "core/ssot/mvp-definition.yaml"
+    risk_registry: "core/ssot/risk-registry.yaml"
+
+  # GraphRAG Knowledge Management
+  graphrag:
+    enabled: true
+    provider: "${GRAPHRAG_PROVIDER}"    # openai, azure, local, ollama
+    auto_index: true
+    backup_enabled: true
+    templates_path: "core/graphrag/templates/"
+
+  # Development Framework
+  development:
+    tdd_enabled: true
+    quality_gates: true
+    contract_verification: true
+    code_coverage:
+      foundation_threshold: 80
+      business_threshold: 60
+
+  # Infrastructure
+  infrastructure:
+    docker: true
+    docker_compose: true
+    kubernetes: false
+
+  # CI/CD
+  cicd:
+    enabled: true
+    platform: "${CICD_PLATFORM}"       # github-actions, gitlab-ci, jenkins
+    security_scanning: true
+    quality_checks: true
+
+  # Monitoring & Observability
+  monitoring:
+    enabled: true
+    opentelemetry: true
+    health_checks: true
+
+  # Security
+  security:
+    static_analysis: true
+    dependency_scanning: true
+    secrets_scanning: true
+
+# Template Variables
+variables:
+  # Global Variables
+  global:
+    PROJECT_NAME: ""
+    PROJECT_DESCRIPTION: ""
+    PROJECT_AUTHOR: ""
+    GITHUB_USERNAME: ""
+    MVP_PHASE: "phase_1"
+    CREATION_DATE: "{{current_date}}"
+    FRAMEWORK_VERSION: "1.0.0"
+
+  # GraphRAG Variables
+  graphrag:
+    GRAPHRAG_PROVIDER: "openai"
+    GRAPHRAG_MODEL: "gpt-4o-mini"
+    GRAPHRAG_EMBEDDING_MODEL: "text-embedding-3-small"
+    GRAPHRAG_API_BASE: "https://api.openai.com/v1"
+    CHUNK_SIZE: 1200
+    CHUNK_OVERLAP: 100
+
+  # CI/CD Variables
+  cicd:
+    CICD_PLATFORM: "github-actions"
+
+# Generation Rules
+generation:
+  # Template Processing
+  template_engine: "mustache"
+  variable_prefix: "{{"
+  variable_suffix: "}}"
+
+  # File Processing
+  file_processing:
+    binary_extensions:
+      - ".png"
+      - ".jpg"
+      - ".jpeg"
+      - ".gif"
+      - ".pdf"
+      - ".zip"
+      - ".tar.gz"
+
+    template_extensions:
+      - ".template"
+      - ".tmpl"
+      - ".tpl"
+
+    executable_extensions:
+      - ".sh"
+      - ".py"
+      - ".js"
+
+  # Directory Processing
+  directory_processing:
+    ignore_patterns:
+      - ".git"
+      - ".gitignore"
+      - "node_modules"
+      - "__pycache__"
+      - "*.pyc"
+      - ".DS_Store"
+      - "Thumbs.db"
+
+    preserve_permissions: true
+
+# Validation Rules
+validation:
+  # Required Fields
+  required_fields:
+    - project.name
+    - project.description
+    - project.author
+    - project.repository.username
+
+  # Validation Patterns
+  patterns:
+    project_name: "^[a-z][a-z0-9-]*$"
+    github_username: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+
+  # MVP Validation
+  mvp_validation:
+    check_phase_compatibility: true
+    validate_requirements: true
+    verify_dependencies: true
+
+# Output Configuration
+output:
+  # Generation Output
+  target_directory: "./${PROJECT_NAME}"
+  create_directory: true
+  overwrite_existing: false
+  backup_existing: true
+
+  # Logging
+  logging:
+    level: "info"
+    file: "demeter-setup.log"
+    console: true
+
+  # Progress Reporting
+  progress:
+    show_progress_bar: true
+    show_step_details: true
+    confirm_steps: false
+
+  # Report Generation
+  report:
+    generate: true
+    format: "markdown"
+    file: "DEMETER-SETUP-REPORT.md"
+    include_manifest: true
+
+# Tools Integration
+tools:
+  # UoW Management
+  uow_dashboard: "core/ssot/tools/uow-dashboard.py"
+  contract_verification: "core/ssot/tools/verify-contracts.py"
+  ssot_merger: "core/ssot/tools/merge-ssot.py"
+  template_generator: "core/ssot/tools/generate-template.py"
+
+  # Quality Assurance
+  quality_checks:
+    enabled: true
+    run_on_generation: true
+
+# Customization
+customization:
+  # Template Overrides
+  template_overrides:
+    enabled: true
+    directory: "custom-templates"
+    precedence: "user"
+
+  # Hook System
+  hooks:
+    pre_generation: []
+    post_generation: []
+    pre_file_creation: []
+    post_file_creation: []
+
+  # Plugin System
+  plugins:
+    enabled: false
+    directory: "plugins"
+    auto_load: true
+
+# Metadata
+metadata:
+  created_by: "WAVIS Demeter Framework"
+  created_date: "2024-12-20"
+  last_modified: "2024-12-20"
+  schema_version: "1.0.0"
+
+  # Philosophy Documentation
+  philosophy:
+    ssot_first: "Requirements definition precedes technology selection"
+    mvp_driven: "Business value delivery guides development phases"
+    technology_agnostic: "Framework supports any appropriate technology stack"
+
+  # Compatibility Information
+  compatibility:
+    min_version: "1.0.0"
+    max_version: "1.x.x"
+    major_features:
+      - "Complete AI-driven development workflow"
+      - "Claude Code integration with MCP server"
+      - "Contract engineering and validation"
+      - "5-minute project setup"
+      - "Technology-agnostic framework"
+
+  # Documentation
+  documentation:
+    readme: "README.md"
+    usage_guide: "USAGE.md"
+    setup_guide: "demeter/references/README.md"
+    troubleshooting: "docs/TROUBLESHOOTING.md"
+
+  # Support
+  support:
+    issues_url: "https://github.com/wavis-alchemy/template/issues"
+    documentation_url: "https://github.com/wavis-alchemy/template/wiki"
+    community_url: "https://github.com/wavis-alchemy/template/discussions"

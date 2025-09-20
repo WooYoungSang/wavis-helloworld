@@ -1,0 +1,409 @@
+# 🔍 GraphRAG-Powered SSOT Intelligent Query System
+
+## Overview
+Execute intelligent queries against SSOT data using GraphRAG technology with constitutional SDD integration, AI-enhanced search capabilities, and context-aware knowledge discovery.
+
+## Input Context
+- **Query Text**: `{{QUERY_TEXT}}`
+- **Query Type**: {{QUERY_TYPE}} (auto|keyword|relationship|pattern|impact|coverage|gap|constitutional)
+- **SSOT Directory**: `{{SSOT_DIR}}`
+- **GraphRAG Index**: `{{GRAPHRAG_INDEX_DIR}}`
+- **Constitutional Mode**: {{CONSTITUTIONAL_ENABLED}} (true|false)
+- **Context Filter**: {{CONTEXT_FILTER}} (domain|layer|priority|principle)
+
+## Constitutional SDD Query Enhancement
+
+### Constitutional Query Types
+Extend traditional GraphRAG queries with constitutional intelligence:
+
+1. **Constitutional Compliance Queries**
+   ```yaml
+   principle_queries:
+     library_first_violations:
+       query: "Find UoWs that implement custom solutions where libraries exist"
+       pattern: "UoW missing constitutional_compliance.library_first.strategy"
+       severity: "critical"
+
+     cli_interface_gaps:
+       query: "Identify UoWs without proper CLI interface definitions"
+       pattern: "UoW missing constitutional_compliance.cli_interface.command"
+       severity: "high"
+
+     test_first_compliance:
+       query: "Check test-first implementation adherence"
+       pattern: "UoW missing test specifications in acceptance criteria"
+       severity: "critical"
+   ```
+
+2. **Governance-Aware Relationship Discovery**
+   ```yaml
+   constitutional_relationships:
+     principle_implementation:
+       source: "UoW with constitutional_compliance"
+       target: "Constitutional principle definition"
+       relationship: "implements_principle"
+
+     governance_dependency:
+       source: "UoW implementation"
+       target: "Governance rule requirement"
+       relationship: "governed_by"
+
+     constitutional_conflict:
+       source: "UoW approach"
+       target: "Constitutional principle"
+       relationship: "violates"
+   ```
+
+## AI-Enhanced Query Processing
+
+### Multi-Modal Query Understanding
+```yaml
+query_intelligence:
+  natural_language_processing:
+    intent_recognition:
+      - "Find all UoWs related to user authentication"
+      - "What are the performance requirements for payments?"
+      - "Which constitutional principles are violated in shopping cart UoWs?"
+
+    entity_extraction:
+      - Requirement IDs (FR-001, NFR-202)
+      - UoW references (UoW-301A, UoW-402)
+      - Constitutional principles (library-first, cli-interface)
+      - Domain entities (user, product, order, payment)
+
+    semantic_context:
+      - Domain-specific terminology understanding
+      - Constitutional compliance context
+      - Governance rule interpretation
+      - Quality attribute relationships
+
+  constitutional_context_injection:
+    principle_awareness:
+      - Map queries to relevant constitutional principles
+      - Inject principle compliance checks into results
+      - Highlight governance rule implications
+      - Suggest constitutional improvements
+
+    governance_enhancement:
+      - Apply project-specific governance rules
+      - Filter results by constitutional compliance status
+      - Prioritize constitutionally-aligned entities
+      - Surface governance violations
+```
+
+### Advanced Query Types with Constitutional Integration
+
+#### 1. Keyword-Enhanced Queries
+```yaml
+keyword_query_enhancement:
+  traditional_keyword: "authentication"
+  constitutional_enhancement:
+    - "Find authentication UoWs following library-first principle"
+    - "Identify authentication implementations with proper CLI interfaces"
+    - "Check authentication test-first compliance"
+
+  processing_steps:
+    1. Traditional keyword matching in entities
+    2. Constitutional compliance filtering
+    3. Governance rule application
+    4. Principle-based result ranking
+    5. Constitutional gap identification
+```
+
+#### 2. Constitutional Relationship Queries
+```yaml
+constitutional_relationship_discovery:
+  requirement_to_constitutional_implementation:
+    query: "How does FR-205 implement constitutional principles?"
+    processing:
+      - Find UoWs implementing FR-205
+      - Extract constitutional_compliance specifications
+      - Map to constitutional principles
+      - Identify implementation gaps
+      - Suggest constitutional improvements
+
+  principle_coverage_analysis:
+    query: "Which UoWs implement the simplicity principle?"
+    processing:
+      - Scan all UoWs for simplicity principle references
+      - Analyze constitutional_compliance.simplicity sections
+      - Evaluate implementation depth
+      - Identify principle application patterns
+      - Generate compliance recommendations
+```
+
+#### 3. AI-Powered Pattern Discovery
+```yaml
+pattern_discovery_enhancement:
+  traditional_patterns:
+    - Error handling patterns
+    - Configuration patterns
+    - Validation patterns
+
+  constitutional_patterns:
+    - Library-first implementation patterns
+    - CLI interface design patterns
+    - Test-first development patterns
+    - Simplicity principle applications
+    - Anti-abstraction implementations
+
+  ai_pattern_learning:
+    semantic_analysis:
+      - Identify implicit constitutional compliance patterns
+      - Discover successful principle implementation approaches
+      - Learn from constitutional violations and resolutions
+      - Extract governance effectiveness patterns
+
+    predictive_insights:
+      - Predict constitutional compliance risks
+      - Suggest principle implementation strategies
+      - Recommend governance rule adjustments
+      - Identify emerging constitutional patterns
+```
+
+#### 4. Enhanced Impact Analysis
+```yaml
+constitutional_impact_analysis:
+  traditional_impact:
+    - Direct relationship impacts
+    - Indirect dependency impacts
+    - Cross-requirement effects
+
+  constitutional_impact:
+    - Principle compliance implications
+    - Governance rule cascading effects
+    - Constitutional violation propagation
+    - Principle implementation dependencies
+
+  risk_assessment:
+    constitutional_risk_factors:
+      - Principle violation severity
+      - Governance rule non-compliance
+      - Constitutional debt accumulation
+      - Principle implementation fragility
+
+    impact_recommendations:
+      - Constitutional remediation strategies
+      - Principle realignment approaches
+      - Governance rule adaptations
+      - Constitutional improvement roadmaps
+```
+
+## GraphRAG Knowledge Integration
+
+### Constitutional Knowledge Graph Enhancement
+```yaml
+knowledge_graph_structure:
+  entities:
+    traditional:
+      - functional_requirements
+      - non_functional_requirements
+      - units_of_work
+      - contracts
+      - bdd_scenarios
+
+    constitutional:
+      - constitutional_principles
+      - governance_rules
+      - principle_implementations
+      - constitutional_violations
+      - governance_decisions
+
+  relationships:
+    traditional:
+      - implements
+      - depends_on
+      - validates
+      - tests
+
+    constitutional:
+      - follows_principle
+      - violates_principle
+      - governed_by
+      - enforces_rule
+      - complies_with
+```
+
+### AI-Driven Knowledge Evolution
+```yaml
+knowledge_evolution:
+  constitutional_learning:
+    pattern_recognition:
+      - Successful constitutional implementations
+      - Common principle violation patterns
+      - Governance rule effectiveness
+      - Constitutional debt indicators
+
+    adaptive_recommendations:
+      - Context-aware constitutional guidance
+      - Personalized principle implementation suggestions
+      - Governance rule optimization recommendations
+      - Constitutional maturity assessments
+
+  predictive_analytics:
+    constitutional_predictions:
+      - Principle compliance trajectory
+      - Governance rule effectiveness forecasts
+      - Constitutional debt accumulation risks
+      - Principle implementation success probability
+```
+
+## Advanced Query Execution Engine
+
+### Constitutional Query Processing Pipeline
+```python
+# Constitutional-aware query processing
+def process_constitutional_query(query_text, query_type, constitutional_context):
+    pipeline_steps = [
+        "constitutional_intent_analysis",      # Understand constitutional implications
+        "principle_context_injection",        # Add principle awareness
+        "governance_rule_application",        # Apply project governance
+        "traditional_graph_traversal",        # Execute core GraphRAG query
+        "constitutional_result_enhancement",   # Add constitutional metadata
+        "governance_compliance_scoring",      # Score constitutional compliance
+        "constitutional_recommendation_generation"  # Generate improvement suggestions
+    ]
+
+    return execute_pipeline(query_text, pipeline_steps, constitutional_context)
+```
+
+### Multi-Dimensional Result Ranking
+```yaml
+result_ranking_factors:
+  relevance_scoring:
+    semantic_relevance: 30%        # Traditional text matching
+    constitutional_alignment: 25%  # Principle compliance score
+    governance_compliance: 20%     # Governance rule adherence
+    knowledge_graph_centrality: 15% # GraphRAG importance
+    domain_specificity: 10%        # Domain context relevance
+
+  constitutional_prioritization:
+    critical_violations: "boost_priority_high"
+    exemplary_compliance: "boost_priority_medium"
+    governance_gaps: "flag_for_attention"
+    principle_innovation: "highlight_as_pattern"
+```
+
+## Query Result Enhancement
+
+### Constitutional Metadata Injection
+```yaml
+result_enhancement:
+  entity_constitutional_metadata:
+    principle_compliance_score: "85%"
+    violated_principles: ["simplicity", "anti-abstraction"]
+    governance_adherence_level: "high"
+    constitutional_recommendations:
+      - "Simplify UoW implementation approach"
+      - "Remove unnecessary abstraction layers"
+      - "Enhance CLI interface specification"
+
+  relationship_constitutional_context:
+    constitutional_implications:
+      - "Implementation follows library-first principle"
+      - "CLI interface meets governance standards"
+      - "Test-first compliance verified"
+
+  constitutional_insights:
+    pattern_identification:
+      - "This UoW exemplifies library-first principle"
+      - "Common anti-pattern: custom implementation detected"
+      - "Governance rule GR-003 fully satisfied"
+```
+
+### AI-Generated Recommendations
+```yaml
+intelligent_recommendations:
+  query_context_aware:
+    constitutional_improvements:
+      - "Consider adopting react-query library for data fetching"
+      - "Enhance CLI interface with standardized help system"
+      - "Add comprehensive test specifications to acceptance criteria"
+
+    governance_optimizations:
+      - "Apply governance rule GR-005 for better error handling"
+      - "Consider constitutional principle realignment"
+      - "Update project constitution based on lessons learned"
+
+  predictive_suggestions:
+    future_considerations:
+      - "Monitor constitutional debt accumulation"
+      - "Prepare for principle implementation scaling"
+      - "Consider governance rule evolution needs"
+```
+
+## Output Specification
+
+### Enhanced Query Results Structure
+```yaml
+constitutional_query_result:
+  query_metadata:
+    original_query: "{{QUERY_TEXT}}"
+    detected_intent: "find_authentication_uows"
+    constitutional_context: "library_first_compliance"
+    execution_time: "0.245s"
+    constitutional_processing_time: "0.078s"
+
+  results:
+    entities:
+      - entity_id: "UoW-301"
+        entity_type: "unit_of_work"
+        constitutional_metadata:
+          principle_compliance_score: 92%
+          violated_principles: []
+          exemplary_implementations: ["library_first", "cli_interface"]
+        traditional_metadata:
+          relevance_score: 0.87
+          relationship_count: 5
+
+    constitutional_insights:
+      compliance_summary:
+        total_entities_analyzed: 15
+        constitutional_compliant: 12
+        principle_violations: 3
+        governance_gaps: 1
+
+      recommendations:
+        critical:
+          - "UoW-305 violates library-first principle - consider refactoring"
+        suggestions:
+          - "Add CLI interface specifications to UoW-307"
+          - "Enhance test-first compliance in authentication layer"
+
+  knowledge_evolution:
+    patterns_discovered:
+      - "Authentication UoWs show strong library-first adoption"
+      - "CLI interface compliance varies by implementation layer"
+
+    learning_opportunities:
+      - "Governance rule GR-007 effectiveness in authentication domain"
+      - "Library-first principle adaptation patterns"
+```
+
+## Implementation Instructions
+
+### 1. Constitutional-Aware GraphRAG Integration
+- Load project constitution and governance rules
+- Enhance entity indexing with constitutional metadata
+- Build constitutional relationship discovery capabilities
+- Implement principle-aware query processing
+
+### 2. AI-Enhanced Query Intelligence
+- Deploy natural language understanding for constitutional context
+- Implement semantic query expansion with principle awareness
+- Build constitutional pattern recognition capabilities
+- Create governance-aware result ranking algorithms
+
+### 3. Multi-Modal Query Processing
+- Support traditional GraphRAG query types
+- Add constitutional compliance query modes
+- Implement governance-aware impact analysis
+- Build predictive constitutional analytics
+
+### 4. Intelligent Result Enhancement
+- Inject constitutional metadata into all results
+- Generate principle-aware recommendations
+- Provide governance compliance scoring
+- Create constitutional improvement suggestions
+
+Execute intelligent SSOT queries that combine traditional GraphRAG capabilities with constitutional governance intelligence and AI-enhanced semantic understanding.

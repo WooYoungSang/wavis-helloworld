@@ -1,0 +1,464 @@
+"""
+Contract-Based Unit Test Template for {{MODULE_NAME}}
+
+@Implements: {{IMPLEMENTS_FR}}
+@Validates: {{VALIDATES_AC}}
+@UoW: {{UOW_ID}}
+@Layer: {{LAYER}}
+@Priority: {{PRIORITY}}
+
+This test file validates the implementation against the acceptance criteria
+defined in the SSOT for the specified UoW.
+
+Unit tests for {{MODULE_NAME}} module.
+"""
+
+import asyncio
+import pytest
+from unittest.mock import Mock, MagicMock, AsyncMock, patch
+from datetime import datetime, timedelta
+import time
+import string
+import secrets
+
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
+
+from {{PACKAGE_NAME}}.{{MODULE_NAME}} import (
+    # Import your module functions/classes here
+    process_data,
+    ServiceClass,
+    CustomError,
+)
+
+
+# Fixtures for common test setup
+@pytest.fixture
+def tracer():
+    """Create OpenTelemetry tracer for testing."""
+    # Set up in-memory span exporter for testing
+    memory_exporter = InMemorySpanExporter()
+    span_processor = SimpleSpanProcessor(memory_exporter)
+
+    provider = TracerProvider()
+    provider.add_span_processor(span_processor)
+    trace.set_tracer_provider(provider)
+
+    return trace.get_tracer(__name__), memory_exporter
+
+
+@pytest.fixture
+def mock_database():
+    """Create a mock database connection."""
+    mock = MagicMock()
+    mock.query = AsyncMock(return_value=[{"id": 1, "name": "test"}])
+    mock.insert = AsyncMock(return_value=1)
+    mock.update = AsyncMock(return_value=True)
+    mock.delete = AsyncMock(return_value=True)
+    return mock
+
+
+@pytest.fixture
+def mock_redis():
+    """Create a mock Redis client."""
+    mock = MagicMock()
+    mock.get = AsyncMock(return_value=None)
+    mock.set = AsyncMock(return_value=True)
+    mock.delete = AsyncMock(return_value=True)
+    return mock
+
+
+@pytest.fixture
+def service_instance(mock_database, mock_redis):
+    """Create service instance with mocked dependencies."""
+    return ServiceClass(
+        database=mock_database,
+        cache=mock_redis,
+        config={"timeout": 5, "retry_count": 3}
+    )
+
+
+class TestServiceClass:
+    """Test suite for ServiceClass with contract validation."""
+
+    def test_ac1_functional_completeness(self, service_instance):
+        """
+        Validates AC-1: Functional Completeness
+
+        @ValidatesAC: AC-1
+        @Criteria: All specified functionality implemented
+        @Criteria: Edge cases handled appropriately
+        @Criteria: Error conditions managed gracefully
+        @Criteria: User workflows completed end-to-end
+        """
+        # Test core functionality
+        config = {"key": "value"}
+        service = ServiceClass(config=config)
+
+        # Assert - AC-1 Requirements
+        assert service.config == config, "Core functionality must work as specified"
+        assert service.is_ready is True, "Service must be properly initialized"
+
+        # Test edge cases
+        empty_service = ServiceClass(config={})
+        assert empty_service is not None, "Must handle empty config gracefully"
+
+        # Test error conditions
+        with pytest.raises(TypeError):
+            ServiceClass(config=None)  # Must handle invalid config
+
+    @pytest.mark.asyncio
+    async def test_async_operation(self, service_instance):
+        """Test async operation with mocked dependencies."""
+        # Arrange
+        expected = {"result": "success"}
+        service_instance.database.query.return_value = expected
+
+        # Act
+        result = await service_instance.async_operation("test_input")
+
+        # Assert
+        assert result == expected
+        service_instance.database.query.assert_called_once_with("test_input")
+
+    def test_with_opentelemetry(self, service_instance, tracer):
+        """Test operation with OpenTelemetry tracing."""
+        tracer_instance, exporter = tracer
+
+        # Start a span
+        with tracer_instance.start_as_current_span("test_operation") as span:
+            # Act
+            result = service_instance.traced_operation("test_data")
+
+            # Add span attributes
+            span.set_attribute("test.input", "test_data")
+            span.set_attribute("test.result", str(result))
+
+        # Get exported spans
+        spans = exporter.get_finished_spans()
+
+        # Assert
+        assert len(spans) > 0
+        assert spans[0].name == "test_operation"
+        assert spans[0].attributes["test.input"] == "test_data"
+
+    def test_ac2_quality_standards(self, service_instance):
+        """
+        Validates AC-2: Quality Standards
+
+        @ValidatesAC: AC-2
+        @Criteria: Unit tests with required coverage (80% foundation, 60% others)
+        @Criteria: Integration tests for external dependencies
+        @Criteria: Code quality passes analysis
+        @Criteria: Documentation updated
+        """
+        test_cases = [
+            ("valid", "processed_valid"),
+            ("", ValueError),
+            ("special!@#", "processed_special"),
+            (None, TypeError),
+            (123, "processed_123"),
+            ("unicode_测试", "processed_unicode"),
+            ("x" * 10000, "processed_large"),  # Large input test
+        ]
+
+        for input_data, expected in test_cases:
+            if isinstance(expected, type) and issubclass(expected, Exception):
+                # Test exception cases - AC-2 Quality Requirements
+                with pytest.raises(expected):
+                    service_instance.process(input_data)
+
+                # Ensure no unexpected exceptions
+                try:
+                    service_instance.process(input_data)
+                    assert False, f"Expected {expected.__name__} for input {input_data}"
+                except expected:
+                    pass  # Expected exception
+                except Exception as e:
+                    assert False, f"Unexpected exception {type(e).__name__}: {e}"
+            else:
+                # Test normal cases
+                result = service_instance.process(input_data)
+                assert result == expected, f"Quality test failed for input {input_data}"
+                assert result is not None, "Valid results must be meaningful"
+
+    def test_ac3_performance_requirements(self, service_instance):
+        """
+        Validates AC-3: Performance Requirements
+
+        @ValidatesAC: AC-3
+        @Criteria: Response times meet NFR specifications
+        @Criteria: Resource usage within defined limits
+        @Criteria: Scalability requirements validated
+        @Criteria: Performance baselines established
+        """
+        # Performance baseline test
+        start_time = time.time()
+        result = service_instance.process("performance_test")
+        duration = time.time() - start_time
+
+        # Assert - AC-3 Performance Requirements
+        assert result is not None, "Performance test must produce results"
+        assert duration < 0.2, f"Response time must be < 200ms (got {duration:.3f}s)"
+
+        # Memory usage test (basic check)
+        import gc
+        gc.collect()
+
+        # Test repeated operations don't cause memory leaks
+        for i in range(1000):
+            service_instance.process(f"memory_test_{i}")
+
+        # Test concurrency/scalability
+        import concurrent.futures
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            futures = [
+                executor.submit(service_instance.process, f"concurrent_test_{i}")
+                for i in range(10)
+            ]
+            results = [f.result(timeout=5) for f in futures]
+
+        assert len(results) == 10, "All concurrent operations must succeed"
+        assert all(r is not None for r in results), "All results must be valid"
+
+    def test_ac4_security_compliance(self, service_instance):
+        """
+        Validates AC-4: Security & Compliance
+
+        @ValidatesAC: AC-4
+        @Criteria: Security scanning passes with no critical issues
+        @Criteria: Input validation implemented
+        @Criteria: Audit logging configured
+        @Criteria: Compliance requirements met
+        """
+        # Input validation tests
+        malicious_inputs = [
+            "<script>alert('xss')</script>",
+            "'; DROP TABLE users; --",
+            "../../../etc/passwd",
+            "\x00\x01\x02",  # null bytes
+            "A" * 100000,    # extremely large input
+            {"__class__": {"__bases__": {}}},  # Python object injection
+        ]
+
+        for malicious_input in malicious_inputs:
+            try:
+                result = service_instance.process_with_validation(malicious_input)
+                # If no exception, ensure output is sanitized
+                if result and isinstance(malicious_input, str):
+                    assert malicious_input not in str(result), "Output must be sanitized"
+            except (ValueError, TypeError, SecurityError) as e:
+                # Expected - malicious input should be rejected
+                assert str(e), "Error messages must be informative"
+            except Exception as e:
+                assert False, f"Unexpected exception for malicious input: {type(e).__name__}: {e}"
+
+        # Audit logging test
+        audit_result = service_instance.process_with_audit("audit_test")
+        assert audit_result is not None, "Audit operations must complete successfully"
+        # Note: In real tests, verify audit logs are created
+
+    def test_error_handling(self, service_instance):
+        """Test error handling scenarios."""
+        # Test custom error
+        with pytest.raises(CustomError) as exc_info:
+            service_instance.trigger_error()
+
+        assert "Custom error message" in str(exc_info.value)
+        assert exc_info.value.error_code == "ERR_001"
+
+    @pytest.mark.asyncio
+    async def test_timeout_handling(self, service_instance):
+        """Test timeout handling."""
+        # Mock a slow operation
+        async def slow_operation():
+            await asyncio.sleep(10)
+            return "result"
+
+        service_instance.slow_operation = slow_operation
+
+        # Test with timeout
+        with pytest.raises(asyncio.TimeoutError):
+            await asyncio.wait_for(
+                service_instance.slow_operation(),
+                timeout=1.0
+            )
+
+    def test_retry_logic(self, service_instance, mocker):
+        """Test retry mechanism with exponential backoff."""
+        # Mock a function that fails then succeeds
+        mock_func = mocker.Mock(side_effect=[
+            Exception("First attempt"),
+            Exception("Second attempt"),
+            "Success"
+        ])
+
+        service_instance.unstable_operation = mock_func
+
+        # Act
+        result = service_instance.retry_operation(max_retries=3)
+
+        # Assert
+        assert result == "Success"
+        assert mock_func.call_count == 3
+
+    @pytest.mark.asyncio
+    async def test_concurrent_operations(self, service_instance):
+        """Test concurrent operation handling."""
+        # Define concurrent tasks
+        async def task(task_id):
+            result = await service_instance.async_operation(f"task_{task_id}")
+            return task_id, result
+
+        # Run tasks concurrently
+        tasks = [task(i) for i in range(10)]
+        results = await asyncio.gather(*tasks)
+
+        # Assert all tasks completed
+        assert len(results) == 10
+        for task_id, result in results:
+            assert isinstance(task_id, int)
+            assert result is not None
+
+    def test_caching_behavior(self, service_instance, mock_redis):
+        """Test caching behavior."""
+        # First call - cache miss
+        mock_redis.get.return_value = None
+        result1 = service_instance.cached_operation("key1")
+
+        # Verify cache was checked and set
+        mock_redis.get.assert_called_with("key1")
+        mock_redis.set.assert_called_once()
+
+        # Second call - cache hit
+        mock_redis.get.return_value = "cached_value"
+        result2 = service_instance.cached_operation("key1")
+
+        # Verify cached value was returned
+        assert result2 == "cached_value"
+
+    @pytest.mark.benchmark
+    def test_performance(self, benchmark, service_instance):
+        """Benchmark test for performance measurement."""
+        # Benchmark the operation
+        result = benchmark(service_instance.process, "benchmark_input")
+
+        # Assert result is valid
+        assert result is not None
+
+        # Benchmark stats are automatically collected
+
+    def test_mock_external_api(self, service_instance, requests_mock):
+        """Test external API calls with mocked responses."""
+        # Mock external API
+        requests_mock.get(
+            "https://api.example.com/data",
+            json={"status": "success", "data": [1, 2, 3]}
+        )
+
+        # Act
+        result = service_instance.fetch_external_data()
+
+        # Assert
+        assert result["status"] == "success"
+        assert len(result["data"]) == 3
+
+
+class TestHelperFunctions:
+    """Test suite for helper functions."""
+
+    def test_process_data(self):
+        """Test data processing function."""
+        # Arrange
+        input_data = {"key": "value"}
+
+        # Act
+        result = process_data(input_data)
+
+        # Assert
+        assert "processed" in result
+        assert result["original"] == input_data
+
+    def test_validation_function(self):
+        """Test input validation."""
+        # Valid input
+        assert validate_input({"required_field": "value"}) is True
+
+        # Invalid input
+        with pytest.raises(ValueError):
+            validate_input({})
+
+        with pytest.raises(TypeError):
+            validate_input("not_a_dict")
+
+
+# Integration test example
+@pytest.mark.integration
+class TestIntegration:
+    """Integration tests that test multiple components together."""
+
+    @pytest.mark.asyncio
+    async def test_full_workflow(self, service_instance, tracer):
+        """Test complete workflow with all components."""
+        tracer_instance, exporter = tracer
+
+        # Start tracing
+        with tracer_instance.start_as_current_span("full_workflow"):
+            # Step 1: Process input
+            processed = await service_instance.process_input({"data": "test"})
+
+            # Step 2: Store in database
+            stored = await service_instance.store_data(processed)
+
+            # Step 3: Cache result
+            cached = await service_instance.cache_result(stored)
+
+            # Step 4: Retrieve and verify
+            retrieved = await service_instance.get_data(stored["id"])
+
+        # Verify workflow completed
+        assert retrieved == stored
+
+        # Verify tracing
+        spans = exporter.get_finished_spans()
+        assert len(spans) > 0
+        assert any(span.name == "full_workflow" for span in spans)
+
+
+# Fixtures for test data
+@pytest.fixture
+def sample_data():
+    """Provide sample test data."""
+    return {
+        "id": 1,
+        "name": "Test Item",
+        "created_at": datetime.now(),
+        "metadata": {
+            "version": "1.0",
+            "tags": ["test", "sample"]
+        }
+    }
+
+
+@pytest.fixture
+def mock_event():
+    """Create a mock event for event-driven testing."""
+    return {
+        "event_type": "user.created",
+        "timestamp": datetime.now().isoformat(),
+        "data": {
+            "user_id": "123",
+            "email": "test@example.com"
+        }
+    }
+
+
+# Cleanup fixture
+@pytest.fixture(autouse=True)
+def cleanup():
+    """Cleanup after each test."""
+    yield
+    # Perform cleanup tasks here
+    # e.g., clear caches, reset global state, etc.

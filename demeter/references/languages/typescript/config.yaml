@@ -1,0 +1,456 @@
+# TypeScript Language Adapter Configuration
+# Defines TypeScript-specific settings, dependencies, and project structure
+
+language:
+  name: "typescript"
+  display_name: "TypeScript"
+  version_range: ">=4.9.0"
+  default_version: "5.3.0"
+
+  # Language Characteristics
+  characteristics:
+    compiled: true
+    statically_typed: true
+    garbage_collected: true
+    functional: true
+
+  # File Extensions
+  file_extensions:
+    source: [".ts", ".tsx"]
+    test: [".test.ts", ".spec.ts"]
+    build: ["package.json", "tsconfig.json", "package-lock.json", "yarn.lock"]
+    config: [".ts", ".js", ".json", ".yaml"]
+
+# Project Structure
+project_structure:
+  # TypeScript/Node.js project layout
+  directories:
+    source:
+      - "src/"
+      - "lib/"
+
+    documentation:
+      - "docs/"
+      - "examples/"
+
+    testing:
+      - "tests/"
+      - "__tests__/"
+
+    build:
+      - "dist/"
+      - "build/"
+      - "scripts/"
+
+    deployment:
+      - "docker/"
+      - "configs/"
+
+  # Required Files
+  required_files:
+    - "package.json"
+    - "tsconfig.json"
+    - "src/index.ts"
+    - "src/app.ts"
+
+  # Clean Architecture Structure
+  clean_architecture:
+    domain: "src/domain"
+    application: "src/application"
+    infrastructure: "src/infrastructure"
+    interfaces: "src/interfaces"
+
+# Dependencies
+dependencies:
+  # Core Dependencies
+  core:
+    - name: "express"
+      version: "^4.18.2"
+      purpose: "Web application framework"
+      category: "web"
+
+    - name: "@types/express"
+      version: "^4.17.21"
+      purpose: "TypeScript types for Express"
+      category: "types"
+
+    - name: "cors"
+      version: "^2.8.5"
+      purpose: "CORS middleware"
+      category: "web"
+
+    - name: "helmet"
+      version: "^7.1.0"
+      purpose: "Security middleware"
+      category: "security"
+
+    - name: "winston"
+      version: "^3.11.0"
+      purpose: "Logging library"
+      category: "logging"
+
+  # Database Dependencies
+  database:
+    - name: "prisma"
+      version: "^5.7.0"
+      purpose: "Database toolkit and ORM"
+      category: "database"
+
+    - name: "@prisma/client"
+      version: "^5.7.0"
+      purpose: "Prisma client"
+      category: "database"
+
+    - name: "pg"
+      version: "^8.11.3"
+      purpose: "PostgreSQL client"
+      category: "database"
+
+    - name: "@types/pg"
+      version: "^8.10.9"
+      purpose: "TypeScript types for pg"
+      category: "types"
+
+  # Cache Dependencies
+  cache:
+    - name: "redis"
+      version: "^4.6.10"
+      purpose: "Redis client"
+      category: "cache"
+
+    - name: "ioredis"
+      version: "^5.3.2"
+      purpose: "Redis client with TypeScript support"
+      category: "cache"
+
+  # Validation Dependencies
+  validation:
+    - name: "zod"
+      version: "^3.22.4"
+      purpose: "TypeScript-first schema validation"
+      category: "validation"
+
+    - name: "class-validator"
+      version: "^0.14.0"
+      purpose: "Decorator-based validation"
+      category: "validation"
+
+  # Testing Dependencies
+  testing:
+    - name: "jest"
+      version: "^29.7.0"
+      purpose: "Testing framework"
+      category: "testing"
+
+    - name: "@types/jest"
+      version: "^29.5.8"
+      purpose: "TypeScript types for Jest"
+      category: "types"
+
+    - name: "supertest"
+      version: "^6.3.3"
+      purpose: "HTTP assertion library"
+      category: "testing"
+
+    - name: "@types/supertest"
+      version: "^6.0.2"
+      purpose: "TypeScript types for Supertest"
+      category: "types"
+
+    - name: "ts-jest"
+      version: "^29.1.1"
+      purpose: "Jest transformer for TypeScript"
+      category: "testing"
+
+  # OpenTelemetry Dependencies
+  observability:
+    - name: "@opentelemetry/api"
+      version: "^1.7.0"
+      purpose: "OpenTelemetry API"
+      category: "observability"
+
+    - name: "@opentelemetry/sdk-node"
+      version: "^0.45.0"
+      purpose: "OpenTelemetry Node.js SDK"
+      category: "observability"
+
+    - name: "@opentelemetry/exporter-otlp-http"
+      version: "^0.45.0"
+      purpose: "OTLP HTTP exporter"
+      category: "observability"
+
+    - name: "@opentelemetry/auto-instrumentations-node"
+      version: "^0.40.0"
+      purpose: "Auto-instrumentation for Node.js"
+      category: "observability"
+
+    - name: "@opentelemetry/instrumentation-express"
+      version: "^0.34.0"
+      purpose: "Express.js instrumentation"
+      category: "observability"
+
+    - name: "@opentelemetry/instrumentation-http"
+      version: "^0.45.0"
+      purpose: "HTTP instrumentation"
+      category: "observability"
+
+  # Development Dependencies
+  development:
+    - name: "typescript"
+      version: "^5.3.0"
+      purpose: "TypeScript compiler"
+      category: "development"
+
+    - name: "ts-node"
+      version: "^10.9.1"
+      purpose: "TypeScript execution environment"
+      category: "development"
+
+    - name: "nodemon"
+      version: "^3.0.2"
+      purpose: "Development server with hot reload"
+      category: "development"
+
+    - name: "eslint"
+      version: "^8.55.0"
+      purpose: "JavaScript/TypeScript linter"
+      category: "development"
+
+    - name: "@typescript-eslint/parser"
+      version: "^6.13.1"
+      purpose: "TypeScript parser for ESLint"
+      category: "development"
+
+    - name: "@typescript-eslint/eslint-plugin"
+      version: "^6.13.1"
+      purpose: "TypeScript rules for ESLint"
+      category: "development"
+
+    - name: "prettier"
+      version: "^3.1.0"
+      purpose: "Code formatter"
+      category: "development"
+
+# Package Manager
+package_manager:
+  # Preferred package manager
+  preferred: "npm"  # npm, yarn, pnpm
+
+  # Package manager configurations
+  npm:
+    registry: "https://registry.npmjs.org/"
+    save_exact: false
+
+  yarn:
+    registry: "https://registry.yarnpkg.com/"
+    save_exact: false
+
+  pnpm:
+    registry: "https://registry.npmjs.org/"
+    save_exact: false
+
+# Build Configuration
+build:
+  # Build Commands
+  commands:
+    install: "npm install"
+    build: "npm run build"
+    dev: "npm run dev"
+    start: "npm start"
+    test: "npm test"
+    lint: "npm run lint"
+    format: "npm run format"
+
+  # TypeScript Configuration
+  typescript:
+    target: "ES2022"
+    module: "CommonJS"
+    output_dir: "dist"
+    source_map: true
+    declaration: true
+
+  # Build Options
+  options:
+    minify: true
+    tree_shaking: true
+    source_maps: true
+
+# Testing Configuration
+testing:
+  # Test Framework
+  framework: "jest"
+
+  # Test Commands
+  commands:
+    unit: "jest tests/unit"
+    integration: "jest tests/integration"
+    e2e: "jest tests/e2e"
+    coverage: "jest --coverage"
+
+  # Coverage Requirements
+  coverage:
+    foundation_threshold: 80
+    business_threshold: 60
+    integration_threshold: 70
+
+  # Jest Configuration
+  jest:
+    preset: "ts-jest"
+    test_environment: "node"
+    coverage_directory: "coverage"
+
+# Linting Configuration
+linting:
+  # Primary Linter
+  primary: "eslint"
+
+  # Linter Configuration
+  config_file: ".eslintrc.js"
+
+  # ESLint Configuration
+  eslint:
+    parser: "@typescript-eslint/parser"
+    extends:
+      - "eslint:recommended"
+      - "@typescript-eslint/recommended"
+      - "prettier"
+
+    rules:
+      "@typescript-eslint/no-unused-vars": "error"
+      "@typescript-eslint/explicit-function-return-type": "warn"
+      "prefer-const": "error"
+
+# Development Tools
+dev_tools:
+  # Required Tools
+  required:
+    - name: "node"
+      version: ">=18.0.0"
+      install_url: "https://nodejs.org/"
+
+    - name: "npm"
+      version: ">=9.0.0"
+      install_url: "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
+
+  # Optional Tools
+  optional:
+    - name: "yarn"
+      purpose: "Alternative package manager"
+      install_cmd: "npm install -g yarn"
+
+    - name: "pnpm"
+      purpose: "Fast, disk space efficient package manager"
+      install_cmd: "npm install -g pnpm"
+
+# Docker Configuration
+docker:
+  # Base Images
+  base_images:
+    build: "node:18-alpine"
+    runtime: "node:18-alpine"
+
+  # Dockerfile Template
+  dockerfile_template: "languages/typescript/templates/Dockerfile.template"
+
+  # Docker Compose Services
+  services:
+    - postgres
+    - redis
+    - app
+
+# Environment Configuration
+environment:
+  # Environment Variables (minimal, prefer JSON config)
+  variables:
+    NODE_ENV: "development"
+    NODE_VERSION: "{{NODE_VERSION}}"
+    PORT: "{{DEV_PORT}}"
+
+  # Configuration Management
+  config:
+    format: "json"
+    location: "configs/"
+    schema_validation: true
+    hot_reload: true
+
+# Template Variables
+variables:
+  # TypeScript-specific variables
+  TYPESCRIPT_VERSION: "5.3.0"
+  NODE_VERSION: "18"
+  PACKAGE_NAME: "{{PROJECT_NAME|kebab_case}}"
+
+  # Build variables
+  BUILD_DIR: "dist"
+  SOURCE_DIR: "src"
+
+  # Testing variables
+  TEST_TIMEOUT: "30000"
+  COVERAGE_THRESHOLD: "80"
+
+  # Development variables
+  DEV_PORT: "3000"
+  HEALTH_CHECK_PATH: "/health"
+
+# Code Generation
+code_generation:
+  # Templates
+  templates:
+    app: "languages/typescript/templates/app.ts.template"
+    controller: "languages/typescript/templates/controller.ts.template"
+    service: "languages/typescript/templates/service.ts.template"
+    repository: "languages/typescript/templates/repository.ts.template"
+    model: "languages/typescript/templates/model.ts.template"
+    test: "languages/typescript/templates/test.ts.template"
+
+  # Generation Rules
+  rules:
+    file_naming: "kebab-case"
+    class_naming: "PascalCase"
+    interface_naming: "IPascalCase"
+    function_naming: "camelCase"
+    constant_naming: "UPPER_CASE"
+
+# Integration
+integrations:
+  # Claude Code Integration
+  claude_code:
+    settings_template: "languages/typescript/templates/claude-settings.json.template"
+    commands:
+      test: "npm test"
+      build: "npm run build"
+      lint: "npm run lint"
+      format: "npm run format"
+      dev: "npm run dev"
+
+  # IDE Integration
+  ide:
+    vscode:
+      settings_template: "languages/typescript/templates/vscode-settings.json.template"
+      extensions:
+        - "ms-vscode.vscode-typescript-next"
+        - "esbenp.prettier-vscode"
+        - "dbaeumer.vscode-eslint"
+
+  # CI/CD Integration
+  cicd:
+    github_actions:
+      workflow_template: "languages/typescript/templates/node-ci.yml.template"
+
+# Documentation
+documentation:
+  # Language-specific docs
+  readme_template: "languages/typescript/templates/README.md.template"
+
+  # Code Documentation
+  doc_generator: "typedoc"
+
+  # Documentation Tools
+  doc_tools:
+    - "typedoc"
+    - "jsdoc"
+
+  # Examples
+  examples:
+    - "examples/express-api"
+    - "examples/async-patterns"

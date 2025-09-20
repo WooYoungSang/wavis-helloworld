@@ -1,0 +1,531 @@
+# 🧠 Constitutional GraphRAG Knowledge Integration Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **SSOT File**: {{MERGED_SSOT_FILE}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Framework**: Demeter WAVIS v1.3 + Constitutional Knowledge Management + SDD Integration
+
+## 🎯 Constitutional GraphRAG Philosophy
+
+This template creates a comprehensive knowledge graph that integrates SSOT requirements, constitutional principles, SDD methodology, and domain-specific patterns. The knowledge graph serves as the foundation for constitutional compliance guidance, implementation pattern discovery, and context-aware development assistance.
+
+### Constitutional Knowledge Integration Principles
+- **Constitutional Governance**: All knowledge organized around constitutional principles
+- **SDD Methodology Integration**: Knowledge structured to support specification-driven development
+- **Implementation Pattern Learning**: Capture and reuse constitutional implementation patterns
+- **Context-Aware Guidance**: Provide constitutional compliance guidance based on development context
+- **Domain Expertise Integration**: Domain-specific constitutional patterns and compliance requirements
+
+## 🔧 Constitutional GraphRAG Integration Process
+
+### 1. Constitutional SSOT Knowledge Extraction
+```yaml
+constitutional_knowledge_extraction:
+  approach: "Extract constitutional knowledge from SSOT with constitutional principle mapping"
+
+  # Load Constitutional SSOT
+  ssot_loading:
+    source_file: "{{MERGED_SSOT_FILE}}"
+    constitution_file: "{{CONSTITUTION_FILE}}"
+    extraction_focus:
+      - constitutional_compliance_patterns
+      - sdd_specification_structures
+      - implementation_guidance_patterns
+      - domain_specific_constitutional_requirements
+
+  # Constitutional Entity Extraction
+  constitutional_entities:
+    functional_requirements:
+      extraction_pattern: |
+        For each FR in SSOT:
+        ```json
+        {
+          "entity_id": "{{knowledge_graph_id}}",
+          "entity_type": "functional_requirement",
+          "project": "{{PROJECT_NAME}}",
+          "requirement_id": "{{FR_ID}}",
+          "constitutional_compliance": {
+            "library_first": "{{library_first_approach}}",
+            "cli_interface": "{{cli_interface_specification}}",
+            "test_first": "{{test_first_strategy}}",
+            "simplicity": "{{simplicity_approach}}",
+            "compliance_score": "{{constitutional_score}}"
+          },
+          "sdd_specification": {
+            "user_story": "{{sdd_user_story}}",
+            "acceptance_criteria": [{{acceptance_criteria}}],
+            "clarifications": [{{clarify_markers}}]
+          },
+          "domain_context": "{{EXTENSIONS}}",
+          "constitutional_tags": [{{constitutional_principle_tags}}],
+          "implementation_guidance": {
+            "libraries": [{{library_selections}}],
+            "cli_commands": [{{cli_interface_commands}}],
+            "test_strategy": "{{testing_approach}}"
+          }
+        }
+        ```
+
+    non_functional_requirements:
+      extraction_pattern: |
+        For each NFR in SSOT:
+        ```json
+        {
+          "entity_id": "{{knowledge_graph_id}}",
+          "entity_type": "non_functional_requirement",
+          "project": "{{PROJECT_NAME}}",
+          "requirement_id": "{{NFR_ID}}",
+          "constitutional_compliance": {
+            "quality_standards": "{{constitutional_quality_requirements}}",
+            "measurement_approach": "{{constitutional_measurement_strategy}}",
+            "validation_method": "{{constitutional_validation_approach}}",
+            "compliance_score": "{{constitutional_score}}"
+          },
+          "quality_dimension": "{{category}}",
+          "measurable_criteria": [{{constitutional_criteria}}],
+          "domain_context": "{{EXTENSIONS}}",
+          "constitutional_tags": ["quality", "constitutional", "{{category}}"]
+        }
+        ```
+
+    units_of_work:
+      extraction_pattern: |
+        For each UoW in SSOT:
+        ```json
+        {
+          "entity_id": "{{knowledge_graph_id}}",
+          "entity_type": "unit_of_work",
+          "project": "{{PROJECT_NAME}}",
+          "uow_id": "{{UOW_ID}}",
+          "constitutional_compliance": {
+            "implementation_approach": "{{constitutional_implementation_strategy}}",
+            "library_selections": [{{constitutional_library_choices}}],
+            "testing_strategy": "{{constitutional_testing_approach}}",
+            "compliance_score": "{{constitutional_score}}"
+          },
+          "implementation_layer": "{{layer}}",
+          "dependencies": [{{dependency_uow_ids}}],
+          "implements": [{{implemented_requirement_ids}}],
+          "constitutional_tasks": [{{constitutional_task_breakdown}}],
+          "domain_context": "{{EXTENSIONS}}",
+          "constitutional_tags": ["implementation", "constitutional", "{{layer}}"]
+        }
+        ```
+
+    constitutional_principles:
+      extraction_pattern: |
+        For each Constitutional Principle:
+        ```json
+        {
+          "entity_id": "cp_{{principle_id}}",
+          "entity_type": "constitutional_principle",
+          "project": "{{PROJECT_NAME}}",
+          "principle_name": "{{principle_name}}",
+          "principle_description": "{{principle_description}}",
+          "enforcement_level": "{{enforcement_level}}",
+          "domain_applications": {
+            "{{EXTENSIONS}}": "{{domain_specific_application}}"
+          },
+          "compliance_patterns": [{{compliance_implementation_patterns}}],
+          "validation_methods": [{{compliance_validation_approaches}}]
+        }
+        ```
+
+### 2. Constitutional Relationship Mapping
+```yaml
+constitutional_relationship_extraction:
+  approach: "Map relationships between entities with constitutional compliance focus"
+
+  # Constitutional Implementation Relationships
+  constitutional_relationships:
+    requirement_implementation:
+      relationship_type: "implements"
+      pattern: |
+        For each UoW that implements requirements:
+        ```json
+        {
+          "relationship_id": "impl_{{uow_id}}_{{req_id}}",
+          "relationship_type": "implements",
+          "source_entity": "{{uow_knowledge_graph_id}}",
+          "target_entity": "{{requirement_knowledge_graph_id}}",
+          "constitutional_compliance": {
+            "implementation_approach": "{{constitutional_implementation_method}}",
+            "compliance_validation": "{{constitutional_validation_approach}}"
+          },
+          "weight": 1.0,
+          "constitutional_tags": ["implementation", "constitutional_compliance"]
+        }
+        ```
+
+    constitutional_principle_adherence:
+      relationship_type: "adheres_to"
+      pattern: |
+        For each requirement/UoW that adheres to constitutional principles:
+        ```json
+        {
+          "relationship_id": "adheres_{{entity_id}}_{{principle_id}}",
+          "relationship_type": "adheres_to",
+          "source_entity": "{{entity_knowledge_graph_id}}",
+          "target_entity": "{{constitutional_principle_id}}",
+          "adherence_details": {
+            "compliance_score": "{{constitutional_compliance_score}}",
+            "implementation_approach": "{{constitutional_implementation_details}}",
+            "validation_method": "{{constitutional_validation_approach}}"
+          },
+          "weight": 0.9,
+          "constitutional_tags": ["constitutional_adherence"]
+        }
+        ```
+
+    dependency_relationships:
+      relationship_type: "depends_on"
+      pattern: |
+        For each UoW dependency:
+        ```json
+        {
+          "relationship_id": "dep_{{source_uow}}_{{target_uow}}",
+          "relationship_type": "depends_on",
+          "source_entity": "{{source_uow_knowledge_graph_id}}",
+          "target_entity": "{{target_uow_knowledge_graph_id}}",
+          "dependency_details": {
+            "dependency_type": "{{dependency_type}}",
+            "constitutional_impact": "{{constitutional_dependency_analysis}}",
+            "critical_path": "{{is_critical_path}}"
+          },
+          "weight": 0.8,
+          "constitutional_tags": ["dependency", "constitutional_sequence"]
+        }
+        ```
+
+    domain_context_relationships:
+      relationship_type: "belongs_to_domain"
+      pattern: |
+        For each entity with domain context:
+        ```json
+        {
+          "relationship_id": "domain_{{entity_id}}_{{domain}}",
+          "relationship_type": "belongs_to_domain",
+          "source_entity": "{{entity_knowledge_graph_id}}",
+          "target_entity": "domain_{{EXTENSIONS}}",
+          "domain_details": {
+            "domain_specific_patterns": [{{domain_constitutional_patterns}}],
+            "compliance_requirements": [{{domain_compliance_requirements}}]
+          },
+          "weight": 0.7,
+          "constitutional_tags": ["domain_context", "{{EXTENSIONS}}"]
+        }
+        ```
+
+### 3. Constitutional Knowledge Graph Generation
+```yaml
+constitutional_knowledge_graph_generation:
+  approach: "Generate comprehensive knowledge graph with constitutional governance integration"
+
+  # Knowledge Graph Structure
+  knowledge_graph_structure:
+    nodes: "All constitutional entities (FR, NFR, UoW, Constitutional Principles, Domain Entities)"
+    edges: "All constitutional relationships with compliance metadata"
+    metadata: "Constitutional compliance scores, SDD specification quality, domain context"
+
+  # Generate Knowledge Graph Files
+  knowledge_graph_files:
+    constitutional_entities_file:
+      filename: ".demeter-dev/knowledge/index/constitutional-entities.json"
+      content_structure: |
+        {
+          "project": "{{PROJECT_NAME}}",
+          "constitution_version": "{{CONSTITUTION_VERSION}}",
+          "generation_timestamp": "{{CURRENT_TIMESTAMP}}",
+          "entities": {
+            "functional_requirements": [{{all_fr_entities}}],
+            "non_functional_requirements": [{{all_nfr_entities}}],
+            "units_of_work": [{{all_uow_entities}}],
+            "constitutional_principles": [{{all_constitutional_principle_entities}}],
+            "domain_entities": [{{all_domain_entities}}]
+          },
+          "constitutional_compliance_summary": {
+            "overall_compliance_score": "{{overall_constitutional_score}}%",
+            "principle_compliance": {
+              "library_first": "{{library_first_score}}%",
+              "cli_interface": "{{cli_interface_score}}%",
+              "test_first": "{{test_first_score}}%",
+              "simplicity": "{{simplicity_score}}%"
+            }
+          }
+        }
+
+    constitutional_relationships_file:
+      filename: ".demeter-dev/knowledge/index/constitutional-relationships.json"
+      content_structure: |
+        {
+          "project": "{{PROJECT_NAME}}",
+          "constitution_version": "{{CONSTITUTION_VERSION}}",
+          "relationships": {
+            "implementation_relationships": [{{all_implementation_relationships}}],
+            "constitutional_adherence": [{{all_constitutional_adherence_relationships}}],
+            "dependency_relationships": [{{all_dependency_relationships}}],
+            "domain_relationships": [{{all_domain_relationships}}]
+          },
+          "relationship_statistics": {
+            "total_relationships": {{total_relationship_count}},
+            "constitutional_compliance_connections": {{constitutional_compliance_count}},
+            "implementation_connections": {{implementation_connection_count}},
+            "dependency_connections": {{dependency_connection_count}}
+          }
+        }
+
+    domain_constitutional_patterns_file:
+      filename: ".demeter-dev/knowledge/index/domain-constitutional-patterns.json"
+      content_structure: |
+        {
+          "project": "{{PROJECT_NAME}}",
+          "domain": "{{EXTENSIONS}}",
+          "constitutional_patterns": {
+            "{{EXTENSIONS}}_constitutional_principles": [{{domain_constitutional_principles}}],
+            "implementation_patterns": [{{domain_implementation_patterns}}],
+            "compliance_patterns": [{{domain_compliance_patterns}}],
+            "quality_patterns": [{{domain_quality_patterns}}]
+          },
+          "pattern_relationships": [{{domain_pattern_relationships}}]
+        }
+
+### 4. Constitutional Development Context Generation
+```yaml
+constitutional_context_generation:
+  approach: "Generate constitutional development context and guidance"
+
+  # Constitutional Pattern Documentation
+  constitutional_patterns:
+    filename: ".demeter-dev/knowledge/patterns/constitutional-patterns.md"
+    content_structure: |
+      # Constitutional Implementation Patterns for {{PROJECT_NAME}}
+
+      ## Constitutional Principle Implementation Patterns
+
+      ### Library-First Implementation Patterns
+      {{#each library_first_patterns}}
+      #### {{pattern_name}}
+      - **Context**: {{pattern_context}}
+      - **Constitutional Approach**: {{constitutional_implementation}}
+      - **Library Selection**: {{recommended_libraries}}
+      - **Implementation Example**: {{implementation_example}}
+      - **Compliance Validation**: {{compliance_validation_method}}
+      {{/each}}
+
+      ### CLI Interface Implementation Patterns
+      {{#each cli_interface_patterns}}
+      #### {{pattern_name}}
+      - **CLI Command Structure**: {{cli_command_structure}}
+      - **Constitutional Compliance**: {{constitutional_cli_approach}}
+      - **User Experience**: {{constitutional_user_experience}}
+      - **Implementation Example**: {{cli_implementation_example}}
+      {{/each}}
+
+      ### Test-First Implementation Patterns
+      {{#each test_first_patterns}}
+      #### {{pattern_name}}
+      - **Testing Strategy**: {{constitutional_testing_strategy}}
+      - **Test Types Priority**: {{test_types_priority}}
+      - **Implementation Approach**: {{test_first_implementation}}
+      - **Compliance Validation**: {{test_compliance_validation}}
+      {{/each}}
+
+    domain_specific_patterns:
+      filename: ".demeter-dev/knowledge/patterns/{{EXTENSIONS}}-constitutional-patterns.md"
+      content_structure: |
+        # {{EXTENSIONS}} Domain Constitutional Patterns
+
+        ## Domain-Specific Constitutional Principles
+        {{#each domain_constitutional_principles}}
+        ### {{principle_name}}
+        - **Domain Application**: {{domain_specific_application}}
+        - **Constitutional Enforcement**: {{enforcement_approach}}
+        - **Compliance Validation**: {{domain_compliance_validation}}
+        {{/each}}
+
+        ## {{EXTENSIONS}} Implementation Patterns
+        {{#each domain_implementation_patterns}}
+        ### {{pattern_name}}
+        - **Constitutional Approach**: {{constitutional_implementation_approach}}
+        - **Domain Requirements**: {{domain_specific_requirements}}
+        - **Compliance Considerations**: {{constitutional_compliance_considerations}}
+        {{/each}}
+
+  # Constitutional Development Queries
+  constitutional_queries:
+    filename: ".demeter-dev/knowledge/queries/constitutional-queries.md"
+    content_structure: |
+      # Constitutional Development Queries for {{PROJECT_NAME}}
+
+      ## Constitutional Compliance Queries
+
+      ### General Constitutional Compliance
+      - "What is the overall constitutional compliance score for {{PROJECT_NAME}}?"
+      - "Which requirements have the highest constitutional compliance scores?"
+      - "What constitutional principles need the most attention?"
+
+      ### Library-First Queries
+      - "What libraries are recommended for implementing FR-XXX constitutionally?"
+      - "Which UoWs demonstrate best library-first implementation patterns?"
+      - "How can I minimize custom implementation while maintaining constitutional compliance?"
+
+      ### CLI Interface Queries
+      - "What CLI commands are defined for the {{EXTENSIONS}} domain?"
+      - "How should I structure CLI interfaces to maintain constitutional compliance?"
+      - "What are the constitutional CLI patterns for {{PROJECT_NAME}}?"
+
+      ### Test-First Queries
+      - "What testing strategy should I follow for constitutional compliance?"
+      - "Which UoWs have the best test-first implementation examples?"
+      - "How do I validate constitutional compliance through testing?"
+
+      ## Domain-Specific Constitutional Queries
+      {{#each domain_specific_queries}}
+      ### {{query_category}}
+      {{#each queries}}
+      - "{{query_text}}"
+      {{/each}}
+      {{/each}}
+
+### 5. Constitutional Knowledge Validation
+```yaml
+constitutional_knowledge_validation:
+  approach: "Validate constitutional knowledge graph completeness and accuracy"
+
+  validation_criteria:
+    constitutional_completeness:
+      - validation: "All SSOT elements indexed with constitutional compliance metadata"
+        check_method: "Verify each FR, NFR, UoW has constitutional_compliance fields"
+      - validation: "All constitutional principles represented as entities"
+        check_method: "Verify all 9 base principles + domain principles included"
+      - validation: "Constitutional relationships properly mapped"
+        check_method: "Verify adherence relationships between entities and principles"
+
+    knowledge_graph_connectivity:
+      - validation: "All entities have proper constitutional relationships"
+        check_method: "Verify relationship completeness and constitutional metadata"
+      - validation: "Constitutional principle networks properly formed"
+        check_method: "Verify constitutional adherence relationship networks"
+      - validation: "Domain context relationships established"
+        check_method: "Verify domain entity relationships and context"
+
+    constitutional_query_readiness:
+      - validation: "Constitutional compliance queries executable"
+        check_method: "Test constitutional compliance queries against knowledge graph"
+      - validation: "Implementation guidance queries functional"
+        check_method: "Test implementation pattern queries"
+      - validation: "Domain-specific constitutional queries working"
+        check_method: "Test domain constitutional pattern queries"
+
+## 📊 Generated Constitutional Knowledge Structure
+
+### .demeter-dev/knowledge/index/ (Constitutional Knowledge Graph Core)
+- `constitutional-entities.json` - All FR, NFR, UoW, Constitutional Principle entities with compliance metadata
+- `constitutional-relationships.json` - Constitutional adherence, implementation, and dependency relationships
+- `domain-constitutional-patterns.json` - {{EXTENSIONS}}-specific constitutional patterns and compliance requirements
+- `constitutional-compliance-metrics.json` - Constitutional compliance scores and quality metrics
+
+### .demeter-dev/knowledge/patterns/ (Constitutional Implementation Patterns)
+- `constitutional-patterns.md` - Constitutional principle implementation patterns and guidance
+- `{{EXTENSIONS}}-constitutional-patterns.md` - Domain-specific constitutional patterns and compliance approaches
+- `sdd-implementation-patterns.md` - SDD methodology implementation patterns with constitutional compliance
+- `library-first-patterns.md` - Constitutional library selection and integration patterns
+- `cli-interface-patterns.md` - Constitutional CLI design and implementation patterns
+- `test-first-patterns.md` - Constitutional testing strategies and implementation approaches
+
+### .demeter-dev/knowledge/lessons/ (Constitutional Development Insights)
+- `constitutional-compliance-insights.md` - Constitutional compliance learnings and best practices
+- `{{EXTENSIONS}}-constitutional-constraints.md` - Domain-specific constitutional requirements and constraints
+- `sdd-implementation-guidelines.md` - SDD methodology guidelines with constitutional compliance
+- `quality-constitutional-standards.md` - Constitutional quality standards and measurement approaches
+
+### .demeter-dev/knowledge/queries/ (Constitutional Development Queries)
+- `constitutional-queries.md` - Constitutional compliance and governance queries
+- `{{EXTENSIONS}}-constitutional-queries.md` - Domain-specific constitutional development queries
+- `implementation-constitutional-queries.md` - Constitutional implementation guidance queries
+- `quality-constitutional-queries.md` - Constitutional quality validation and measurement queries
+
+### .demeter-dev/knowledge/governance/ (Constitutional Governance)
+- `constitutional-compliance-dashboard.md` - Constitutional compliance monitoring and reporting
+- `constitutional-violation-handling.md` - Constitutional violation detection and resolution procedures
+- `constitutional-evolution-tracking.md` - Constitutional principle evolution and amendment tracking
+
+## 🔍 Constitutional Query Examples for {{PROJECT_NAME}}
+
+### Constitutional Compliance Queries
+- "What is the overall constitutional compliance score for {{PROJECT_NAME}}?"
+- "Which functional requirements have the highest constitutional compliance scores?"
+- "What constitutional principles need immediate attention in {{PROJECT_NAME}}?"
+- "How does {{PROJECT_NAME}} rank on library-first constitutional compliance?"
+
+### Constitutional Implementation Queries
+- "What are the recommended constitutional libraries for implementing {{EXTENSIONS}} features?"
+- "Which UoWs demonstrate the best constitutional test-first implementation patterns?"
+- "How should I structure CLI interfaces to maintain constitutional compliance in {{EXTENSIONS}}?"
+- "What constitutional simplicity patterns should I follow for complex {{EXTENSIONS}} requirements?"
+
+### {{EXTENSIONS}} Domain Constitutional Queries
+- "What domain-specific constitutional principles apply to {{EXTENSIONS}} development?"
+- "Which {{EXTENSIONS}} requirements have constitutional compliance concerns?"
+- "How do {{EXTENSIONS}} business rules align with constitutional principles?"
+- "What constitutional quality standards apply to {{EXTENSIONS}} implementations?"
+
+### Constitutional Architecture Queries
+- "What's the constitutional dependency order for Foundation layer UoWs?"
+- "How do the constitutional principles map to {{EXTENSIONS}} architecture decisions?"
+- "What constitutional compliance requirements apply to {{EXTENSIONS}} integrations?"
+- "Which architectural patterns best support constitutional compliance in {{EXTENSIONS}}?"
+
+### Constitutional Quality Queries
+- "What constitutional quality gates should be implemented for {{PROJECT_NAME}}?"
+- "How do I validate constitutional compliance through automated testing?"
+- "What constitutional performance standards apply to {{EXTENSIONS}} implementations?"
+- "Which quality metrics best measure constitutional compliance for {{PROJECT_NAME}}?"
+
+### Constitutional Development Context Queries
+- "What constitutional implementation patterns are available for UoW-XXX?"
+- "How do I ensure constitutional compliance when implementing FR-XXX?"
+- "What constitutional testing strategy should I follow for {{EXTENSIONS}} features?"
+- "Which constitutional libraries are recommended for {{EXTENSIONS}} development?"
+
+## ✅ Constitutional GraphRAG Success Criteria
+
+### Constitutional Knowledge Graph Completeness
+- [ ] Constitutional knowledge graph created in .demeter-dev/knowledge/ with full constitutional compliance integration
+- [ ] All SSOT entities indexed with constitutional compliance metadata and scores
+- [ ] All constitutional principles represented as knowledge graph entities with domain applications
+- [ ] Constitutional relationships properly mapped with compliance validation metadata
+
+### Constitutional Development Context
+- [ ] Constitutional implementation patterns documented for all 9 constitutional principles
+- [ ] {{EXTENSIONS}} domain-specific constitutional patterns and compliance requirements integrated
+- [ ] Constitutional development queries tested and functional for development guidance
+- [ ] Constitutional compliance monitoring and validation approaches documented
+
+### SDD Methodology Integration
+- [ ] SDD specification structures integrated into knowledge graph for specification-driven development
+- [ ] [CLARIFY] markers and constitutional resolution guidance included in knowledge context
+- [ ] Constitutional acceptance criteria and validation approaches captured in development patterns
+- [ ] SDD workflow integration points documented with constitutional compliance guidance
+
+### Constitutional Governance Foundation
+- [ ] Constitutional compliance dashboard and monitoring capabilities established
+- [ ] Constitutional violation detection and resolution procedures documented
+- [ ] Constitutional principle evolution and amendment tracking systems in place
+- [ ] Constitutional quality gates and validation approaches integrated into development context
+
+### Domain-Specific Constitutional Integration
+- [ ] {{EXTENSIONS}} domain constitutional principles and compliance requirements captured
+- [ ] Domain-specific constitutional patterns and implementation guidance available
+- [ ] {{EXTENSIONS}} constitutional quality standards and measurement approaches documented
+- [ ] Domain constitutional compliance monitoring and validation integrated
+
+### Knowledge Graph Query Readiness
+- [ ] Constitutional compliance queries executable against knowledge graph
+- [ ] Implementation guidance queries functional for constitutional development assistance
+- [ ] {{EXTENSIONS}} domain constitutional queries working for domain-specific guidance
+- [ ] Quality constitutional queries operational for constitutional quality validation
+
+This completes the Requirements → Constitutional SSOT → Constitutional GraphRAG → Constitutional Development Context pipeline, creating a comprehensive constitutional knowledge management system for specification-driven development with constitutional governance.

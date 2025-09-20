@@ -1,0 +1,525 @@
+# Single Source of Truth (SSOT) - {{PROJECT_NAME}}
+
+## Project Overview
+{{PROJECT_DESCRIPTION}}
+
+**MVP Phase**: {{MVP_PHASE}}
+**Architecture**: SSOT-driven development with language-agnostic patterns
+**Knowledge Management**: GraphRAG integration for context-aware development
+**Technology Stack**: To be determined based on project requirements
+
+## Functional Requirements (FR)
+
+### FR-001: Configuration Management
+**Description**: System must support structured configuration with validation
+**Priority**: Critical
+**Business Value**: Secure, maintainable configuration management
+**Acceptance Criteria**:
+- Load configuration from structured files with schema validation
+- Support environment-specific configurations (dev, test, prod)
+- Hot-reload capability without service restart
+- Secure handling of sensitive configuration data
+
+### FR-002: Interface Layer
+**Description**: External communication interface with security and rate limiting
+**Priority**: Critical
+**Dependencies**: FR-001
+**Business Value**: Secure, scalable interface foundation
+**Acceptance Criteria**:
+- Interface server with configurable parameters and middleware
+- Rate limiting and security measures
+- Request/response logging and metrics
+- Graceful shutdown handling
+
+### FR-003: Data Persistence
+**Description**: Reliable data storage with transaction support
+**Priority**: High
+**Dependencies**: FR-001
+**Business Value**: Consistent, reliable data management
+**Acceptance Criteria**:
+- Data store connection pooling and health monitoring
+- Transaction management with proper error handling
+- Data migration support with versioning
+- Backup and recovery procedures
+
+### FR-004: Caching Layer
+**Description**: High-performance caching for improved response times
+**Priority**: High
+**Dependencies**: FR-001
+**Business Value**: Performance optimization and scalability
+**Acceptance Criteria**:
+- Cache store integration with connection pooling
+- Cache invalidation strategies and TTL management
+- Cache hit/miss metrics and monitoring
+- Fallback mechanisms for cache failures
+
+### FR-005: Authentication & Authorization
+**Description**: Secure user authentication and role-based access control
+**Priority**: Critical
+**Dependencies**: FR-002
+**Business Value**: Security and access control
+**Acceptance Criteria**:
+- Token-based authentication mechanism
+- Role-based authorization and permissions
+- Session management and security
+- Audit logging for access attempts
+
+### FR-006: Business Logic Processing
+**Description**: Core business logic with validation and rules
+**Priority**: Critical
+**Dependencies**: FR-003, FR-004
+**Business Value**: Core application functionality
+**Acceptance Criteria**:
+- Input validation and sanitization
+- Business rule enforcement and validation
+- Comprehensive error handling and recovery
+- Audit trail for business operations
+
+### FR-007: External System Integration
+**Description**: Integration with third-party services and systems
+**Priority**: High
+**Dependencies**: FR-006
+**Business Value**: External system connectivity
+**Acceptance Criteria**:
+- External system client with retry logic and circuit breaker
+- Response caching and validation
+- Rate limiting for external calls
+- Error handling and fallback strategies
+
+### FR-008: Event Processing
+**Description**: Asynchronous event handling and message processing
+**Priority**: Medium
+**Dependencies**: FR-004
+**Business Value**: Scalable asynchronous processing
+**Acceptance Criteria**:
+- Event queue management and processing
+- Dead letter queue handling
+- Event ordering and deduplication
+- Processing metrics and monitoring
+
+### FR-009: Monitoring & Observability
+**Description**: Comprehensive system monitoring and alerting
+**Priority**: High
+**Dependencies**: All FRs
+**Business Value**: Operational visibility and reliability
+**Acceptance Criteria**:
+- Prometheus metrics collection and export
+- Health check endpoints and monitoring
+- Structured logging and aggregation
+- Alert configuration and notification
+
+### FR-010: Deployment & DevOps
+**Description**: Automated deployment and operations support
+**Priority**: High
+**Dependencies**: All FRs
+**Business Value**: Reliable deployment and operations
+**Acceptance Criteria**:
+- Container deployment with Docker
+- Environment-specific configuration management
+- Health monitoring and graceful shutdown
+- CI/CD pipeline integration
+
+## Non-Functional Requirements (NFR)
+
+### NFR-001: Performance
+**Requirement**: System must handle specified load with acceptable latency
+**Measurement Criteria**:
+- Response time: < 200ms (95th percentile) for interface calls
+- Throughput: > {{EXPECTED_THROUGHPUT}} requests/second
+- Memory usage: < {{MAX_MEMORY}}MB baseline
+- CPU usage: < 70% under normal load
+- Data store query time: < 50ms average
+
+### NFR-002: Reliability
+**Requirement**: System must be highly available and fault-tolerant
+**Measurement Criteria**:
+- Uptime: 99.9% availability
+- Error rate: < 0.1% for business operations
+- Recovery time: < 30 seconds from failures
+- Data consistency: 100% for critical operations
+- Backup recovery: < 15 minutes RTO
+
+### NFR-003: Security
+**Requirement**: Comprehensive security measures and compliance
+**Measurement Criteria**:
+- Zero known vulnerabilities in dependencies
+- All data encrypted in transit (TLS 1.3+)
+- Sensitive data encrypted at rest
+- Audit trail completeness: 100% for critical operations
+- Security scan compliance: 100% pass rate
+
+### NFR-004: Scalability
+**Requirement**: System must scale horizontally and vertically
+**Measurement Criteria**:
+- Horizontal scaling: Support 10x instance increase
+- Database scaling: Read replica support
+- Cache scaling: Redis cluster support
+- Load balancing: Multiple node distribution
+- Auto-scaling: CPU/memory threshold-based
+
+### NFR-005: Maintainability
+**Requirement**: Code must be maintainable and well-documented
+**Measurement Criteria**:
+- Test coverage: > 80% (foundation), > 60% (business logic)
+- Code quality: SonarQube A rating minimum
+- Documentation coverage: 100% for public APIs
+- Technical debt: < 5% of total development effort
+- Code review: 100% of changes reviewed
+
+### NFR-006: Usability
+**Requirement**: Interfaces must be intuitive and well-documented
+**Measurement Criteria**:
+- Interface documentation completeness: 100%
+- Error message clarity: Clear and actionable
+- Response format consistency: 100% across endpoints
+- Developer onboarding time: < 1 day for new team members
+- Interface design: Standard conventions followed
+
+### NFR-007: Portability
+**Requirement**: System must be deployable across different environments
+**Measurement Criteria**:
+- Container image size: < 100MB
+- Startup time: < 30 seconds
+- Environment parity: 100% between dev/test/prod
+- Configuration externalization: 100% (no hardcoded values)
+- Multi-platform support: Linux, macOS, Windows
+
+## Units of Work (UoW) - Implementation Roadmap
+
+### Prerequisites Layer (UoW-000 to UoW-001D)
+
+#### UoW-000: Project Structure Setup
+**Goal**: Establish architectural foundation
+**Layer**: Foundation
+**Priority**: Critical
+**Dependencies**: None
+**Implements**: NFR-005 (maintainability)
+**Estimated Effort**: {{UOW_000_EFFORT}} hours
+**Acceptance Criteria**:
+- Standard project layout with clear directory structure
+- Architectural layers clearly defined and documented
+- Module interfaces defined for dependency injection
+- Documentation structure and standards established
+
+#### UoW-001A: Dependencies Installation
+**Goal**: Install and configure project dependencies with security scanning
+**Layer**: Foundation
+**Priority**: Critical
+**Dependencies**: UoW-000
+**Implements**: NFR-003 (security), NFR-005 (maintainability)
+**Estimated Effort**: {{UOW_001A_EFFORT}} hours
+**Acceptance Criteria**:
+- Core dependencies installed (interface framework, data store drivers, cache client)
+- Development tools configured (testing, linting, security scanning)
+- Dependency security scanning integrated
+- Version pinning for reproducible builds
+
+#### UoW-001B: Testing Framework Setup
+**Goal**: Establish comprehensive testing framework with TDD support
+**Layer**: Foundation
+**Priority**: Critical
+**Dependencies**: UoW-001A
+**Implements**: NFR-005 (maintainability)
+**Estimated Effort**: {{UOW_001B_EFFORT}} hours
+**Acceptance Criteria**:
+- Unit testing framework configured
+- Integration testing setup with containerized dependencies
+- Coverage reporting and thresholds configured
+- Mock generation tools installed
+
+#### UoW-001C: Configuration System
+**Goal**: Implement structured configuration system
+**Layer**: Foundation
+**Priority**: Critical
+**Dependencies**: UoW-001B
+**Implements**: FR-001, NFR-003 (security)
+**Estimated Effort**: {{UOW_001C_EFFORT}} hours
+**Acceptance Criteria**:
+- Schema validation for all configuration
+- Environment-specific configuration files (dev, test, prod)
+- Hot-reload capability without service restart
+- Comprehensive validation and error reporting
+
+#### UoW-001D: CI/CD Pipeline
+**Goal**: Establish automated workflows for continuous integration
+**Layer**: Foundation
+**Priority**: High
+**Dependencies**: UoW-001C
+**Implements**: NFR-005 (maintainability)
+**Estimated Effort**: {{UOW_001D_EFFORT}} hours
+**Acceptance Criteria**:
+- Automated testing on pull requests
+- Code quality gates with linting tools
+- Security scanning integration
+- Automated deployment workflows
+
+### Foundation Layer (UoW-001 to UoW-003)
+
+#### UoW-001: Configuration Loader
+**Goal**: Robust configuration loading with validation
+**Layer**: Foundation
+**Priority**: Critical
+**Dependencies**: UoW-001D
+**Implements**: FR-001
+**Estimated Effort**: {{UOW_001_EFFORT}} hours
+**Acceptance Criteria**:
+- Load and validate configuration files against schema
+- Support for environment-specific configuration resolution
+- Configuration caching and reload capability on file changes
+- Comprehensive error handling and detailed error messages
+
+#### UoW-002: Advanced Config Validation
+**Goal**: Business rule validation for configuration beyond schema
+**Layer**: Foundation
+**Priority**: High
+**Dependencies**: UoW-001
+**Implements**: FR-001
+**Estimated Effort**: {{UOW_002_EFFORT}} hours
+**Acceptance Criteria**:
+- Cross-field validation and dependency checking
+- Business rule validation (e.g., port ranges, URL formats)
+- Configuration health check endpoints
+- Validation error reporting with specific field information
+
+#### UoW-003: Configuration Manager
+**Goal**: Centralized configuration management with hot-reload
+**Layer**: Foundation
+**Priority**: High
+**Dependencies**: UoW-002
+**Implements**: FR-001, NFR-001 (performance)
+**Estimated Effort**: {{UOW_003_EFFORT}} hours
+**Acceptance Criteria**:
+- Centralized configuration access interface
+- Hot-reload capability without service interruption
+- Configuration change event notifications
+- Configuration backup and rollback capability
+
+### Core Infrastructure Layer (UoW-101 to UoW-110)
+
+#### UoW-101: Data Store Connection
+**Goal**: Reliable data store connectivity with connection pooling
+**Layer**: Infrastructure
+**Priority**: Critical
+**Dependencies**: UoW-003
+**Implements**: FR-003
+**Estimated Effort**: {{UOW_101_EFFORT}} hours
+**Acceptance Criteria**:
+- Data store connection pool management with health monitoring
+- Transaction support with proper error handling
+- Data migration framework integration
+- Connection resilience and automatic reconnection
+
+#### UoW-102: Cache Integration
+**Goal**: Cache store implementation with resilience
+**Layer**: Infrastructure
+**Priority**: High
+**Dependencies**: UoW-101
+**Implements**: FR-004
+**Estimated Effort**: {{UOW_102_EFFORT}} hours
+**Acceptance Criteria**:
+- Cache client configuration with connection pooling
+- Cache operations (get, set, delete, exists) with error handling
+- TTL management and cache invalidation strategies
+- Connection resilience and fallback mechanisms
+
+#### UoW-103: Interface Server Foundation
+**Goal**: Secure interface server with middleware chain
+**Layer**: Infrastructure
+**Priority**: Critical
+**Dependencies**: UoW-102
+**Implements**: FR-002
+**Estimated Effort**: {{UOW_103_EFFORT}} hours
+**Acceptance Criteria**:
+- Interface server setup with configurable middleware
+- Security measures and rate limiting middleware
+- Request/response logging with structured format
+- Graceful shutdown and connection draining
+
+#### UoW-104: Authentication System
+**Goal**: Token-based authentication and authorization
+**Layer**: Infrastructure
+**Priority**: Critical
+**Dependencies**: UoW-103
+**Implements**: FR-005
+**Estimated Effort**: {{UOW_104_EFFORT}} hours
+**Acceptance Criteria**:
+- Token validation and generation
+- Role-based access control middleware
+- Session management with secure storage
+- Audit logging for authentication events
+
+#### UoW-105: Monitoring Infrastructure
+**Goal**: Metrics collection and health monitoring
+**Layer**: Infrastructure
+**Priority**: High
+**Dependencies**: UoW-104
+**Implements**: FR-009
+**Estimated Effort**: {{UOW_105_EFFORT}} hours
+**Acceptance Criteria**:
+- Metrics collection and export
+- Health check endpoints for all dependencies
+- Performance monitoring and alerting
+- Structured logging with correlation IDs
+
+### Business Logic Layer (UoW-201 to UoW-210)
+
+#### UoW-201: Core Business Logic
+**Goal**: Main business logic implementation with validation
+**Layer**: Application
+**Priority**: Critical
+**Dependencies**: UoW-105
+**Implements**: FR-006
+**Estimated Effort**: {{UOW_201_EFFORT}} hours
+**Acceptance Criteria**:
+- Business rules implementation with comprehensive validation
+- Input sanitization and output encoding
+- Error handling with business-specific error codes
+- Comprehensive audit trail for business operations
+
+#### UoW-202: External System Integration
+**Goal**: Third-party system integration with resilience
+**Layer**: Application
+**Priority**: High
+**Dependencies**: UoW-201
+**Implements**: FR-007
+**Estimated Effort**: {{UOW_202_EFFORT}} hours
+**Acceptance Criteria**:
+- External system client with circuit breaker and retry logic
+- Response caching and validation
+- Rate limiting for external system calls
+- Fallback strategies and error handling
+
+#### UoW-203: Event Processing
+**Goal**: Asynchronous event handling and processing
+**Layer**: Application
+**Priority**: Medium
+**Dependencies**: UoW-202
+**Implements**: FR-008
+**Estimated Effort**: {{UOW_203_EFFORT}} hours
+**Acceptance Criteria**:
+- Event queue processing with dead letter handling
+- Event ordering and deduplication logic
+- Processing metrics and monitoring
+- Retry mechanisms for failed events
+
+#### UoW-210: Container Deployment
+**Goal**: Production-ready containerization and deployment
+**Layer**: Deployment
+**Priority**: High
+**Dependencies**: All previous UoWs
+**Implements**: FR-010
+**Estimated Effort**: {{UOW_210_EFFORT}} hours
+**Acceptance Criteria**:
+- Multi-stage container build with optimized image size
+- Security hardening with minimal privilege execution
+- Health check integration and readiness probes
+- Container orchestration support
+
+## Acceptance Criteria Standards
+
+### AC-1: Functional Completeness
+**Definition**: All specified functionality must be implemented and working
+**Validation**:
+- All user stories and requirements implemented
+- Edge cases identified and handled appropriately
+- Error conditions managed gracefully with proper error messages
+- End-to-end user workflows completed successfully
+- Integration points validated and tested
+
+### AC-2: Quality Standards
+**Definition**: Code must meet established quality and testing standards
+**Validation**:
+- Unit tests with coverage > 80% (foundation) / > 60% (business logic)
+- Integration tests for all external dependencies
+- Code quality analysis passes SonarQube with A rating
+- Security scanning passes with no critical vulnerabilities
+- Documentation updated and reviewed
+
+### AC-3: Performance Requirements
+**Definition**: System must meet specified performance benchmarks
+**Validation**:
+- Response times meet NFR specifications under load
+- Resource usage (CPU, memory) within defined limits
+- Scalability requirements validated through testing
+- Performance baselines established and documented
+- Bottlenecks identified and optimized
+
+### AC-4: Security & Compliance
+**Definition**: Security requirements and compliance standards must be met
+**Validation**:
+- Security scanning passes with no critical issues
+- Input validation implemented for all user inputs
+- Audit logging configured for all critical operations
+- Data encryption implemented for sensitive information
+- Access controls properly implemented and tested
+
+## Cross-Reference Matrix
+
+### FR to UoW Mapping
+| Functional Requirement | Primary UoWs | Supporting UoWs | Validation Method |
+|------------------------|--------------|------------------|-------------------|
+| FR-001 (Configuration) | UoW-001, UoW-002, UoW-003 | UoW-001C | Unit + Integration tests |
+| FR-002 (Interface Layer) | UoW-103 | UoW-104, UoW-105 | Interface tests + Load tests |
+| FR-003 (Data Persistence) | UoW-101 | UoW-001A | Data store integration tests |
+| FR-004 (Caching) | UoW-102 | UoW-105 | Cache integration tests |
+| FR-005 (Authentication) | UoW-104 | UoW-103 | Security tests |
+| FR-006 (Business Logic) | UoW-201 | UoW-101, UoW-102 | Business logic tests |
+| FR-007 (External Systems) | UoW-202 | UoW-105 | Integration tests |
+| FR-008 (Event Processing) | UoW-203 | UoW-102 | Event processing tests |
+| FR-009 (Monitoring) | UoW-105 | All UoWs | Monitoring validation |
+| FR-010 (Deployment) | UoW-210 | All UoWs | Deployment tests |
+
+### NFR to UoW Mapping
+| Non-Functional Requirement | Related UoWs | Measurement Method | Target Value |
+|-----------------------------|--------------|-------------------|--------------|
+| NFR-001 (Performance) | UoW-102, UoW-105, UoW-201 | Load testing, profiling | < 200ms response time |
+| NFR-002 (Reliability) | UoW-101, UoW-102, UoW-202 | Chaos testing, monitoring | 99.9% uptime |
+| NFR-003 (Security) | UoW-001A, UoW-104, UoW-105 | Security scanning, penetration testing | Zero critical vulnerabilities |
+| NFR-004 (Scalability) | UoW-101, UoW-102, UoW-210 | Horizontal scaling tests | 10x scaling capability |
+| NFR-005 (Maintainability) | UoW-000, UoW-001B, UoW-001D | Code quality metrics | SonarQube A rating |
+| NFR-006 (Usability) | UoW-103, UoW-201, UoW-202 | Interface documentation, testing | 100% interface documentation |
+| NFR-007 (Portability) | UoW-210, UoW-001C | Multi-environment deployment | < 100MB container |
+
+### UoW Dependency Matrix
+```
+Prerequisites: UoW-000 → UoW-001A → UoW-001B → UoW-001C → UoW-001D
+Foundation: UoW-001 → UoW-002 → UoW-003
+Infrastructure: UoW-101 → UoW-102 → UoW-103 → UoW-104 → UoW-105
+Business: UoW-201 → UoW-202 → UoW-203
+Deployment: UoW-210 (depends on all previous)
+```
+
+## Implementation Guidelines
+
+### Development Sequence
+1. **Prerequisites First**: Complete UoW-000 through UoW-001D before any implementation
+2. **Layer by Layer**: Complete each layer (Foundation → Infrastructure → Business) before proceeding
+3. **Dependency Respect**: Never implement a UoW before its dependencies are complete
+4. **Testing Priority**: Write tests first (TDD approach) for all UoWs
+5. **Documentation**: Update documentation and capture learnings with each UoW
+
+### Quality Gates
+- **Foundation UoWs**: 80%+ test coverage, architectural review required
+- **Infrastructure UoWs**: Integration testing, security review required
+- **Business UoWs**: 60%+ test coverage, business logic validation required
+- **Deployment UoWs**: End-to-end testing, security scanning required
+
+### Agent Collaboration
+- **Planning**: Use `task-decomposition-expert` for complex UoWs
+- **Architecture**: Use `system-architect` for design decisions
+- **Implementation**: Use technology-specific experts based on chosen stack
+- **Testing**: Use `test-engineer` for comprehensive test strategies
+- **Review**: Use `code-reviewer` and `architect-reviewer` for quality validation
+
+### Knowledge Management
+- **GraphRAG Integration**: Query for context before each UoW implementation
+- **Pattern Documentation**: Capture reusable patterns in LEARNING.md
+- **Decision Records**: Document architectural decisions in ADRs
+- **Cross-Reference Updates**: Maintain FR/NFR/UoW mappings throughout development
+
+---
+
+**Template Version**: 1.0.0
+**Framework**: SSOT-Driven Development with GraphRAG
+**Generated**: {{GENERATION_DATE}}
+**Customization Variables**: {{TOTAL_VARIABLES}} variables for project adaptation

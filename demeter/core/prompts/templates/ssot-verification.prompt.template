@@ -1,0 +1,317 @@
+# 🔍 SSOT Verification and Quality Assurance
+
+## Overview
+Perform comprehensive verification of Single Source of Truth (SSOT) consistency, completeness, and correctness across requirements, UoWs, contracts, and BDD scenarios with constitutional compliance validation.
+
+## Input Context
+- **SSOT Directory**: `{{SSOT_DIR}}`
+- **Project Root**: `{{PROJECT_ROOT}}`
+- **Verification Mode**: {{VERIFICATION_MODE}} (full|structural|references|requirements|contracts|bdd|constitutional)
+- **Constitutional Compliance**: {{CONSTITUTIONAL_ENABLED}} (true|false)
+
+## Constitutional SDD Integration
+
+### Principle Compliance Verification
+Validate all SSOT elements against the 9 Constitutional Principles:
+
+1. **Library-First Enforcement**
+   - Verify UoWs specify primary libraries in constitutional_compliance.library_first
+   - Check for anti-pattern: custom implementations when libraries exist
+   - Validate library version consistency across related UoWs
+
+2. **CLI Interface Consistency**
+   - Ensure all UoWs define cli_interface.command structure
+   - Verify command naming follows project conventions
+   - Validate subcommand hierarchy coherence
+
+3. **Test-First Implementation**
+   - Confirm acceptance_criteria include test specifications
+   - Verify Gherkin scenarios follow constitutional patterns
+   - Check for test coverage requirements in UoWs
+
+4. **Simplicity Compliance**
+   - Flag overly complex UoWs (>5 dependencies, >10 acceptance criteria)
+   - Identify violation of single responsibility principle
+   - Detect abstraction leakage in requirements
+
+5. **Anti-Abstraction Validation**
+   - Check for over-engineered solutions in UoW descriptions
+   - Verify direct implementation approaches specified
+   - Flag unnecessary architectural layers
+
+## Verification Phases
+
+### Phase 1: Structural Integrity
+```yaml
+structural_checks:
+  required_files:
+    - framework-requirements.yaml
+    - base/fr-base.yaml
+    - base/nfr-base.yaml
+    - base/uow-base.yaml
+    - PROJECT-constitution.yaml  # NEW: Constitutional governance
+
+  required_sections:
+    framework_requirements:
+      - functional_requirements
+      - non_functional_requirements
+      - units_of_work
+      - constitutional_compliance  # NEW: SDD compliance
+
+  constitutional_structure:
+    project_constitution:
+      - core_principles (all 9 principles)
+      - governance_rules
+      - enforcement_mechanisms
+      - violation_handling
+```
+
+### Phase 2: Constitutional Compliance Analysis
+```yaml
+constitutional_validation:
+  principle_enforcement:
+    library_first:
+      check: "All UoWs specify primary libraries"
+      pattern: "constitutional_compliance.library_first.strategy"
+      severity: "critical"
+
+    cli_interface:
+      check: "CLI commands defined for all public UoWs"
+      pattern: "constitutional_compliance.cli_interface.command"
+      severity: "high"
+
+    test_first:
+      check: "Test specifications in acceptance criteria"
+      pattern: "acceptance_criteria.*.test_specification"
+      severity: "critical"
+
+    simplicity:
+      check: "UoW complexity within limits"
+      metrics:
+        max_dependencies: 5
+        max_acceptance_criteria: 10
+        max_description_length: 500
+      severity: "medium"
+
+    anti_abstraction:
+      check: "Direct implementation approach specified"
+      pattern: "constitutional_compliance.anti_abstraction.approach"
+      severity: "medium"
+```
+
+### Phase 3: Enhanced Reference Consistency
+```yaml
+reference_validation:
+  cross_references:
+    uow_dependencies:
+      - Check all UoW dependencies exist
+      - Verify constitutional dependencies (library references)
+      - Validate CLI command hierarchies
+
+    requirement_traceability:
+      - FR/NFR to UoW mapping completeness
+      - Constitutional principle implementation coverage
+      - Test specification to requirement alignment
+
+    constitutional_references:
+      - Principle citations in UoWs match constitution
+      - Governance rule references are valid
+      - Enforcement mechanism linkages correct
+```
+
+### Phase 4: AI-Enhanced Quality Assessment
+```yaml
+ai_quality_checks:
+  semantic_consistency:
+    - Analyze requirement descriptions for contradictions
+    - Check UoW goal alignment with implemented requirements
+    - Verify constitutional principle interpretations are consistent
+
+  completeness_analysis:
+    - Identify missing acceptance criteria patterns
+    - Suggest additional test scenarios based on requirements
+    - Flag incomplete constitutional compliance specifications
+
+  constitutional_compliance_depth:
+    - Assess principle implementation thoroughness
+    - Identify potential constitutional violations
+    - Suggest constitutional alignment improvements
+```
+
+### Phase 5: BDD and Contract Validation
+```yaml
+behavioral_validation:
+  gherkin_scenarios:
+    constitutional_patterns:
+      - Given: Library setup and configuration
+      - When: CLI command execution
+      - Then: Constitutional compliance verification
+
+    quality_patterns:
+      - Verify action-oriented When clauses
+      - Check observable outcome Then clauses
+      - Validate setup completeness in Given clauses
+
+  contract_validation:
+    constitutional_contracts:
+      - Library usage contracts
+      - CLI interface contracts
+      - Test-first compliance contracts
+
+    predicate_validation:
+      - CDL syntax correctness
+      - Constitutional constraint encoding
+      - Governance rule formalization
+```
+
+### Phase 6: Extension and Compatibility Analysis
+```yaml
+extension_validation:
+  constitutional_compatibility:
+    - Domain extensions with constitutional principles
+    - Feature extensions compliance requirements
+    - Governance rule conflicts across extensions
+
+  dependency_analysis:
+    - Constitutional dependency chains
+    - Library version compatibility
+    - CLI command namespace conflicts
+```
+
+## AI-Driven Verification Process
+
+### 1. Load and Parse SSOT Structure
+```python
+# Load all SSOT files with constitutional awareness
+ssot_structure = {
+    'framework_requirements': load_framework_requirements(),
+    'project_constitution': load_project_constitution(),
+    'base_requirements': load_base_requirements(),
+    'extensions': load_extensions(),
+    'contracts': load_contracts(),
+    'constitutional_metadata': extract_constitutional_metadata()
+}
+```
+
+### 2. Constitutional Compliance Engine
+```python
+# Analyze constitutional principle implementation
+constitutional_compliance = {
+    'principle_coverage': analyze_principle_coverage(),
+    'implementation_depth': assess_implementation_depth(),
+    'violation_detection': detect_constitutional_violations(),
+    'governance_adherence': validate_governance_rules()
+}
+```
+
+### 3. Enhanced Relationship Analysis
+```python
+# AI-powered relationship discovery
+relationship_analysis = {
+    'semantic_relationships': discover_semantic_relationships(),
+    'constitutional_dependencies': map_constitutional_dependencies(),
+    'governance_implications': analyze_governance_implications(),
+    'compliance_chains': trace_compliance_chains()
+}
+```
+
+### 4. Quality Scoring with Constitutional Weight
+```python
+# Multi-dimensional quality assessment
+quality_scores = {
+    'structural_integrity': calculate_structural_score(),
+    'constitutional_compliance': calculate_constitutional_score(),
+    'reference_consistency': calculate_consistency_score(),
+    'behavioral_completeness': calculate_behavioral_score(),
+    'governance_adherence': calculate_governance_score()
+}
+```
+
+## Output Specification
+
+### Verification Report Structure
+```yaml
+verification_results:
+  metadata:
+    verification_date: "{{TIMESTAMP}}"
+    constitutional_compliance_version: "1.0.0"
+    verifier_mode: "{{VERIFICATION_MODE}}"
+
+  constitutional_summary:
+    principle_compliance_rate: "85.7%"
+    governance_adherence_score: "92.3%"
+    constitutional_violations: 3
+    principle_coverage:
+      library_first: "compliant"
+      cli_interface: "partial"
+      test_first: "compliant"
+      # ... all 9 principles
+
+  quality_assessment:
+    overall_score: "87.5%"
+    constitutional_weight: "40%"  # Constitutional factors weight
+    traditional_weight: "60%"    # Traditional SSOT factors weight
+
+  detailed_findings:
+    critical_issues:
+      - category: "constitutional_violation"
+        principle: "library_first"
+        message: "UoW-301 implements custom solution where library exists"
+
+    constitutional_recommendations:
+      - "Enhance CLI interface specifications in UoW-201 through UoW-205"
+      - "Add library-first strategy details to domain-specific UoWs"
+      - "Strengthen test-first compliance in integration UoWs"
+
+    traditional_ssot_issues:
+      - category: "reference_consistency"
+        message: "UoW-401 references non-existent dependency FR-105"
+```
+
+### AI-Enhanced Insights
+```yaml
+ai_insights:
+  pattern_detection:
+    - "High constitutional compliance in Foundation layer (95%)"
+    - "CLI interface gaps in Application layer UoWs"
+    - "Library-first principle well-adopted in Infrastructure"
+
+  predictive_analysis:
+    - "Constitutional violations likely in UoW-501-505 based on patterns"
+    - "Test-first compliance at risk in upcoming Integration UoWs"
+
+  optimization_suggestions:
+    constitutional_improvements:
+      - "Implement constitutional templates for new UoWs"
+      - "Add automated constitutional compliance checks"
+      - "Enhance governance rule specificity in edge cases"
+
+    quality_improvements:
+      - "Standardize acceptance criteria format across all UoWs"
+      - "Improve cross-reference documentation"
+      - "Add semantic validation for requirement descriptions"
+```
+
+## Implementation Instructions
+
+### 1. Constitutional-Aware Parsing
+- Load PROJECT-constitution.yaml and extract principle definitions
+- Parse constitutional_compliance sections in all SSOT elements
+- Build constitutional dependency graph alongside traditional dependencies
+
+### 2. Multi-Modal Verification Engine
+- Traditional SSOT verification (structural, reference, completeness)
+- Constitutional compliance verification (principle adherence, governance)
+- AI-powered semantic analysis (consistency, completeness, quality)
+
+### 3. Integrated Reporting
+- Combine traditional SSOT metrics with constitutional compliance scores
+- Generate actionable recommendations for both domains
+- Provide governance-aware issue prioritization
+
+### 4. Quality Gates Integration
+- Constitutional compliance thresholds for different UoW layers
+- Governance rule enforcement automation
+- AI-suggested constitutional improvements
+
+Execute comprehensive SSOT verification with constitutional SDD integration, producing a detailed report that ensures both traditional SSOT quality and modern constitutional governance compliance.

@@ -1,0 +1,603 @@
+# Claude.md — SSOT-Driven Engineering Guide for {{PROJECT_NAME}}
+
+## Technology Stack
+- **Technology Choice**: To be determined based on project requirements
+- **Architecture**: SSOT-driven development with technology-agnostic patterns
+- Follow chosen language/framework best practices and conventions
+- Reference templates available in `demeter/references/` for implementation guidance
+
+## Source of Truth
+- Primary: docs/SSOT.md (GraphRAG ./grag 에 인덱싱됨)
+- 작업 전 GraphRAG로 FR/NFR/UoW/AC ID를 조회해 **근거를 확보**한다.
+
+## Scope & Constraints
+- **MVP Focus**: {{MVP_PHASE}} - 명확한 MVP 단계 범위 내에서만 개발
+- **Configuration**: Structured configuration files with validation (technology-agnostic)
+- **Test-Driven Development**: Write tests before implementation
+- **Quality First**: 80%+ coverage for foundation, 60%+ for business logic
+- **Contract-Driven**: 모든 구현은 AC(Acceptance Criteria) 기반 검증 필수
+
+## How to Work
+1) 시작: "어떤 FR/NFR/UoW가 관련되는가?" → GraphRAG로 ID별 발췌.
+2) 산출물마다 **Implements: FR-xxx; UoW-yyy** 헤더를 붙인다.
+3) 테스트는 AC-1..AC-4에 매핑. 미충족 시 실패.
+4) 구조화된 설정 → 설정 로더/스키마 검증 필수.
+5) 신뢰성 우선: **멱등성**, **백오프 재시도**, **리컨실**, **재시동 복구**.
+6) 기술 스택 선택 시 프로젝트 요구사항과 NFR 고려
+
+## MVP Development Framework
+
+### MVP-First Approach
+이 프로젝트는 **MVP (Minimum Viable Product) 우선 접근법**을 따릅니다:
+
+#### MVP 정의 및 범위
+1. **MVP 단계 확인**: `demeter/core/ssot/mvp-definition.yaml`에서 MVP 단계별 스코프 확인
+2. **핵심 기능 식별**: 해당 MVP 단계에 포함된 FR/NFR/UoW만 우선 구현
+3. **품질 게이트**: Foundation 80%+, Business 60%+ 테스트 커버리지 유지
+4. **성공 기준**: MVP 정의서의 success_criteria 달성
+
+#### MVP 진행 추적 도구
+```bash
+# 전체 대시보드 확인
+python demeter/core/ssot/tools/uow-dashboard.py --dashboard
+
+# 번다운 차트 확인
+python demeter/core/ssot/tools/uow-dashboard.py --burndown
+
+# 의존성 그래프 확인
+python demeter/core/ssot/tools/uow-dashboard.py --dependencies
+
+# 계약 검증 (전체)
+python demeter/core/ssot/tools/verify-contracts.py --all --report
+
+# 특정 UoW 계약 검증
+python demeter/core/ssot/tools/verify-contracts.py --uow UoW-001
+
+# 진행 리포트 생성
+python demeter/core/ssot/tools/uow-dashboard.py --report --output progress-report.md
+```
+
+#### MVP 품질 보장
+1. **계약 기반 개발**: 모든 구현은 AC(Acceptance Criteria) 기반으로 검증
+2. **TDD 필수**: 테스트 먼저 작성, AC-1~AC-4 모두 커버
+3. **자동 검증**: PR 전 계약 검증 스크립트 실행
+4. **리스크 관리**: `demeter/core/ssot/risk-registry.yaml` 기반 리스크 모니터링
+
+#### UoW 진행상황 추적
+- **UoW Tracker**: `demeter/core/ssot/uow-tracker.yaml`에서 진행상황 실시간 업데이트
+- **상태 관리**: pending → in_progress → testing → review → completed
+- **블로커 추적**: 진행을 막는 요소들을 명시적으로 기록
+- **완성도 측정**: 각 UoW별 completion_percentage 추적
+
+## PR Checklist
+- [ ] **MVP 범위 확인**: 해당 UoW가 MVP에 포함되는지 확인
+- [ ] Implements: FR-___, UoW-___
+- [ ] **계약 검증 통과**: `verify-contracts.py --uow UoW-XXX` 실행하여 PASS 확인
+- [ ] Code scope was defined and followed
+- [ ] TDD cycle completed (Red→Green→Refactor)
+- [ ] **AC 매핑**: Tests에 @ValidatesAC: AC-1, AC-2, AC-3, AC-4 주석 포함
+- [ ] Tests: unit+integration+E2E (refs AC)
+- [ ] All tests written BEFORE implementation
+- [ ] SonarQube analysis passed (Quality Gate: A rating)
+- [ ] Critical/Blocker issues resolved
+- [ ] Code coverage meets requirements ({{FOUNDATION_COVERAGE}}%+/{{BUSINESS_COVERAGE}}%+)
+- [ ] **리스크 평가**: 관련 리스크 검토 및 완화 전략 확인
+- [ ] Logs/alerts for error paths
+- [ ] JSON config schema validated
+- [ ] Reconcile & restart scenarios covered
+- [ ] **UoW 상태 업데이트**: uow-tracker.yaml에서 해당 UoW 상태를 completed로 변경
+- [ ] {{CUSTOM_PR_REQUIREMENTS}}
+
+## Universal Development Guidelines
+
+### Code Quality Standards
+- Write clean, readable, and maintainable code
+- Follow consistent naming conventions across the project
+- Use meaningful variable and function names
+- Keep functions focused and single-purpose
+- Add comments for complex logic and business rules
+
+### Git Workflow
+- Use descriptive commit messages following conventional commits format
+- Create feature branches for new development
+- Keep commits atomic and focused on single changes
+- Use pull requests for code review before merging
+- Maintain a clean commit history
+
+### Documentation
+- Keep README.md files up to date
+- Document public APIs and interfaces
+- Include usage examples for complex features
+- Maintain inline code documentation
+- Update documentation when making changes
+
+### Testing Approach
+- Write tests for new features and bug fixes
+- Maintain good test coverage (80%+ for foundation, 60%+ for others)
+- Use descriptive test names that explain the expected behavior
+- Organize tests logically by feature or module
+- Run tests before committing changes
+- Follow language-specific testing best practices
+- Run appropriate test coverage commands before commits
+
+### Security Best Practices
+- Never commit sensitive information (API keys, passwords, tokens)
+- Use structured configuration files with secure handling
+- Validate input data and sanitize outputs
+- Follow principle of least privilege
+- Keep dependencies updated and scan for vulnerabilities
+
+## Project Structure Guidelines
+
+### File Organization
+- Group related files in logical directories
+- Use consistent file and folder naming conventions
+- Separate source code from configuration files
+- Keep build artifacts out of version control
+- Organize assets and resources appropriately
+
+### Configuration Management
+- Use structured configuration files for all settings
+- Centralize configuration in dedicated files
+- Provide configuration schema validation
+- Document configuration options and their purposes
+- Provide example configuration files
+- Handle sensitive configuration data securely
+
+## Development Workflow
+
+### Before Starting Work
+1. Pull latest changes from main branch
+2. Create a new feature branch
+3. Review existing code and architecture
+4. Query GraphRAG for relevant FR/NFR/UoW
+5. **Define Code Scope**
+   - List exact files to be modified/created
+   - Identify affected modules and dependencies
+   - Define clear boundaries (what NOT to change)
+   - Document expected impact radius
+   - Get scope confirmation before proceeding
+6. Plan the implementation approach
+
+### During Development - TDD Red-Green-Refactor
+
+#### 1. RED Phase (Write Failing Tests First)
+- Write test cases for the new functionality
+- Ensure tests fail (no implementation yet)
+- Tests should cover AC (Acceptance Criteria)
+- Include edge cases and error scenarios
+- Verify test failure messages are meaningful
+
+#### 2. GREEN Phase (Make Tests Pass)
+- Write minimal code to pass the tests
+- Focus on functionality, not optimization
+- Run tests continuously during implementation (`go test ./...`)
+- Commit when all tests pass
+- Reference FR/NFR/UoW in implementation
+- Follow language-specific error handling best practices
+
+#### 3. REFACTOR Phase (Improve Code Quality)
+- Refactor while keeping tests green
+- Extract common patterns
+- Improve naming and readability
+- Remove duplication (DRY principle)
+- Update documentation as needed
+- Ensure all tests still pass after refactoring
+
+### Before Submitting
+1. Run full test suite and ensure all tests pass
+2. **Run SonarQube static analysis**
+3. **Address SonarQube feedback and resolve critical issues**
+4. Check code quality and formatting
+5. Verify Quality Gate passes (A rating required)
+6. Update documentation if necessary
+7. Create clear pull request description with FR/UoW references
+8. Verify AC (Acceptance Criteria) compliance
+9. Document learnings and update knowledge base if applicable
+10. Create LEARNING.md entry for significant discoveries
+
+## Static Analysis with SonarQube
+
+### Quality Gate Requirements
+**Target Rating**: A (Excellent) across all dimensions
+- **Reliability Rating**: A (0 bugs)
+- **Security Rating**: A (0 vulnerabilities)
+- **Maintainability Rating**: A (≤5% technical debt ratio)
+- **Coverage**: ≥80% (foundation), ≥60% (business logic)
+- **Duplication**: <3% duplicated lines
+
+### Pre-Commit Analysis Workflow
+
+#### 1. Local Static Analysis Scan
+```bash
+# Configure static analysis tool based on chosen technology stack
+# Reference appropriate configuration from demeter/references/languages/
+
+# Example configurations available for:
+# - Go: SonarQube with go-specific settings
+# - Python: SonarQube with python-specific settings
+# - TypeScript: SonarQube with typescript-specific settings
+# - Other: Configure based on language ecosystem standards
+
+# Generic SonarQube pattern:
+sonar-scanner \
+  -Dsonar.projectKey={{PROJECT_NAME}} \
+  -Dsonar.sources=<source_directory> \
+  -Dsonar.tests=<test_directory> \
+  -Dsonar.<language>.coverage.reportPaths=<coverage_file>
+```
+
+#### 2. Issue Classification and Resolution
+
+**Critical/Blocker Issues** (Must Fix Before PR):
+- Security vulnerabilities
+- Bugs affecting reliability
+- Code smells with high impact
+- Duplicated blocks >100 lines
+
+**Major Issues** (Fix Before Merge):
+- Performance anti-patterns
+- Maintainability issues
+- Medium-impact code smells
+- Missing test coverage in critical paths
+
+**Minor Issues** (Document for Later):
+- Style inconsistencies
+- Low-impact code smells
+- Optional optimizations
+- Non-critical duplication
+
+#### 3. Feedback Resolution Process
+
+**Step 1: Analyze Issues**
+```bash
+# Review SonarQube dashboard
+# Prioritize by: Security > Reliability > Maintainability
+# Focus on new code first
+```
+
+**Step 2: Address Critical/Blocker Issues**
+- Fix immediately, do not proceed without resolution
+- Document decision if marking as false positive
+- Update tests if security fixes affect functionality
+
+**Step 3: Handle Major Issues**
+- Refactor code following SonarQube suggestions
+- Add missing test coverage
+- Optimize performance bottlenecks
+- Extract complex methods (cognitive complexity >15)
+
+**Step 4: Document Minor Issues**
+```markdown
+# In LEARNING.md or issue tracker
+- Issue: [SonarQube finding]
+- Decision: [Fix later/Won't fix/False positive]
+- Justification: [Technical reasoning]
+- Tracking: [Issue number or backlog item]
+```
+
+### SonarQube Integration in CI/CD
+
+#### GitHub Actions Integration
+```yaml
+# .github/workflows/sonarqube.yml
+- name: SonarQube Analysis
+  uses: sonarqube-quality-gate-action@master
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  with:
+    scanMetadataReportFile: target/sonar/report-task.txt
+
+- name: Quality Gate Check
+  uses: sonarqube-quality-gate-action@master
+  timeout-minutes: 5
+  env:
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+```
+
+#### Quality Gate Failure Handling
+- **Failed Quality Gate**: PR cannot be merged
+- **New Issues Only**: Focus on code changes, not legacy debt
+- **Coverage Decrease**: Must maintain or improve coverage
+- **Security Issues**: Zero tolerance policy
+
+### Technology-Specific Configuration
+
+Refer to `demeter/references/languages/` for specific configurations:
+
+- **Go Projects**: See `demeter/references/languages/go/` for SonarQube, testing, and CI configurations
+- **Python Projects**: See `demeter/references/languages/python/` for analysis tools and coverage setup
+- **TypeScript Projects**: See `demeter/references/languages/typescript/` for ESLint, testing, and build configurations
+- **Other Technologies**: Adapt patterns from available references or create new configurations following similar structure
+
+Key configuration principles:
+- Exclude generated files and dependencies from analysis
+- Configure appropriate coverage report paths
+- Set up language-specific linting and analysis tools
+- Maintain consistent quality standards across technologies
+
+### Technical Debt Management
+
+#### Debt Calculation
+- **Technical Debt Ratio**: Should remain ≤5%
+- **New Code Period**: Focus on preventing new debt
+- **Remediation Effort**: Track time investment needed
+
+#### Debt Reduction Strategy
+1. **Prevention**: Strict Quality Gate for new code
+2. **Incremental**: Address debt during feature development
+3. **Dedicated**: Allocate sprint capacity for debt reduction
+4. **Monitoring**: Regular debt metric reviews
+
+### False Positive Management
+
+#### Common False Positives
+- Generated code (protobuf, OpenAPI)
+- Test utilities with intentional complexity
+- Legacy integrations with known constraints
+- Framework-required patterns
+
+#### Documentation Process
+```yaml
+# In .sonarqube/false-positives.yaml
+false_positives:
+  - rule: "go:S1006"
+    file: "internal/generated/proto.go"
+    reason: "Generated protobuf code"
+    reviewer: "team-lead"
+    date: "2025-01-18"
+```
+
+## Common Patterns
+
+### Error Handling
+- Use appropriate error handling mechanisms for the language
+- Provide meaningful error messages
+- Log errors appropriately for debugging
+- Handle edge cases gracefully
+- Don't expose sensitive information in error messages
+
+### Performance Considerations
+- Profile code for performance bottlenecks
+- Optimize database queries and API calls
+- Use caching where appropriate
+- Consider memory usage and resource management
+- Monitor and measure performance metrics (NFR-001)
+
+### Code Reusability
+- Extract common functionality into reusable modules
+- Use dependency injection for better testability
+- Create utility functions for repeated operations
+- Design interfaces for extensibility
+- Follow DRY (Don't Repeat Yourself) principle
+
+## Knowledge Management & Context Updates
+
+### Development Knowledge Capture
+- Document discovered patterns, solutions, and gotchas during development
+- Create LEARNING.md entries for significant findings
+- Update GraphRAG context with new technical decisions
+- Capture implementation artifacts and process documentation
+- Record agent collaboration patterns and effectiveness
+
+### Implementation Process Documentation
+
+#### UoW Development Workflow ({{PROJECT_NAME}} Results)
+The {{PROJECT_NAME}} project follows a comprehensive UoW-based development framework:
+
+**Prerequisites Layer (UoW-000 to UoW-001D)**:
+- UoW-000: Project structure with clean architecture
+- UoW-001A: Dependencies and package management
+- UoW-001B: Testing framework with TDD setup
+- UoW-001C: Structured configuration system
+- UoW-001D: CI/CD pipeline automation
+
+**Foundation Layer (UoW-001 to UoW-003)**:
+- UoW-001: Configuration loader with schema validation
+- UoW-002: Advanced config validation with business rules
+- UoW-003: Configuration manager with hot-reload capability
+
+**Core Infrastructure Layer (UoW-101 to UoW-110)**:
+- Data store connectivity, cache integration, idempotency gates
+- Interface server foundation, authentication system, monitoring infrastructure
+
+**Business Logic Layer (UoW-201 to UoW-210)**:
+- Core business logic, external system integration, event processing
+- Container deployment and production readiness
+
+#### Implementation Artifacts Created
+- **UoW Definitions**: {{UOW_COUNT}} YAML files in `grag/uow/` with detailed AC
+- **Command Documentation**: {{COMMAND_COUNT}} command files in `.claude/commands/`
+- **ADR Documentation**: {{ADR_COUNT}} architectural decision records
+- **Scripts & Automation**: {{SCRIPT_COUNT}} shell scripts for build/deploy/quality
+- **Configuration Examples**: JSON schemas and example configs
+- **Docker Infrastructure**: Dockerfile, docker-compose, entrypoint scripts
+
+### GraphRAG Ingestion Strategy
+
+#### Core Information Categories for Ingestion
+
+**1. Architectural Knowledge**
+- SSOT.md: Complete functional and non-functional requirements
+- UoW YAML files: Implementation roadmap and acceptance criteria
+- ADR documents: Architectural decisions and rationale
+- LEARNING.md: Development patterns and discoveries
+
+**2. Implementation Artifacts**
+- Source code: main application files, package structures, interfaces
+- Test patterns: Language-specific testing patterns, mock usage, coverage standards
+- Configuration files: Structured schemas, validation rules, examples
+- Build & deployment: Container configs, CI/CD workflows, scripts
+
+**3. Process Documentation**
+- Command documentation: Usage patterns, prerequisites, workflows
+- Development workflows: TDD cycles, review processes, quality gates
+- Agent collaboration patterns: Task-specific agent selection
+
+#### Ingestion Frequency & Triggers
+- **Per Feature**: After completing each UoW implementation
+- **Sprint Boundary**: Consolidate learnings and pattern updates
+- **Major Milestone**: Full re-index with architectural changes
+- **On-Demand**: When significant patterns or anti-patterns discovered
+
+#### Cross-Reference Mapping Strategy
+- FR/NFR → UoW → Implementation files mapping
+- UoW dependencies → code module dependencies
+- AC criteria → test file locations
+- ADR decisions → affected code components
+- LEARNING patterns → applicable UoW contexts
+
+### Continuous Context Improvement
+1. **After each UoW implementation**:
+   - Document implementation decisions and rationale in ADRs
+   - Record performance optimization findings in LEARNING.md
+   - Note security considerations discovered during development
+   - Update UoW acceptance criteria based on implementation reality
+   - Capture effective agent collaboration patterns
+
+2. **Update SSOT with**:
+   - New patterns discovered during implementation
+   - Additional constraints identified through testing
+   - Refined NFRs based on actual measurements and performance data
+   - Updated dependency mappings based on code reality
+   - Enhanced AC based on implementation learnings
+
+3. **GraphRAG Re-indexing Schedule**:
+   - **Immediate**: After prerequisite UoW completion (UoW-000 to UoW-001D)
+   - **Per Layer**: After foundation, core, business logic completion
+   - **Major Milestone**: After UoW-210 deployment readiness
+   - **Quarterly**: Full context refresh with accumulated knowledge
+   - **On-Demand**: When knowledge gaps identified during development
+
+## Agent Collaboration Patterns
+
+### Development Phase Agent Selection
+
+#### Planning & Architecture Phase
+- **Primary**: `task-decomposition-expert` for breaking down complex UoWs into manageable tasks
+- **Architecture**: `backend-architect` for system design, API boundaries, database schemas
+- **Review**: `architect-reviewer` for validating design decisions against SOLID principles
+
+#### Implementation Phase
+- **Technology Development**: Use technology-specific experts based on chosen stack
+- **Testing**: `test-engineer` for test strategy, automation setup, coverage analysis
+- **Test Automation**: `test-automator` for comprehensive test suites and CI integration
+
+#### Quality Assurance Phase
+- **Code Review**: `code-reviewer` for quality, security, maintainability assessment
+- **Prompt Optimization**: `prompt-engineer` for GraphRAG prompts and AI system integration
+
+### Collaborative Workflow Patterns
+
+#### Parallel Execution Pattern
+Use for independent tasks that can run simultaneously:
+```
+User Request: "Implement UoW-105 cache integration with tests"
+
+Parallel Agents:
+- technology-expert: Implement cache client and connection pool
+- test-engineer: Create test strategy and mock cache setup
+- architect-reviewer: Review cache usage patterns
+```
+
+#### Sequential Chaining Pattern
+Use for dependent operations requiring specific order:
+```
+1. task-decomposition-expert: Break down complex UoW
+2. system-architect: Design interfaces and boundaries
+3. technology-expert: Implement core logic
+4. test-automator: Create comprehensive tests
+5. code-reviewer: Final quality review
+```
+
+#### Review Cycle Pattern
+Use for quality gates and iterative improvement:
+```
+Implementation → code-reviewer → Issues Found → technology-expert → Fixes Applied → architect-reviewer → Final Approval
+```
+
+### Agent Selection Guidelines
+
+#### By Task Complexity
+- **Simple**: Single agent (technology-expert for straightforward implementation)
+- **Moderate**: 2-3 agents in sequence (architect + implementation + review)
+- **Complex**: Full collaborative pipeline with parallel + sequential patterns
+
+#### By UoW Layer
+- **Prerequisites (UoW-000 to UoW-001D)**: task-decomposition-expert + system-architect
+- **Foundation (UoW-001 to UoW-003)**: technology-expert + test-engineer + code-reviewer
+- **Core Infrastructure (UoW-101 to UoW-110)**: All agents for critical components
+- **Business Logic (UoW-201 to UoW-210)**: technology-expert + test-automator + architect-reviewer
+
+#### By Code Impact
+- **New Components**: Full agent pipeline for comprehensive review
+- **Modifications**: technology-expert + code-reviewer for focused review
+- **Bug Fixes**: technology-expert + test-engineer to prevent regression
+- **Refactoring**: architect-reviewer + technology-expert for structural improvements
+
+### Effective Agent Communication
+
+#### Task Handoff Protocol
+1. **Context Sharing**: Each agent receives complete task context and previous outputs
+2. **Scope Definition**: Clear boundaries of what each agent should focus on
+3. **Quality Gates**: Specific criteria for passing tasks between agents
+4. **Feedback Loops**: Mechanism for agents to request clarification or revision
+
+#### Knowledge Preservation
+- Document successful agent combinations for similar future tasks
+- Record agent-specific insights in LEARNING.md
+- Update GraphRAG with effective collaboration patterns
+- Maintain agent selection decision matrix for consistent choices
+
+## Review Checklist
+
+Before marking any task as complete:
+
+### Implementation Requirements
+- [ ] Code scope was properly defined and adhered to
+- [ ] TDD Red-Green-Refactor cycle was followed
+- [ ] Code follows established conventions
+- [ ] Tests are written and passing (mapped to AC)
+- [ ] Tests were written BEFORE implementation
+- [ ] Implements correct FR/UoW as per SSOT
+- [ ] Configuration follows structured approach with validation
+
+### Quality & Security
+- [ ] SonarQube Quality Gate passed (A rating)
+- [ ] Critical/Blocker issues resolved
+- [ ] Technical debt ratio ≤5%
+- [ ] Security considerations are addressed (NFR-003)
+- [ ] Performance impact is considered (NFR-001)
+- [ ] Code is reviewed for maintainability
+- [ ] Appropriate agents used for review and validation
+- [ ] False positives documented with justification
+
+### Documentation & Knowledge Management
+- [ ] Documentation is updated
+- [ ] Knowledge captured in LEARNING.md if applicable
+- [ ] Implementation process documented with artifacts
+- [ ] Agent collaboration patterns recorded
+- [ ] SSOT updated with new constraints/patterns discovered
+
+### GraphRAG Context Management
+- [ ] Implementation artifacts ready for GraphRAG ingestion
+- [ ] Cross-references updated (FR/NFR → UoW → Code mapping)
+- [ ] Consider if GraphRAG re-indexing needed
+- [ ] New patterns/decisions ingested for future reference
+
+### Agent Utilization Review
+- [ ] Appropriate agent selection for task complexity
+- [ ] Effective collaboration patterns used
+- [ ] Knowledge transfer between agents documented
+- [ ] Agent-specific insights captured for future use
+
+### Project-Specific Requirements
+{{ADDITIONAL_REVIEW_ITEMS}}
+
+---
+
+**Project**: {{PROJECT_NAME}}
+**Version**: 1.0.0
+**Framework**: SSOT-Driven Development with GraphRAG
+**Last Updated**: {{GENERATION_DATE}}

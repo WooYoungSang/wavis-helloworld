@@ -1,0 +1,385 @@
+# ⚡ SDD /tasks Command Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Implementation Plan**: {{IMPLEMENTATION_PLAN_FILE}}
+- **Specification**: {{SPECIFICATION_FILE}}
+
+## 🎯 GitHub SDD /tasks Implementation
+
+This template implements the GitHub SDD `/tasks` command for creating executable task lists from implementation plans.
+
+### Constitutional Task Execution Principles
+All tasks must embody the 9 constitutional principles:
+1. **Library-First**: Tasks use identified libraries directly
+2. **CLI Interface Mandate**: Tasks include CLI implementation and testing
+3. **Test-First Imperative**: Testing tasks precede implementation tasks
+4. **Simplicity Guidelines**: Tasks follow simplest viable approach
+5. **Anti-Abstraction Rules**: Tasks avoid unnecessary abstractions
+6. **Integration-First Testing**: Integration testing tasks have priority
+7. **Minimal Project Structure**: Tasks maintain flat structure
+8. **Framework Direct Usage**: Tasks use frameworks without wrappers
+9. **Comprehensive Testing**: Tasks ensure complete test coverage
+
+### Executable Task List Generation
+
+#### 1. Task List Header
+```yaml
+task_list_id: "TASKS-{{PROJECT_NAME}}-{{PLAN_ID}}"
+derived_from_plan: "{{IMPLEMENTATION_PLAN_FILE}}"
+based_on_specification: "{{SPECIFICATION_FILE}}"
+created_date: "{{CURRENT_DATE}}"
+methodology: "GitHub SDD v1.0"
+execution_model: "Constitutional TDD"
+```
+
+#### 2. Constitutional Task Categories
+
+#### Test-First Tasks (Priority 1)
+```yaml
+test_first_tasks:
+  TF-001:
+    name: "Create CLI Interface Test Suite"
+    category: "test_creation"
+    constitutional_principles: ["Test-First", "CLI Interface"]
+    description: "Create comprehensive test suite for CLI interface from specification"
+
+    prerequisites:
+      - "Specification accepted and validated"
+      - "Testing framework selected (Library-First principle)"
+
+    deliverables:
+      - deliverable: "CLI command tests for all specified commands"
+        acceptance_criteria:
+          - [ ] "All CLI commands from specification have tests"
+          - [ ] "All CLI parameters and options tested"
+          - [ ] "CLI error conditions tested"
+          - [ ] "CLI output format validated"
+
+    execution_details:
+      approach: "Use testing framework directly (Framework Direct principle)"
+      libraries_to_use: "[CLI testing library from plan]"
+      test_structure:
+        - "CLI command invocation tests"
+        - "Parameter validation tests"
+        - "Output format verification tests"
+        - "Error handling tests"
+
+    parallelization: "Can run parallel with other test creation tasks"
+    estimated_effort: "[Hours from implementation plan]"
+
+    constitutional_compliance:
+      test_first: "Tests created before any CLI implementation"
+      cli_interface: "Complete CLI interface test coverage"
+      framework_direct: "Direct use of testing framework"
+      simplicity: "Simple, direct test cases"
+
+  TF-002:
+    name: "Create Integration Test Suite"
+    category: "test_creation"
+    constitutional_principles: ["Test-First", "Integration-First"]
+    description: "Create integration tests for external dependencies and services"
+
+    prerequisites:
+      - "Integration points identified in plan"
+      - "External dependencies available for testing"
+
+    deliverables:
+      - deliverable: "Integration test suite covering all external interactions"
+        acceptance_criteria:
+          - [ ] "All external service integrations tested"
+          - [ ] "Database integration tests created"
+          - [ ] "API integration tests implemented"
+          - [ ] "Error scenarios for integrations tested"
+
+    execution_details:
+      approach: "Integration-first testing strategy"
+      libraries_to_use: "[Integration testing libraries from plan]"
+      test_scenarios:
+        - "Successful integration paths"
+        - "Integration failure scenarios"
+        - "Performance integration tests"
+        - "Data consistency integration tests"
+
+    parallelization: "[PARALLEL] with TF-001"
+    estimated_effort: "[Hours from implementation plan]"
+
+    constitutional_compliance:
+      test_first: "Integration tests before integration implementation"
+      integration_first: "Priority on integration over unit tests"
+      library_first: "Use established integration testing libraries"
+
+  TF-003:
+    name: "Create Acceptance Criteria Test Suite"
+    category: "test_creation"
+    constitutional_principles: ["Test-First", "Comprehensive Testing"]
+    description: "Create tests directly from specification acceptance criteria"
+
+    deliverables:
+      - deliverable: "Acceptance criteria test suite"
+        acceptance_criteria:
+          - [ ] "Every specification acceptance criterion has corresponding test"
+          - [ ] "All user story scenarios tested"
+          - [ ] "Business logic validation tests created"
+          - [ ] "Quality requirements tested"
+
+    parallelization: "[PARALLEL] with TF-001, TF-002"
+    estimated_effort: "[Hours from implementation plan]"
+```
+
+#### Library-First Implementation Tasks (Priority 2)
+```yaml
+library_first_tasks:
+  LF-001:
+    name: "Implement Core Functionality Using Selected Libraries"
+    category: "implementation"
+    constitutional_principles: ["Library-First", "Simplicity", "Framework Direct"]
+    description: "Implement core functionality using libraries identified in plan"
+
+    prerequisites:
+      - "Test suites created and failing (TF-001, TF-002, TF-003)"
+      - "Libraries installed and configured"
+
+    deliverables:
+      - deliverable: "Core functionality implementation"
+        acceptance_criteria:
+          - [ ] "All acceptance criteria tests pass"
+          - [ ] "Library usage follows constitutional principles"
+          - [ ] "Implementation is minimal and sufficient"
+          - [ ] "No unnecessary abstractions created"
+
+    execution_details:
+      approach: "Direct library usage without abstraction layers"
+      libraries_to_use: "[Core libraries from implementation plan]"
+      implementation_strategy:
+        - "Use libraries directly in application code"
+        - "Avoid creating wrapper layers"
+        - "Implement exactly what specification requires"
+        - "Follow simplest approach that passes tests"
+
+    parallelization: "Sequential after test creation tasks"
+    estimated_effort: "[Hours from implementation plan]"
+
+    constitutional_compliance:
+      library_first: "Primary use of identified libraries"
+      simplicity: "Minimal implementation to pass tests"
+      framework_direct: "Direct framework usage"
+      anti_abstraction: "No unnecessary abstraction layers"
+
+  LF-002:
+    name: "Implement CLI Interface"
+    category: "implementation"
+    constitutional_principles: ["CLI Interface", "Library-First", "Simplicity"]
+    description: "Implement CLI interface exactly as specified"
+
+    prerequisites:
+      - "CLI test suite created and failing (TF-001)"
+      - "CLI library selected and installed"
+
+    deliverables:
+      - deliverable: "Complete CLI interface implementation"
+        acceptance_criteria:
+          - [ ] "All CLI commands from specification implemented"
+          - [ ] "All CLI tests pass"
+          - [ ] "CLI help and documentation complete"
+          - [ ] "CLI error handling implemented"
+
+    execution_details:
+      approach: "Direct CLI library usage"
+      cli_framework: "[CLI library from plan]"
+      implementation_focus:
+        - "Command parsing and validation"
+        - "Parameter handling"
+        - "Output formatting"
+        - "Error message formatting"
+
+    parallelization: "[PARALLEL] with LF-001 core implementation"
+    estimated_effort: "[Hours from implementation plan]"
+```
+
+#### Integration-First Validation Tasks (Priority 3)
+```yaml
+integration_tasks:
+  IN-001:
+    name: "Execute Integration Testing"
+    category: "validation"
+    constitutional_principles: ["Integration-First", "Comprehensive Testing"]
+    description: "Run comprehensive integration test suite"
+
+    prerequisites:
+      - "Core implementation complete (LF-001)"
+      - "CLI implementation complete (LF-002)"
+      - "Integration test suite complete (TF-002)"
+
+    deliverables:
+      - deliverable: "Validated integration functionality"
+        acceptance_criteria:
+          - [ ] "All integration tests pass"
+          - [ ] "External dependencies validated"
+          - [ ] "Performance requirements met"
+          - [ ] "Error handling validated"
+
+    execution_details:
+      validation_approach: "Integration-first validation strategy"
+      test_environments:
+        - "Local integration testing"
+        - "Staging environment validation"
+        - "Performance integration testing"
+
+    parallelization: "Sequential after implementation tasks"
+    estimated_effort: "[Hours from implementation plan]"
+
+  IN-002:
+    name: "CLI Interface Integration Validation"
+    category: "validation"
+    constitutional_principles: ["CLI Interface", "Integration-First"]
+    description: "Validate CLI interface in integrated environment"
+
+    deliverables:
+      - deliverable: "Validated CLI interface integration"
+        acceptance_criteria:
+          - [ ] "CLI works in target environment"
+          - [ ] "CLI integrates properly with system"
+          - [ ] "CLI performance meets requirements"
+          - [ ] "CLI error handling works in integration"
+
+    parallelization: "[PARALLEL] with IN-001"
+    estimated_effort: "[Hours from implementation plan]"
+```
+
+#### Constitutional Compliance Validation Tasks (Priority 4)
+```yaml
+compliance_tasks:
+  CC-001:
+    name: "Constitutional Principles Compliance Audit"
+    category: "compliance_validation"
+    constitutional_principles: ["All 9 principles"]
+    description: "Audit implementation for constitutional compliance"
+
+    deliverables:
+      - deliverable: "Constitutional compliance report"
+        acceptance_criteria:
+          - [ ] "Library-First principle validated"
+          - [ ] "CLI Interface principle validated"
+          - [ ] "Test-First principle validated"
+          - [ ] "Simplicity principle validated"
+          - [ ] "Anti-Abstraction principle validated"
+          - [ ] "Integration-First principle validated"
+          - [ ] "Minimal Structure principle validated"
+          - [ ] "Framework Direct principle validated"
+          - [ ] "Comprehensive Testing principle validated"
+
+    execution_details:
+      audit_approach:
+        - "Review code for library usage patterns"
+        - "Validate CLI interface completeness"
+        - "Confirm test-first development was followed"
+        - "Check for unnecessary abstractions"
+        - "Validate integration-first testing approach"
+        - "Verify framework direct usage"
+        - "Confirm comprehensive test coverage"
+
+    parallelization: "Sequential after integration validation"
+    estimated_effort: "[Hours from implementation plan]"
+```
+
+#### 3. Task Execution Plan
+```yaml
+execution_plan:
+  phases:
+    phase_1_test_creation:
+      description: "Create all test suites following constitutional principles"
+      duration: "[Sum of TF task estimates]"
+      parallel_execution: true
+      tasks: ["TF-001", "TF-002", "TF-003"]
+      success_criteria:
+        - "All tests created and failing appropriately"
+        - "Test coverage meets specification requirements"
+        - "Constitutional principles demonstrated in test structure"
+
+    phase_2_implementation:
+      description: "Implement functionality to pass tests"
+      duration: "[Sum of LF task estimates]"
+      parallel_execution: true
+      tasks: ["LF-001", "LF-002"]
+      success_criteria:
+        - "All tests pass"
+        - "Implementation follows constitutional principles"
+        - "CLI interface fully functional"
+
+    phase_3_integration:
+      description: "Validate integration and performance"
+      duration: "[Sum of IN task estimates]"
+      parallel_execution: true
+      tasks: ["IN-001", "IN-002"]
+      success_criteria:
+        - "Integration tests pass"
+        - "Performance requirements met"
+        - "CLI integration validated"
+
+    phase_4_compliance:
+      description: "Validate constitutional compliance"
+      duration: "[CC task estimates]"
+      parallel_execution: false
+      tasks: ["CC-001"]
+      success_criteria:
+        - "All constitutional principles validated"
+        - "Implementation quality confirmed"
+        - "Specification fully satisfied"
+
+  total_estimated_effort: "[Sum of all task estimates]"
+  critical_path: "[Tasks that determine minimum completion time]"
+```
+
+#### 4. Quality Gates and Checkpoints
+```yaml
+quality_gates:
+  test_creation_gate:
+    criteria:
+      - "All test suites complete and failing appropriately"
+      - "Test coverage meets specification requirements"
+      - "Constitutional testing principles demonstrated"
+    validation_method: "Automated test execution and manual review"
+
+  implementation_gate:
+    criteria:
+      - "All tests pass"
+      - "Constitutional implementation principles followed"
+      - "CLI interface fully functional"
+    validation_method: "Test execution and constitutional compliance check"
+
+  integration_gate:
+    criteria:
+      - "Integration tests pass"
+      - "Performance requirements satisfied"
+      - "CLI integration validated"
+    validation_method: "Integration test execution and performance testing"
+
+  constitutional_compliance_gate:
+    criteria:
+      - "All 9 constitutional principles validated"
+      - "Specification requirements fully met"
+      - "Quality standards achieved"
+    validation_method: "Constitutional compliance audit"
+```
+
+### Task Execution Instructions
+
+Execute tasks in the following order:
+1. **Phase 1**: Execute all TF tasks in parallel
+2. **Phase 2**: Execute all LF tasks in parallel (after Phase 1 complete)
+3. **Phase 3**: Execute all IN tasks in parallel (after Phase 2 complete)
+4. **Phase 4**: Execute CC tasks sequentially (after Phase 3 complete)
+
+Each task should be executed with strict adherence to constitutional principles, with validation at each quality gate.
+
+### Success Criteria
+- [ ] All tasks map to implementation plan requirements
+- [ ] Constitutional principles are embedded in every task
+- [ ] Test-first approach is enforced through task sequencing
+- [ ] Parallel execution opportunities are identified
+- [ ] Quality gates ensure constitutional compliance
+- [ ] Specification requirements are fully addressed
+
+Execute this task generation process for the provided implementation plan.

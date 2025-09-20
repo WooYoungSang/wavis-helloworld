@@ -1,0 +1,501 @@
+# 🔄 SSOT Merge with Constitutional Compliance Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Base SSOT Directory**: {{BASE_SSOT_DIR}}
+- **Extensions**: {{EXTENSIONS}}
+- **Output**: {{OUTPUT_FILE}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Framework**: Demeter WAVIS v1.3 + SDD Constitutional Compliance
+
+## 🎯 Constitutional SSOT Merge Philosophy
+
+This template implements SSOT merging with constitutional compliance, where all merged requirements must demonstrate adherence to project constitutional principles and SDD methodology. The merge process creates a unified SSOT that serves as the foundation for GraphRAG knowledge indexing and specification-driven development.
+
+### Constitutional Merge Principles
+- **Constitutional Compliance First**: All merged requirements validated against constitutional principles
+- **SDD Specification Integration**: Merged SSOT includes [CLARIFY] markers and executable specification metadata
+- **GraphRAG Preparation**: SSOT structure optimized for knowledge graph indexing
+- **Traceability Preservation**: Complete traceability from base requirements through extensions to final merge
+
+## 🔧 Constitutional SSOT Merge Process
+
+### 1. Base SSOT Loading and Constitutional Analysis
+```yaml
+base_ssot_analysis:
+  base_files:
+    - "{{BASE_SSOT_DIR}}/fr-base.yaml"
+    - "{{BASE_SSOT_DIR}}/nfr-base.yaml"
+    - "{{BASE_SSOT_DIR}}/uow-base.yaml"
+
+  constitutional_validation:
+    approach: "Validate base SSOT against constitutional principles"
+    validation_criteria:
+      - criterion: "All functional requirements demonstrate constitutional compliance"
+        validation_method: "Check FR constitutional_compliance fields"
+        constitutional_principles: ["Library-First", "CLI Interface", "Test-First"]
+
+      - criterion: "Non-functional requirements align with constitutional quality standards"
+        validation_method: "Validate NFR constitutional alignment"
+        constitutional_principles: ["Simplicity", "Performance", "Comprehensive Testing"]
+
+      - criterion: "Units of work follow constitutional implementation approach"
+        validation_method: "Check UoW constitutional implementation strategy"
+        constitutional_principles: ["Integration-First", "Minimal Structure", "Framework Direct"]
+
+  base_ssot_structure:
+    functional_requirements:
+      load_pattern: |
+        For each FR in fr-base.yaml:
+        ```yaml
+        {{FR_ID}}:
+          name: "{{requirement_name}}"
+          description: "{{requirement_description}}"
+          priority: "{{priority_level}}"
+          constitutional_compliance:
+            library_first: "{{library_usage_approach}}"
+            cli_interface: "{{cli_command_definition}}"
+            test_first: "{{test_strategy}}"
+            simplicity: "{{simplicity_justification}}"
+          specification:
+            user_story: "{{user_story_format}}"
+            acceptance_criteria: [{{testable_criteria}}]
+            clarifications_needed: [{{clarify_markers}}]
+          tags: [{{requirement_tags}}]
+        ```
+
+    non_functional_requirements:
+      load_pattern: |
+        For each NFR in nfr-base.yaml:
+        ```yaml
+        {{NFR_ID}}:
+          name: "{{quality_attribute_name}}"
+          category: "{{quality_category}}"
+          constitutional_compliance:
+            performance_standards: "{{constitutional_performance_requirements}}"
+            testing_approach: "{{constitutional_testing_strategy}}"
+            measurement_criteria: "{{constitutional_quality_metrics}}"
+          measurable_criteria: [{{specific_measurements}}]
+          tags: [{{nfr_tags}}]
+        ```
+
+    units_of_work:
+      load_pattern: |
+        For each UoW in uow-base.yaml:
+        ```yaml
+        {{UOW_ID}}:
+          name: "{{work_unit_name}}"
+          goal: "{{implementation_objective}}"
+          layer: "{{architectural_layer}}"
+          constitutional_compliance:
+            implementation_approach: "{{constitutional_implementation_strategy}}"
+            library_selections: [{{constitutional_library_choices}}]
+            testing_strategy: "{{constitutional_testing_approach}}"
+          dependencies: [{{dependency_ids}}]
+          implements: [{{implemented_requirements}}]
+          tags: [{{uow_tags}}]
+        ```
+```
+
+### 2. Extension Processing with Constitutional Integration
+```yaml
+extension_processing:
+  constitutional_extension_analysis:
+    approach: "Process extensions with constitutional compliance validation"
+
+    extension_validation:
+      {{#each extensions}}
+      {{extension_name}}_analysis:
+        extension_file: "{{extension_path}}"
+        constitutional_assessment:
+          domain_principles: "{{domain_specific_constitutional_principles}}"
+          compliance_level: "{{extension_constitutional_compliance_score}}"
+          enhancement_opportunities: [{{constitutional_improvement_suggestions}}]
+
+        id_conflict_resolution:
+          conflict_strategy: "Constitutional prefix-based resolution"
+          prefixes:
+            e-commerce: "ECOMM"
+            fintech: "FINTECH"
+            healthcare: "HEALTH"
+            iot: "IOT"
+            ai-ml: "AIML"
+            gdpr: "GDPR"
+
+          conflict_resolution_pattern: |
+            Original ID: {{original_id}}
+            Conflicting Extension: {{extension_name}}
+            Resolution: {{prefix}}-{{original_id}}
+            Constitutional Impact: {{constitutional_compliance_preservation}}
+
+        constitutional_enhancement:
+          enhanced_requirements:
+            functional_requirements:
+              enhancement_pattern: |
+                {{#each extension_frs}}
+                {{resolved_fr_id}}:
+                  # Original extension requirement
+                  name: "{{original_fr_name}}"
+                  description: "{{original_fr_description}}"
+
+                  # Constitutional compliance enhancement
+                  constitutional_compliance:
+                    library_first: "{{constitutional_library_strategy}}"
+                    cli_interface: "{{constitutional_cli_design}}"
+                    test_first: "{{constitutional_testing_approach}}"
+                    domain_specific: "{{domain_constitutional_principles}}"
+
+                  # SDD specification enhancement
+                  specification:
+                    user_story: "{{sdd_enhanced_user_story}}"
+                    acceptance_criteria: [{{sdd_enhanced_acceptance_criteria}}]
+                    clarifications_needed: [{{identified_clarify_markers}}]
+                    constitutional_validation: "{{constitutional_compliance_criteria}}"
+
+                  # GraphRAG optimization
+                  graphrag_metadata:
+                    entity_type: "functional_requirement"
+                    domain_context: "{{extension_domain}}"
+                    constitutional_tags: [{{constitutional_principle_tags}}]
+                    relationships: [{{requirement_relationships}}]
+                {{/each}}
+
+            non_functional_requirements:
+              enhancement_pattern: |
+                {{#each extension_nfrs}}
+                {{resolved_nfr_id}}:
+                  name: "{{original_nfr_name}}"
+                  category: "{{quality_category}}"
+
+                  # Constitutional quality standards
+                  constitutional_compliance:
+                    quality_standards: "{{constitutional_quality_requirements}}"
+                    measurement_approach: "{{constitutional_measurement_strategy}}"
+                    validation_method: "{{constitutional_validation_approach}}"
+
+                  # Enhanced measurable criteria
+                  measurable_criteria:
+                    {{#each enhanced_criteria}}
+                    - criterion: "{{constitutional_enhanced_criterion}}"
+                      measurement: "{{constitutional_measurement_method}}"
+                      threshold: "{{constitutional_quality_threshold}}"
+                    {{/each}}
+
+                  # GraphRAG optimization
+                  graphrag_metadata:
+                    entity_type: "non_functional_requirement"
+                    quality_dimension: "{{quality_category}}"
+                    constitutional_compliance_level: "{{compliance_score}}"
+                {{/each}}
+
+            units_of_work:
+              enhancement_pattern: |
+                {{#each extension_uows}}
+                {{resolved_uow_id}}:
+                  name: "{{original_uow_name}}"
+                  goal: "{{implementation_objective}}"
+
+                  # Constitutional implementation strategy
+                  constitutional_compliance:
+                    implementation_approach: "{{constitutional_implementation_strategy}}"
+                    library_selections: [{{constitutional_library_choices}}]
+                    testing_strategy: "{{constitutional_testing_approach}}"
+                    architectural_alignment: "{{constitutional_architecture_compliance}}"
+
+                  # Enhanced dependencies with constitutional validation
+                  dependencies: [{{resolved_dependency_ids}}]
+                  implements: [{{resolved_requirement_ids}}]
+
+                  # GraphRAG optimization
+                  graphrag_metadata:
+                    entity_type: "unit_of_work"
+                    implementation_layer: "{{architectural_layer}}"
+                    constitutional_tags: [{{constitutional_principle_tags}}]
+                    dependency_graph: [{{dependency_relationships}}]
+                {{/each}}
+      {{/each}}
+```
+
+### 3. Dependency Resolution with Constitutional Validation
+```yaml
+dependency_resolution:
+  constitutional_dependency_analysis:
+    approach: "Resolve dependencies while maintaining constitutional compliance"
+
+    dependency_validation:
+      validation_criteria:
+        - "All dependencies point to existing constitutional requirements"
+        - "Dependency chains follow constitutional architectural principles"
+        - "Circular dependencies violate constitutional simplicity principles"
+        - "Implementation dependencies respect constitutional layer separation"
+
+    resolution_process:
+      id_mapping_update: |
+        # Update all dependency references after ID conflict resolution
+        {{#each id_mappings}}
+        Original: {{original_id}}
+        New: {{resolved_id}}
+        Update in: [{{affected_requirements}}]
+        Constitutional Impact: {{constitutional_compliance_verification}}
+        {{/each}}
+
+      constitutional_dependency_verification: |
+        # Verify constitutional compliance of dependency relationships
+        {{#each dependency_chains}}
+        Dependency Chain: {{chain_description}}
+        Constitutional Analysis:
+          - Library-First Compliance: {{library_first_validation}}
+          - Simplicity Validation: {{complexity_assessment}}
+          - Layer Separation: {{architectural_layer_compliance}}
+        Constitutional Approval: {{dependency_chain_constitutional_status}}
+        {{/each}}
+```
+
+### 4. Constitutional Validation and Quality Gates
+```yaml
+constitutional_validation:
+  comprehensive_compliance_check:
+    validation_dimensions:
+      constitutional_principle_adherence:
+        library_first_validation:
+          check_method: "Verify all requirements specify library-first approach"
+          pass_criteria: "100% of FRs include constitutional library strategy"
+
+        cli_interface_validation:
+          check_method: "Validate CLI interface mandate compliance"
+          pass_criteria: "All FRs include CLI interface specification"
+
+        test_first_validation:
+          check_method: "Confirm test-first approach in all requirements"
+          pass_criteria: "All requirements include constitutional testing strategy"
+
+        simplicity_validation:
+          check_method: "Assess complexity against constitutional simplicity principles"
+          pass_criteria: "All solutions demonstrate constitutional simplicity"
+
+      sdd_specification_quality:
+        clarify_marker_validation:
+          check_method: "Identify and validate [CLARIFY] markers"
+          pass_criteria: "All ambiguous elements marked with [CLARIFY]"
+
+        acceptance_criteria_validation:
+          check_method: "Validate testable acceptance criteria"
+          pass_criteria: "All acceptance criteria are specific and testable"
+
+        user_story_validation:
+          check_method: "Validate user story format and clarity"
+          pass_criteria: "All user stories follow SDD format"
+
+      graphrag_optimization:
+        entity_relationship_validation:
+          check_method: "Validate GraphRAG entity relationships"
+          pass_criteria: "All requirements include GraphRAG metadata"
+
+        knowledge_graph_preparation:
+          check_method: "Verify GraphRAG indexing readiness"
+          pass_criteria: "SSOT structure optimized for knowledge graph creation"
+
+  quality_metrics_calculation:
+    constitutional_compliance_score: |
+      Calculate overall constitutional compliance percentage:
+      - Library-First Compliance: {{library_first_percentage}}%
+      - CLI Interface Compliance: {{cli_interface_percentage}}%
+      - Test-First Compliance: {{test_first_percentage}}%
+      - Simplicity Compliance: {{simplicity_percentage}}%
+      - Overall Constitutional Score: {{overall_constitutional_score}}%
+
+    sdd_specification_quality_score: |
+      Calculate SDD specification quality metrics:
+      - [CLARIFY] Marker Coverage: {{clarify_marker_coverage}}%
+      - Acceptance Criteria Quality: {{acceptance_criteria_quality}}%
+      - User Story Quality: {{user_story_quality}}%
+      - Overall SDD Quality Score: {{overall_sdd_score}}%
+```
+
+### 5. GraphRAG-Optimized Output Generation
+```yaml
+output_generation:
+  constitutional_ssot_structure:
+    output_pattern: |
+      # Generated constitutional SSOT for {{PROJECT_NAME}}
+
+      metadata:
+        project_name: "{{PROJECT_NAME}}"
+        merge_timestamp: "{{CURRENT_TIMESTAMP}}"
+        constitutional_compliance_version: "{{CONSTITUTION_VERSION}}"
+        sdd_methodology_version: "v1.3"
+        graphrag_optimization: true
+
+        # Constitutional compliance summary
+        constitutional_compliance:
+          overall_score: "{{constitutional_compliance_percentage}}%"
+          principle_compliance:
+            library_first: "{{library_first_score}}%"
+            cli_interface: "{{cli_interface_score}}%"
+            test_first: "{{test_first_score}}%"
+            simplicity: "{{simplicity_score}}%"
+            anti_abstraction: "{{anti_abstraction_score}}%"
+            integration_first: "{{integration_first_score}}%"
+            minimal_structure: "{{minimal_structure_score}}%"
+            framework_direct: "{{framework_direct_score}}%"
+            comprehensive_testing: "{{comprehensive_testing_score}}%"
+
+        # SDD specification quality metrics
+        sdd_quality_metrics:
+          clarify_marker_coverage: "{{clarify_coverage}}%"
+          acceptance_criteria_quality: "{{acceptance_criteria_score}}%"
+          user_story_quality: "{{user_story_score}}%"
+          specification_completeness: "{{specification_completeness}}%"
+
+        # GraphRAG optimization metrics
+        graphrag_readiness:
+          entity_completeness: "{{entity_completeness}}%"
+          relationship_mapping: "{{relationship_mapping}}%"
+          knowledge_graph_readiness: "{{knowledge_graph_score}}%"
+
+        # Merge statistics
+        merge_statistics:
+          total_functional_requirements: {{total_frs}}
+          total_non_functional_requirements: {{total_nfrs}}
+          total_units_of_work: {{total_uows}}
+          extensions_merged: {{extensions_list}}
+          id_conflicts_resolved: {{conflicts_resolved}}
+          constitutional_enhancements_applied: {{constitutional_enhancements}}
+
+      # Constitutional functional requirements
+      functional_requirements:
+        {{#each merged_functional_requirements}}
+        {{fr_id}}:
+          name: "{{fr_name}}"
+          description: "{{fr_description}}"
+          priority: "{{fr_priority}}"
+
+          # Constitutional compliance
+          constitutional_compliance:
+            library_first: "{{library_first_approach}}"
+            cli_interface: "{{cli_interface_specification}}"
+            test_first: "{{test_first_strategy}}"
+            simplicity: "{{simplicity_justification}}"
+            compliance_score: "{{fr_constitutional_score}}%"
+
+          # SDD specification
+          specification:
+            user_story: "{{sdd_user_story}}"
+            acceptance_criteria: [{{sdd_acceptance_criteria}}]
+            clarifications_needed: [{{clarify_markers}}]
+            constitutional_validation: [{{constitutional_validation_criteria}}]
+
+          # GraphRAG metadata
+          graphrag_metadata:
+            entity_type: "functional_requirement"
+            domain_context: "{{domain_context}}"
+            constitutional_tags: [{{constitutional_tags}}]
+            relationships: [{{requirement_relationships}}]
+            knowledge_graph_id: "{{knowledge_graph_entity_id}}"
+
+          tags: [{{fr_tags}}]
+        {{/each}}
+
+      # Constitutional non-functional requirements
+      non_functional_requirements:
+        {{#each merged_non_functional_requirements}}
+        {{nfr_id}}:
+          name: "{{nfr_name}}"
+          category: "{{nfr_category}}"
+
+          # Constitutional compliance
+          constitutional_compliance:
+            quality_standards: "{{constitutional_quality_requirements}}"
+            measurement_approach: "{{constitutional_measurement_strategy}}"
+            validation_method: "{{constitutional_validation_approach}}"
+            compliance_score: "{{nfr_constitutional_score}}%"
+
+          # Enhanced measurable criteria
+          measurable_criteria: [{{constitutional_enhanced_criteria}}]
+          testing_method: "{{constitutional_testing_method}}"
+
+          # GraphRAG metadata
+          graphrag_metadata:
+            entity_type: "non_functional_requirement"
+            quality_dimension: "{{quality_category}}"
+            constitutional_compliance_level: "{{compliance_level}}"
+            knowledge_graph_id: "{{knowledge_graph_entity_id}}"
+
+          tags: [{{nfr_tags}}]
+        {{/each}}
+
+      # Constitutional units of work
+      units_of_work:
+        {{#each merged_units_of_work}}
+        {{uow_id}}:
+          name: "{{uow_name}}"
+          goal: "{{uow_goal}}"
+          layer: "{{uow_layer}}"
+
+          # Constitutional compliance
+          constitutional_compliance:
+            implementation_approach: "{{constitutional_implementation_strategy}}"
+            library_selections: [{{constitutional_library_choices}}]
+            testing_strategy: "{{constitutional_testing_approach}}"
+            architectural_alignment: "{{constitutional_architecture_compliance}}"
+            compliance_score: "{{uow_constitutional_score}}%"
+
+          # Dependencies and implementations
+          dependencies: [{{resolved_dependencies}}]
+          implements: [{{resolved_implementations}}]
+          estimated_effort_hours: "{{effort_estimation}}"
+
+          # Acceptance criteria
+          acceptance_criteria: [{{uow_acceptance_criteria}}]
+
+          # GraphRAG metadata
+          graphrag_metadata:
+            entity_type: "unit_of_work"
+            implementation_layer: "{{architectural_layer}}"
+            constitutional_tags: [{{constitutional_principle_tags}}]
+            dependency_graph: [{{dependency_relationships}}]
+            knowledge_graph_id: "{{knowledge_graph_entity_id}}"
+
+          tags: [{{uow_tags}}]
+        {{/each}}
+```
+
+## 🎯 Constitutional Merge Execution Instructions
+
+### Step 1: Load and Analyze Base SSOT
+1. **Load Base Files**: Read all base YAML files (FR, NFR, UoW)
+2. **Constitutional Analysis**: Validate base requirements against constitutional principles
+3. **SDD Enhancement**: Add SDD specification structure to base requirements
+4. **GraphRAG Preparation**: Add GraphRAG metadata to base requirements
+
+### Step 2: Process Extensions with Constitutional Integration
+1. **Extension Loading**: Load and analyze all extension files
+2. **Constitutional Validation**: Validate extensions against constitutional principles
+3. **ID Conflict Resolution**: Resolve conflicts using constitutional prefix strategy
+4. **Constitutional Enhancement**: Enhance extension requirements with constitutional compliance
+
+### Step 3: Merge with Constitutional Compliance
+1. **Dependency Resolution**: Update all cross-references after ID resolution
+2. **Constitutional Validation**: Verify merged SSOT meets constitutional standards
+3. **Quality Metrics**: Calculate constitutional compliance and SDD quality scores
+4. **GraphRAG Optimization**: Ensure merged SSOT is optimized for knowledge graph creation
+
+### Step 4: Generate Constitutional SSOT Output
+1. **Structured Output**: Generate complete constitutional SSOT with metadata
+2. **Quality Reporting**: Include comprehensive quality and compliance metrics
+3. **GraphRAG Readiness**: Ensure output is ready for GraphRAG indexing
+4. **Validation Completion**: Verify final output meets all constitutional requirements
+
+## ✅ Success Criteria
+
+- [ ] All base and extension requirements loaded successfully
+- [ ] Constitutional compliance validated for all requirements
+- [ ] ID conflicts resolved using constitutional prefix strategy
+- [ ] All cross-references updated after ID resolution
+- [ ] SDD specification structure added to all requirements
+- [ ] GraphRAG metadata included for knowledge graph optimization
+- [ ] Constitutional compliance score above 85%
+- [ ] All [CLARIFY] markers identified and documented
+- [ ] Final SSOT structure ready for GraphRAG indexing
+
+Execute this constitutional SSOT merge for {{PROJECT_NAME}} with base directory {{BASE_SSOT_DIR}}, extensions {{EXTENSIONS}}, and output to {{OUTPUT_FILE}}, ensuring constitutional compliance from {{CONSTITUTION_FILE}}.

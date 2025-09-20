@@ -1,0 +1,954 @@
+units_of_work:
+  UoW-000:
+    name: Project Structure Setup
+    goal: Establish architecture foundation
+    layer: Foundation
+    priority: Critical
+    dependencies: []
+    implements:
+    - NFR-005
+    estimated_effort_hours: '{{UOW_000_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Standard project layout with clear directory structure
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Standard project layout with clear directory structure
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Architecture layers clearly defined and documented
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Architecture layers clearly defined and documented
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Module interfaces defined for dependency injection
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Module interfaces defined for dependency injection
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Documentation structure and standards established
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Documentation structure and standards established
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - foundation
+    - architecture
+    - setup
+  UoW-001A:
+    name: Dependencies Installation
+    goal: Install and configure project dependencies with security scanning
+    layer: Foundation
+    priority: Critical
+    dependencies:
+    - UoW-000
+    implements:
+    - NFR-003
+    - NFR-005
+    estimated_effort_hours: '{{UOW_001A_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Core dependencies installed (framework, database, cache)
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Core dependencies installed (framework, database, cache)
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Development tools configured (testing, linting, security)
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 보안 요구사항이 충족되어야 한다
+      AC-003:
+        description: Dependency security scanning integrated
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Dependency security scanning integrated
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Version pinning for reproducible builds
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Version pinning for reproducible builds
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - dependencies
+    - security
+    - tooling
+  UoW-001B:
+    name: Testing Framework Setup
+    goal: Establish comprehensive testing framework with TDD support
+    layer: Foundation
+    priority: Critical
+    dependencies:
+    - UoW-001A
+    implements:
+    - NFR-005
+    estimated_effort_hours: '{{UOW_001B_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Unit testing framework configured
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-002:
+        description: Integration testing setup with test containers
+        scenario:
+          given: 필요한 전제조건이 충족된 상태에서
+          when: 생성 작업이 실행되면
+          then: 대상이 성공적으로 생성되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-003:
+        description: Coverage reporting and thresholds configured
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-004:
+        description: Mock generation tools installed
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Mock generation tools installed
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - testing
+    - tdd
+    - quality
+  UoW-001C:
+    name: Configuration System
+    goal: Implement structured configuration system (no ENV variables)
+    layer: Foundation
+    priority: Critical
+    dependencies:
+    - UoW-001B
+    implements:
+    - FR-001
+    - NFR-003
+    estimated_effort_hours: '{{UOW_001C_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Structured configuration with schema validation
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-002:
+        description: Environment-specific configuration files
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-003:
+        description: Hot-reload capability without service restart
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Hot-reload capability without service restart
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Comprehensive validation and error reporting
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Comprehensive validation and error reporting
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - config
+    - security
+    - validation
+  UoW-001D:
+    name: CI/CD Pipeline
+    goal: Establish automated workflows for continuous integration
+    layer: Foundation
+    priority: High
+    dependencies:
+    - UoW-001C
+    implements:
+    - NFR-005
+    estimated_effort_hours: '{{UOW_001D_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Automated testing on pull requests
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Automated testing on pull requests
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Code quality gates with linting
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Code quality gates with linting
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Security scanning automation
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Security scanning automation
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Automated deployment workflows
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Automated deployment workflows
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - ci-cd
+    - automation
+    - quality
+  UoW-001:
+    name: Configuration Loader
+    goal: Robust configuration loading with validation
+    layer: Foundation
+    priority: Critical
+    dependencies:
+    - UoW-001D
+    implements:
+    - FR-001
+    estimated_effort_hours: '{{UOW_001_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Load and validate configuration files against schema
+        scenario:
+          given: 검증할 데이터가 준비된 상태에서
+          when: 검증 작업이 실행되면
+          then: 검증 결과가 올바르게 반환되어야 한다
+          and:
+          - 입력값이 유효성 검사를 통과해야 한다
+      AC-002:
+        description: Support for environment-specific configuration resolution
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-003:
+        description: Configuration caching and reload capability
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-004:
+        description: Comprehensive error handling and detailed messages
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Comprehensive error handling and detailed messages
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - config
+    - validation
+    - foundation
+  UoW-002:
+    name: Advanced Config Validation
+    goal: Business rule validation for configuration beyond schema
+    layer: Foundation
+    priority: High
+    dependencies:
+    - UoW-001
+    implements:
+    - FR-001
+    estimated_effort_hours: '{{UOW_002_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Cross-field validation and dependency checking
+        scenario:
+          given: 검증할 데이터가 준비된 상태에서
+          when: 검증 작업이 실행되면
+          then: 검증 결과가 올바르게 반환되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-002:
+        description: Business rule validation (ports, URLs, formats)
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Business rule validation (ports, URLs, formats)
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Configuration health check endpoints
+        scenario:
+          given: 검증할 데이터가 준비된 상태에서
+          when: 검증 작업이 실행되면
+          then: 검증 결과가 올바르게 반환되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-004:
+        description: Validation error reporting with field specifics
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Validation error reporting with field specifics
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - config
+    - validation
+    - business-rules
+  UoW-003:
+    name: Configuration Manager
+    goal: Centralized configuration management with hot-reload
+    layer: Foundation
+    priority: High
+    dependencies:
+    - UoW-002
+    implements:
+    - FR-001
+    - NFR-001
+    estimated_effort_hours: '{{UOW_003_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Centralized configuration access interface
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-002:
+        description: Hot-reload capability without service interruption
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Hot-reload capability without service interruption
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Configuration change event notifications
+        scenario:
+          given: 수정할 대상이 존재하는 상태에서
+          when: 수정 작업이 실행되면
+          then: 대상이 성공적으로 수정되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-004:
+        description: Configuration backup and rollback capability
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+    tags:
+    - config
+    - management
+    - hot-reload
+  UoW-101:
+    name: Database Connection
+    goal: Reliable database connectivity with connection pooling
+    layer: Infrastructure
+    priority: Critical
+    dependencies:
+    - UoW-003
+    implements:
+    - FR-003
+    estimated_effort_hours: '{{UOW_101_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Database connection pool management with health monitoring
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Database connection pool management with health monitoring
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Transaction support with proper error handling
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Transaction support with proper error handling
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Database migration framework integration
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Database migration framework integration
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Connection resilience and automatic reconnection
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Connection resilience and automatic reconnection
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - database
+    - persistence
+    - reliability
+  UoW-102:
+    name: Cache Integration
+    goal: Caching implementation with resilience
+    layer: Infrastructure
+    priority: High
+    dependencies:
+    - UoW-101
+    implements:
+    - FR-004
+    estimated_effort_hours: '{{UOW_102_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Cache client configuration with connection pooling
+        scenario:
+          given: 설정 가능한 환경이 준비된 상태에서
+          when: 설정 작업이 실행되면
+          then: 설정이 올바르게 적용되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-002:
+        description: Cache operations (CRUD) with error handling
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Cache operations (CRUD) with error handling
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: TTL management and cache invalidation strategies
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: TTL management and cache invalidation strategies
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Connection resilience and fallback mechanisms
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Connection resilience and fallback mechanisms
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - cache
+    - performance
+    - resilience
+  UoW-103:
+    name: HTTP Server Foundation
+    goal: Secure HTTP server with middleware chain
+    layer: Infrastructure
+    priority: Critical
+    dependencies:
+    - UoW-102
+    implements:
+    - FR-002
+    estimated_effort_hours: '{{UOW_103_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: HTTP server setup with configurable middleware
+        scenario:
+          given: 필요한 전제조건이 충족된 상태에서
+          when: 생성 작업이 실행되면
+          then: 대상이 성공적으로 생성되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-002:
+        description: Security headers and rate limiting middleware
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Security headers and rate limiting middleware
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Request/response logging with structured format
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Request/response logging with structured format
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Graceful shutdown and connection draining
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Graceful shutdown and connection draining
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - http
+    - server
+    - middleware
+  UoW-104:
+    name: Authentication System
+    goal: Token-based authentication and authorization
+    layer: Infrastructure
+    priority: Critical
+    dependencies:
+    - UoW-103
+    implements:
+    - FR-005
+    estimated_effort_hours: '{{UOW_104_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Token validation and generation
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Token validation and generation
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Role-based access control middleware
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Role-based access control middleware
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Session management with secure storage
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Session management with secure storage
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Audit logging for authentication events
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Audit logging for authentication events
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - auth
+    - security
+    - rbac
+  UoW-105:
+    name: Error Handling Infrastructure
+    goal: Comprehensive error handling and recovery
+    layer: Infrastructure
+    priority: Critical
+    dependencies:
+    - UoW-104
+    implements:
+    - FR-006
+    estimated_effort_hours: '{{UOW_105_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Structured error responses with correlation IDs
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Structured error responses with correlation IDs
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Error categorization and HTTP status mapping
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Error categorization and HTTP status mapping
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Retry mechanisms for transient failures
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Retry mechanisms for transient failures
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Circuit breaker patterns for external deps
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Circuit breaker patterns for external deps
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - error-handling
+    - reliability
+    - resilience
+  UoW-106:
+    name: Async Processing Infrastructure
+    goal: Background job processing and queuing
+    layer: Infrastructure
+    priority: High
+    dependencies:
+    - UoW-105
+    implements:
+    - FR-007
+    estimated_effort_hours: '{{UOW_106_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Queue-based task processing implementation
+        scenario:
+          given: 처리할 데이터가 준비된 상태에서
+          when: 처리 작업이 실행되면
+          then: 처리 결과가 올바르게 생성되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-002:
+        description: Job retry and dead letter queue handling
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Job retry and dead letter queue handling
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Task status tracking and monitoring
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Task status tracking and monitoring
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Priority-based task scheduling
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Priority-based task scheduling
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - async
+    - queues
+    - background-jobs
+  UoW-107:
+    name: OpenTelemetry Integration
+    goal: Observability through OpenTelemetry instrumentation
+    layer: Infrastructure
+    priority: High
+    dependencies:
+    - UoW-106
+    implements:
+    - FR-008
+    - NFR-007
+    estimated_effort_hours: '{{UOW_107_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Distributed tracing implementation
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Distributed tracing implementation
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Metrics collection and export
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Metrics collection and export
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Correlation IDs across service boundaries
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Correlation IDs across service boundaries
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Performance monitoring and alerting
+        scenario:
+          given: 처리할 데이터가 준비된 상태에서
+          when: 처리 작업이 실행되면
+          then: 처리 결과가 올바르게 생성되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+    tags:
+    - observability
+    - tracing
+    - metrics
+  UoW-201:
+    name: Core Business Logic
+    goal: Main business logic implementation with validation
+    layer: Application
+    priority: Critical
+    dependencies:
+    - UoW-107
+    implements:
+    - FR-009
+    estimated_effort_hours: '{{UOW_201_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Business rules implementation with validation
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Business rules implementation with validation
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Input sanitization and output encoding
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Input sanitization and output encoding
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Error handling with business-specific codes
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Error handling with business-specific codes
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Comprehensive audit trail for operations
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Comprehensive audit trail for operations
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - business-logic
+    - validation
+    - audit
+  UoW-202:
+    name: External API Integration
+    goal: Third-party service integration with resilience
+    layer: Application
+    priority: High
+    dependencies:
+    - UoW-201
+    implements:
+    - FR-010
+    estimated_effort_hours: '{{UOW_202_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: HTTP client with circuit breaker and retry
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: HTTP client with circuit breaker and retry
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: API response caching and validation
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: API response caching and validation
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Rate limiting for external API calls
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Rate limiting for external API calls
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-004:
+        description: Fallback strategies and error handling
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Fallback strategies and error handling
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - integration
+    - external-api
+    - resilience
+  UoW-210:
+    name: Docker Deployment
+    goal: Production-ready containerization and deployment
+    layer: Deployment
+    priority: High
+    dependencies:
+    - UoW-202
+    implements:
+    - NFR-002
+    - NFR-004
+    - NFR-007
+    estimated_effort_hours: '{{UOW_210_EFFORT}}'
+    acceptance_criteria:
+      AC-001:
+        description: Multi-stage Docker build with optimized size
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Multi-stage Docker build with optimized size
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-002:
+        description: Security hardening with non-root execution
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Security hardening with non-root execution
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+      AC-003:
+        description: Health check integration and readiness probes
+        scenario:
+          given: 검증할 데이터가 준비된 상태에서
+          when: 검증 작업이 실행되면
+          then: 검증 결과가 올바르게 반환되어야 한다
+          and:
+          - 성능 요구사항이 충족되어야 한다
+          - 오류 처리가 적절해야 한다
+      AC-004:
+        description: Container orchestration support
+        scenario:
+          given: 시스템이 정상적으로 동작하는 상태에서
+          when: 요구된 기능이 실행되면
+          then: Container orchestration support
+          and:
+          - 결과가 예상된 형태로 반환되어야 한다
+          - 시스템 상태가 일관성을 유지해야 한다
+    tags:
+    - deployment
+    - docker
+    - containerization
+layer_dependencies:
+  Foundation: []
+  Infrastructure:
+  - Foundation
+  Application:
+  - Foundation
+  - Infrastructure
+  Deployment:
+  - Foundation
+  - Infrastructure
+  - Application
+critical_path:
+- UoW-000
+- UoW-001A
+- UoW-001B
+- UoW-001C
+- UoW-001
+- UoW-101
+- UoW-103
+- UoW-104
+- UoW-201
+metadata:
+  version: 1.0.0
+  created: '2025-01-18'
+  description: Base units of work for WAVIS project implementation
+  total_uows: 15
+  layers:
+  - Foundation
+  - Infrastructure
+  - Application
+  - Deployment
+  estimated_total_effort: '{{TOTAL_ESTIMATED_EFFORT}}'

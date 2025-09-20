@@ -1,0 +1,236 @@
+# Extension Compatibility Matrix
+# Defines relationships between extensions to prevent conflicts and ensure proper dependencies
+
+compatibility_matrix:
+  version: "1.0.0"
+  last_updated: "2025-01-18"
+  description: "Extension compatibility rules and dependency management"
+
+# Domain Extensions Compatibility
+domain_extensions:
+  e-commerce:
+    id: "domain/e-commerce.yaml"
+    requires: []
+    conflicts: []
+    recommends: ["features/ai-ml.yaml", "compliance/gdpr.yaml", "compliance/pci-dss.yaml"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +2
+    timeline_impact: "+4-6 weeks"
+
+  fintech:
+    id: "domain/fintech.yaml"
+    requires: ["compliance/pci-dss.yaml"]  # FinTech requires payment security
+    conflicts: []
+    recommends: ["features/blockchain.yaml", "features/ai-ml.yaml"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +3
+    timeline_impact: "+6-8 weeks"
+
+  healthcare:
+    id: "domain/healthcare.yaml"
+    requires: ["compliance/hipaa.yaml"]  # Healthcare mandates HIPAA compliance
+    conflicts: ["features/blockchain.yaml"]  # Medical data regulations conflict with blockchain immutability
+    recommends: ["features/iot.yaml", "features/ai-ml.yaml"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +4
+    timeline_impact: "+8-12 weeks"
+
+# Feature Extensions Compatibility
+feature_extensions:
+  ai-ml:
+    id: "features/ai-ml.yaml"
+    requires: []
+    conflicts: []
+    recommends: ["compliance/gdpr.yaml"]  # AI needs privacy protection
+    compatible_domains: ["e-commerce", "fintech", "healthcare"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +2
+    timeline_impact: "+3-5 weeks"
+
+  blockchain:
+    id: "features/blockchain.yaml"
+    requires: []
+    conflicts: ["domain/healthcare.yaml"]  # Regulatory conflicts
+    recommends: ["domain/fintech.yaml"]
+    compatible_domains: ["e-commerce", "fintech"]
+    mvp_phases: ["phase_3"]  # Complex feature only for mature MVP
+    complexity_impact: +4
+    timeline_impact: "+8-12 weeks"
+
+  iot:
+    id: "features/iot.yaml"
+    requires: []
+    conflicts: []
+    recommends: ["features/streaming.yaml", "features/ai-ml.yaml"]
+    compatible_domains: ["healthcare", "e-commerce"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +3
+    timeline_impact: "+5-8 weeks"
+
+  streaming:
+    id: "features/streaming.yaml"
+    requires: []
+    conflicts: []
+    recommends: ["features/iot.yaml", "features/ai-ml.yaml"]
+    compatible_domains: ["e-commerce", "fintech"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +3
+    timeline_impact: "+4-7 weeks"
+
+# Compliance Extensions Compatibility
+compliance_extensions:
+  gdpr:
+    id: "compliance/gdpr.yaml"
+    requires: []
+    conflicts: []
+    recommends: []
+    compatible_domains: ["e-commerce", "fintech", "healthcare"]
+    compatible_features: ["ai-ml", "blockchain", "iot", "streaming"]
+    mvp_phases: ["phase_1", "phase_2", "phase_3"]
+    complexity_impact: +1
+    timeline_impact: "+2-3 weeks"
+
+  hipaa:
+    id: "compliance/hipaa.yaml"
+    requires: ["domain/healthcare.yaml"]  # HIPAA only relevant for healthcare
+    conflicts: []
+    recommends: []
+    compatible_domains: ["healthcare"]
+    compatible_features: ["iot", "ai-ml"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +3
+    timeline_impact: "+4-6 weeks"
+
+  pci-dss:
+    id: "compliance/pci-dss.yaml"
+    requires: []  # Can be used independently
+    conflicts: []
+    recommends: ["domain/fintech.yaml", "domain/e-commerce.yaml"]
+    compatible_domains: ["e-commerce", "fintech"]
+    compatible_features: ["ai-ml", "streaming"]
+    mvp_phases: ["phase_2", "phase_3"]
+    complexity_impact: +2
+    timeline_impact: "+3-5 weeks"
+
+# Combination Rules
+combination_rules:
+  # Maximum complexity limits
+  complexity_limits:
+    phase_1: 2  # Basic combinations only
+    phase_2: 6  # Moderate complexity
+    phase_3: 10 # High complexity allowed
+
+  # Popular validated combinations
+  validated_combinations:
+    - name: "E-Commerce Startup"
+      extensions: ["domain/e-commerce.yaml", "features/ai-ml.yaml", "compliance/gdpr.yaml"]
+      complexity_score: 5
+      success_rate: 0.92
+      recommended_phase: "phase_2"
+
+    - name: "Enterprise FinTech"
+      extensions: ["domain/fintech.yaml", "features/blockchain.yaml", "features/ai-ml.yaml", "compliance/pci-dss.yaml", "compliance/gdpr.yaml"]
+      complexity_score: 10
+      success_rate: 0.85
+      recommended_phase: "phase_3"
+
+    - name: "Healthcare IoT"
+      extensions: ["domain/healthcare.yaml", "features/iot.yaml", "features/ai-ml.yaml", "compliance/hipaa.yaml", "compliance/gdpr.yaml"]
+      complexity_score: 9
+      success_rate: 0.78
+      recommended_phase: "phase_3"
+
+    - name: "Streaming Platform"
+      extensions: ["features/streaming.yaml", "features/iot.yaml", "features/ai-ml.yaml", "compliance/gdpr.yaml"]
+      complexity_score: 7
+      success_rate: 0.88
+      recommended_phase: "phase_2"
+
+  # Problematic combinations
+  problematic_combinations:
+    - extensions: ["domain/healthcare.yaml", "features/blockchain.yaml"]
+      reason: "Medical data regulations conflict with blockchain immutability"
+      severity: "blocking"
+
+    - extensions: ["domain/fintech.yaml"]
+      missing: ["compliance/pci-dss.yaml"]
+      reason: "Financial services require PCI DSS compliance"
+      severity: "warning"
+
+    - extensions: ["compliance/hipaa.yaml"]
+      without: ["domain/healthcare.yaml"]
+      reason: "HIPAA compliance only relevant for healthcare domain"
+      severity: "warning"
+
+# MVP Phase Compatibility
+mvp_phase_rules:
+  phase_1:
+    max_extensions: 2
+    allowed_domains: []
+    allowed_features: []
+    allowed_compliance: ["compliance/gdpr.yaml"]
+    complexity_budget: 2
+
+  phase_2:
+    max_extensions: 4
+    allowed_domains: ["domain/e-commerce.yaml", "domain/fintech.yaml", "domain/healthcare.yaml"]
+    allowed_features: ["features/ai-ml.yaml", "features/iot.yaml", "features/streaming.yaml"]
+    allowed_compliance: ["compliance/gdpr.yaml", "compliance/pci-dss.yaml", "compliance/hipaa.yaml"]
+    complexity_budget: 6
+
+  phase_3:
+    max_extensions: 6
+    allowed_domains: ["domain/e-commerce.yaml", "domain/fintech.yaml", "domain/healthcare.yaml"]
+    allowed_features: ["features/ai-ml.yaml", "features/blockchain.yaml", "features/iot.yaml", "features/streaming.yaml"]
+    allowed_compliance: ["compliance/gdpr.yaml", "compliance/pci-dss.yaml", "compliance/hipaa.yaml"]
+    complexity_budget: 10
+
+# Validation Rules
+validation_rules:
+  mandatory_checks:
+    - rule: "domain_requires_compliance"
+      condition: "domain/fintech.yaml requires compliance/pci-dss.yaml"
+    - rule: "domain_requires_compliance"
+      condition: "domain/healthcare.yaml requires compliance/hipaa.yaml"
+    - rule: "blocking_conflicts"
+      condition: "domain/healthcare.yaml conflicts with features/blockchain.yaml"
+
+  warning_checks:
+    - rule: "complexity_budget"
+      condition: "total complexity score exceeds phase budget"
+    - rule: "untested_combination"
+      condition: "combination not in validated_combinations list"
+    - rule: "phase_mismatch"
+      condition: "extension requires higher MVP phase than selected"
+
+# Performance Impact Matrix
+performance_impact:
+  memory_usage:
+    baseline: 100
+    domain/e-commerce.yaml: +50
+    domain/fintech.yaml: +75
+    domain/healthcare.yaml: +100
+    features/ai-ml.yaml: +200
+    features/blockchain.yaml: +300
+    features/iot.yaml: +150
+    features/streaming.yaml: +250
+
+  cpu_usage:
+    baseline: 100
+    domain/e-commerce.yaml: +30
+    domain/fintech.yaml: +50
+    domain/healthcare.yaml: +40
+    features/ai-ml.yaml: +300
+    features/blockchain.yaml: +400
+    features/iot.yaml: +100
+    features/streaming.yaml: +350
+
+  storage_requirements:
+    baseline: 1GB
+    domain/e-commerce.yaml: +2GB
+    domain/fintech.yaml: +1.5GB
+    domain/healthcare.yaml: +3GB
+    features/ai-ml.yaml: +5GB
+    features/blockchain.yaml: +10GB
+    features/iot.yaml: +2GB
+    features/streaming.yaml: +3GB

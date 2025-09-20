@@ -1,0 +1,3624 @@
+[
+  {
+    "id": "FR-001",
+    "type": "functional_requirement",
+    "title": "Configuration Management",
+    "description": "프로젝트는 환경별 설정을 관리할 수 있어야 함",
+    "category": "Foundation",
+    "priority": "Critical",
+    "acceptance_criteria": {
+      "AC-1": "환경별 설정 파일 분리 (dev, staging, prod)",
+      "AC-2": "설정값 검증 및 기본값 제공",
+      "AC-3": "민감정보 보안 처리 (환경변수 또는 암호화)",
+      "AC-4": "설정 변경 시 재시작 없이 반영 가능"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.427983",
+      "hash": "03d99166b9d48680"
+    }
+  },
+  {
+    "id": "FR-002",
+    "type": "functional_requirement",
+    "title": "Interface Layer",
+    "description": "외부와의 통신을 위한 인터페이스 제공",
+    "category": "Interface",
+    "priority": "High",
+    "acceptance_criteria": {
+      "AC-1": "명확한 입력/출력 인터페이스 정의",
+      "AC-2": "에러 응답 표준화",
+      "AC-3": "인터페이스 문서화 (스키마/계약)",
+      "AC-4": "인터페이스 버전 관리"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428039",
+      "hash": "1d0e502171a47a89"
+    }
+  },
+  {
+    "id": "FR-003",
+    "type": "functional_requirement",
+    "title": "Data Persistence",
+    "description": "데이터 저장 및 조회 기능",
+    "category": "Data",
+    "priority": "High",
+    "acceptance_criteria": {
+      "AC-1": "데이터 모델 정의 및 스키마 관리",
+      "AC-2": "CRUD 기본 연산 지원",
+      "AC-3": "트랜잭션 처리",
+      "AC-4": "데이터 마이그레이션 지원"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428049",
+      "hash": "c8279594d558487c"
+    }
+  },
+  {
+    "id": "FR-004",
+    "type": "functional_requirement",
+    "title": "Caching Layer",
+    "description": "성능 최적화를 위한 캐싱 기능",
+    "category": "Performance",
+    "priority": "Medium",
+    "acceptance_criteria": {
+      "AC-1": "캐시 저장/조회/삭제 기능",
+      "AC-2": "캐시 만료 정책 설정",
+      "AC-3": "캐시 무효화 전략",
+      "AC-4": "캐시 히트율 모니터링"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428057",
+      "hash": "23c06912c1391dee"
+    }
+  },
+  {
+    "id": "FR-005",
+    "type": "functional_requirement",
+    "title": "Authentication & Authorization",
+    "description": "사용자 인증 및 권한 관리",
+    "category": "Security",
+    "priority": "High",
+    "acceptance_criteria": {
+      "AC-1": "사용자 인증 메커니즘",
+      "AC-2": "권한 기반 접근 제어",
+      "AC-3": "세션/토큰 관리",
+      "AC-4": "보안 감사 로깅"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428064",
+      "hash": "dc63d2d48431b899"
+    }
+  },
+  {
+    "id": "FR-006",
+    "type": "functional_requirement",
+    "title": "Business Logic Layer",
+    "description": "핵심 비즈니스 로직 구현",
+    "category": "Business",
+    "priority": "Critical",
+    "acceptance_criteria": {
+      "AC-1": "비즈니스 규칙 구현",
+      "AC-2": "도메인 모델 정의",
+      "AC-3": "비즈니스 프로세스 워크플로우",
+      "AC-4": "비즈니스 로직 테스트"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428071",
+      "hash": "6fcc824333039ab6"
+    }
+  },
+  {
+    "id": "FR-007",
+    "type": "functional_requirement",
+    "title": "External Integration",
+    "description": "외부 시스템과의 통합",
+    "category": "Integration",
+    "priority": "Medium",
+    "acceptance_criteria": {
+      "AC-1": "외부 API 클라이언트 구현",
+      "AC-2": "연결 상태 모니터링",
+      "AC-3": "재시도 및 회로차단기 패턴",
+      "AC-4": "외부 의존성 추상화"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428077",
+      "hash": "6367cb1ab1f1a0cf"
+    }
+  },
+  {
+    "id": "FR-008",
+    "type": "functional_requirement",
+    "title": "Monitoring & Observability",
+    "description": "시스템 모니터링 및 관찰 가능성",
+    "category": "Operations",
+    "priority": "High",
+    "acceptance_criteria": {
+      "AC-1": "로그 수집 및 구조화",
+      "AC-2": "메트릭 수집 및 대시보드",
+      "AC-3": "분산 추적 (OpenTelemetry)",
+      "AC-4": "헬스체크 엔드포인트"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428084",
+      "hash": "04c6eebf88ccd39a"
+    }
+  },
+  {
+    "id": "FR-009",
+    "type": "functional_requirement",
+    "title": "Event Processing",
+    "description": "이벤트 기반 처리",
+    "category": "Architecture",
+    "priority": "Medium",
+    "acceptance_criteria": {
+      "AC-1": "이벤트 발행/구독 메커니즘",
+      "AC-2": "이벤트 스키마 정의",
+      "AC-3": "이벤트 순서 보장",
+      "AC-4": "이벤트 재처리 로직"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428091",
+      "hash": "9acf854832ced30f"
+    }
+  },
+  {
+    "id": "FR-010",
+    "type": "functional_requirement",
+    "title": "Deployment & DevOps",
+    "description": "배포 및 운영 자동화",
+    "category": "Operations",
+    "priority": "High",
+    "acceptance_criteria": {
+      "AC-1": "자동화된 빌드 파이프라인",
+      "AC-2": "컨테이너화 지원",
+      "AC-3": "무중단 배포 전략",
+      "AC-4": "인프라스트럭처 as Code"
+    },
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428097",
+      "hash": "39d750b8b4381799"
+    }
+  },
+  {
+    "id": "NFR-001",
+    "type": "non_functional_requirement",
+    "title": "Performance",
+    "description": "시스템 성능 요구사항",
+    "category": "Quality",
+    "priority": "High",
+    "requirements": [
+      "응답 시간: 평균 < 200ms, 95% < 500ms",
+      "처리량: 초당 최소 100 요청 처리",
+      "동시 사용자: 최소 1000명 지원",
+      "리소스 사용률: CPU < 70%, Memory < 80%"
+    ],
+    "measurement": [
+      "부하 테스트를 통한 성능 검증",
+      "APM 도구를 통한 실시간 모니터링"
+    ],
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428103",
+      "hash": "58d6c168bcaa3028"
+    }
+  },
+  {
+    "id": "NFR-002",
+    "type": "non_functional_requirement",
+    "title": "Reliability",
+    "description": "시스템 안정성 요구사항",
+    "category": "Quality",
+    "priority": "Critical",
+    "requirements": [
+      "가용성: 99.9% 이상",
+      "MTBF: 평균 30일 이상",
+      "MTTR: 평균 4시간 이하",
+      "데이터 무결성: 100% 보장"
+    ],
+    "measurement": [
+      "SLA 모니터링",
+      "장애 발생 빈도 및 복구 시간 추적"
+    ],
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428110",
+      "hash": "ab620c78257d16f5"
+    }
+  },
+  {
+    "id": "NFR-003",
+    "type": "non_functional_requirement",
+    "title": "Security",
+    "description": "보안 요구사항",
+    "category": "Security",
+    "priority": "Critical",
+    "requirements": [
+      "인증/인가 메커니즘 구현",
+      "데이터 암호화 (전송/저장)",
+      "보안 취약점 Zero tolerance",
+      "감사 로그 기록 및 보관"
+    ],
+    "measurement": [
+      "보안 스캔 도구를 통한 취약점 검사",
+      "침투 테스트 수행"
+    ],
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428116",
+      "hash": "0542b90296ab6d16"
+    }
+  },
+  {
+    "id": "NFR-004",
+    "type": "non_functional_requirement",
+    "title": "Scalability",
+    "description": "확장성 요구사항",
+    "category": "Architecture",
+    "priority": "Medium",
+    "requirements": [
+      "수평 확장 지원",
+      "부하 분산 가능",
+      "데이터베이스 샤딩 지원",
+      "마이크로서비스 아키텍처 준비"
+    ],
+    "measurement": [
+      "확장 테스트 수행",
+      "리소스 사용량 모니터링"
+    ],
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428122",
+      "hash": "af5513253c2481d3"
+    }
+  },
+  {
+    "id": "NFR-005",
+    "type": "non_functional_requirement",
+    "title": "Maintainability",
+    "description": "유지보수성 요구사항",
+    "category": "Quality",
+    "priority": "High",
+    "requirements": [
+      "코드 커버리지: 80% 이상",
+      "코드 복잡도: Cyclomatic complexity < 10",
+      "문서화: API 문서 100% 완성",
+      "코딩 표준 준수: Linter 통과"
+    ],
+    "measurement": [
+      "정적 분석 도구 (SonarQube)",
+      "코드 리뷰 프로세스"
+    ],
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428128",
+      "hash": "ddcd323b9e49fa19"
+    }
+  },
+  {
+    "id": "NFR-006",
+    "type": "non_functional_requirement",
+    "title": "Usability",
+    "description": "사용성 요구사항",
+    "category": "User Experience",
+    "priority": "Medium",
+    "requirements": [
+      "직관적인 인터페이스 설계",
+      "에러 메시지 명확성",
+      "응답 피드백 제공",
+      "도움말 및 문서 제공"
+    ],
+    "measurement": [
+      "사용자 피드백 수집",
+      "인터페이스 테스트"
+    ],
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428133",
+      "hash": "129cdd98d49879a9"
+    }
+  },
+  {
+    "id": "NFR-007",
+    "type": "non_functional_requirement",
+    "title": "Portability",
+    "description": "이식성 요구사항",
+    "category": "Deployment",
+    "priority": "Medium",
+    "requirements": [
+      "다중 플랫폼 지원",
+      "컨테이너 환경 지원",
+      "클라우드 네이티브 설계",
+      "표준 프로토콜 사용"
+    ],
+    "measurement": [
+      "다양한 환경에서의 배포 테스트",
+      "호환성 매트릭스 검증"
+    ],
+    "metadata": {
+      "source": "framework_requirements",
+      "last_updated": "2025-09-18T19:26:08.428139",
+      "hash": "e9cad4af6d564777"
+    }
+  },
+  {
+    "id": "contract-schema",
+    "type": "contract",
+    "title": "",
+    "applies_to": {},
+    "preconditions": [],
+    "postconditions": [],
+    "invariants": [],
+    "performance": {},
+    "security": {},
+    "metadata": {
+      "source": "contracts/contract-schema",
+      "last_updated": "2025-09-18T19:26:08.428145",
+      "hash": "21327492f0718d85"
+    }
+  },
+  {
+    "id": "UoW-001-CONTRACT",
+    "type": "contract",
+    "title": "Configuration Loader Contract",
+    "applies_to": {
+      "entity_type": "uow",
+      "entity_name": "UoW-001",
+      "layer": "Foundation"
+    },
+    "preconditions": [
+      {
+        "condition_id": "PRE-001",
+        "description": "All dependent UoWs must be completed",
+        "predicate": "forall dep in ['UoW-001D']: dep.status eq 'completed'",
+        "validation_method": "check",
+        "error_handling": {
+          "error_code": "DEPENDENCIES_NOT_MET",
+          "error_message": "Required dependencies are not completed",
+          "error_type": "PreconditionError"
+        }
+      },
+      {
+        "condition_id": "PRE-002",
+        "description": "Foundation layer services must be available",
+        "predicate": "foundation_services_available eq true",
+        "validation_method": "check"
+      },
+      {
+        "condition_id": "PRE-003",
+        "description": "Precondition from AC-001: 검증할 데이터가 준비된 상태에서",
+        "predicate": "valid(input_data)",
+        "validation_method": "assert"
+      },
+      {
+        "condition_id": "PRE-004",
+        "description": "Precondition from AC-002: 설정 가능한 환경이 준비된 상태에서",
+        "predicate": "defined(configuration) and valid(configuration)",
+        "validation_method": "assert"
+      },
+      {
+        "condition_id": "PRE-005",
+        "description": "Precondition from AC-003: 설정 가능한 환경이 준비된 상태에서",
+        "predicate": "defined(configuration) and valid(configuration)",
+        "validation_method": "assert"
+      },
+      {
+        "condition_id": "PRE-006",
+        "description": "Precondition from AC-004: 시스템이 정상적으로 동작하는 상태에서",
+        "predicate": "operation_completed eq true",
+        "validation_method": "assert"
+      }
+    ],
+    "postconditions": [
+      {
+        "condition_id": "POST-001",
+        "description": "Result from AC-001: 검증 결과가 올바르게 반환되어야 한다",
+        "predicate": "valid(input_data)",
+        "validation_method": "ensure",
+        "success_criteria": [
+          "검증 결과가 올바르게 반환되어야 한다"
+        ]
+      },
+      {
+        "condition_id": "POST-002",
+        "description": "Additional condition from AC-001: 입력값이 유효성 검사를 통과해야 한다",
+        "predicate": "operation_completed eq true",
+        "validation_method": "verify"
+      },
+      {
+        "condition_id": "POST-003",
+        "description": "Result from AC-002: 설정이 올바르게 적용되어야 한다",
+        "predicate": "defined(configuration) and valid(configuration)",
+        "validation_method": "ensure",
+        "success_criteria": [
+          "설정이 올바르게 적용되어야 한다"
+        ]
+      },
+      {
+        "condition_id": "POST-004",
+        "description": "Additional condition from AC-002: 성능 요구사항이 충족되어야 한다",
+        "predicate": "operation_completed eq true",
+        "validation_method": "verify"
+      },
+      {
+        "condition_id": "POST-005",
+        "description": "Additional condition from AC-002: 오류 처리가 적절해야 한다",
+        "predicate": "defined(error_info)",
+        "validation_method": "verify"
+      },
+      {
+        "condition_id": "POST-006",
+        "description": "Result from AC-003: 설정이 올바르게 적용되어야 한다",
+        "predicate": "defined(configuration) and valid(configuration)",
+        "validation_method": "ensure",
+        "success_criteria": [
+          "설정이 올바르게 적용되어야 한다"
+        ]
+      },
+      {
+        "condition_id": "POST-007",
+        "description": "Additional condition from AC-003: 성능 요구사항이 충족되어야 한다",
+        "predicate": "operation_completed eq true",
+        "validation_method": "verify"
+      },
+      {
+        "condition_id": "POST-008",
+        "description": "Additional condition from AC-003: 오류 처리가 적절해야 한다",
+        "predicate": "defined(error_info)",
+        "validation_method": "verify"
+      },
+      {
+        "condition_id": "POST-009",
+        "description": "Result from AC-004: Comprehensive error handling and detailed messages",
+        "predicate": "defined(error_info)",
+        "validation_method": "ensure",
+        "success_criteria": [
+          "Comprehensive error handling and detailed messages"
+        ]
+      },
+      {
+        "condition_id": "POST-010",
+        "description": "Additional condition from AC-004: 결과가 예상된 형태로 반환되어야 한다",
+        "predicate": "operation_completed eq true",
+        "validation_method": "verify"
+      },
+      {
+        "condition_id": "POST-011",
+        "description": "Additional condition from AC-004: 시스템 상태가 일관성을 유지해야 한다",
+        "predicate": "operation_completed eq true",
+        "validation_method": "verify"
+      }
+    ],
+    "invariants": [
+      {
+        "invariant_id": "INV-001",
+        "description": "System configuration remains valid",
+        "predicate": "valid(system_config)",
+        "scope": "global",
+        "monitoring": {
+          "check_frequency": "always",
+          "alert_on_violation": true
+        }
+      },
+      {
+        "invariant_id": "INV-999",
+        "description": "Security context is maintained",
+        "predicate": "security_context_valid eq true",
+        "scope": "transaction",
+        "monitoring": {
+          "check_frequency": "always",
+          "alert_on_violation": true
+        }
+      }
+    ],
+    "performance": {},
+    "security": {},
+    "metadata": {
+      "source": "contracts/uow-001-contract",
+      "last_updated": "2025-09-18T19:26:08.428234",
+      "hash": "2e80e3648d4d2011"
+    }
+  },
+  {
+    "id": "features_iot",
+    "type": "extension",
+    "name": "iot",
+    "category": "features",
+    "description": "",
+    "functional_requirements": {
+      "FR-IOT-001": {
+        "id": "FR-IOT-001",
+        "title": "Device Management",
+        "description": "IoT 디바이스 등록 및 관리",
+        "priority": "High",
+        "category": "IoT",
+        "acceptance_criteria": {
+          "AC-1": "디바이스 등록 및 인증",
+          "AC-2": "디바이스 상태 모니터링",
+          "AC-3": "디바이스 그룹 관리",
+          "AC-4": "펌웨어 업데이트 관리"
+        },
+        "business_value": "IoT 디바이스 통합 관리",
+        "dependencies": [
+          "FR-003",
+          "FR-005"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-IOT-002": {
+        "id": "FR-IOT-002",
+        "title": "Data Collection",
+        "description": "IoT 센서 데이터 수집 및 처리",
+        "priority": "High",
+        "category": "IoT",
+        "acceptance_criteria": {
+          "AC-1": "실시간 센서 데이터 수집",
+          "AC-2": "데이터 전처리 및 검증",
+          "AC-3": "데이터 배치 처리",
+          "AC-4": "데이터 품질 모니터링"
+        },
+        "business_value": "IoT 데이터 활용 기반",
+        "dependencies": [
+          "FR-003",
+          "FR-006"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-IOT-003": {
+        "id": "FR-IOT-003",
+        "title": "Real-time Communication",
+        "description": "IoT 디바이스와 실시간 통신",
+        "priority": "High",
+        "category": "IoT",
+        "acceptance_criteria": {
+          "AC-1": "MQTT/CoAP 프로토콜 지원",
+          "AC-2": "양방향 메시징",
+          "AC-3": "연결 상태 관리",
+          "AC-4": "메시지 큐 관리"
+        },
+        "business_value": "실시간 IoT 제어",
+        "dependencies": [
+          "FR-006",
+          "FR-002"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-IOT-004": {
+        "id": "FR-IOT-004",
+        "title": "Edge Computing",
+        "description": "엣지 디바이스에서 데이터 처리",
+        "priority": "Medium",
+        "category": "IoT",
+        "acceptance_criteria": {
+          "AC-1": "엣지 디바이스 데이터 처리",
+          "AC-2": "로컬 데이터 저장",
+          "AC-3": "네트워크 대역폭 최적화",
+          "AC-4": "엣지-클라우드 동기화"
+        },
+        "business_value": "네트워크 효율성 향상",
+        "dependencies": [
+          "FR-003",
+          "FR-004"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-IOT-005": {
+        "id": "FR-IOT-005",
+        "title": "Alert and Automation",
+        "description": "IoT 데이터 기반 알림 및 자동화",
+        "priority": "Medium",
+        "category": "IoT",
+        "acceptance_criteria": {
+          "AC-1": "임계값 기반 알림",
+          "AC-2": "자동화 규칙 엔진",
+          "AC-3": "다중 채널 알림",
+          "AC-4": "알림 이력 관리"
+        },
+        "business_value": "자동화된 IoT 운영",
+        "dependencies": [
+          "FR-008",
+          "FR-006"
+        ],
+        "estimated_effort": "medium"
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-IOT-001": {
+        "id": "NFR-IOT-001",
+        "title": "IoT Security",
+        "description": "IoT 보안 요구사항",
+        "category": "Security",
+        "requirements": [
+          "디바이스 인증서 기반 보안",
+          "데이터 전송 암호화 (TLS/DTLS)",
+          "디바이스 무결성 검증",
+          "보안 부팅 지원"
+        ],
+        "measurement": [
+          "인증되지 않은 디바이스 접근 차단율 100%",
+          "데이터 전송 암호화율 100%"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-003"
+      },
+      "NFR-IOT-002": {
+        "id": "NFR-IOT-002",
+        "title": "IoT Scalability",
+        "description": "IoT 확장성 요구사항",
+        "category": "Performance",
+        "requirements": [
+          "동시 연결 디바이스 수 100,000대",
+          "초당 메시지 처리량 1,000,000건",
+          "수평 확장 지원",
+          "부하 분산 기능"
+        ],
+        "measurement": [
+          "디바이스 연결 성공률 99.9%",
+          "메시지 처리 지연 < 100ms"
+        ],
+        "priority": "High",
+        "extends": "NFR-004"
+      },
+      "NFR-IOT-003": {
+        "id": "NFR-IOT-003",
+        "title": "IoT Reliability",
+        "description": "IoT 안정성 요구사항",
+        "category": "Reliability",
+        "requirements": [
+          "네트워크 단절 시 로컬 동작",
+          "자동 재연결 기능",
+          "데이터 손실 방지",
+          "장애 복구 시간 < 30초"
+        ],
+        "measurement": [
+          "데이터 손실률 < 0.1%",
+          "시스템 가용성 99.9%"
+        ],
+        "priority": "High",
+        "extends": "NFR-002"
+      }
+    },
+    "units_of_work": {
+      "UoW-IOT-601": {
+        "id": "UoW-IOT-601",
+        "title": "IoT Device Registry",
+        "description": "IoT 디바이스 레지스트리 구현",
+        "category": "IoT",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-101",
+          "UoW-104"
+        ],
+        "related_frs": [
+          "FR-IOT-001"
+        ],
+        "related_nfrs": [
+          "NFR-IOT-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "디바이스 등록 API",
+          "AC-2": "인증서 관리 시스템",
+          "AC-3": "디바이스 상태 추적",
+          "AC-4": "그룹 관리 기능"
+        }
+      },
+      "UoW-IOT-602": {
+        "id": "UoW-IOT-602",
+        "title": "Data Ingestion Pipeline",
+        "description": "IoT 데이터 수집 파이프라인",
+        "category": "IoT",
+        "priority": "High",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-106",
+          "UoW-101"
+        ],
+        "related_frs": [
+          "FR-IOT-002"
+        ],
+        "related_nfrs": [
+          "NFR-IOT-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "실시간 데이터 스트리밍",
+          "AC-2": "데이터 검증 로직",
+          "AC-3": "배치 처리 시스템",
+          "AC-4": "품질 모니터링"
+        }
+      },
+      "UoW-IOT-603": {
+        "id": "UoW-IOT-603",
+        "title": "Message Broker",
+        "description": "IoT 메시지 브로커 구현",
+        "category": "IoT",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-103",
+          "UoW-106"
+        ],
+        "related_frs": [
+          "FR-IOT-003"
+        ],
+        "related_nfrs": [
+          "NFR-IOT-002",
+          "NFR-IOT-003"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "MQTT/CoAP 프로토콜 지원",
+          "AC-2": "메시지 큐 관리",
+          "AC-3": "연결 상태 추적",
+          "AC-4": "부하 분산 기능"
+        }
+      },
+      "UoW-IOT-604": {
+        "id": "UoW-IOT-604",
+        "title": "Edge Computing Module",
+        "description": "엣지 컴퓨팅 모듈 구현",
+        "category": "IoT",
+        "priority": "Medium",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-102",
+          "UoW-106"
+        ],
+        "related_frs": [
+          "FR-IOT-004"
+        ],
+        "related_nfrs": [
+          "NFR-IOT-002",
+          "NFR-IOT-003"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "엣지 데이터 처리 엔진",
+          "AC-2": "로컬 스토리지 관리",
+          "AC-3": "동기화 메커니즘",
+          "AC-4": "대역폭 최적화"
+        }
+      },
+      "UoW-IOT-605": {
+        "id": "UoW-IOT-605",
+        "title": "IoT Automation Engine",
+        "description": "IoT 자동화 엔진 구현",
+        "category": "IoT",
+        "priority": "Medium",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-107",
+          "UoW-106"
+        ],
+        "related_frs": [
+          "FR-IOT-005"
+        ],
+        "related_nfrs": [
+          "NFR-IOT-003"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "규칙 엔진 구현",
+          "AC-2": "알림 시스템",
+          "AC-3": "자동화 워크플로",
+          "AC-4": "이력 관리"
+        }
+      }
+    },
+    "metadata": {
+      "source": "extensions/features/iot",
+      "last_updated": "2025-09-18T19:26:08.428280",
+      "hash": "b8aa77916bfa1c51"
+    }
+  },
+  {
+    "id": "features_ai-ml",
+    "type": "extension",
+    "name": "ai-ml",
+    "category": "features",
+    "description": "AI and Machine Learning integration requirements",
+    "functional_requirements": {
+      "FR-AI-001": {
+        "name": "Model Management",
+        "description": "ML model deployment and lifecycle management",
+        "priority": "High",
+        "dependencies": [
+          "FR-003",
+          "FR-004"
+        ],
+        "business_value": "AI capability foundation",
+        "acceptance_criteria": [
+          "Model versioning and deployment pipeline",
+          "Model A/B testing and experimentation",
+          "Model performance monitoring and alerts",
+          "Model rollback and canary deployment",
+          "Model metadata and lineage tracking"
+        ],
+        "tags": [
+          "ml-ops",
+          "model-management",
+          "deployment"
+        ]
+      },
+      "FR-AI-002": {
+        "name": "Data Pipeline",
+        "description": "Data ingestion and preprocessing for ML workflows",
+        "priority": "High",
+        "dependencies": [
+          "FR-007",
+          "FR-003"
+        ],
+        "business_value": "Quality data for ML training and inference",
+        "acceptance_criteria": [
+          "Real-time and batch data ingestion",
+          "Data validation and quality checks",
+          "Feature engineering and transformation",
+          "Data versioning and lineage tracking",
+          "Privacy-preserving data processing"
+        ],
+        "tags": [
+          "data-pipeline",
+          "etl",
+          "feature-engineering"
+        ]
+      },
+      "FR-AI-003": {
+        "name": "Inference Engine",
+        "description": "Real-time and batch ML model inference",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-AI-001",
+          "FR-002"
+        ],
+        "business_value": "AI-powered application features",
+        "acceptance_criteria": [
+          "Real-time prediction API endpoints",
+          "Batch inference processing",
+          "Model input validation and preprocessing",
+          "Prediction confidence scoring",
+          "Fallback mechanisms for model failures"
+        ],
+        "tags": [
+          "inference",
+          "prediction",
+          "api"
+        ]
+      },
+      "FR-AI-004": {
+        "name": "Training Pipeline",
+        "description": "Automated ML model training and retraining",
+        "priority": "Medium",
+        "dependencies": [
+          "FR-AI-002",
+          "FR-007"
+        ],
+        "business_value": "Continuous model improvement",
+        "acceptance_criteria": [
+          "Automated training job scheduling",
+          "Hyperparameter tuning and optimization",
+          "Model validation and testing",
+          "Training metrics and logging",
+          "Distributed training support"
+        ],
+        "tags": [
+          "training",
+          "automation",
+          "optimization"
+        ]
+      },
+      "FR-AI-005": {
+        "name": "Vector Database Integration",
+        "description": "Vector storage and similarity search for embeddings",
+        "priority": "High",
+        "dependencies": [
+          "FR-003",
+          "FR-004"
+        ],
+        "business_value": "Semantic search and recommendation capabilities",
+        "acceptance_criteria": [
+          "Vector embedding storage and indexing",
+          "Similarity search and nearest neighbor queries",
+          "Vector database scaling and performance",
+          "Embedding model integration",
+          "Metadata filtering with vector search"
+        ],
+        "tags": [
+          "vector-db",
+          "embeddings",
+          "similarity-search"
+        ]
+      },
+      "FR-AI-006": {
+        "name": "LLM Integration",
+        "description": "Large Language Model integration and orchestration",
+        "priority": "Medium",
+        "dependencies": [
+          "FR-010",
+          "FR-006"
+        ],
+        "business_value": "Natural language processing capabilities",
+        "acceptance_criteria": [
+          "LLM API integration (OpenAI, Anthropic, etc.)",
+          "Prompt template management and versioning",
+          "Response caching and rate limiting",
+          "Token usage monitoring and cost optimization",
+          "Content moderation and safety filters"
+        ],
+        "tags": [
+          "llm",
+          "nlp",
+          "prompt-engineering"
+        ]
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-AI-001": {
+        "name": "Inference Latency",
+        "description": "AI model inference must meet real-time requirements",
+        "category": "Performance",
+        "extends": "NFR-001",
+        "measurement_criteria": [
+          "Real-time inference: < 100ms (95th percentile)",
+          "Batch inference throughput: > 1000 predictions/second",
+          "Model loading time: < 10 seconds",
+          "GPU utilization: > 80% for training workloads",
+          "Memory efficiency for large models"
+        ],
+        "testing_method": "Performance benchmarking, load testing",
+        "priority": "High"
+      },
+      "NFR-AI-002": {
+        "name": "Model Accuracy",
+        "description": "AI models must maintain acceptable accuracy levels",
+        "category": "Quality",
+        "measurement_criteria": [
+          "Model accuracy: > 90% for classification tasks",
+          "Model drift detection and alerting",
+          "Performance degradation thresholds",
+          "Continuous validation against test datasets",
+          "Business metric correlation tracking"
+        ],
+        "testing_method": "Model validation, A/B testing, monitoring",
+        "priority": "Critical"
+      },
+      "NFR-AI-003": {
+        "name": "Data Privacy and Ethics",
+        "description": "AI systems must respect privacy and ethical guidelines",
+        "category": "Security",
+        "extends": "NFR-003",
+        "measurement_criteria": [
+          "PII detection and anonymization",
+          "Bias detection and mitigation",
+          "Explainable AI and interpretability",
+          "Data governance and consent management",
+          "Fairness metrics monitoring"
+        ],
+        "testing_method": "Bias testing, privacy audits, ethical review",
+        "priority": "Critical"
+      },
+      "NFR-AI-004": {
+        "name": "Scalability for AI Workloads",
+        "description": "System must scale for varying AI compute demands",
+        "category": "Scalability",
+        "extends": "NFR-004",
+        "measurement_criteria": [
+          "Dynamic GPU/CPU resource allocation",
+          "Auto-scaling based on inference demand",
+          "Support for distributed training",
+          "Model serving load balancing",
+          "Cost optimization for cloud AI services"
+        ],
+        "testing_method": "Load testing, resource monitoring",
+        "priority": "High"
+      }
+    },
+    "units_of_work": {
+      "UoW-AI-401": {
+        "name": "ML Model Management Platform",
+        "goal": "Implement model lifecycle management system",
+        "layer": "Application",
+        "priority": "High",
+        "dependencies": [
+          "UoW-201",
+          "UoW-102"
+        ],
+        "implements": [
+          "FR-AI-001"
+        ],
+        "estimated_effort_hours": "40",
+        "acceptance_criteria": [
+          "Model registry and versioning system",
+          "Model deployment automation",
+          "A/B testing framework for models",
+          "Model performance monitoring dashboard",
+          "Automated rollback capabilities"
+        ],
+        "tags": [
+          "ml-ops",
+          "model-registry",
+          "automation"
+        ]
+      },
+      "UoW-AI-402": {
+        "name": "Data Pipeline Infrastructure",
+        "goal": "Build data processing pipeline for ML workflows",
+        "layer": "Infrastructure",
+        "priority": "High",
+        "dependencies": [
+          "UoW-106",
+          "UoW-107"
+        ],
+        "implements": [
+          "FR-AI-002"
+        ],
+        "estimated_effort_hours": "48",
+        "acceptance_criteria": [
+          "Real-time data streaming pipeline",
+          "Batch data processing jobs",
+          "Data quality validation framework",
+          "Feature store implementation",
+          "Data lineage tracking system"
+        ],
+        "tags": [
+          "data-pipeline",
+          "streaming",
+          "feature-store"
+        ]
+      },
+      "UoW-AI-403": {
+        "name": "Inference API Service",
+        "goal": "Implement real-time model inference endpoints",
+        "layer": "Application",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-AI-401",
+          "UoW-103"
+        ],
+        "implements": [
+          "FR-AI-003",
+          "NFR-AI-001"
+        ],
+        "estimated_effort_hours": "32",
+        "acceptance_criteria": [
+          "RESTful inference API endpoints",
+          "Request validation and preprocessing",
+          "Model serving with load balancing",
+          "Response caching and optimization",
+          "Inference monitoring and logging"
+        ],
+        "tags": [
+          "inference",
+          "api",
+          "serving"
+        ]
+      },
+      "UoW-AI-404": {
+        "name": "Training Automation System",
+        "goal": "Automated ML training and retraining pipeline",
+        "layer": "Application",
+        "priority": "Medium",
+        "dependencies": [
+          "UoW-AI-402",
+          "UoW-106"
+        ],
+        "implements": [
+          "FR-AI-004"
+        ],
+        "estimated_effort_hours": "56",
+        "acceptance_criteria": [
+          "Automated training job orchestration",
+          "Hyperparameter tuning framework",
+          "Model validation and testing pipeline",
+          "Training metrics collection and analysis",
+          "Distributed training support"
+        ],
+        "tags": [
+          "training",
+          "automation",
+          "orchestration"
+        ]
+      },
+      "UoW-AI-405": {
+        "name": "Vector Database Integration",
+        "goal": "Implement vector storage and similarity search",
+        "layer": "Infrastructure",
+        "priority": "High",
+        "dependencies": [
+          "UoW-101",
+          "UoW-102"
+        ],
+        "implements": [
+          "FR-AI-005"
+        ],
+        "estimated_effort_hours": "32",
+        "acceptance_criteria": [
+          "Vector database setup and configuration",
+          "Embedding storage and indexing",
+          "Similarity search API endpoints",
+          "Vector database scaling and optimization",
+          "Integration with existing data systems"
+        ],
+        "tags": [
+          "vector-db",
+          "embeddings",
+          "search"
+        ]
+      },
+      "UoW-AI-406": {
+        "name": "LLM Integration Service",
+        "goal": "Large Language Model integration and management",
+        "layer": "Application",
+        "priority": "Medium",
+        "dependencies": [
+          "UoW-202",
+          "UoW-105"
+        ],
+        "implements": [
+          "FR-AI-006"
+        ],
+        "estimated_effort_hours": "40",
+        "acceptance_criteria": [
+          "LLM provider abstraction layer",
+          "Prompt template management system",
+          "Response caching and optimization",
+          "Usage monitoring and cost tracking",
+          "Content safety and moderation"
+        ],
+        "tags": [
+          "llm",
+          "integration",
+          "prompt-management"
+        ]
+      }
+    },
+    "metadata": {
+      "source": "extensions/features/ai-ml",
+      "last_updated": "2025-09-18T19:26:08.428332",
+      "hash": "613e5a3e9c05a9de"
+    }
+  },
+  {
+    "id": "features_blockchain",
+    "type": "extension",
+    "name": "blockchain",
+    "category": "features",
+    "description": "",
+    "functional_requirements": {
+      "FR-BC-001": {
+        "id": "FR-BC-001",
+        "title": "Smart Contract Integration",
+        "description": "스마트 컨트랙트 연동 및 관리",
+        "priority": "High",
+        "category": "Blockchain",
+        "acceptance_criteria": {
+          "AC-1": "스마트 컨트랙트 배포 및 관리",
+          "AC-2": "컨트랙트 함수 호출",
+          "AC-3": "이벤트 리스닝 및 처리",
+          "AC-4": "가스비 최적화"
+        },
+        "business_value": "탈중앙화 비즈니스 로직",
+        "dependencies": [
+          "FR-003",
+          "FR-002"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-BC-002": {
+        "id": "FR-BC-002",
+        "title": "Wallet Management",
+        "description": "암호화폐 지갑 관리 시스템",
+        "priority": "High",
+        "category": "Blockchain",
+        "acceptance_criteria": {
+          "AC-1": "다중 블록체인 지갑 지원",
+          "AC-2": "개인키 보안 관리",
+          "AC-3": "트랜잭션 서명 기능",
+          "AC-4": "잔액 조회 및 이력"
+        },
+        "business_value": "안전한 암호화폐 관리",
+        "dependencies": [
+          "FR-005",
+          "FR-003"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-BC-003": {
+        "id": "FR-BC-003",
+        "title": "Transaction Processing",
+        "description": "블록체인 트랜잭션 처리",
+        "priority": "Critical",
+        "category": "Blockchain",
+        "acceptance_criteria": {
+          "AC-1": "트랜잭션 생성 및 전송",
+          "AC-2": "트랜잭션 상태 추적",
+          "AC-3": "확인(Confirmation) 대기",
+          "AC-4": "트랜잭션 이력 관리"
+        },
+        "business_value": "블록체인 거래 처리",
+        "dependencies": [
+          "FR-003",
+          "FR-008"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-BC-004": {
+        "id": "FR-BC-004",
+        "title": "NFT Management",
+        "description": "NFT 생성 및 관리 시스템",
+        "priority": "Medium",
+        "category": "Blockchain",
+        "acceptance_criteria": {
+          "AC-1": "NFT 민팅 기능",
+          "AC-2": "메타데이터 관리",
+          "AC-3": "소유권 추적",
+          "AC-4": "거래 기록 관리"
+        },
+        "business_value": "디지털 자산 관리",
+        "dependencies": [
+          "FR-BC-001",
+          "FR-003"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-BC-005": {
+        "id": "FR-BC-005",
+        "title": "DeFi Integration",
+        "description": "탈중앙화 금융 통합",
+        "priority": "Medium",
+        "category": "Blockchain",
+        "acceptance_criteria": {
+          "AC-1": "DEX 연동",
+          "AC-2": "유동성 풀 관리",
+          "AC-3": "수익률 농사(Yield Farming)",
+          "AC-4": "리스크 관리"
+        },
+        "business_value": "DeFi 생태계 참여",
+        "dependencies": [
+          "FR-BC-001",
+          "FR-BC-002"
+        ],
+        "estimated_effort": "high"
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-BC-001": {
+        "id": "NFR-BC-001",
+        "title": "Blockchain Security",
+        "description": "블록체인 보안 요구사항",
+        "category": "Security",
+        "requirements": [
+          "개인키 하드웨어 보안 모듈(HSM) 저장",
+          "다중 서명 지원",
+          "재진입 공격 방어",
+          "스마트 컨트랙트 보안 감사"
+        ],
+        "measurement": [
+          "개인키 유출 사고 0건",
+          "보안 감사 통과율 100%"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-003"
+      },
+      "NFR-BC-002": {
+        "id": "NFR-BC-002",
+        "title": "Blockchain Performance",
+        "description": "블록체인 성능 요구사항",
+        "category": "Performance",
+        "requirements": [
+          "트랜잭션 처리 시간 < 15초",
+          "가스비 최적화율 > 30%",
+          "블록체인 노드 응답 시간 < 2초",
+          "동시 트랜잭션 처리 1000건"
+        ],
+        "measurement": [
+          "트랜잭션 성공률 > 98%",
+          "평균 가스비 사용량 모니터링"
+        ],
+        "priority": "High",
+        "extends": "NFR-001"
+      },
+      "NFR-BC-003": {
+        "id": "NFR-BC-003",
+        "title": "Blockchain Reliability",
+        "description": "블록체인 안정성 요구사항",
+        "category": "Reliability",
+        "requirements": [
+          "다중 노드 연결 지원",
+          "노드 장애 시 자동 전환",
+          "트랜잭션 재시도 메커니즘",
+          "네트워크 분할 대응"
+        ],
+        "measurement": [
+          "노드 가용성 99.9%",
+          "트랜잭션 최종성 보장"
+        ],
+        "priority": "High",
+        "extends": "NFR-002"
+      }
+    },
+    "units_of_work": {
+      "UoW-BC-801": {
+        "id": "UoW-BC-801",
+        "title": "Smart Contract Manager",
+        "description": "스마트 컨트랙트 관리자 구현",
+        "category": "Blockchain",
+        "priority": "High",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-103",
+          "UoW-104"
+        ],
+        "related_frs": [
+          "FR-BC-001"
+        ],
+        "related_nfrs": [
+          "NFR-BC-001",
+          "NFR-BC-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "컨트랙트 ABI 관리",
+          "AC-2": "함수 호출 인터페이스",
+          "AC-3": "이벤트 모니터링",
+          "AC-4": "가스비 추정 기능"
+        }
+      },
+      "UoW-BC-802": {
+        "id": "UoW-BC-802",
+        "title": "Crypto Wallet Service",
+        "description": "암호화폐 지갑 서비스 구현",
+        "category": "Blockchain",
+        "priority": "High",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-105"
+        ],
+        "related_frs": [
+          "FR-BC-002"
+        ],
+        "related_nfrs": [
+          "NFR-BC-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "HD 지갑 생성",
+          "AC-2": "개인키 암호화 저장",
+          "AC-3": "다중 체인 지원",
+          "AC-4": "백업 및 복구 기능"
+        }
+      },
+      "UoW-BC-803": {
+        "id": "UoW-BC-803",
+        "title": "Transaction Handler",
+        "description": "트랜잭션 처리기 구현",
+        "category": "Blockchain",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-106",
+          "UoW-107"
+        ],
+        "related_frs": [
+          "FR-BC-003"
+        ],
+        "related_nfrs": [
+          "NFR-BC-002",
+          "NFR-BC-003"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "트랜잭션 빌더",
+          "AC-2": "상태 추적 시스템",
+          "AC-3": "확인 대기 로직",
+          "AC-4": "재시도 메커니즘"
+        }
+      },
+      "UoW-BC-804": {
+        "id": "UoW-BC-804",
+        "title": "NFT Platform",
+        "description": "NFT 플랫폼 구현",
+        "category": "Blockchain",
+        "priority": "Medium",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-BC-801",
+          "UoW-101"
+        ],
+        "related_frs": [
+          "FR-BC-004"
+        ],
+        "related_nfrs": [
+          "NFR-BC-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "NFT 민팅 인터페이스",
+          "AC-2": "메타데이터 IPFS 저장",
+          "AC-3": "소유권 검증",
+          "AC-4": "거래 내역 추적"
+        }
+      },
+      "UoW-BC-805": {
+        "id": "UoW-BC-805",
+        "title": "DeFi Integration Module",
+        "description": "DeFi 통합 모듈 구현",
+        "category": "Blockchain",
+        "priority": "Medium",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-BC-801",
+          "UoW-BC-802"
+        ],
+        "related_frs": [
+          "FR-BC-005"
+        ],
+        "related_nfrs": [
+          "NFR-BC-001",
+          "NFR-BC-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "DEX 거래 기능",
+          "AC-2": "유동성 제공 관리",
+          "AC-3": "수익률 계산",
+          "AC-4": "리스크 평가 도구"
+        }
+      }
+    },
+    "metadata": {
+      "source": "extensions/features/blockchain",
+      "last_updated": "2025-09-18T19:26:08.428394",
+      "hash": "d909c48bad51d241"
+    }
+  },
+  {
+    "id": "features_streaming",
+    "type": "extension",
+    "name": "streaming",
+    "category": "features",
+    "description": "",
+    "functional_requirements": {
+      "FR-STR-001": {
+        "id": "FR-STR-001",
+        "title": "Stream Processing",
+        "description": "실시간 데이터 스트림 처리",
+        "priority": "High",
+        "category": "Streaming",
+        "acceptance_criteria": {
+          "AC-1": "실시간 이벤트 스트림 처리",
+          "AC-2": "복잡한 이벤트 패턴 매칭",
+          "AC-3": "윈도우 기반 집계 처리",
+          "AC-4": "상태 관리 및 체크포인트"
+        },
+        "business_value": "실시간 데이터 분석 및 대응",
+        "dependencies": [
+          "FR-003",
+          "FR-006"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-STR-002": {
+        "id": "FR-STR-002",
+        "title": "Event Sourcing",
+        "description": "이벤트 소싱 패턴 구현",
+        "priority": "Medium",
+        "category": "Streaming",
+        "acceptance_criteria": {
+          "AC-1": "이벤트 스토어 구현",
+          "AC-2": "이벤트 재생 기능",
+          "AC-3": "스냅샷 생성 및 관리",
+          "AC-4": "이벤트 버전 관리"
+        },
+        "business_value": "감사 추적 및 시점 복구",
+        "dependencies": [
+          "FR-003",
+          "FR-001"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-STR-003": {
+        "id": "FR-STR-003",
+        "title": "Real-time Analytics",
+        "description": "실시간 분석 대시보드",
+        "priority": "Medium",
+        "category": "Streaming",
+        "acceptance_criteria": {
+          "AC-1": "실시간 메트릭 계산",
+          "AC-2": "동적 대시보드 업데이트",
+          "AC-3": "실시간 알림 시스템",
+          "AC-4": "사용자 정의 지표"
+        },
+        "business_value": "실시간 비즈니스 인사이트",
+        "dependencies": [
+          "FR-002",
+          "FR-006"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-STR-004": {
+        "id": "FR-STR-004",
+        "title": "Data Synchronization",
+        "description": "분산 시스템 간 데이터 동기화",
+        "priority": "High",
+        "category": "Streaming",
+        "acceptance_criteria": {
+          "AC-1": "CDC (Change Data Capture) 구현",
+          "AC-2": "충돌 해결 메커니즘",
+          "AC-3": "Eventually Consistent 보장",
+          "AC-4": "동기화 상태 모니터링"
+        },
+        "business_value": "데이터 일관성 보장",
+        "dependencies": [
+          "FR-003",
+          "FR-004"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-STR-005": {
+        "id": "FR-STR-005",
+        "title": "Live Data Feed",
+        "description": "실시간 데이터 피드 제공",
+        "priority": "Medium",
+        "category": "Streaming",
+        "acceptance_criteria": {
+          "AC-1": "WebSocket/SSE 실시간 연결",
+          "AC-2": "구독/발행 모델",
+          "AC-3": "백프레셔 처리",
+          "AC-4": "연결 상태 관리"
+        },
+        "business_value": "실시간 사용자 경험",
+        "dependencies": [
+          "FR-002",
+          "FR-006"
+        ],
+        "estimated_effort": "medium"
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-STR-001": {
+        "id": "NFR-STR-001",
+        "title": "Streaming Performance",
+        "description": "스트리밍 성능 요구사항",
+        "category": "Performance",
+        "requirements": [
+          "이벤트 처리 지연시간 < 10ms",
+          "초당 이벤트 처리량 1,000,000건",
+          "메모리 사용량 최적화",
+          "백프레셔 자동 조절"
+        ],
+        "measurement": [
+          "P99 지연시간 < 50ms",
+          "처리량 목표 달성율 99%"
+        ],
+        "priority": "High",
+        "extends": "NFR-001"
+      },
+      "NFR-STR-002": {
+        "id": "NFR-STR-002",
+        "title": "Streaming Reliability",
+        "description": "스트리밍 안정성 요구사항",
+        "category": "Reliability",
+        "requirements": [
+          "정확히 한 번 처리 보장",
+          "장애 시 자동 복구",
+          "데이터 순서 보장",
+          "체크포인트 기반 복구"
+        ],
+        "measurement": [
+          "데이터 손실률 0%",
+          "복구 시간 < 30초"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-002"
+      },
+      "NFR-STR-003": {
+        "id": "NFR-STR-003",
+        "title": "Streaming Scalability",
+        "description": "스트리밍 확장성 요구사항",
+        "category": "Performance",
+        "requirements": [
+          "동적 파티션 확장",
+          "수평 확장 지원",
+          "부하 분산 자동화",
+          "탄력적 리소스 할당"
+        ],
+        "measurement": [
+          "확장 시간 < 2분",
+          "부하 분산 효율 > 90%"
+        ],
+        "priority": "High",
+        "extends": "NFR-004"
+      }
+    },
+    "units_of_work": {
+      "UoW-STR-701": {
+        "id": "UoW-STR-701",
+        "title": "Stream Processing Engine",
+        "description": "스트림 처리 엔진 구현",
+        "category": "Streaming",
+        "priority": "High",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-106",
+          "UoW-101"
+        ],
+        "related_frs": [
+          "FR-STR-001"
+        ],
+        "related_nfrs": [
+          "NFR-STR-001",
+          "NFR-STR-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "이벤트 스트림 처리 파이프라인",
+          "AC-2": "패턴 매칭 엔진",
+          "AC-3": "윈도우 연산 구현",
+          "AC-4": "상태 관리 시스템"
+        }
+      },
+      "UoW-STR-702": {
+        "id": "UoW-STR-702",
+        "title": "Event Store",
+        "description": "이벤트 스토어 구현",
+        "category": "Streaming",
+        "priority": "Medium",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-101",
+          "UoW-102"
+        ],
+        "related_frs": [
+          "FR-STR-002"
+        ],
+        "related_nfrs": [
+          "NFR-STR-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "이벤트 저장 시스템",
+          "AC-2": "이벤트 재생 기능",
+          "AC-3": "스냅샷 관리",
+          "AC-4": "버전 관리 시스템"
+        }
+      },
+      "UoW-STR-703": {
+        "id": "UoW-STR-703",
+        "title": "Real-time Dashboard",
+        "description": "실시간 대시보드 구현",
+        "category": "Streaming",
+        "priority": "Medium",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-103",
+          "UoW-106"
+        ],
+        "related_frs": [
+          "FR-STR-003"
+        ],
+        "related_nfrs": [
+          "NFR-STR-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "실시간 차트 업데이트",
+          "AC-2": "메트릭 계산 엔진",
+          "AC-3": "알림 시스템",
+          "AC-4": "사용자 정의 위젯"
+        }
+      },
+      "UoW-STR-704": {
+        "id": "UoW-STR-704",
+        "title": "Data Synchronization Service",
+        "description": "데이터 동기화 서비스 구현",
+        "category": "Streaming",
+        "priority": "High",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-101",
+          "UoW-106"
+        ],
+        "related_frs": [
+          "FR-STR-004"
+        ],
+        "related_nfrs": [
+          "NFR-STR-002",
+          "NFR-STR-003"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "CDC 구현",
+          "AC-2": "충돌 해결 로직",
+          "AC-3": "일관성 검증",
+          "AC-4": "동기화 모니터링"
+        }
+      },
+      "UoW-STR-705": {
+        "id": "UoW-STR-705",
+        "title": "Live Data API",
+        "description": "실시간 데이터 API 구현",
+        "category": "Streaming",
+        "priority": "Medium",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-103",
+          "UoW-106"
+        ],
+        "related_frs": [
+          "FR-STR-005"
+        ],
+        "related_nfrs": [
+          "NFR-STR-001",
+          "NFR-STR-003"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "WebSocket 서버 구현",
+          "AC-2": "구독/발행 시스템",
+          "AC-3": "백프레셔 처리",
+          "AC-4": "연결 관리"
+        }
+      }
+    },
+    "metadata": {
+      "source": "extensions/features/streaming",
+      "last_updated": "2025-09-18T19:26:08.428445",
+      "hash": "1afbc74ab9bb05be"
+    }
+  },
+  {
+    "id": "domain_e-commerce",
+    "type": "extension",
+    "name": "e-commerce",
+    "category": "domain",
+    "description": "E-commerce specific requirements for online retail applications",
+    "functional_requirements": {
+      "FR-EC-001": {
+        "name": "Product Catalog Management",
+        "description": "Comprehensive product catalog with categories and inventory",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-003",
+          "FR-004"
+        ],
+        "business_value": "Core e-commerce functionality",
+        "acceptance_criteria": [
+          "Product CRUD operations with categories and attributes",
+          "Inventory tracking with real-time updates",
+          "Product search and filtering capabilities",
+          "Image and media management for products",
+          "Price management with discounts and promotions"
+        ],
+        "tags": [
+          "product",
+          "catalog",
+          "inventory"
+        ]
+      },
+      "FR-EC-002": {
+        "name": "Shopping Cart Management",
+        "description": "User shopping cart functionality with persistence",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-004",
+          "FR-005"
+        ],
+        "business_value": "Essential user experience for purchasing",
+        "acceptance_criteria": [
+          "Add/remove items to/from cart",
+          "Cart persistence across sessions",
+          "Quantity updates and validation",
+          "Cart abandonment recovery",
+          "Guest and authenticated user cart support"
+        ],
+        "tags": [
+          "cart",
+          "session",
+          "user-experience"
+        ]
+      },
+      "FR-EC-003": {
+        "name": "Order Processing",
+        "description": "End-to-end order lifecycle management",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-EC-002",
+          "FR-009"
+        ],
+        "business_value": "Order fulfillment and customer satisfaction",
+        "acceptance_criteria": [
+          "Order creation and validation",
+          "Order status tracking and updates",
+          "Order modification and cancellation",
+          "Order history and retrieval",
+          "Inventory reservation during checkout"
+        ],
+        "tags": [
+          "orders",
+          "lifecycle",
+          "fulfillment"
+        ]
+      },
+      "FR-EC-004": {
+        "name": "Payment Processing",
+        "description": "Secure payment gateway integration and processing",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-010",
+          "FR-005"
+        ],
+        "business_value": "Revenue generation and transaction security",
+        "acceptance_criteria": [
+          "Multiple payment method support (cards, wallets)",
+          "PCI DSS compliant payment processing",
+          "Payment retry and failure handling",
+          "Refund and partial refund processing",
+          "Payment audit trail and reconciliation"
+        ],
+        "tags": [
+          "payment",
+          "security",
+          "pci-dss"
+        ]
+      },
+      "FR-EC-005": {
+        "name": "Customer Management",
+        "description": "Customer profile and relationship management",
+        "priority": "High",
+        "dependencies": [
+          "FR-005",
+          "FR-003"
+        ],
+        "business_value": "Customer retention and personalization",
+        "acceptance_criteria": [
+          "Customer registration and profile management",
+          "Address book and shipping preferences",
+          "Order history and tracking",
+          "Wishlist and favorites functionality",
+          "Customer communication preferences"
+        ],
+        "tags": [
+          "customer",
+          "profile",
+          "crm"
+        ]
+      },
+      "FR-EC-006": {
+        "name": "Notification System",
+        "description": "Order and promotional notification delivery",
+        "priority": "High",
+        "dependencies": [
+          "FR-007",
+          "FR-EC-003"
+        ],
+        "business_value": "Customer engagement and order transparency",
+        "acceptance_criteria": [
+          "Order confirmation and status notifications",
+          "Promotional and marketing notifications",
+          "Multi-channel delivery (email, SMS, push)",
+          "Notification preferences and opt-out",
+          "Delivery confirmation and tracking"
+        ],
+        "tags": [
+          "notifications",
+          "email",
+          "marketing"
+        ]
+      },
+      "FR-EC-007": {
+        "name": "Reviews and Ratings",
+        "description": "Product review and rating system",
+        "priority": "Medium",
+        "dependencies": [
+          "FR-EC-001",
+          "FR-EC-005"
+        ],
+        "business_value": "Social proof and product feedback",
+        "acceptance_criteria": [
+          "Product review creation and moderation",
+          "Star rating system with aggregation",
+          "Review helpfulness voting",
+          "Photo and video review support",
+          "Review response by merchants"
+        ],
+        "tags": [
+          "reviews",
+          "ratings",
+          "social-proof"
+        ]
+      },
+      "FR-EC-008": {
+        "name": "Shipping and Fulfillment",
+        "description": "Shipping calculation and fulfillment tracking",
+        "priority": "High",
+        "dependencies": [
+          "FR-EC-003",
+          "FR-010"
+        ],
+        "business_value": "Accurate shipping and delivery experience",
+        "acceptance_criteria": [
+          "Real-time shipping rate calculation",
+          "Multiple shipping carrier integration",
+          "Tracking number generation and updates",
+          "Delivery confirmation and proof",
+          "Return and exchange processing"
+        ],
+        "tags": [
+          "shipping",
+          "fulfillment",
+          "tracking"
+        ]
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-EC-001": {
+        "name": "High Availability for Peak Traffic",
+        "description": "System must handle peak shopping periods (Black Friday, holidays)",
+        "category": "Performance",
+        "extends": "NFR-001",
+        "measurement_criteria": [
+          "Support 10x normal traffic during peak periods",
+          "Auto-scaling based on traffic patterns",
+          "CDN integration for static content delivery",
+          "Database read replica scaling",
+          "Queue-based order processing for resilience"
+        ],
+        "testing_method": "Peak traffic simulation, stress testing",
+        "priority": "Critical"
+      },
+      "NFR-EC-002": {
+        "name": "PCI DSS Compliance",
+        "description": "Payment Card Industry Data Security Standard compliance",
+        "category": "Security",
+        "extends": "NFR-003",
+        "measurement_criteria": [
+          "PCI DSS Level 1 compliance certification",
+          "Tokenization of payment card data",
+          "Secure payment processing workflows",
+          "Regular security assessments and audits",
+          "Encrypted card data transmission and storage"
+        ],
+        "testing_method": "PCI compliance assessment, security audits",
+        "priority": "Critical"
+      },
+      "NFR-EC-003": {
+        "name": "Search Performance",
+        "description": "Product search must be fast and relevant",
+        "category": "Performance",
+        "extends": "NFR-001",
+        "measurement_criteria": [
+          "Search response time: < 100ms for product queries",
+          "Full-text search with relevance scoring",
+          "Faceted search with filters",
+          "Search analytics and optimization",
+          "Auto-complete and search suggestions"
+        ],
+        "testing_method": "Search performance testing, relevance evaluation",
+        "priority": "High"
+      }
+    },
+    "units_of_work": {
+      "UoW-EC-301": {
+        "name": "Product Catalog Implementation",
+        "goal": "Implement comprehensive product catalog system",
+        "layer": "Application",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-201",
+          "UoW-102"
+        ],
+        "implements": [
+          "FR-EC-001"
+        ],
+        "estimated_effort_hours": "40",
+        "acceptance_criteria": [
+          "Product CRUD API endpoints",
+          "Category hierarchy management",
+          "Inventory tracking system",
+          "Product search and filtering",
+          "Media upload and management"
+        ],
+        "tags": [
+          "product",
+          "catalog",
+          "api"
+        ]
+      },
+      "UoW-EC-302": {
+        "name": "Shopping Cart System",
+        "goal": "Implement persistent shopping cart functionality",
+        "layer": "Application",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-EC-301",
+          "UoW-104"
+        ],
+        "implements": [
+          "FR-EC-002"
+        ],
+        "estimated_effort_hours": "24",
+        "acceptance_criteria": [
+          "Cart management API",
+          "Session-based cart persistence",
+          "Cart validation and business rules",
+          "Guest cart to user cart migration",
+          "Cart abandonment tracking"
+        ],
+        "tags": [
+          "cart",
+          "session",
+          "persistence"
+        ]
+      },
+      "UoW-EC-303": {
+        "name": "Order Processing Engine",
+        "goal": "Implement order lifecycle management",
+        "layer": "Application",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-EC-302",
+          "UoW-106"
+        ],
+        "implements": [
+          "FR-EC-003"
+        ],
+        "estimated_effort_hours": "32",
+        "acceptance_criteria": [
+          "Order creation and validation",
+          "Order state machine implementation",
+          "Inventory reservation system",
+          "Order modification workflows",
+          "Order history and tracking"
+        ],
+        "tags": [
+          "orders",
+          "state-machine",
+          "workflow"
+        ]
+      },
+      "UoW-EC-304": {
+        "name": "Payment Gateway Integration",
+        "goal": "Secure payment processing implementation",
+        "layer": "Application",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-EC-303",
+          "UoW-202"
+        ],
+        "implements": [
+          "FR-EC-004",
+          "NFR-EC-002"
+        ],
+        "estimated_effort_hours": "48",
+        "acceptance_criteria": [
+          "Multiple payment provider integration",
+          "PCI compliant payment flows",
+          "Payment retry and failure handling",
+          "Refund processing system",
+          "Payment audit and reconciliation"
+        ],
+        "tags": [
+          "payment",
+          "pci-dss",
+          "integration"
+        ]
+      },
+      "UoW-EC-305": {
+        "name": "Customer Profile System",
+        "goal": "Customer management and profile functionality",
+        "layer": "Application",
+        "priority": "High",
+        "dependencies": [
+          "UoW-104",
+          "UoW-201"
+        ],
+        "implements": [
+          "FR-EC-005"
+        ],
+        "estimated_effort_hours": "24",
+        "acceptance_criteria": [
+          "Customer registration and authentication",
+          "Profile management API",
+          "Address book functionality",
+          "Order history integration",
+          "Preference management"
+        ],
+        "tags": [
+          "customer",
+          "profile",
+          "management"
+        ]
+      },
+      "UoW-EC-306": {
+        "name": "Notification Infrastructure",
+        "goal": "Multi-channel notification system",
+        "layer": "Application",
+        "priority": "High",
+        "dependencies": [
+          "UoW-106",
+          "UoW-202"
+        ],
+        "implements": [
+          "FR-EC-006"
+        ],
+        "estimated_effort_hours": "32",
+        "acceptance_criteria": [
+          "Email notification templates",
+          "SMS notification integration",
+          "Push notification support",
+          "Notification preference management",
+          "Delivery tracking and analytics"
+        ],
+        "tags": [
+          "notifications",
+          "communication",
+          "templates"
+        ]
+      }
+    },
+    "metadata": {
+      "source": "extensions/domain/e-commerce",
+      "last_updated": "2025-09-18T19:26:08.428492",
+      "hash": "fac191b4837808b2"
+    }
+  },
+  {
+    "id": "domain_healthcare",
+    "type": "extension",
+    "name": "healthcare",
+    "category": "domain",
+    "description": "",
+    "functional_requirements": {
+      "FR-HC-001": {
+        "id": "FR-HC-001",
+        "title": "Patient Record Management",
+        "description": "환자 의료 기록 관리 시스템",
+        "priority": "Critical",
+        "category": "Healthcare",
+        "acceptance_criteria": {
+          "AC-1": "환자 정보 등록 및 수정",
+          "AC-2": "의료 기록 히스토리 추적",
+          "AC-3": "진료과별 기록 분류",
+          "AC-4": "의료진별 접근 권한 관리"
+        },
+        "business_value": "체계적인 환자 관리",
+        "dependencies": [
+          "FR-003",
+          "FR-005"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-HC-002": {
+        "id": "FR-HC-002",
+        "title": "Appointment Scheduling",
+        "description": "진료 예약 관리 시스템",
+        "priority": "High",
+        "category": "Healthcare",
+        "acceptance_criteria": {
+          "AC-1": "온라인 예약 시스템",
+          "AC-2": "의료진 스케줄 관리",
+          "AC-3": "예약 알림 및 리마인더",
+          "AC-4": "대기자 명단 관리"
+        },
+        "business_value": "효율적인 진료 예약 관리",
+        "dependencies": [
+          "FR-002",
+          "FR-008"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-HC-003": {
+        "id": "FR-HC-003",
+        "title": "Medical Imaging System",
+        "description": "의료 영상 관리 및 조회",
+        "priority": "High",
+        "category": "Healthcare",
+        "acceptance_criteria": {
+          "AC-1": "DICOM 이미지 업로드 및 저장",
+          "AC-2": "영상 조회 및 비교 기능",
+          "AC-3": "영상 판독 결과 관리",
+          "AC-4": "영상 아카이빙 시스템"
+        },
+        "business_value": "의료 영상 통합 관리",
+        "dependencies": [
+          "FR-003",
+          "FR-002"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-HC-004": {
+        "id": "FR-HC-004",
+        "title": "Prescription Management",
+        "description": "처방전 관리 시스템",
+        "priority": "High",
+        "category": "Healthcare",
+        "acceptance_criteria": {
+          "AC-1": "전자 처방전 작성",
+          "AC-2": "약물 상호작용 검사",
+          "AC-3": "처방 이력 관리",
+          "AC-4": "약국 연동 시스템"
+        },
+        "business_value": "안전한 처방 관리",
+        "dependencies": [
+          "FR-005",
+          "FR-002"
+        ],
+        "estimated_effort": "medium"
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-HC-001": {
+        "id": "NFR-HC-001",
+        "title": "Medical Data Privacy",
+        "description": "의료 데이터 개인정보 보호",
+        "category": "Security",
+        "requirements": [
+          "PHI 데이터 암호화 (AES-256)",
+          "역할 기반 접근 제어 (RBAC)",
+          "감사 로그 유지 (최소 7년)",
+          "데이터 익명화 기능"
+        ],
+        "measurement": [
+          "HIPAA 준수율 100%",
+          "데이터 유출 사고 0건"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-003"
+      },
+      "NFR-HC-002": {
+        "id": "NFR-HC-002",
+        "title": "Healthcare Availability",
+        "description": "의료 시스템 가용성 요구사항",
+        "category": "Reliability",
+        "requirements": [
+          "시스템 가용성 99.9% 이상",
+          "응급 상황 대응 시간 < 30초",
+          "자동 백업 및 복구"
+        ],
+        "measurement": [
+          "다운타임 월 43분 이하",
+          "백업 성공률 100%"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-002"
+      }
+    },
+    "units_of_work": {
+      "UoW-HC-501": {
+        "id": "UoW-HC-501",
+        "title": "EHR System Implementation",
+        "description": "전자의무기록 시스템 구현",
+        "category": "Healthcare",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-101"
+        ],
+        "related_frs": [
+          "FR-HC-001"
+        ],
+        "related_nfrs": [
+          "NFR-HC-001",
+          "NFR-HC-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "환자 정보 CRUD 기능",
+          "AC-2": "의료 기록 템플릿",
+          "AC-3": "접근 권한 관리",
+          "AC-4": "감사 로그 기록"
+        }
+      },
+      "UoW-HC-502": {
+        "id": "UoW-HC-502",
+        "title": "Appointment System",
+        "description": "예약 관리 시스템 구현",
+        "category": "Healthcare",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-103",
+          "UoW-107"
+        ],
+        "related_frs": [
+          "FR-HC-002"
+        ],
+        "related_nfrs": [
+          "NFR-HC-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "온라인 예약 인터페이스",
+          "AC-2": "스케줄 관리 기능",
+          "AC-3": "알림 시스템",
+          "AC-4": "대기자 관리"
+        }
+      },
+      "UoW-HC-503": {
+        "id": "UoW-HC-503",
+        "title": "Medical Imaging Module",
+        "description": "의료 영상 관리 모듈",
+        "category": "Healthcare",
+        "priority": "High",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-101",
+          "UoW-102"
+        ],
+        "related_frs": [
+          "FR-HC-003"
+        ],
+        "related_nfrs": [
+          "NFR-HC-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "DICOM 파일 처리",
+          "AC-2": "영상 뷰어 구현",
+          "AC-3": "판독 결과 관리",
+          "AC-4": "아카이빙 기능"
+        }
+      },
+      "UoW-HC-504": {
+        "id": "UoW-HC-504",
+        "title": "E-Prescription System",
+        "description": "전자 처방전 시스템",
+        "category": "Healthcare",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-104",
+          "UoW-202"
+        ],
+        "related_frs": [
+          "FR-HC-004"
+        ],
+        "related_nfrs": [
+          "NFR-HC-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "처방전 작성 인터페이스",
+          "AC-2": "약물 데이터베이스 연동",
+          "AC-3": "상호작용 검사",
+          "AC-4": "약국 연동 API"
+        }
+      }
+    },
+    "metadata": {
+      "source": "extensions/domain/healthcare",
+      "last_updated": "2025-09-18T19:26:08.428548",
+      "hash": "3d2ea4d2bf6ee394"
+    }
+  },
+  {
+    "id": "domain_fintech",
+    "type": "extension",
+    "name": "fintech",
+    "category": "domain",
+    "description": "",
+    "functional_requirements": {
+      "FR-FT-001": {
+        "id": "FR-FT-001",
+        "title": "Payment Processing",
+        "description": "다양한 결제 수단 처리 및 관리",
+        "priority": "Critical",
+        "category": "FinTech",
+        "acceptance_criteria": {
+          "AC-1": "신용카드, 직불카드, 디지털 지갑 지원",
+          "AC-2": "PCI DSS 준수 결제 처리",
+          "AC-3": "결제 상태 실시간 추적",
+          "AC-4": "환불 및 부분 환불 처리"
+        },
+        "business_value": "안전하고 다양한 결제 옵션 제공",
+        "dependencies": [
+          "FR-003",
+          "FR-005"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-FT-002": {
+        "id": "FR-FT-002",
+        "title": "Risk Management System",
+        "description": "금융 위험 평가 및 관리",
+        "priority": "Critical",
+        "category": "FinTech",
+        "acceptance_criteria": {
+          "AC-1": "실시간 위험 점수 계산",
+          "AC-2": "이상 거래 탐지 및 차단",
+          "AC-3": "규제 준수 모니터링",
+          "AC-4": "위험 대시보드 및 알림"
+        },
+        "business_value": "금융 리스크 최소화",
+        "dependencies": [
+          "FR-003",
+          "FR-007"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-FT-003": {
+        "id": "FR-FT-003",
+        "title": "KYC/AML Compliance",
+        "description": "고객 신원 확인 및 자금세탁방지",
+        "priority": "Critical",
+        "category": "FinTech",
+        "acceptance_criteria": {
+          "AC-1": "신원 문서 자동 검증",
+          "AC-2": "제재 목록 대조 검사",
+          "AC-3": "의심 거래 보고서 생성",
+          "AC-4": "컴플라이언스 감사 추적"
+        },
+        "business_value": "규제 준수 및 법적 리스크 방지",
+        "dependencies": [
+          "FR-005",
+          "FR-007"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-FT-004": {
+        "id": "FR-FT-004",
+        "title": "Financial Reporting",
+        "description": "금융 보고서 생성 및 관리",
+        "priority": "High",
+        "category": "FinTech",
+        "acceptance_criteria": {
+          "AC-1": "실시간 재무 데이터 집계",
+          "AC-2": "규제 보고서 자동 생성",
+          "AC-3": "다양한 보고서 형식 지원",
+          "AC-4": "보고서 스케줄링 및 배포"
+        },
+        "business_value": "정확한 재무 보고 및 규제 대응",
+        "dependencies": [
+          "FR-003",
+          "FR-007"
+        ],
+        "estimated_effort": "medium"
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-FT-001": {
+        "id": "NFR-FT-001",
+        "title": "Financial Security",
+        "description": "금융 서비스 특화 보안 요구사항",
+        "category": "Security",
+        "requirements": [
+          "결제 데이터 암호화 (AES-256)",
+          "다중 인증 (MFA) 강제",
+          "금융 데이터 접근 로그 유지",
+          "보안 사고 대응 프로세스"
+        ],
+        "measurement": [
+          "보안 감사 통과율 100%",
+          "데이터 유출 사고 0건"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-003"
+      },
+      "NFR-FT-002": {
+        "id": "NFR-FT-002",
+        "title": "Financial Performance",
+        "description": "금융 거래 성능 요구사항",
+        "category": "Performance",
+        "requirements": [
+          "결제 처리 시간 < 2초",
+          "위험 평가 응답 < 500ms",
+          "동시 거래 처리 10,000건/초"
+        ],
+        "measurement": [
+          "99.9% 결제 성공률 유지",
+          "평균 응답 시간 모니터링"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-001"
+      }
+    },
+    "units_of_work": {
+      "UoW-FT-401": {
+        "id": "UoW-FT-401",
+        "title": "Payment Gateway Integration",
+        "description": "결제 게이트웨이 통합 구현",
+        "category": "FinTech",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-101"
+        ],
+        "related_frs": [
+          "FR-FT-001"
+        ],
+        "related_nfrs": [
+          "NFR-FT-001",
+          "NFR-FT-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "다중 결제 수단 지원",
+          "AC-2": "PCI DSS 준수 구현",
+          "AC-3": "결제 상태 추적 시스템",
+          "AC-4": "환불 처리 기능"
+        }
+      },
+      "UoW-FT-402": {
+        "id": "UoW-FT-402",
+        "title": "Risk Engine Implementation",
+        "description": "위험 평가 엔진 구현",
+        "category": "FinTech",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-106",
+          "UoW-201"
+        ],
+        "related_frs": [
+          "FR-FT-002"
+        ],
+        "related_nfrs": [
+          "NFR-FT-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "실시간 위험 점수 계산",
+          "AC-2": "ML 기반 이상 탐지",
+          "AC-3": "위험 규칙 엔진 구현",
+          "AC-4": "위험 대시보드 구축"
+        }
+      },
+      "UoW-FT-403": {
+        "id": "UoW-FT-403",
+        "title": "KYC/AML System",
+        "description": "고객확인 및 자금세탁방지 시스템",
+        "category": "FinTech",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-202"
+        ],
+        "related_frs": [
+          "FR-FT-003"
+        ],
+        "related_nfrs": [
+          "NFR-FT-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "문서 검증 자동화",
+          "AC-2": "제재 목록 검사",
+          "AC-3": "의심 거래 모니터링",
+          "AC-4": "컴플라이언스 보고"
+        }
+      },
+      "UoW-FT-404": {
+        "id": "UoW-FT-404",
+        "title": "Financial Reporting System",
+        "description": "금융 보고서 생성 시스템",
+        "category": "FinTech",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-101",
+          "UoW-106"
+        ],
+        "related_frs": [
+          "FR-FT-004"
+        ],
+        "related_nfrs": [
+          "NFR-FT-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "실시간 데이터 집계",
+          "AC-2": "보고서 템플릿 시스템",
+          "AC-3": "스케줄링 기능",
+          "AC-4": "다양한 출력 형식 지원"
+        }
+      }
+    },
+    "metadata": {
+      "source": "extensions/domain/fintech",
+      "last_updated": "2025-09-18T19:26:08.428585",
+      "hash": "43179f9bb59069d3"
+    }
+  },
+  {
+    "id": "compliance_gdpr",
+    "type": "extension",
+    "name": "gdpr",
+    "category": "compliance",
+    "description": "GDPR compliance requirements for EU data protection",
+    "functional_requirements": {
+      "FR-GDPR-001": {
+        "name": "Data Subject Rights Management",
+        "description": "Implementation of GDPR data subject rights",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-003",
+          "FR-005"
+        ],
+        "business_value": "Legal compliance and user trust",
+        "acceptance_criteria": [
+          "Right to access: Provide user data in structured format",
+          "Right to rectification: Allow data correction",
+          "Right to erasure: Implement data deletion",
+          "Right to portability: Export data in machine-readable format",
+          "Right to restrict processing: Suspend data processing"
+        ],
+        "tags": [
+          "gdpr",
+          "data-rights",
+          "compliance"
+        ]
+      },
+      "FR-GDPR-002": {
+        "name": "Consent Management",
+        "description": "Granular consent collection and management",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-005",
+          "FR-002"
+        ],
+        "business_value": "Legal basis for data processing",
+        "acceptance_criteria": [
+          "Granular consent collection for different purposes",
+          "Consent withdrawal mechanisms",
+          "Consent history and audit trail",
+          "Age verification for minors (13-16)",
+          "Cookie consent management"
+        ],
+        "tags": [
+          "consent",
+          "cookies",
+          "legal-basis"
+        ]
+      },
+      "FR-GDPR-003": {
+        "name": "Data Inventory and Mapping",
+        "description": "Comprehensive data processing inventory",
+        "priority": "High",
+        "dependencies": [
+          "FR-003",
+          "FR-009"
+        ],
+        "business_value": "Compliance monitoring and risk assessment",
+        "acceptance_criteria": [
+          "Personal data inventory and classification",
+          "Data flow mapping and documentation",
+          "Processing purpose documentation",
+          "Data retention policy implementation",
+          "Third-party data sharing tracking"
+        ],
+        "tags": [
+          "data-mapping",
+          "inventory",
+          "documentation"
+        ]
+      },
+      "FR-GDPR-004": {
+        "name": "Privacy by Design Implementation",
+        "description": "Built-in privacy protection mechanisms",
+        "priority": "High",
+        "dependencies": [
+          "FR-006",
+          "FR-003"
+        ],
+        "business_value": "Proactive privacy protection",
+        "acceptance_criteria": [
+          "Data minimization in collection and processing",
+          "Purpose limitation enforcement",
+          "Pseudonymization and anonymization capabilities",
+          "Privacy impact assessment integration",
+          "Default privacy settings (privacy by default)"
+        ],
+        "tags": [
+          "privacy-by-design",
+          "minimization",
+          "pseudonymization"
+        ]
+      },
+      "FR-GDPR-005": {
+        "name": "Breach Detection and Notification",
+        "description": "Data breach detection and notification system",
+        "priority": "Critical",
+        "dependencies": [
+          "FR-008",
+          "FR-006"
+        ],
+        "business_value": "Legal compliance and risk mitigation",
+        "acceptance_criteria": [
+          "Automated breach detection mechanisms",
+          "Breach severity assessment and categorization",
+          "72-hour notification to supervisory authority",
+          "Data subject notification for high-risk breaches",
+          "Breach response workflow and documentation"
+        ],
+        "tags": [
+          "breach-detection",
+          "notification",
+          "incident-response"
+        ]
+      },
+      "FR-GDPR-006": {
+        "name": "Data Protection Officer Support",
+        "description": "Tools and dashboards for DPO activities",
+        "priority": "Medium",
+        "dependencies": [
+          "FR-GDPR-003",
+          "FR-008"
+        ],
+        "business_value": "Compliance oversight and monitoring",
+        "acceptance_criteria": [
+          "Privacy compliance dashboard",
+          "Data processing activity monitoring",
+          "Risk assessment and reporting tools",
+          "Training and awareness tracking",
+          "Vendor and processor management"
+        ],
+        "tags": [
+          "dpo",
+          "dashboard",
+          "oversight"
+        ]
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-GDPR-001": {
+        "name": "Data Subject Request Response Time",
+        "description": "Timely response to data subject rights requests",
+        "category": "Performance",
+        "measurement_criteria": [
+          "Access requests: Response within 30 days",
+          "Erasure requests: Processing within 30 days",
+          "Portability requests: Data export within 30 days",
+          "Automated processing for standard requests",
+          "Complex request escalation procedures"
+        ],
+        "testing_method": "Process testing, response time monitoring",
+        "priority": "Critical"
+      },
+      "NFR-GDPR-002": {
+        "name": "Cross-Border Data Transfer Compliance",
+        "description": "Adequate protection for international data transfers",
+        "category": "Security",
+        "extends": "NFR-003",
+        "measurement_criteria": [
+          "Adequacy decision compliance for data transfers",
+          "Standard contractual clauses implementation",
+          "Binding corporate rules for multinational organizations",
+          "Transfer impact assessments",
+          "Data localization requirements adherence"
+        ],
+        "testing_method": "Transfer assessment, legal review",
+        "priority": "Critical"
+      },
+      "NFR-GDPR-003": {
+        "name": "Privacy by Default Configuration",
+        "description": "Default settings must maximize privacy protection",
+        "category": "Usability",
+        "extends": "NFR-006",
+        "measurement_criteria": [
+          "Minimal data collection by default",
+          "Opt-in rather than opt-out for non-essential processing",
+          "Privacy-friendly default settings",
+          "Clear privacy notice visibility",
+          "Easy privacy control access"
+        ],
+        "testing_method": "User experience testing, privacy audit",
+        "priority": "High"
+      }
+    },
+    "units_of_work": {
+      "UoW-GDPR-501": {
+        "name": "Data Subject Rights API",
+        "goal": "Implement API endpoints for GDPR data subject rights",
+        "layer": "Application",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-201",
+          "UoW-104"
+        ],
+        "implements": [
+          "FR-GDPR-001"
+        ],
+        "estimated_effort_hours": "48",
+        "acceptance_criteria": [
+          "Data access API with authentication",
+          "Data rectification endpoints",
+          "Data erasure with cascading deletion",
+          "Data portability export functionality",
+          "Processing restriction mechanisms"
+        ],
+        "tags": [
+          "api",
+          "data-rights",
+          "endpoints"
+        ]
+      },
+      "UoW-GDPR-502": {
+        "name": "Consent Management System",
+        "goal": "Build comprehensive consent collection and management",
+        "layer": "Application",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-103",
+          "UoW-105"
+        ],
+        "implements": [
+          "FR-GDPR-002"
+        ],
+        "estimated_effort_hours": "40",
+        "acceptance_criteria": [
+          "Consent collection UI components",
+          "Granular consent preferences",
+          "Consent withdrawal mechanisms",
+          "Cookie consent banner and management",
+          "Consent audit trail and history"
+        ],
+        "tags": [
+          "consent",
+          "ui",
+          "cookies"
+        ]
+      },
+      "UoW-GDPR-503": {
+        "name": "Data Inventory System",
+        "goal": "Implement data processing inventory and mapping",
+        "layer": "Application",
+        "priority": "High",
+        "dependencies": [
+          "UoW-107",
+          "UoW-201"
+        ],
+        "implements": [
+          "FR-GDPR-003"
+        ],
+        "estimated_effort_hours": "32",
+        "acceptance_criteria": [
+          "Data classification and tagging system",
+          "Processing activity documentation",
+          "Data flow visualization and mapping",
+          "Retention policy automation",
+          "Third-party sharing tracking"
+        ],
+        "tags": [
+          "inventory",
+          "mapping",
+          "documentation"
+        ]
+      },
+      "UoW-GDPR-504": {
+        "name": "Privacy by Design Framework",
+        "goal": "Implement privacy protection mechanisms",
+        "layer": "Infrastructure",
+        "priority": "High",
+        "dependencies": [
+          "UoW-105",
+          "UoW-102"
+        ],
+        "implements": [
+          "FR-GDPR-004",
+          "NFR-GDPR-003"
+        ],
+        "estimated_effort_hours": "56",
+        "acceptance_criteria": [
+          "Data minimization enforcement",
+          "Pseudonymization utilities",
+          "Purpose limitation controls",
+          "Privacy impact assessment tools",
+          "Default privacy configuration"
+        ],
+        "tags": [
+          "privacy-by-design",
+          "minimization",
+          "controls"
+        ]
+      },
+      "UoW-GDPR-505": {
+        "name": "Breach Detection and Response",
+        "goal": "Automated breach detection and notification system",
+        "layer": "Infrastructure",
+        "priority": "Critical",
+        "dependencies": [
+          "UoW-107",
+          "UoW-106"
+        ],
+        "implements": [
+          "FR-GDPR-005"
+        ],
+        "estimated_effort_hours": "40",
+        "acceptance_criteria": [
+          "Breach detection algorithms and monitoring",
+          "Severity assessment automation",
+          "Notification workflow automation",
+          "Incident response documentation",
+          "Breach register and reporting"
+        ],
+        "tags": [
+          "breach-detection",
+          "automation",
+          "response"
+        ]
+      },
+      "UoW-GDPR-506": {
+        "name": "DPO Dashboard and Tools",
+        "goal": "Data Protection Officer support tools",
+        "layer": "Application",
+        "priority": "Medium",
+        "dependencies": [
+          "UoW-GDPR-503",
+          "UoW-107"
+        ],
+        "implements": [
+          "FR-GDPR-006"
+        ],
+        "estimated_effort_hours": "32",
+        "acceptance_criteria": [
+          "Privacy compliance dashboard",
+          "Risk assessment tools",
+          "Vendor management system",
+          "Training tracking and reporting",
+          "Compliance metrics and KPIs"
+        ],
+        "tags": [
+          "dpo",
+          "dashboard",
+          "tools"
+        ]
+      }
+    },
+    "metadata": {
+      "source": "extensions/compliance/gdpr",
+      "last_updated": "2025-09-18T19:26:08.428624",
+      "hash": "2e2f5c1abadd435f"
+    }
+  },
+  {
+    "id": "compliance_hipaa",
+    "type": "extension",
+    "name": "hipaa",
+    "category": "compliance",
+    "description": "",
+    "functional_requirements": {
+      "FR-HIPAA-001": {
+        "id": "FR-HIPAA-001",
+        "title": "PHI Data Protection",
+        "description": "보호대상 건강정보(PHI) 보호",
+        "priority": "Critical",
+        "category": "HIPAA",
+        "acceptance_criteria": {
+          "AC-1": "PHI 데이터 식별 및 분류",
+          "AC-2": "최소 필요 원칙 적용",
+          "AC-3": "PHI 접근 권한 관리",
+          "AC-4": "PHI 데이터 암호화"
+        },
+        "business_value": "HIPAA 규정 준수",
+        "dependencies": [
+          "FR-003",
+          "FR-005"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-HIPAA-002": {
+        "id": "FR-HIPAA-002",
+        "title": "Audit Controls",
+        "description": "감사 제어 시스템",
+        "priority": "Critical",
+        "category": "HIPAA",
+        "acceptance_criteria": {
+          "AC-1": "모든 PHI 접근 로그 기록",
+          "AC-2": "감사 로그 무결성 보장",
+          "AC-3": "감사 보고서 생성",
+          "AC-4": "로그 보관 정책 준수"
+        },
+        "business_value": "감사 추적성 확보",
+        "dependencies": [
+          "FR-007",
+          "FR-003"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-HIPAA-003": {
+        "id": "FR-HIPAA-003",
+        "title": "Data Integrity",
+        "description": "데이터 무결성 보장",
+        "priority": "Critical",
+        "category": "HIPAA",
+        "acceptance_criteria": {
+          "AC-1": "PHI 데이터 변경 추적",
+          "AC-2": "무단 수정 방지",
+          "AC-3": "버전 관리 시스템",
+          "AC-4": "디지털 서명 지원"
+        },
+        "business_value": "데이터 신뢰성 보장",
+        "dependencies": [
+          "FR-003",
+          "FR-005"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-HIPAA-004": {
+        "id": "FR-HIPAA-004",
+        "title": "Access Control",
+        "description": "접근 제어 시스템",
+        "priority": "Critical",
+        "category": "HIPAA",
+        "acceptance_criteria": {
+          "AC-1": "역할 기반 접근 제어 (RBAC)",
+          "AC-2": "최소 권한 원칙 적용",
+          "AC-3": "접근 권한 주기적 검토",
+          "AC-4": "비정상 접근 탐지"
+        },
+        "business_value": "무단 접근 방지",
+        "dependencies": [
+          "FR-005",
+          "FR-008"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-HIPAA-005": {
+        "id": "FR-HIPAA-005",
+        "title": "Transmission Security",
+        "description": "전송 보안 관리",
+        "priority": "Critical",
+        "category": "HIPAA",
+        "acceptance_criteria": {
+          "AC-1": "네트워크 전송 암호화",
+          "AC-2": "종단 간 암호화",
+          "AC-3": "전송 무결성 검증",
+          "AC-4": "안전한 통신 프로토콜"
+        },
+        "business_value": "전송 중 데이터 보호",
+        "dependencies": [
+          "FR-002",
+          "FR-005"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-HIPAA-006": {
+        "id": "FR-HIPAA-006",
+        "title": "Breach Notification",
+        "description": "데이터 유출 통지 시스템",
+        "priority": "High",
+        "category": "HIPAA",
+        "acceptance_criteria": {
+          "AC-1": "유출 사고 자동 탐지",
+          "AC-2": "60일 내 당국 신고",
+          "AC-3": "환자 통지 프로세스",
+          "AC-4": "사고 대응 계획"
+        },
+        "business_value": "법적 의무 준수",
+        "dependencies": [
+          "FR-008",
+          "FR-002"
+        ],
+        "estimated_effort": "medium"
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-HIPAA-001": {
+        "id": "NFR-HIPAA-001",
+        "title": "HIPAA Security Rule",
+        "description": "HIPAA 보안 규정 준수",
+        "category": "Security",
+        "requirements": [
+          "PHI 암호화 (AES-256 이상)",
+          "접근 제어 및 인증",
+          "감사 제어 시스템",
+          "데이터 무결성 보장",
+          "전송 보안 구현"
+        ],
+        "measurement": [
+          "HIPAA 보안 평가 통과",
+          "PHI 유출 사고 0건"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-003"
+      },
+      "NFR-HIPAA-002": {
+        "id": "NFR-HIPAA-002",
+        "title": "HIPAA Privacy Rule",
+        "description": "HIPAA 개인정보보호 규정 준수",
+        "category": "Privacy",
+        "requirements": [
+          "PHI 사용 제한",
+          "환자 권리 보장",
+          "최소 필요 원칙",
+          "승인된 용도로만 사용"
+        ],
+        "measurement": [
+          "개인정보보호 감사 통과",
+          "환자 권리 요청 처리율 100%"
+        ],
+        "priority": "Critical"
+      },
+      "NFR-HIPAA-003": {
+        "id": "NFR-HIPAA-003",
+        "title": "Business Associate Agreement",
+        "description": "사업 협력업체 계약 준수",
+        "category": "Compliance",
+        "requirements": [
+          "BAA 계약 체결",
+          "하위 계약자 관리",
+          "책임 분담 명시",
+          "감사 권한 보장"
+        ],
+        "measurement": [
+          "모든 업체와 BAA 체결",
+          "연간 컴플라이언스 검토"
+        ],
+        "priority": "High"
+      }
+    },
+    "units_of_work": {
+      "UoW-HIPAA-901": {
+        "id": "UoW-HIPAA-901",
+        "title": "PHI Protection System",
+        "description": "PHI 보호 시스템 구현",
+        "category": "HIPAA",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-105"
+        ],
+        "related_frs": [
+          "FR-HIPAA-001"
+        ],
+        "related_nfrs": [
+          "NFR-HIPAA-001",
+          "NFR-HIPAA-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "PHI 데이터 분류 시스템",
+          "AC-2": "암호화 스토리지",
+          "AC-3": "접근 권한 매트릭스",
+          "AC-4": "데이터 마스킹 기능"
+        }
+      },
+      "UoW-HIPAA-902": {
+        "id": "UoW-HIPAA-902",
+        "title": "HIPAA Audit System",
+        "description": "HIPAA 감사 시스템 구현",
+        "category": "HIPAA",
+        "priority": "Critical",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-107",
+          "UoW-101"
+        ],
+        "related_frs": [
+          "FR-HIPAA-002"
+        ],
+        "related_nfrs": [
+          "NFR-HIPAA-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "포괄적 로깅 시스템",
+          "AC-2": "감사 보고서 생성",
+          "AC-3": "로그 무결성 검증",
+          "AC-4": "장기 보관 시스템"
+        }
+      },
+      "UoW-HIPAA-903": {
+        "id": "UoW-HIPAA-903",
+        "title": "Data Integrity Module",
+        "description": "데이터 무결성 모듈 구현",
+        "category": "HIPAA",
+        "priority": "Critical",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-101",
+          "UoW-104"
+        ],
+        "related_frs": [
+          "FR-HIPAA-003"
+        ],
+        "related_nfrs": [
+          "NFR-HIPAA-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "변경 추적 시스템",
+          "AC-2": "디지털 서명 구현",
+          "AC-3": "버전 관리 시스템",
+          "AC-4": "무결성 검증 도구"
+        }
+      },
+      "UoW-HIPAA-904": {
+        "id": "UoW-HIPAA-904",
+        "title": "HIPAA Access Control",
+        "description": "HIPAA 접근 제어 시스템",
+        "category": "HIPAA",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-107"
+        ],
+        "related_frs": [
+          "FR-HIPAA-004"
+        ],
+        "related_nfrs": [
+          "NFR-HIPAA-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "RBAC 시스템 구현",
+          "AC-2": "접근 권한 관리 도구",
+          "AC-3": "이상 행위 탐지",
+          "AC-4": "권한 검토 자동화"
+        }
+      },
+      "UoW-HIPAA-905": {
+        "id": "UoW-HIPAA-905",
+        "title": "Transmission Security",
+        "description": "전송 보안 시스템 구현",
+        "category": "HIPAA",
+        "priority": "Critical",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-103",
+          "UoW-105"
+        ],
+        "related_frs": [
+          "FR-HIPAA-005"
+        ],
+        "related_nfrs": [
+          "NFR-HIPAA-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "TLS/SSL 구현",
+          "AC-2": "종단간 암호화",
+          "AC-3": "무결성 검증",
+          "AC-4": "안전한 API 엔드포인트"
+        }
+      },
+      "UoW-HIPAA-906": {
+        "id": "UoW-HIPAA-906",
+        "title": "Breach Response System",
+        "description": "데이터 유출 대응 시스템",
+        "category": "HIPAA",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-107",
+          "UoW-103"
+        ],
+        "related_frs": [
+          "FR-HIPAA-006"
+        ],
+        "related_nfrs": [
+          "NFR-HIPAA-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "유출 탐지 시스템",
+          "AC-2": "자동 통지 시스템",
+          "AC-3": "사고 대응 워크플로",
+          "AC-4": "복구 계획 실행"
+        }
+      }
+    },
+    "metadata": {
+      "source": "extensions/compliance/hipaa",
+      "last_updated": "2025-09-18T19:26:08.428689",
+      "hash": "809a2fa974d2fc27"
+    }
+  },
+  {
+    "id": "compliance_pci-dss",
+    "type": "extension",
+    "name": "pci-dss",
+    "category": "compliance",
+    "description": "",
+    "functional_requirements": {
+      "FR-PCI-001": {
+        "id": "FR-PCI-001",
+        "title": "Cardholder Data Protection",
+        "description": "카드소지자 데이터 보호",
+        "priority": "Critical",
+        "category": "PCI-DSS",
+        "acceptance_criteria": {
+          "AC-1": "PAN (Primary Account Number) 보호",
+          "AC-2": "민감한 인증 데이터 비저장",
+          "AC-3": "카드 데이터 암호화",
+          "AC-4": "데이터 보관 정책 준수"
+        },
+        "business_value": "결제 보안 준수",
+        "dependencies": [
+          "FR-003",
+          "FR-005"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-PCI-002": {
+        "id": "FR-PCI-002",
+        "title": "Secure Network Architecture",
+        "description": "보안 네트워크 아키텍처",
+        "priority": "Critical",
+        "category": "PCI-DSS",
+        "acceptance_criteria": {
+          "AC-1": "방화벽 및 라우터 구성",
+          "AC-2": "CDE (Cardholder Data Environment) 분리",
+          "AC-3": "네트워크 접근 제어",
+          "AC-4": "정기적 보안 스캔"
+        },
+        "business_value": "네트워크 보안 강화",
+        "dependencies": [
+          "FR-002",
+          "FR-008"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-PCI-003": {
+        "id": "FR-PCI-003",
+        "title": "Vulnerability Management",
+        "description": "취약점 관리 시스템",
+        "priority": "High",
+        "category": "PCI-DSS",
+        "acceptance_criteria": {
+          "AC-1": "정기적 취약점 스캔",
+          "AC-2": "보안 패치 관리",
+          "AC-3": "안티바이러스 솔루션",
+          "AC-4": "보안 개발 생명주기"
+        },
+        "business_value": "시스템 취약점 제거",
+        "dependencies": [
+          "FR-001",
+          "FR-008"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-PCI-004": {
+        "id": "FR-PCI-004",
+        "title": "Strong Access Control",
+        "description": "강력한 접근 제어",
+        "priority": "Critical",
+        "category": "PCI-DSS",
+        "acceptance_criteria": {
+          "AC-1": "고유한 사용자 ID 할당",
+          "AC-2": "다중 인증 (MFA) 구현",
+          "AC-3": "물리적 접근 제어",
+          "AC-4": "접근 권한 정기 검토"
+        },
+        "business_value": "무단 접근 방지",
+        "dependencies": [
+          "FR-005",
+          "FR-008"
+        ],
+        "estimated_effort": "high"
+      },
+      "FR-PCI-005": {
+        "id": "FR-PCI-005",
+        "title": "Network Activity Monitoring",
+        "description": "네트워크 활동 모니터링",
+        "priority": "High",
+        "category": "PCI-DSS",
+        "acceptance_criteria": {
+          "AC-1": "모든 네트워크 접근 추적",
+          "AC-2": "로그 중앙 집중화",
+          "AC-3": "실시간 보안 모니터링",
+          "AC-4": "사고 대응 프로세스"
+        },
+        "business_value": "보안 사고 조기 탐지",
+        "dependencies": [
+          "FR-007",
+          "FR-008"
+        ],
+        "estimated_effort": "medium"
+      },
+      "FR-PCI-006": {
+        "id": "FR-PCI-006",
+        "title": "Information Security Policy",
+        "description": "정보 보안 정책 관리",
+        "priority": "High",
+        "category": "PCI-DSS",
+        "acceptance_criteria": {
+          "AC-1": "보안 정책 문서화",
+          "AC-2": "직원 보안 교육",
+          "AC-3": "정책 준수 모니터링",
+          "AC-4": "정기적 정책 검토"
+        },
+        "business_value": "조직적 보안 관리",
+        "dependencies": [
+          "FR-001",
+          "FR-008"
+        ],
+        "estimated_effort": "medium"
+      }
+    },
+    "non_functional_requirements": {
+      "NFR-PCI-001": {
+        "id": "NFR-PCI-001",
+        "title": "PCI DSS Security Standards",
+        "description": "PCI DSS 보안 표준 준수",
+        "category": "Security",
+        "requirements": [
+          "카드 데이터 암호화 (AES-256)",
+          "키 관리 시스템 (HSM)",
+          "강력한 암호 정책",
+          "보안 키 순환"
+        ],
+        "measurement": [
+          "PCI DSS SAQ 준수율 100%",
+          "연간 보안 평가 통과"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-003"
+      },
+      "NFR-PCI-002": {
+        "id": "NFR-PCI-002",
+        "title": "PCI DSS Network Security",
+        "description": "PCI DSS 네트워크 보안 요구사항",
+        "category": "Security",
+        "requirements": [
+          "CDE 네트워크 분리",
+          "방화벽 규칙 최소화",
+          "침입 탐지 시스템 (IDS)",
+          "정기적 침투 테스트"
+        ],
+        "measurement": [
+          "네트워크 보안 스캔 통과",
+          "침투 테스트 통과"
+        ],
+        "priority": "Critical",
+        "extends": "NFR-003"
+      },
+      "NFR-PCI-003": {
+        "id": "NFR-PCI-003",
+        "title": "PCI DSS Audit Requirements",
+        "description": "PCI DSS 감사 요구사항",
+        "category": "Compliance",
+        "requirements": [
+          "QSA 감사 준비",
+          "증거 자료 수집",
+          "ROC (Report on Compliance) 작성",
+          "연간 재평가"
+        ],
+        "measurement": [
+          "PCI DSS 인증 유지",
+          "감사 지적 사항 0건"
+        ],
+        "priority": "High"
+      }
+    },
+    "units_of_work": {
+      "UoW-PCI-1001": {
+        "id": "UoW-PCI-1001",
+        "title": "Card Data Protection System",
+        "description": "카드 데이터 보호 시스템 구현",
+        "category": "PCI-DSS",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-105"
+        ],
+        "related_frs": [
+          "FR-PCI-001"
+        ],
+        "related_nfrs": [
+          "NFR-PCI-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "PAN 토큰화 시스템",
+          "AC-2": "카드 데이터 암호화",
+          "AC-3": "키 관리 시스템",
+          "AC-4": "데이터 보관 정책 구현"
+        }
+      },
+      "UoW-PCI-1002": {
+        "id": "UoW-PCI-1002",
+        "title": "PCI Network Security",
+        "description": "PCI 네트워크 보안 구현",
+        "category": "PCI-DSS",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-103",
+          "UoW-107"
+        ],
+        "related_frs": [
+          "FR-PCI-002"
+        ],
+        "related_nfrs": [
+          "NFR-PCI-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "방화벽 규칙 구성",
+          "AC-2": "CDE 네트워크 분리",
+          "AC-3": "침입 탐지 시스템",
+          "AC-4": "네트워크 모니터링"
+        }
+      },
+      "UoW-PCI-1003": {
+        "id": "UoW-PCI-1003",
+        "title": "Vulnerability Management",
+        "description": "취약점 관리 시스템 구현",
+        "category": "PCI-DSS",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-001D",
+          "UoW-107"
+        ],
+        "related_frs": [
+          "FR-PCI-003"
+        ],
+        "related_nfrs": [
+          "NFR-PCI-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "취약점 스캔 자동화",
+          "AC-2": "패치 관리 시스템",
+          "AC-3": "보안 개발 도구",
+          "AC-4": "안티바이러스 통합"
+        }
+      },
+      "UoW-PCI-1004": {
+        "id": "UoW-PCI-1004",
+        "title": "PCI Access Control System",
+        "description": "PCI 접근 제어 시스템 구현",
+        "category": "PCI-DSS",
+        "priority": "Critical",
+        "estimated_effort": "high",
+        "dependencies": [
+          "UoW-104",
+          "UoW-107"
+        ],
+        "related_frs": [
+          "FR-PCI-004"
+        ],
+        "related_nfrs": [
+          "NFR-PCI-001"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "고유 사용자 ID 시스템",
+          "AC-2": "MFA 인증 구현",
+          "AC-3": "역할 기반 권한",
+          "AC-4": "접근 권한 관리 도구"
+        }
+      },
+      "UoW-PCI-1005": {
+        "id": "UoW-PCI-1005",
+        "title": "PCI Monitoring System",
+        "description": "PCI 모니터링 시스템 구현",
+        "category": "PCI-DSS",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-107",
+          "UoW-101"
+        ],
+        "related_frs": [
+          "FR-PCI-005"
+        ],
+        "related_nfrs": [
+          "NFR-PCI-002"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "로그 중앙 집중화",
+          "AC-2": "실시간 알림 시스템",
+          "AC-3": "보안 사고 대응",
+          "AC-4": "감사 보고서 생성"
+        }
+      },
+      "UoW-PCI-1006": {
+        "id": "UoW-PCI-1006",
+        "title": "PCI Policy Management",
+        "description": "PCI 정책 관리 시스템",
+        "category": "PCI-DSS",
+        "priority": "High",
+        "estimated_effort": "medium",
+        "dependencies": [
+          "UoW-000",
+          "UoW-107"
+        ],
+        "related_frs": [
+          "FR-PCI-006"
+        ],
+        "related_nfrs": [
+          "NFR-PCI-003"
+        ],
+        "acceptance_criteria": {
+          "AC-1": "정책 문서 관리",
+          "AC-2": "교육 관리 시스템",
+          "AC-3": "준수 모니터링",
+          "AC-4": "정책 업데이트 추적"
+        }
+      }
+    },
+    "metadata": {
+      "source": "extensions/compliance/pci-dss",
+      "last_updated": "2025-09-18T19:26:08.428744",
+      "hash": "768f2cddd0c10cbd"
+    }
+  }
+]

@@ -1,0 +1,143 @@
+# Base Functional Requirements (FR)
+# These are the foundational requirements common to most software projects
+
+functional_requirements:
+  FR-001:
+    name: "Configuration Management"
+    description: "System must support structured configuration with schema validation"
+    priority: "Critical"
+    business_value: "Secure, maintainable configuration management"
+    acceptance_criteria:
+      - "Load configuration from structured files with schema validation"
+      - "Support environment-specific configurations (dev, test, prod)"
+      - "Hot-reload capability without service restart"
+      - "No environment variables for configuration (security requirement)"
+    tags: ["foundation", "security", "config"]
+
+  FR-002:
+    name: "HTTP API Server"
+    description: "RESTful API server with security and rate limiting"
+    priority: "Critical"
+    dependencies: ["FR-001"]
+    business_value: "Secure, scalable API foundation"
+    acceptance_criteria:
+      - "HTTP server with configurable port and middleware"
+      - "Rate limiting and security headers"
+      - "Request/response logging and metrics"
+      - "Graceful shutdown handling"
+    tags: ["api", "security", "performance"]
+
+  FR-003:
+    name: "Data Persistence"
+    description: "Reliable data storage with transaction support"
+    priority: "High"
+    dependencies: ["FR-001"]
+    business_value: "Consistent, reliable data management"
+    acceptance_criteria:
+      - "Database connection pooling and health monitoring"
+      - "Transaction management with proper error handling"
+      - "Data migration support with versioning"
+      - "Backup and recovery procedures"
+    tags: ["data", "persistence", "reliability"]
+
+  FR-004:
+    name: "Caching Layer"
+    description: "High-performance caching for improved response times"
+    priority: "High"
+    dependencies: ["FR-001"]
+    business_value: "Performance optimization and scalability"
+    acceptance_criteria:
+      - "Cache integration with connection pooling"
+      - "Cache invalidation strategies and TTL management"
+      - "Cache hit/miss metrics and monitoring"
+      - "Fallback mechanisms for cache failures"
+    tags: ["cache", "performance", "scalability"]
+
+  FR-005:
+    name: "Authentication & Authorization"
+    description: "Secure user authentication and role-based access control"
+    priority: "Critical"
+    dependencies: ["FR-002"]
+    business_value: "Security and access control"
+    acceptance_criteria:
+      - "Token-based authentication (JWT or similar)"
+      - "Role-based authorization and permissions"
+      - "Session management and security"
+      - "Audit logging for access attempts"
+    tags: ["security", "auth", "compliance"]
+
+  FR-006:
+    name: "Error Handling"
+    description: "Comprehensive error handling and recovery mechanisms"
+    priority: "Critical"
+    dependencies: ["FR-002"]
+    business_value: "System reliability and user experience"
+    acceptance_criteria:
+      - "Structured error responses with correlation IDs"
+      - "Error categorization and appropriate HTTP status codes"
+      - "Retry mechanisms for transient failures"
+      - "Circuit breaker patterns for external dependencies"
+    tags: ["error-handling", "reliability", "monitoring"]
+
+  FR-007:
+    name: "Async Processing"
+    description: "Asynchronous task processing and background jobs"
+    priority: "High"
+    dependencies: ["FR-004"]
+    business_value: "Improved performance and scalability"
+    acceptance_criteria:
+      - "Queue-based task processing"
+      - "Job retry and dead letter queue handling"
+      - "Task status tracking and monitoring"
+      - "Priority-based task scheduling"
+    tags: ["async", "performance", "queues"]
+
+  FR-008:
+    name: "OpenTelemetry Integration"
+    description: "Observability through OpenTelemetry instrumentation"
+    priority: "High"
+    dependencies: ["FR-002"]
+    business_value: "System observability and debugging"
+    acceptance_criteria:
+      - "Distributed tracing implementation"
+      - "Metrics collection and export"
+      - "Correlation IDs across service boundaries"
+      - "Performance monitoring and alerting"
+    tags: ["observability", "monitoring", "otel"]
+
+  FR-009:
+    name: "Business Logic Processing"
+    description: "Core business logic with validation and rules"
+    priority: "Critical"
+    dependencies: ["FR-003", "FR-004"]
+    business_value: "Core application functionality"
+    acceptance_criteria:
+      - "Input validation and sanitization"
+      - "Business rule enforcement and validation"
+      - "Comprehensive error handling and recovery"
+      - "Audit trail for business operations"
+    tags: ["business-logic", "validation", "audit"]
+
+  FR-010:
+    name: "External API Integration"
+    description: "Integration with third-party services and APIs"
+    priority: "High"
+    dependencies: ["FR-006", "FR-008"]
+    business_value: "External system connectivity"
+    acceptance_criteria:
+      - "HTTP client with retry logic and circuit breaker"
+      - "API response caching and validation"
+      - "Rate limiting for external calls"
+      - "Error handling and fallback strategies"
+    tags: ["integration", "external-api", "resilience"]
+
+# Metadata
+metadata:
+  version: "1.0.0"
+  created: "2025-01-18"
+  description: "Base functional requirements for WAVIS projects"
+  total_requirements: 10
+  coverage:
+    foundation: ["FR-001", "FR-002", "FR-003"]
+    infrastructure: ["FR-004", "FR-005", "FR-006"]
+    application: ["FR-007", "FR-008", "FR-009", "FR-010"]

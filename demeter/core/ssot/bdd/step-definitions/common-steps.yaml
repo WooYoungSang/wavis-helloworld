@@ -1,0 +1,247 @@
+# Common Step Definitions
+# Reusable Gherkin steps for consistent scenario writing
+
+step_definitions:
+  # System Setup and Initialization
+  given_steps:
+    system_init:
+      - pattern: "the system is properly initialized"
+        description: "System startup and basic configuration loading"
+        implementation_hint: "Initialize application context, load base configuration"
+
+      - pattern: "all necessary configurations are loaded"
+        description: "All configuration files are read and validated"
+        implementation_hint: "Validate config schema, set defaults, check required fields"
+
+      - pattern: "the database is accessible"
+        description: "Database connection is established and healthy"
+        implementation_hint: "Test database connectivity, run health check query"
+
+      - pattern: "authentication services are available"
+        description: "Authentication system is ready to validate requests"
+        implementation_hint: "Check auth service health, validate token generation"
+
+    data_setup:
+      - pattern: "a valid {entity} configuration"
+        description: "A properly configured entity with valid parameters"
+        implementation_hint: "Create test configuration for the specified entity"
+        parameters: ["entity"]
+
+      - pattern: "a {entity} with {state} status"
+        description: "An entity in a specific state"
+        implementation_hint: "Create or mock entity in the specified state"
+        parameters: ["entity", "state"]
+
+      - pattern: "the {entity} {field} is set to {value}"
+        description: "Specific field value for an entity"
+        implementation_hint: "Set the specified field to the given value"
+        parameters: ["entity", "field", "value"]
+
+    user_context:
+      - pattern: "a user with {role} role"
+        description: "User with specific role and permissions"
+        implementation_hint: "Create or mock user with specified role"
+        parameters: ["role"]
+
+      - pattern: "an authenticated user"
+        description: "User with valid authentication token"
+        implementation_hint: "Generate valid JWT/session token"
+
+      - pattern: "an unauthenticated user"
+        description: "User without valid authentication"
+        implementation_hint: "Clear authentication context"
+
+  # Action Steps (When)
+  when_steps:
+    api_calls:
+      - pattern: "a {method} request is made to {endpoint}"
+        description: "HTTP request to API endpoint"
+        implementation_hint: "Execute HTTP request with specified method and endpoint"
+        parameters: ["method", "endpoint"]
+
+      - pattern: "a {method} request is made to {endpoint} with payload:"
+        description: "HTTP request with request body"
+        implementation_hint: "Execute HTTP request with JSON payload"
+        parameters: ["method", "endpoint"]
+
+      - pattern: "the {endpoint} endpoint is called with {parameter} = {value}"
+        description: "API call with specific parameter"
+        implementation_hint: "Make API call with query parameter or path variable"
+        parameters: ["endpoint", "parameter", "value"]
+
+    system_actions:
+      - pattern: "the application starts"
+        description: "Application initialization process"
+        implementation_hint: "Trigger application startup sequence"
+
+      - pattern: "the application is restarted"
+        description: "Application restart process"
+        implementation_hint: "Stop and start application, verify clean restart"
+
+      - pattern: "the {service} service is called"
+        description: "Internal service method invocation"
+        implementation_hint: "Call specified service method"
+        parameters: ["service"]
+
+    data_actions:
+      - pattern: "the {entity} is created"
+        description: "Entity creation operation"
+        implementation_hint: "Execute create operation for entity"
+        parameters: ["entity"]
+
+      - pattern: "the {entity} is updated with {field} = {value}"
+        description: "Entity update operation"
+        implementation_hint: "Update entity field with new value"
+        parameters: ["entity", "field", "value"]
+
+      - pattern: "the {entity} is deleted"
+        description: "Entity deletion operation"
+        implementation_hint: "Execute delete operation for entity"
+        parameters: ["entity"]
+
+  # Verification Steps (Then)
+  then_steps:
+    response_validation:
+      - pattern: "the response status should be {status}"
+        description: "HTTP response status code validation"
+        implementation_hint: "Assert response status code equals expected value"
+        parameters: ["status"]
+
+      - pattern: "the response should contain {field}"
+        description: "Response field presence validation"
+        implementation_hint: "Assert field exists in response body"
+        parameters: ["field"]
+
+      - pattern: "the response {field} should be {value}"
+        description: "Response field value validation"
+        implementation_hint: "Assert field value matches expected value"
+        parameters: ["field", "value"]
+
+      - pattern: "the response should be valid JSON"
+        description: "Response format validation"
+        implementation_hint: "Parse and validate JSON structure"
+
+    system_state:
+      - pattern: "the {entity} should be {state}"
+        description: "Entity state validation"
+        implementation_hint: "Verify entity is in expected state"
+        parameters: ["entity", "state"]
+
+      - pattern: "the {entity} should exist"
+        description: "Entity existence validation"
+        implementation_hint: "Verify entity exists in system"
+        parameters: ["entity"]
+
+      - pattern: "the {entity} should not exist"
+        description: "Entity non-existence validation"
+        implementation_hint: "Verify entity is not present in system"
+        parameters: ["entity"]
+
+    performance_validation:
+      - pattern: "the response time should be less than {duration}"
+        description: "Response time performance check"
+        implementation_hint: "Measure and assert response time within limit"
+        parameters: ["duration"]
+
+      - pattern: "the response time should be within acceptable limits"
+        description: "General performance validation"
+        implementation_hint: "Check response time against NFR thresholds"
+
+      - pattern: "system resources should be efficiently utilized"
+        description: "Resource usage validation"
+        implementation_hint: "Monitor CPU, memory usage within normal ranges"
+
+    error_handling:
+      - pattern: "an error should be returned"
+        description: "Error response validation"
+        implementation_hint: "Assert error response is returned"
+
+      - pattern: "the error message should contain {text}"
+        description: "Error message content validation"
+        implementation_hint: "Assert error message contains expected text"
+        parameters: ["text"]
+
+      - pattern: "the error should be logged appropriately"
+        description: "Error logging validation"
+        implementation_hint: "Verify error is logged with proper level and context"
+
+      - pattern: "the system should remain stable"
+        description: "System stability validation"
+        implementation_hint: "Verify system continues to function after error"
+
+# Step Parameter Types
+parameter_types:
+  entity:
+    description: "Business entity names"
+    examples: ["user", "product", "order", "payment", "configuration"]
+
+  state:
+    description: "Entity or system states"
+    examples: ["active", "inactive", "pending", "completed", "failed", "processing"]
+
+  method:
+    description: "HTTP methods"
+    examples: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+
+  status:
+    description: "HTTP status codes"
+    examples: ["200", "201", "400", "401", "404", "500"]
+
+  role:
+    description: "User roles"
+    examples: ["admin", "user", "guest", "moderator", "manager"]
+
+  duration:
+    description: "Time durations"
+    examples: ["100ms", "1s", "5s", "30s"]
+
+# Domain-Specific Step Categories
+domain_steps:
+  e_commerce:
+    - "a product with price {price} is added to catalog"
+    - "the shopping cart contains {count} items"
+    - "the payment is processed successfully"
+    - "the order status should be {status}"
+
+  fintech:
+    - "a transaction of {amount} is initiated"
+    - "the risk score should be calculated"
+    - "KYC verification should be completed"
+    - "the transaction should be approved"
+
+  healthcare:
+    - "a patient record is created"
+    - "the medical device data is received"
+    - "PHI data should be encrypted"
+    - "HIPAA compliance should be verified"
+
+  iot:
+    - "a device with ID {device_id} is registered"
+    - "sensor data is received from device"
+    - "the device status should be {status}"
+    - "telemetry data should be processed"
+
+# Usage Guidelines
+usage_guidelines:
+  step_naming:
+    - "Use present tense for actions (When steps)"
+    - "Use 'should' for assertions (Then steps)"
+    - "Use specific entities and values when possible"
+    - "Keep steps readable and non-technical"
+
+  parameter_usage:
+    - "Use {parameter} for dynamic values"
+    - "Prefer meaningful parameter names"
+    - "Document parameter types and examples"
+
+  scenario_structure:
+    - "Start with Given (context setup)"
+    - "Follow with When (action trigger)"
+    - "End with Then (outcome verification)"
+    - "Use And for multiple conditions of same type"
+
+  maintenance:
+    - "Update step definitions when new patterns emerge"
+    - "Remove unused steps regularly"
+    - "Keep implementations simple and focused"
+    - "Document complex step logic"

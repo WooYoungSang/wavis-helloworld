@@ -1,0 +1,695 @@
+# 🔧 Specification-to-Code Generator Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Specification File**: {{SPECIFICATION_FILE}}
+- **Target Technology**: {{TARGET_TECHNOLOGY}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Framework**: Demeter WAVIS v1.3 + Spec-Kit Intent-to-Code Automation
+
+## 🎯 Specification-to-Code Philosophy
+
+This template implements the GitHub Spec-Kit approach to automated code generation from specifications, where specifications serve as the primary source of truth for implementation. The system transforms structured specifications directly into working code while ensuring constitutional compliance throughout.
+
+### Intent-to-Code Principles
+- **Specifications are executable blueprints, not documentation**
+- **Generated code must fully satisfy specification requirements**
+- **Constitutional compliance is embedded in code generation process**
+- **Human review focuses on business logic validation, not boilerplate**
+- **Iterative refinement based on specification updates**
+
+## 🔧 Specification-to-Code Generation
+
+### 1. Code Generation Header
+```yaml
+spec_to_code_generation:
+  spec_id: "{{SPEC_ID}}"
+  project: "{{PROJECT_NAME}}"
+  version: "{{GENERATION_VERSION}}"
+  created_date: "{{CURRENT_DATE}}"
+  methodology: "GitHub Spec-Kit Intent-to-Code Automation"
+
+  generation_capabilities:
+    cli_interface_generation: true
+    service_layer_generation: true
+    data_layer_generation: true
+    test_suite_generation: true
+    constitutional_compliance: true
+    integration_scaffolding: true
+
+  constitutional_compliance:
+    constitution_file: "{{CONSTITUTION_FILE}}"
+    enforcement_level: "mandatory"
+    validation_approach: "Embedded constitutional checks in generated code"
+```
+
+### 2. CLI Interface Code Generation
+```yaml
+cli_generation_engine:
+  approach: "Generate complete CLI interface from specification"
+  principle: "Every functional requirement gets CLI command"
+
+  cli_interface_generator:
+    pattern: |
+      From specification constitutional_compliance.cli_interface:
+
+      ```{{TARGET_TECHNOLOGY}}
+      {{#if typescript}}
+      // Generated CLI interface for {{PROJECT_NAME}}
+      import { Command } from 'commander';
+      import { {{service_classes}} } from './services';
+
+      const program = new Command();
+
+      {{#each functional_requirements}}
+      // CLI command for {{FR_ID}}: {{FR_NAME}}
+      program
+        .command('{{cli_command}}')
+        .description('{{FR_NAME}}: {{specification.user_story}}')
+        {{#each cli_parameters}}
+        .option('{{parameter_flag}}', '{{parameter_description}}', {{default_value}})
+        {{/each}}
+        .action(async (options) => {
+          try {
+            const service = new {{service_class_name}}();
+            const result = await service.{{method_name}}(options);
+
+            // Constitutional compliance: CLI output format
+            if (options.json) {
+              console.log(JSON.stringify(result, null, 2));
+            } else {
+              console.log({{formatted_output}});
+            }
+          } catch (error) {
+            console.error(`Error in {{cli_command}}: ${error.message}`);
+            process.exit(1);
+          }
+        });
+      {{/each}}
+
+      // Constitutional compliance: Help and version commands
+      program
+        .name('{{PROJECT_NAME}}')
+        .description('{{PROJECT_DESCRIPTION}}')
+        .version('{{PROJECT_VERSION}}');
+
+      export { program };
+      ```
+      {{/if}}
+
+      {{#if python}}
+      # Generated CLI interface for {{PROJECT_NAME}}
+      import click
+      from {{project_module}}.services import {{service_classes}}
+      import json
+
+      {{#each functional_requirements}}
+      @click.command('{{cli_command}}')
+      {{#each cli_parameters}}
+      @click.option('{{parameter_flag}}', help='{{parameter_description}}', default={{default_value}})
+      {{/each}}
+      def {{cli_command_function}}({{parameter_list}}):
+          """{{FR_NAME}}: {{specification.user_story}}"""
+          try:
+              service = {{service_class_name}}()
+              result = service.{{method_name}}({{parameter_arguments}})
+
+              # Constitutional compliance: CLI output format
+              if ctx.params.get('json'):
+                  click.echo(json.dumps(result, indent=2))
+              else:
+                  click.echo({{formatted_output}})
+          except Exception as error:
+              click.echo(f"Error in {{cli_command}}: {error}", err=True)
+              raise click.Abort()
+      {{/each}}
+
+      # Constitutional compliance: CLI group setup
+      @click.group()
+      @click.version_option('{{PROJECT_VERSION}}')
+      def cli():
+          """{{PROJECT_DESCRIPTION}}"""
+          pass
+
+      {{#each functional_requirements}}
+      cli.add_command({{cli_command_function}})
+      {{/each}}
+
+      if __name__ == '__main__':
+          cli()
+      ```
+      {{/if}}
+```
+
+### 3. Service Layer Code Generation
+```yaml
+service_layer_generation:
+  approach: "Generate service classes directly from functional requirements"
+  principle: "Each FR becomes a service with constitutional compliance"
+
+  service_generator:
+    pattern: |
+      From specification functional_requirements:
+
+      ```{{TARGET_TECHNOLOGY}}
+      {{#if typescript}}
+      {{#each functional_requirements}}
+      /**
+       * Service for {{FR_ID}}: {{FR_NAME}}
+       * User Story: {{specification.user_story}}
+       * Constitutional Approach: {{specification.constitutional_compliance}}
+       */
+      export class {{service_class_name}} {
+        {{#each specification.constitutional_compliance.library_first}}
+        private {{library_instance}} = new {{library_name}}({{library_config}});
+        {{/each}}
+
+        /**
+         * Implementation of {{FR_NAME}}
+         * Constitutional compliance: {{specification.constitutional_compliance}}
+         *
+         * Acceptance Criteria:
+         {{#each specification.acceptance_criteria}}
+         * - {{this}}
+         {{/each}}
+         */
+        async {{method_name}}({{method_parameters}}): Promise<{{return_type}}> {
+          // Constitutional validation
+          await this.validateConstitutionalCompliance({{validation_parameters}});
+
+          {{#each specification.constitutional_compliance.library_first}}
+          // Library-first implementation using {{library_name}}
+          const {{step_result}} = await this.{{library_instance}}.{{library_method}}({{library_parameters}});
+          {{/each}}
+
+          // Integration-first validation
+          const validationResult = await this.validateIntegration({{validation_data}});
+          if (!validationResult.isValid) {
+            throw new Error(`Integration validation failed: ${validationResult.errors.join(', ')}`);
+          }
+
+          // Business logic implementation
+          {{business_logic_implementation}}
+
+          // Return result with constitutional compliance metadata
+          return {
+            ...result,
+            constitutionalCompliance: {
+              frId: '{{FR_ID}}',
+              validatedAt: new Date().toISOString(),
+              complianceChecks: validationResult.checks
+            }
+          };
+        }
+
+        /**
+         * CLI interface method for {{FR_NAME}}
+         * Constitutional compliance: CLI interface mandate
+         */
+        async {{cli_method_name}}(cliOptions: {{cli_options_type}}): Promise<void> {
+          const result = await this.{{method_name}}({{cli_to_service_mapping}});
+
+          // Constitutional compliance: Consistent CLI output
+          console.log(JSON.stringify(result, null, 2));
+        }
+
+        /**
+         * Constitutional compliance validation
+         */
+        private async validateConstitutionalCompliance(data: any): Promise<void> {
+          {{#each constitutional_validations}}
+          // Validate {{validation_name}}
+          if (!{{validation_condition}}) {
+            throw new Error('Constitutional violation: {{violation_message}}');
+          }
+          {{/each}}
+        }
+
+        /**
+         * Integration-first validation
+         */
+        private async validateIntegration(data: any): Promise<ValidationResult> {
+          return {
+            isValid: {{integration_validation_logic}},
+            errors: {{validation_errors}},
+            checks: {{compliance_checks}}
+          };
+        }
+      }
+      {{/each}}
+      ```
+      {{/if}}
+
+      {{#if python}}
+      {{#each functional_requirements}}
+      class {{service_class_name}}:
+          """
+          Service for {{FR_ID}}: {{FR_NAME}}
+          User Story: {{specification.user_story}}
+          Constitutional Approach: {{specification.constitutional_compliance}}
+          """
+
+          def __init__(self):
+              {{#each specification.constitutional_compliance.library_first}}
+              self.{{library_instance}} = {{library_name}}({{library_config}})
+              {{/each}}
+
+          async def {{method_name}}(self, {{method_parameters}}) -> {{return_type}}:
+              """
+              Implementation of {{FR_NAME}}
+              Constitutional compliance: {{specification.constitutional_compliance}}
+
+              Acceptance Criteria:
+              {{#each specification.acceptance_criteria}}
+              - {{this}}
+              {{/each}}
+              """
+              # Constitutional validation
+              await self._validate_constitutional_compliance({{validation_parameters}})
+
+              {{#each specification.constitutional_compliance.library_first}}
+              # Library-first implementation using {{library_name}}
+              {{step_result}} = await self.{{library_instance}}.{{library_method}}({{library_parameters}})
+              {{/each}}
+
+              # Integration-first validation
+              validation_result = await self._validate_integration({{validation_data}})
+              if not validation_result.is_valid:
+                  raise ValueError(f"Integration validation failed: {', '.join(validation_result.errors)}")
+
+              # Business logic implementation
+              {{business_logic_implementation}}
+
+              # Return result with constitutional compliance metadata
+              return {
+                  **result,
+                  'constitutional_compliance': {
+                      'fr_id': '{{FR_ID}}',
+                      'validated_at': datetime.now().isoformat(),
+                      'compliance_checks': validation_result.checks
+                  }
+              }
+
+          async def {{cli_method_name}}(self, cli_options: dict) -> None:
+              """CLI interface method for {{FR_NAME}}"""
+              result = await self.{{method_name}}({{cli_to_service_mapping}})
+
+              # Constitutional compliance: Consistent CLI output
+              print(json.dumps(result, indent=2))
+
+          async def _validate_constitutional_compliance(self, data) -> None:
+              """Constitutional compliance validation"""
+              {{#each constitutional_validations}}
+              # Validate {{validation_name}}
+              if not {{validation_condition}}:
+                  raise ValueError('Constitutional violation: {{violation_message}}')
+              {{/each}}
+
+          async def _validate_integration(self, data) -> ValidationResult:
+              """Integration-first validation"""
+              return ValidationResult(
+                  is_valid={{integration_validation_logic}},
+                  errors={{validation_errors}},
+                  checks={{compliance_checks}}
+              )
+      {{/each}}
+      ```
+      {{/if}}
+```
+
+### 4. Data Layer Code Generation
+```yaml
+data_layer_generation:
+  approach: "Generate data access layer from specification data requirements"
+  principle: "Constitutional simplicity in data operations"
+
+  database_generator:
+    pattern: |
+      From specification data_requirements:
+
+      ```sql
+      -- Generated database schema for {{PROJECT_NAME}}
+      {{#each functional_requirements}}
+      {{#if data_requirements}}
+
+      -- Schema for {{FR_ID}}: {{FR_NAME}}
+      CREATE TABLE {{table_name}} (
+          id SERIAL PRIMARY KEY,
+          {{#each data_fields}}
+          {{field_name}} {{sql_type}} {{constraints}},
+          {{/each}}
+
+          -- Constitutional compliance: Audit fields
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          created_by VARCHAR(255),
+          version INTEGER DEFAULT 1
+      );
+
+      -- Constitutional performance indexes
+      {{#each performance_indexes}}
+      CREATE INDEX idx_{{table_name}}_{{index_suffix}} ON {{table_name}} ({{index_fields}});
+      {{/each}}
+
+      -- Constitutional compliance: Audit trigger
+      CREATE TRIGGER {{table_name}}_audit
+          BEFORE UPDATE ON {{table_name}}
+          FOR EACH ROW
+          EXECUTE FUNCTION update_modified_timestamp();
+      {{/if}}
+      {{/each}}
+      ```
+
+  data_access_generator:
+    pattern: |
+      ```{{TARGET_TECHNOLOGY}}
+      {{#if typescript}}
+      {{#each functional_requirements}}
+      {{#if data_requirements}}
+      /**
+       * Data access for {{FR_ID}}: {{FR_NAME}}
+       * Constitutional compliance: Direct database access, library-first ORM
+       */
+      export class {{repository_class_name}} {
+        constructor(private db: Database) {}
+
+        /**
+         * Constitutional compliance: Simple, direct data operations
+         */
+        async {{create_method_name}}(data: {{entity_type}}): Promise<{{entity_type}}> {
+          const query = `
+            INSERT INTO {{table_name}} ({{insert_fields}})
+            VALUES ({{insert_placeholders}})
+            RETURNING *
+          `;
+
+          // Constitutional validation before insert
+          await this.validateEntityCompliance(data);
+
+          const result = await this.db.query(query, {{insert_values}});
+          return result.rows[0];
+        }
+
+        async {{read_method_name}}(id: string): Promise<{{entity_type}} | null> {
+          const query = `SELECT * FROM {{table_name}} WHERE id = $1`;
+          const result = await this.db.query(query, [id]);
+          return result.rows[0] || null;
+        }
+
+        async {{update_method_name}}(id: string, data: Partial<{{entity_type}}>): Promise<{{entity_type}}> {
+          // Constitutional compliance: Validation before update
+          await this.validateEntityCompliance(data);
+
+          const setClause = Object.keys(data)
+            .map((key, index) => `${key} = $${index + 2}`)
+            .join(', ');
+
+          const query = `
+            UPDATE {{table_name}}
+            SET ${setClause}, updated_at = CURRENT_TIMESTAMP, version = version + 1
+            WHERE id = $1
+            RETURNING *
+          `;
+
+          const values = [id, ...Object.values(data)];
+          const result = await this.db.query(query, values);
+          return result.rows[0];
+        }
+
+        async {{delete_method_name}}(id: string): Promise<boolean> {
+          const query = `DELETE FROM {{table_name}} WHERE id = $1`;
+          const result = await this.db.query(query, [id]);
+          return result.rowCount > 0;
+        }
+
+        /**
+         * Constitutional compliance: Entity validation
+         */
+        private async validateEntityCompliance(data: any): Promise<void> {
+          {{#each validation_rules}}
+          if (!{{rule_condition}}) {
+            throw new Error('Data validation failed: {{rule_message}}');
+          }
+          {{/each}}
+        }
+      }
+      {{/if}}
+      {{/each}}
+      ```
+      {{/if}}
+```
+
+### 5. Test Suite Code Generation
+```yaml
+test_generation_engine:
+  approach: "Generate comprehensive test suite from acceptance criteria"
+  principle: "Every specification element gets corresponding tests"
+
+  test_generator:
+    pattern: |
+      From specification acceptance_criteria and test_scenarios:
+
+      ```{{TARGET_TECHNOLOGY}}
+      {{#if typescript}}
+      {{#each functional_requirements}}
+      describe('{{FR_ID}}: {{FR_NAME}}', () => {
+        let service: {{service_class_name}};
+        let mockDatabase: MockDatabase;
+
+        beforeEach(() => {
+          mockDatabase = new MockDatabase();
+          service = new {{service_class_name}}(mockDatabase);
+        });
+
+        // Generated from specification.user_story
+        describe('User Story: {{specification.user_story}}', () => {
+          {{#each specification.acceptance_criteria}}
+          it('should {{acceptance_criterion}}', async () => {
+            // Given: {{given_setup}}
+            {{given_setup_code}}
+
+            // When: {{when_action}}
+            {{when_action_code}}
+
+            // Then: {{then_assertion}}
+            {{then_assertion_code}}
+          });
+          {{/each}}
+        });
+
+        // Constitutional compliance tests
+        describe('Constitutional Compliance', () => {
+          it('should be accessible via CLI', async () => {
+            const cliResult = await cli.execute('{{cli_command}}', {{test_parameters}});
+            expect(cliResult.exitCode).toBe(0);
+            expect(cliResult.output).toContain('{{expected_output}}');
+          });
+
+          it('should use library-first approach', async () => {
+            const service = new {{service_class_name}}();
+            {{#each specification.constitutional_compliance.library_first}}
+            expect(service['{{library_instance}}']).toBeInstanceOf({{library_name}});
+            {{/each}}
+          });
+
+          it('should follow simplicity principle', async () => {
+            const methodComplexity = analyzeComplexity(service.{{method_name}});
+            expect(methodComplexity).toBeLessThan({{max_complexity}});
+          });
+        });
+
+        // Integration-first tests
+        describe('Integration Tests', () => {
+          {{#each integration_scenarios}}
+          it('should integrate with {{integration_target}}', async () => {
+            // Constitutional compliance: Integration-first testing
+            {{integration_test_setup}}
+
+            const result = await service.{{method_name}}({{test_data}});
+
+            {{integration_assertions}}
+          });
+          {{/each}}
+        });
+
+        // Performance tests (constitutional quality requirements)
+        describe('Performance Requirements', () => {
+          {{#each performance_requirements}}
+          it('should meet {{performance_metric}} requirement', async () => {
+            const startTime = Date.now();
+
+            await service.{{method_name}}({{performance_test_data}});
+
+            const duration = Date.now() - startTime;
+            expect(duration).toBeLessThan({{performance_threshold}});
+          });
+          {{/each}}
+        });
+      });
+      {{/each}}
+      ```
+      {{/if}}
+```
+
+### 6. Configuration and Infrastructure Generation
+```yaml
+infrastructure_generation:
+  approach: "Generate deployment and configuration from specification"
+  principle: "Constitutional compliance in production environment"
+
+  docker_generator:
+    pattern: |
+      ```dockerfile
+      # Generated Dockerfile for {{PROJECT_NAME}}
+      # Constitutional compliance: Minimal, secure production image
+
+      FROM {{base_image}}
+
+      # Constitutional compliance: Security first
+      RUN addgroup -g 1001 -S {{app_user}} && \
+          adduser -S {{app_user}} -u 1001
+
+      WORKDIR /app
+
+      # Constitutional compliance: Library-first dependency management
+      COPY package*.json ./
+      RUN npm ci --only=production && npm cache clean --force
+
+      COPY . .
+
+      # Constitutional compliance: Non-root user
+      USER {{app_user}}
+
+      # Constitutional compliance: CLI interface exposure
+      EXPOSE {{port}}
+
+      # Constitutional compliance: Health check
+      HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+        CMD curl -f http://localhost:{{port}}/health || exit 1
+
+      CMD ["npm", "start"]
+      ```
+
+  ci_cd_generator:
+    pattern: |
+      ```yaml
+      # Generated CI/CD pipeline for {{PROJECT_NAME}}
+      # Constitutional compliance: Automated quality gates
+
+      name: Constitutional Compliance Pipeline
+
+      on:
+        push:
+          branches: [ main, develop ]
+        pull_request:
+          branches: [ main ]
+
+      jobs:
+        constitutional-compliance:
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v3
+
+            # Constitutional compliance: Test-first validation
+            - name: Run Tests
+              run: |
+                npm install
+                npm run test
+                npm run test:integration
+
+            # Constitutional compliance: Quality gates
+            - name: Check Test Coverage
+              run: |
+                npm run test:coverage
+                npm run coverage:check -- --threshold={{coverage_threshold}}
+
+            # Constitutional compliance: Constitutional validation
+            - name: Validate Constitutional Compliance
+              run: |
+                # Run constitutional compliance checks
+                npm run constitutional:validate
+
+            # Constitutional compliance: Security scan
+            - name: Security Audit
+              run: |
+                npm audit --audit-level moderate
+                npm run security:scan
+
+            # Constitutional compliance: Performance validation
+            - name: Performance Tests
+              run: |
+                npm run test:performance
+                npm run performance:validate
+
+        deployment:
+          needs: constitutional-compliance
+          runs-on: ubuntu-latest
+          if: github.ref == 'refs/heads/main'
+          steps:
+            - name: Deploy with Constitutional Compliance
+              run: |
+                # Deploy only if constitutional compliance is verified
+                ./deploy.sh --constitutional-compliance-verified
+      ```
+```
+
+## 🎯 Code Generation Instructions
+
+### Step 1: Parse Specification Structure
+1. **Load Specification**: Parse {{SPECIFICATION_FILE}} for all requirements and constraints
+2. **Extract Constitutional Requirements**: Load {{CONSTITUTION_FILE}} and map to code generation
+3. **Identify Target Technology**: Determine appropriate code generation templates for {{TARGET_TECHNOLOGY}}
+4. **Map Acceptance Criteria**: Transform criteria into executable test cases
+
+### Step 2: Generate CLI Interface
+1. **Command Structure**: Create CLI commands for every functional requirement
+2. **Parameter Mapping**: Map specification parameters to CLI options
+3. **Constitutional Compliance**: Ensure CLI interface mandate is fulfilled
+4. **Help and Documentation**: Generate comprehensive CLI help
+
+### Step 3: Generate Service Layer
+1. **Service Classes**: Create service classes for each functional requirement
+2. **Library Integration**: Implement library-first approach in service methods
+3. **Constitutional Validation**: Embed constitutional compliance checks
+4. **Error Handling**: Implement constitutional error handling patterns
+
+### Step 4: Generate Data Layer
+1. **Database Schema**: Create schema from data requirements
+2. **Repository Pattern**: Generate constitutional data access patterns
+3. **Validation Rules**: Implement data validation from specification
+4. **Performance Optimization**: Apply constitutional performance principles
+
+### Step 5: Generate Test Suite
+1. **Acceptance Tests**: Generate tests from acceptance criteria
+2. **Constitutional Tests**: Create tests validating constitutional compliance
+3. **Integration Tests**: Implement integration-first testing approach
+4. **Performance Tests**: Generate performance validation tests
+
+### Step 6: Generate Infrastructure
+1. **Deployment Configuration**: Create constitutional deployment setup
+2. **CI/CD Pipeline**: Generate constitutional compliance pipeline
+3. **Monitoring Setup**: Create constitutional compliance monitoring
+4. **Documentation**: Generate implementation documentation
+
+## ✅ Success Criteria
+
+- [ ] Generated code fully implements specification requirements
+- [ ] All constitutional principles are enforced in generated code
+- [ ] CLI interface provides complete feature access
+- [ ] Test suite validates all acceptance criteria
+- [ ] Integration tests verify constitutional compliance
+- [ ] Performance requirements are met and validated
+- [ ] Generated code follows target technology best practices
+- [ ] Constitutional compliance is continuously validated
+
+## 🔄 Output Format
+
+Generate a complete codebase that includes:
+1. **CLI Interface**: Complete command-line interface with constitutional compliance
+2. **Service Layer**: Business logic implementation following constitutional principles
+3. **Data Layer**: Database schema and data access with constitutional patterns
+4. **Test Suite**: Comprehensive tests validating specification and constitutional compliance
+5. **Infrastructure**: Deployment and CI/CD configuration with constitutional gates
+6. **Documentation**: Implementation documentation with constitutional compliance notes
+
+Execute this specification-to-code generation for {{SPECIFICATION_FILE}} targeting {{TARGET_TECHNOLOGY}} with constitutional compliance from {{CONSTITUTION_FILE}}.

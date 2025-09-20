@@ -1,0 +1,456 @@
+# 🚀 Executable Specification Generator Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Specification File**: {{SPECIFICATION_FILE}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Target Language/Framework**: {{TARGET_FRAMEWORK}}
+- **Framework**: Demeter WAVIS v1.3 + Spec-Kit Executable Specifications
+
+## 🎯 Executable Specification Philosophy
+
+This template implements the GitHub Spec-Kit revolutionary approach where "specifications become executable" rather than being static documentation. The specification directly generates tests, implementation scaffolding, and validation criteria, making the specification the single source of truth for both requirements and implementation.
+
+### Executable Specification Principles
+- **Specifications are not documentation—they are executable blueprints**
+- **Code serves specifications, not the other way around**
+- **Specifications directly generate tests, implementations, and validations**
+- **Changes to requirements happen through specification evolution, not code modification**
+- **Constitutional compliance is embedded in the executable specification**
+
+## 🔧 Executable Specification Generation
+
+### 1. Executable Specification Header
+```yaml
+executable_specification:
+  spec_id: "{{SPEC_ID}}"
+  project: "{{PROJECT_NAME}}"
+  version: "{{SPEC_VERSION}}"
+  created_date: "{{CURRENT_DATE}}"
+  methodology: "GitHub Spec-Kit Executable Specifications"
+
+  execution_capabilities:
+    test_generation: true
+    implementation_scaffolding: true
+    validation_automation: true
+    constitutional_compliance: true
+    continuous_validation: true
+
+  constitutional_compliance:
+    constitution_file: "{{CONSTITUTION_FILE}}"
+    constitutional_validation: "All generated artifacts must demonstrate constitutional compliance"
+    enforcement_level: "mandatory"
+```
+
+### 2. Specification-to-Test Generation Engine
+```yaml
+test_generation_engine:
+  approach: "Specification-driven test creation"
+  principle: "Every specification element generates corresponding tests"
+
+  functional_requirement_tests:
+    generator_pattern: |
+      For each functional requirement in specification:
+
+      ```typescript
+      describe('{{FR_ID}}: {{FR_NAME}}', () => {
+        // Generated from FR.specification.user_story
+        it('should {{user_story_functionality}}', async () => {
+          // Generated from FR.specification.acceptance_criteria
+          {{#each acceptance_criteria}}
+          expect({{criterion_test_code}}).{{assertion_type}}({{expected_value}});
+          {{/each}}
+        });
+
+        // Generated from FR.specification.constitutional_compliance.cli_interface
+        it('should be accessible via CLI', async () => {
+          const result = await cli.execute('{{cli_command}}', {{cli_parameters}});
+          expect(result).toMatchSpecification('{{FR_ID}}');
+        });
+
+        // Generated from FR.test_scenarios
+        {{#each test_scenarios}}
+        it('{{scenario_name}}', async () => {
+          // Given: {{given}}
+          {{given_setup_code}}
+
+          // When: {{when}}
+          {{when_action_code}}
+
+          // Then: {{then}}
+          {{then_assertion_code}}
+        });
+        {{/each}}
+      });
+      ```
+
+  non_functional_requirement_tests:
+    generator_pattern: |
+      For each NFR in specification:
+
+      ```typescript
+      describe('{{NFR_ID}}: {{NFR_NAME}} Quality Requirements', () => {
+        // Generated from NFR.specification.measurable_criteria
+        {{#each measurable_criteria}}
+        it('should meet {{metric}} requirement of {{target}}', async () => {
+          const measurement = await measurementFramework.measure('{{metric}}');
+          expect(measurement).{{comparison_operator}}({{target_value}});
+        });
+        {{/each}}
+
+        // Generated from NFR.specification.constitutional_compliance
+        it('should follow constitutional {{quality_attribute}} principles', async () => {
+          const compliance = await constitutionalValidator.validate('{{NFR_ID}}');
+          expect(compliance.{{quality_attribute}}).toBe(true);
+        });
+      });
+      ```
+
+  unit_of_work_tests:
+    generator_pattern: |
+      For each UoW in specification:
+
+      ```typescript
+      describe('{{UOW_ID}}: {{UOW_NAME}} Implementation', () => {
+        // Generated from UoW.specification.quality_checklist
+        {{#each quality_checklist}}
+        it('{{checklist_item}}', async () => {
+          {{checklist_validation_code}}
+        });
+        {{/each}}
+
+        // Generated from UoW.specification.constitutional_approach
+        it('should follow constitutional implementation approach', async () => {
+          // Library-First validation
+          expect(implementation.usesLibrary('{{library_first}}')).toBe(true);
+
+          // CLI-First validation
+          expect(cli.hasCommand('{{cli_first}}')).toBe(true);
+
+          // Test-First validation
+          expect(testSuite.precedesImplementation()).toBe(true);
+        });
+
+        // Generated from UoW.specification.executable_tasks
+        {{#each executable_tasks}}
+        it('should complete task: {{task}}', async () => {
+          {{task_validation_code}}
+
+          // Validate completion criteria
+          {{#each completion_criteria}}
+          expect({{criterion_check_code}}).toBe(true);
+          {{/each}}
+        });
+        {{/each}}
+      });
+      ```
+```
+
+### 3. Specification-to-Implementation Scaffolding
+```yaml
+implementation_scaffolding:
+  approach: "Generate implementation structure directly from specification"
+  principle: "Implementation follows specification structure exactly"
+
+  cli_interface_generation:
+    generator_pattern: |
+      From specification constitutional_compliance.cli_interface:
+
+      ```typescript
+      // Generated CLI interface for {{PROJECT_NAME}}
+      import { Command } from 'commander';
+
+      const program = new Command();
+
+      {{#each functional_requirements}}
+      // Generated from {{FR_ID}}.specification.constitutional_compliance.cli_interface
+      program
+        .command('{{cli_command}}')
+        .description('{{FR_NAME}}: {{description}}')
+        {{#each cli_parameters}}
+        .option('{{parameter}}', '{{parameter_description}}')
+        {{/each}}
+        .action(async (options) => {
+          // Implementation must satisfy: {{FR_ID}}
+          const result = await {{implementation_function_name}}(options);
+          console.log(result);
+        });
+      {{/each}}
+
+      export { program };
+      ```
+
+  service_layer_generation:
+    generator_pattern: |
+      From specification implementation approach:
+
+      ```typescript
+      // Generated service layer for {{PROJECT_NAME}}
+      {{#each functional_requirements}}
+
+      /**
+       * Service for {{FR_ID}}: {{FR_NAME}}
+       * User Story: {{specification.user_story}}
+       * Constitutional Approach: {{specification.constitutional_compliance}}
+       */
+      export class {{service_class_name}} {
+        {{#each specification.constitutional_compliance.library_first}}
+        private {{library_instance}} = new {{library_name}}();
+        {{/each}}
+
+        /**
+         * Implementation of {{FR_NAME}}
+         * Must satisfy acceptance criteria:
+         {{#each specification.acceptance_criteria}}
+         * - {{this}}
+         {{/each}}
+         */
+        async {{method_name}}({{method_parameters}}): Promise<{{return_type}}> {
+          // Implementation must be generated to satisfy specification
+          // Constitutional compliance: {{specification.constitutional_compliance}}
+          throw new Error('Implementation required to satisfy {{FR_ID}}');
+        }
+
+        /**
+         * CLI interface implementation
+         * Command: {{specification.constitutional_compliance.cli_interface}}
+         */
+        async {{cli_method_name}}({{cli_parameters}}): Promise<void> {
+          const result = await this.{{method_name}}({{parameters}});
+          // Output must match CLI specification
+          console.log(JSON.stringify(result, null, 2));
+        }
+      }
+      {{/each}}
+      ```
+
+  database_schema_generation:
+    generator_pattern: |
+      From specification data requirements:
+
+      ```sql
+      -- Generated database schema for {{PROJECT_NAME}}
+      {{#each functional_requirements}}
+      {{#if data_requirements}}
+
+      -- Schema for {{FR_ID}}: {{FR_NAME}}
+      CREATE TABLE {{table_name}} (
+        id SERIAL PRIMARY KEY,
+        {{#each data_fields}}
+        {{field_name}} {{field_type}} {{constraints}},
+        {{/each}}
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+
+      -- Indexes for constitutional performance requirements
+      {{#each performance_indexes}}
+      CREATE INDEX {{index_name}} ON {{table_name}} ({{index_fields}});
+      {{/each}}
+      {{/if}}
+      {{/each}}
+      ```
+```
+
+### 4. Constitutional Compliance Validation Generation
+```yaml
+constitutional_validation_generation:
+  approach: "Embed constitutional compliance directly in specification execution"
+
+  constitutional_test_generation:
+    generator_pattern: |
+      ```typescript
+      // Generated constitutional compliance tests
+      describe('Constitutional Compliance for {{PROJECT_NAME}}', () => {
+        {{#each constitutional_principles}}
+
+        describe('{{principle_name}} Compliance', () => {
+          it('should demonstrate {{principle_name}} in implementation', async () => {
+            {{constitutional_validation_code}}
+          });
+
+          {{#each specification_elements_affected}}
+          it('should validate {{principle_name}} for {{element_id}}', async () => {
+            {{element_specific_validation}}
+          });
+          {{/each}}
+        });
+        {{/each}}
+
+        // Domain-specific constitutional validation
+        {{#each domain_principles}}
+        describe('{{domain}} Constitutional Compliance', () => {
+          {{#each principles}}
+          it('should enforce {{principle_name}}', async () => {
+            {{domain_constitutional_validation}}
+          });
+          {{/each}}
+        });
+        {{/each}}
+      });
+      ```
+
+  constitutional_monitoring_generation:
+    generator_pattern: |
+      ```typescript
+      // Generated constitutional compliance monitoring
+      export class ConstitutionalMonitor {
+        {{#each constitutional_principles}}
+        async monitor{{principle_name}}Compliance(): Promise<ComplianceStatus> {
+          {{monitoring_implementation}}
+        }
+        {{/each}}
+
+        async generateComplianceReport(): Promise<ConstitutionalReport> {
+          const report = new ConstitutionalReport();
+
+          {{#each constitutional_principles}}
+          report.add(await this.monitor{{principle_name}}Compliance());
+          {{/each}}
+
+          return report;
+        }
+      }
+      ```
+```
+
+### 5. Specification Evolution and Validation
+```yaml
+specification_evolution:
+  approach: "Specifications evolve through formal modification process"
+
+  change_impact_analysis:
+    generator_pattern: |
+      When specification changes are proposed:
+
+      ```typescript
+      // Generated change impact analysis
+      export interface SpecificationChange {
+        changeId: string;
+        affectedElements: string[];
+        constitutionalImpact: ConstitutionalImpact;
+        implementationImpact: ImplementationImpact;
+        testImpact: TestImpact;
+      }
+
+      export class SpecificationChangeAnalyzer {
+        analyzeChange(oldSpec: Specification, newSpec: Specification): SpecificationChange {
+          // Generated analysis comparing specifications
+          return {
+            changeId: generateChangeId(),
+            affectedElements: this.findAffectedElements(oldSpec, newSpec),
+            constitutionalImpact: this.analyzeConstitutionalImpact(oldSpec, newSpec),
+            implementationImpact: this.analyzeImplementationImpact(oldSpec, newSpec),
+            testImpact: this.analyzeTestImpact(oldSpec, newSpec)
+          };
+        }
+      }
+      ```
+
+  specification_validation:
+    generator_pattern: |
+      ```typescript
+      // Generated specification validation
+      export class SpecificationValidator {
+        async validateSpecification(spec: Specification): Promise<ValidationResult> {
+          const results = [];
+
+          // Constitutional compliance validation
+          results.push(await this.validateConstitutionalCompliance(spec));
+
+          // Completeness validation
+          results.push(await this.validateCompleteness(spec));
+
+          // Consistency validation
+          results.push(await this.validateConsistency(spec));
+
+          // Testability validation
+          results.push(await this.validateTestability(spec));
+
+          return new ValidationResult(results);
+        }
+      }
+      ```
+```
+
+### 6. Continuous Specification Execution
+```yaml
+continuous_execution:
+  approach: "Specifications continuously validate implementation alignment"
+
+  specification_compliance_monitoring:
+    generator_pattern: |
+      ```typescript
+      // Generated continuous specification monitoring
+      export class SpecificationComplianceMonitor {
+        async monitorCompliance(): Promise<void> {
+          setInterval(async () => {
+            const spec = await this.loadLatestSpecification();
+            const implementation = await this.analyzeCurrentImplementation();
+            const compliance = await this.validateSpecificationCompliance(spec, implementation);
+
+            if (!compliance.isCompliant()) {
+              await this.handleSpecificationDrift(compliance);
+            }
+          }, this.monitoringInterval);
+        }
+
+        private async handleSpecificationDrift(compliance: ComplianceResult): Promise<void> {
+          // Alert team to specification-implementation misalignment
+          // Generate remediation recommendations
+          // Update constitutional compliance status
+        }
+      }
+      ```
+```
+
+## 🎯 Executable Specification Generation Instructions
+
+### Step 1: Parse Source Specification
+1. **Load Specification**: Parse {{SPECIFICATION_FILE}} for all functional and non-functional requirements
+2. **Extract Constitutional Requirements**: Load {{CONSTITUTION_FILE}} and map to specification elements
+3. **Identify Generation Targets**: Determine what artifacts need to be generated
+
+### Step 2: Generate Test Suite
+1. **Functional Requirement Tests**: Generate comprehensive test suite from FR acceptance criteria
+2. **Non-Functional Requirement Tests**: Create performance and quality validation tests
+3. **Constitutional Compliance Tests**: Generate tests that validate constitutional principle adherence
+4. **Integration Test Strategy**: Create tests that validate specification-to-implementation alignment
+
+### Step 3: Generate Implementation Scaffolding
+1. **CLI Interface**: Generate CLI commands and interfaces from constitutional requirements
+2. **Service Layer**: Create service classes with specification-driven method signatures
+3. **Data Layer**: Generate database schemas and data access patterns
+4. **Integration Points**: Create integration scaffolding for external dependencies
+
+### Step 4: Generate Validation and Monitoring
+1. **Compliance Validators**: Create tools that continuously validate specification adherence
+2. **Change Impact Analyzers**: Generate tools that assess specification change impacts
+3. **Constitutional Monitors**: Create monitoring for ongoing constitutional compliance
+4. **Specification Evolution Tools**: Generate tools that manage specification lifecycle
+
+### Step 5: Create Execution Pipeline
+1. **CI/CD Integration**: Generate pipeline configurations that enforce specification compliance
+2. **Automated Validation**: Create automated validation that runs specification compliance checks
+3. **Deployment Gates**: Generate deployment gates that verify specification implementation
+4. **Monitoring Integration**: Create monitoring that tracks specification-implementation alignment
+
+## ✅ Success Criteria
+
+- [ ] Executable specification generates complete test suite from requirements
+- [ ] Implementation scaffolding follows constitutional principles
+- [ ] Generated artifacts demonstrate specification-to-code traceability
+- [ ] Constitutional compliance is embedded in all generated code
+- [ ] Specification changes trigger appropriate regeneration of dependent artifacts
+- [ ] Continuous validation ensures ongoing specification-implementation alignment
+
+## 🔄 Output Format
+
+Generate a complete executable specification package that includes:
+1. **Generated Test Suite**: Comprehensive tests derived directly from specification
+2. **Implementation Scaffolding**: Code structure that implements specification requirements
+3. **Constitutional Compliance Integration**: Embedded constitutional validation
+4. **Specification Validation Tools**: Tools that ensure ongoing specification compliance
+5. **Evolution Management**: Tools and processes for managing specification changes
+
+Execute this executable specification generation for {{SPECIFICATION_FILE}} with constitutional compliance from {{CONSTITUTION_FILE}}.

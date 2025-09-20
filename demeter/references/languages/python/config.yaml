@@ -1,0 +1,406 @@
+# Python Language Adapter Configuration
+# Defines Python-specific settings, dependencies, and project structure
+
+language:
+  name: "python"
+  display_name: "Python"
+  version_range: ">=3.9.0"
+  default_version: "3.11"
+
+  # Language Characteristics
+  characteristics:
+    interpreted: true
+    dynamically_typed: true
+    garbage_collected: true
+    object_oriented: true
+
+  # File Extensions
+  file_extensions:
+    source: [".py"]
+    test: ["test_*.py", "*_test.py"]
+    build: ["pyproject.toml", "setup.py", "requirements.txt"]
+    config: [".py", ".yaml", ".json", ".toml"]
+
+# Project Structure
+project_structure:
+  # Python project layout
+  directories:
+    source:
+      - "src/"
+      - "{{PACKAGE_NAME}}/"
+
+    documentation:
+      - "docs/"
+      - "examples/"
+
+    testing:
+      - "tests/"
+      - "test/"
+
+    build:
+      - "scripts/"
+      - "tools/"
+
+    deployment:
+      - "docker/"
+      - "configs/"
+
+  # Required Files
+  required_files:
+    - "pyproject.toml"
+    - "src/{{PACKAGE_NAME}}/__init__.py"
+    - "src/{{PACKAGE_NAME}}/main.py"
+    - "requirements.txt"
+    - "requirements-dev.txt"
+
+  # Clean Architecture Structure
+  clean_architecture:
+    domain: "src/{{PACKAGE_NAME}}/domain"
+    application: "src/{{PACKAGE_NAME}}/application"
+    infrastructure: "src/{{PACKAGE_NAME}}/infrastructure"
+    interfaces: "src/{{PACKAGE_NAME}}/interfaces"
+
+# Dependencies
+dependencies:
+  # Core Dependencies
+  core:
+    - name: "fastapi"
+      version: ">=0.104.0"
+      purpose: "Modern web framework"
+      category: "web"
+
+    - name: "uvicorn"
+      version: ">=0.24.0"
+      purpose: "ASGI server"
+      category: "web"
+
+    - name: "pydantic"
+      version: ">=2.5.0"
+      purpose: "Data validation"
+      category: "validation"
+
+    - name: "structlog"
+      version: ">=23.2.0"
+      purpose: "Structured logging"
+      category: "logging"
+
+  # Database Dependencies
+  database:
+    - name: "sqlalchemy"
+      version: ">=2.0.0"
+      purpose: "SQL toolkit and ORM"
+      category: "database"
+
+    - name: "asyncpg"
+      version: ">=0.29.0"
+      purpose: "PostgreSQL async driver"
+      category: "database"
+
+    - name: "alembic"
+      version: ">=1.13.0"
+      purpose: "Database migrations"
+      category: "database"
+
+  # Cache Dependencies
+  cache:
+    - name: "redis"
+      version: ">=5.0.0"
+      purpose: "Redis client"
+      category: "cache"
+
+    - name: "aioredis"
+      version: ">=2.0.0"
+      purpose: "Async Redis client"
+      category: "cache"
+
+  # Testing Dependencies
+  testing:
+    - name: "pytest"
+      version: ">=7.4.0"
+      purpose: "Testing framework"
+      category: "testing"
+
+    - name: "pytest-asyncio"
+      version: ">=0.21.0"
+      purpose: "Async testing support"
+      category: "testing"
+
+    - name: "pytest-cov"
+      version: ">=4.1.0"
+      purpose: "Coverage reporting"
+      category: "testing"
+
+    - name: "httpx"
+      version: ">=0.25.0"
+      purpose: "HTTP client for testing"
+      category: "testing"
+
+    - name: "factory-boy"
+      version: ">=3.3.0"
+      purpose: "Test fixtures"
+      category: "testing"
+
+  # OpenTelemetry Dependencies
+  observability:
+    - name: "opentelemetry-api"
+      version: ">=1.21.0"
+      purpose: "OpenTelemetry API"
+      category: "observability"
+
+    - name: "opentelemetry-sdk"
+      version: ">=1.21.0"
+      purpose: "OpenTelemetry SDK"
+      category: "observability"
+
+    - name: "opentelemetry-exporter-otlp"
+      version: ">=1.21.0"
+      purpose: "OTLP exporters"
+      category: "observability"
+
+    - name: "opentelemetry-instrumentation-fastapi"
+      version: ">=0.42b0"
+      purpose: "FastAPI auto-instrumentation"
+      category: "observability"
+
+    - name: "opentelemetry-instrumentation-sqlalchemy"
+      version: ">=0.42b0"
+      purpose: "SQLAlchemy auto-instrumentation"
+      category: "observability"
+
+    - name: "opentelemetry-instrumentation-redis"
+      version: ">=0.42b0"
+      purpose: "Redis auto-instrumentation"
+      category: "observability"
+
+    - name: "opentelemetry-instrumentation-requests"
+      version: ">=0.42b0"
+      purpose: "HTTP requests auto-instrumentation"
+      category: "observability"
+
+  # Development Dependencies
+  development:
+    - name: "black"
+      version: ">=23.11.0"
+      purpose: "Code formatter"
+      category: "development"
+
+    - name: "ruff"
+      version: ">=0.1.6"
+      purpose: "Fast Python linter"
+      category: "development"
+
+    - name: "mypy"
+      version: ">=1.7.0"
+      purpose: "Type checking"
+      category: "development"
+
+    - name: "pre-commit"
+      version: ">=3.5.0"
+      purpose: "Git hooks"
+      category: "development"
+
+# Build Configuration
+build:
+  # Build System
+  build_system: "setuptools"
+
+  # Build Commands
+  commands:
+    install: "pip install -e ."
+    install_dev: "pip install -e .[dev]"
+    build: "python -m build"
+    test: "pytest"
+    lint: "ruff check ."
+    format: "black ."
+    type_check: "mypy src/"
+
+  # Package Configuration
+  package:
+    build_backend: "setuptools.build_meta"
+    include_package_data: true
+
+# Testing Configuration
+testing:
+  # Test Framework
+  framework: "pytest"
+
+  # Test Commands
+  commands:
+    unit: "pytest tests/unit/"
+    integration: "pytest tests/integration/"
+    e2e: "pytest tests/e2e/"
+    coverage: "pytest --cov=src --cov-report=html"
+
+  # Coverage Requirements
+  coverage:
+    foundation_threshold: 80
+    business_threshold: 60
+    integration_threshold: 70
+
+  # Test Configuration
+  configuration:
+    timeout: "300"
+    parallel: true
+    async_support: true
+
+# Linting Configuration
+linting:
+  # Primary Linter
+  primary: "ruff"
+
+  # Linter Configuration
+  config_file: "pyproject.toml"
+
+  # Additional Tools
+  tools:
+    - "black"      # Code formatting
+    - "mypy"       # Type checking
+    - "bandit"     # Security linting
+    - "isort"      # Import sorting
+
+# Development Tools
+dev_tools:
+  # Required Tools
+  required:
+    - name: "python"
+      version: ">=3.9.0"
+      install_url: "https://python.org/downloads/"
+
+    - name: "pip"
+      version: ">=21.0"
+      install_url: "https://pip.pypa.io/en/stable/installation/"
+
+  # Optional Tools
+  optional:
+    - name: "poetry"
+      purpose: "Dependency management"
+      install_cmd: "curl -sSL https://install.python-poetry.org | python3 -"
+
+    - name: "pyenv"
+      purpose: "Python version management"
+      install_url: "https://github.com/pyenv/pyenv#installation"
+
+# Virtual Environment
+virtual_environment:
+  # Virtual Environment Tool
+  tool: "venv"  # venv, virtualenv, conda, poetry
+
+  # Virtual Environment Configuration
+  directory: ".venv"
+  requirements_file: "requirements.txt"
+  dev_requirements_file: "requirements-dev.txt"
+
+# Docker Configuration
+docker:
+  # Base Images
+  base_images:
+    build: "python:3.11-slim"
+    runtime: "python:3.11-slim"
+
+  # Dockerfile Template
+  dockerfile_template: "languages/python/templates/Dockerfile.template"
+
+  # Docker Compose Services
+  services:
+    - postgres
+    - redis
+    - app
+
+# Environment Configuration
+environment:
+  # Environment Variables (minimal, prefer JSON/TOML config)
+  variables:
+    PYTHON_VERSION: "{{PYTHON_VERSION}}"
+    PYTHONPATH: "src"
+    PYTHONDONTWRITEBYTECODE: "1"
+    PYTHONUNBUFFERED: "1"
+
+  # Configuration Management
+  config:
+    format: "toml"
+    location: "configs/"
+    schema_validation: true
+    hot_reload: true
+
+# Template Variables
+variables:
+  # Python-specific variables
+  PYTHON_VERSION: "3.11"
+  PACKAGE_NAME: "{{PROJECT_NAME|snake_case}}"
+  MODULE_NAME: "{{PROJECT_NAME|snake_case}}"
+
+  # Build variables
+  BUILD_DIR: "dist"
+  WHEEL_DIR: "wheelhouse"
+
+  # Testing variables
+  TEST_TIMEOUT: "300"
+  COVERAGE_THRESHOLD: "80"
+
+  # Development variables
+  DEV_PORT: "8000"
+  HEALTH_CHECK_PATH: "/health"
+
+# Code Generation
+code_generation:
+  # Templates
+  templates:
+    main: "languages/python/templates/main.py.template"
+    handler: "languages/python/templates/handler.py.template"
+    service: "languages/python/templates/service.py.template"
+    repository: "languages/python/templates/repository.py.template"
+    model: "languages/python/templates/model.py.template"
+    test: "languages/python/templates/test.py.template"
+
+  # Generation Rules
+  rules:
+    package_naming: "snake_case"
+    file_naming: "snake_case"
+    class_naming: "PascalCase"
+    function_naming: "snake_case"
+    constant_naming: "UPPER_CASE"
+
+# Integration
+integrations:
+  # Claude Code Integration
+  claude_code:
+    settings_template: "languages/python/templates/claude-settings.json.template"
+    commands:
+      test: "pytest"
+      build: "python -m build"
+      lint: "ruff check ."
+      format: "black ."
+      type_check: "mypy src/"
+
+  # IDE Integration
+  ide:
+    vscode:
+      settings_template: "languages/python/templates/vscode-settings.json.template"
+      extensions:
+        - "ms-python.python"
+        - "ms-python.black-formatter"
+        - "charliermarsh.ruff"
+
+  # CI/CD Integration
+  cicd:
+    github_actions:
+      workflow_template: "languages/python/templates/python-ci.yml.template"
+
+# Documentation
+documentation:
+  # Language-specific docs
+  readme_template: "languages/python/templates/README.md.template"
+
+  # Code Documentation
+  docstring_style: "google"  # google, numpy, sphinx
+
+  # Documentation Tools
+  doc_tools:
+    - "sphinx"
+    - "mkdocs"
+    - "pdoc"
+
+  # Examples
+  examples:
+    - "examples/basic-usage"
+    - "examples/async-patterns"

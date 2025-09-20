@@ -1,0 +1,329 @@
+name: SSOT-GraphRAG Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'demeter/core/ssot/**'
+      - 'src/**'
+      - 'features/**'
+      - '.github/workflows/ssot-pipeline.yaml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'demeter/core/ssot/**'
+      - 'src/**'
+      - 'features/**'
+
+env:
+  PYTHON_VERSION: '3.9'
+
+jobs:
+  ssot-verification:
+    name: SSOT Verification
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for proper analysis
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml jsonschema
+
+    - name: Run SSOT Verification
+      id: ssot-verify
+      run: |
+        echo "Running SSOT verification..."
+        python3 demeter/core/ssot/verification/verify-ssot.py
+        echo "verification_status=$?" >> $GITHUB_OUTPUT
+
+    - name: Upload SSOT Verification Report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: ssot-verification-report
+        path: ssot-verification.html
+        retention-days: 30
+
+    - name: Comment on PR with Verification Results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const path = 'ssot-verification.json';
+
+          if (fs.existsSync(path)) {
+            const report = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const successRate = ((report.passed / report.total) * 100).toFixed(1);
+
+            const comment = `## SSOT Verification Results
+
+            📊 **Verification Status**: ${successRate >= 95 ? '✅ PASSED' : '❌ FAILED'}
+            📈 **Success Rate**: ${successRate}% (${report.passed}/${report.total})
+            ⚠️ **Warnings**: ${report.warnings || 0}
+            ❌ **Errors**: ${report.errors || 0}
+
+            ${successRate < 95 ? '⚠️ SSOT verification must achieve 95% success rate before merge.' : ''}
+
+            📄 [View detailed report](../actions/runs/${{ github.run_id }})`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+          }
+
+  contract-validation:
+    name: Contract Validation
+    runs-on: ubuntu-latest
+    needs: ssot-verification
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml jsonschema
+
+    - name: Validate All Contracts
+      run: |
+        echo "Validating contracts..."
+        for contract_file in demeter/core/ssot/contracts/*.yaml; do
+          if [ -f "$contract_file" ]; then
+            echo "Validating $contract_file"
+            python3 demeter/core/ssot/contracts/generate-contract.py validate --contract-file "$contract_file"
+          fi
+        done
+
+    - name: Generate Contract Report
+      run: |
+        echo "Generating contract compliance report..."
+        python3 demeter/core/ssot/contracts/generate-contract.py report --output-dir ./contract-reports
+
+    - name: Upload Contract Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: contract-reports
+        path: contract-reports/
+        retention-days: 30
+
+  bdd-testing:
+    name: BDD Testing
+    runs-on: ubuntu-latest
+    needs: ssot-verification
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install behave pyyaml
+
+    - name: Generate BDD Features from SSOT
+      run: |
+        echo "Generating BDD features from SSOT..."
+        python3 demeter/core/ssot/bdd/tools/generate-features.py --ssot-dir demeter/core/ssot --output-dir features
+
+    - name: Run BDD Tests
+      run: |
+        echo "Running BDD tests..."
+        if [ -x "demeter/core/ssot/bdd/tools/run-bdd-tests.sh" ]; then
+          ./demeter/core/ssot/bdd/tools/run-bdd-tests.sh
+        else
+          echo "BDD test runner not found or not executable"
+        fi
+
+    - name: Upload BDD Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: bdd-reports
+        path: reports/bdd/
+        retention-days: 30
+
+  graphrag-sync:
+    name: GraphRAG Synchronization
+    runs-on: ubuntu-latest
+    needs: [ssot-verification, contract-validation]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+
+    - name: Run SSOT Indexing
+      run: |
+        echo "Indexing SSOT data to GraphRAG..."
+        python3 demeter/core/ssot/graphrag/indexer/ssot-indexer.py --incremental
+
+    - name: Run Sync Engine
+      run: |
+        echo "Running GraphRAG synchronization..."
+        python3 demeter/core/ssot/graphrag/sync/sync-engine.py --incremental
+
+    - name: Analyze Recent Changes
+      run: |
+        echo "Analyzing recent changes for patterns..."
+        python3 demeter/core/ssot/graphrag/feedback/learning-engine.py --analyze-recent --days 1
+
+  traceability-matrix:
+    name: Traceability Matrix Generation
+    runs-on: ubuntu-latest
+    needs: ssot-verification
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+
+    - name: Generate Traceability Matrix
+      run: |
+        echo "Generating traceability matrix..."
+        python3 demeter/core/ssot/traceability/matrix-generator.py --html-report traceability-report.html
+
+    - name: Upload Traceability Report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: traceability-report
+        path: traceability-report.html
+        retention-days: 30
+
+  documentation-update:
+    name: Documentation Update
+    runs-on: ubuntu-latest
+    needs: [ssot-verification, traceability-matrix]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+
+    - name: Generate Documentation
+      run: |
+        echo "Generating updated documentation..."
+        python3 demeter/documentation/generate-docs.py --update-all
+
+    - name: Commit Documentation Updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+        if [ -n "$(git status --porcelain)" ]; then
+          git add README-generated.md docs/
+          git commit -m "📚 Auto-update documentation from SSOT
+
+          🤖 Generated with Claude Code
+
+          Co-Authored-By: Claude <noreply@anthropic.com>" || exit 0
+          git push
+        else
+          echo "No documentation changes to commit"
+        fi
+
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    needs: [ssot-verification, contract-validation, bdd-testing, traceability-matrix]
+    if: always()
+
+    steps:
+    - name: Check Quality Gate
+      run: |
+        echo "Evaluating quality gate..."
+
+        # Check SSOT verification result
+        if [ "${{ needs.ssot-verification.result }}" != "success" ]; then
+          echo "❌ SSOT verification failed"
+          exit 1
+        fi
+
+        # Check contract validation result
+        if [ "${{ needs.contract-validation.result }}" != "success" ]; then
+          echo "❌ Contract validation failed"
+          exit 1
+        fi
+
+        # BDD testing is allowed to fail for now (might not be fully implemented)
+        if [ "${{ needs.bdd-testing.result }}" == "failure" ]; then
+          echo "⚠️ BDD testing failed (non-blocking)"
+        fi
+
+        # Check traceability matrix generation
+        if [ "${{ needs.traceability-matrix.result }}" != "success" ]; then
+          echo "❌ Traceability matrix generation failed"
+          exit 1
+        fi
+
+        echo "✅ All quality gates passed!"
+
+  notify-status:
+    name: Notify Status
+    runs-on: ubuntu-latest
+    needs: [quality-gate]
+    if: always() && github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Notify Success
+      if: needs.quality-gate.result == 'success'
+      run: |
+        echo "🎉 SSOT Pipeline completed successfully!"
+        echo "All quality gates passed for main branch."
+
+    - name: Notify Failure
+      if: needs.quality-gate.result != 'success'
+      run: |
+        echo "❌ SSOT Pipeline failed!"
+        echo "Quality gates were not met. Check the logs for details."

@@ -1,0 +1,55 @@
+# 🌱 Demeter v1.3 - Project Initialization Template
+
+## Project Information
+- **Name**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Requirements File**: {{REQUIREMENTS_FILE}}
+- **Framework**: Demeter WAVIS v1.3
+
+## 🎯 Initialization Tasks
+
+### Phase 1: Project Structure Creation
+1. Create comprehensive directory structure:
+   - {docs,src,tests,config,scripts,deployments}
+   - .demeter-dev/knowledge/{patterns,lessons,components,queries}
+   - batch/{configs,prompts,logs,reports}
+   - .demeter/{prompts,logs,configs}
+
+2. Initialize project documentation:
+   - README.md with project overview
+   - CLAUDE.md with AI development guidelines
+   - LEARNING.md for progress tracking
+   - .gitignore with appropriate exclusions
+
+### Phase 2: SSOT Generation
+Use the wavis-template SSOT system to generate project requirements:
+
+1. **Load Base SSOT**: {{FRAMEWORK_PATH}}/demeter/core/ssot/base/
+2. **Apply Extensions**: {{EXTENSIONS}}
+3. **Generate Merged SSOT**: docs/merged-ssot.yaml
+4. **Create Documentation**: docs/SSOT.md
+5. **Build Execution Plan**: batch/execution-plan.yaml
+
+### Phase 3: Requirements Integration
+{{REQUIREMENTS_INTEGRATION_SECTION}}
+
+### Phase 4: Development Knowledge Setup
+1. Initialize GraphRAG knowledge base in .demeter-dev/knowledge/
+2. Create development patterns and lessons
+3. Setup query examples for development assistance
+
+## 🚀 Execution Instructions
+
+1. **Execute this prompt** to complete full project initialization
+2. **Review generated SSOT** in docs/SSOT.md
+3. **Validate execution plan** in batch/execution-plan.yaml
+4. **Start development** with ./demeter-iterate.sh
+
+## Success Criteria
+- [ ] Complete project structure created
+- [ ] SSOT generated with requirements and UoWs
+- [ ] Execution plan ready for TDD development
+- [ ] GraphRAG knowledge base initialized
+- [ ] All configuration files in place
+
+Execute this prompt in Claude Code to initialize the complete Demeter project.

@@ -1,0 +1,570 @@
+# AI Prompt Templates for SSOT-Driven Development
+# Standard prompts for consistent AI-assisted development
+
+prompt_templates:
+  # Code Generation Prompts
+  code_generation:
+    implement_uow:
+      name: "Implement Unit of Work"
+      description: "Generate implementation for a specific UoW based on SSOT definition"
+      template: |
+        Based on the following Unit of Work definition, implement the required functionality:
+
+        **UoW ID**: {{UOW_ID}}
+        **Title**: {{UOW_TITLE}}
+        **Goal**: {{UOW_GOAL}}
+        **Layer**: {{UOW_LAYER}}
+        **Priority**: {{UOW_PRIORITY}}
+
+        **Acceptance Criteria**:
+        {{#ACCEPTANCE_CRITERIA}}
+        - **{{AC_ID}}**: {{AC_DESCRIPTION}}
+          - Given: {{AC_GIVEN}}
+          - When: {{AC_WHEN}}
+          - Then: {{AC_THEN}}
+        {{/ACCEPTANCE_CRITERIA}}
+
+        **Dependencies**: {{DEPENDENCIES}}
+        **Implements FRs**: {{IMPLEMENTS_FRS}}
+        **Implements NFRs**: {{IMPLEMENTS_NFRS}}
+
+        **Requirements**:
+        1. Follow the project's architecture patterns
+        2. Implement all acceptance criteria as Gherkin scenarios describe
+        3. Include proper error handling and logging
+        4. Add comprehensive unit tests
+        5. Ensure security best practices
+        6. Document all public interfaces
+
+        **Technology Stack**: {{TECH_STACK}}
+        **Project Structure**: {{PROJECT_STRUCTURE}}
+      parameters:
+        - UOW_ID
+        - UOW_TITLE
+        - UOW_GOAL
+        - UOW_LAYER
+        - UOW_PRIORITY
+        - ACCEPTANCE_CRITERIA
+        - DEPENDENCIES
+        - IMPLEMENTS_FRS
+        - IMPLEMENTS_NFRS
+        - TECH_STACK
+        - PROJECT_STRUCTURE
+
+    implement_feature:
+      name: "Implement Feature from FR"
+      description: "Generate feature implementation based on functional requirement"
+      template: |
+        Implement the following feature based on the Functional Requirement:
+
+        **FR ID**: {{FR_ID}}
+        **Title**: {{FR_TITLE}}
+        **Description**: {{FR_DESCRIPTION}}
+        **Category**: {{FR_CATEGORY}}
+        **Priority**: {{FR_PRIORITY}}
+
+        **Related UoWs**: {{RELATED_UOWS}}
+        **Dependencies**: {{DEPENDENCIES}}
+
+        **Implementation Guidelines**:
+        1. Follow SOLID principles
+        2. Implement proper input validation
+        3. Add comprehensive error handling
+        4. Include logging and monitoring
+        5. Write unit and integration tests
+        6. Follow project coding standards
+
+        **Expected Deliverables**:
+        - Core implementation files
+        - Test files
+        - Documentation updates
+        - Configuration changes (if needed)
+
+        **Technology Context**: {{TECH_CONTEXT}}
+      parameters:
+        - FR_ID
+        - FR_TITLE
+        - FR_DESCRIPTION
+        - FR_CATEGORY
+        - FR_PRIORITY
+        - RELATED_UOWS
+        - DEPENDENCIES
+        - TECH_CONTEXT
+
+    generate_tests:
+      name: "Generate BDD Tests"
+      description: "Create BDD test implementation from Gherkin scenarios"
+      template: |
+        Generate BDD test implementation for the following scenarios:
+
+        **Feature**: {{FEATURE_NAME}}
+        **Description**: {{FEATURE_DESCRIPTION}}
+
+        **Scenarios**:
+        {{#SCENARIOS}}
+        ### Scenario: {{SCENARIO_NAME}}
+        ```gherkin
+        Given {{GIVEN}}
+        When {{WHEN}}
+        Then {{THEN}}
+        {{#AND_STEPS}}
+        And {{AND_STEP}}
+        {{/AND_STEPS}}
+        ```
+        {{/SCENARIOS}}
+
+        **Requirements**:
+        1. Implement step definitions for all Gherkin steps
+        2. Use appropriate test framework ({{TEST_FRAMEWORK}})
+        3. Include test data setup and teardown
+        4. Add proper assertions and validations
+        5. Handle both positive and negative test cases
+        6. Include performance assertions where relevant
+
+        **Test Context**:
+        - Framework: {{TEST_FRAMEWORK}}
+        - Environment: {{TEST_ENV}}
+        - Database: {{DATABASE_TYPE}}
+        - External Services: {{EXTERNAL_SERVICES}}
+      parameters:
+        - FEATURE_NAME
+        - FEATURE_DESCRIPTION
+        - SCENARIOS
+        - TEST_FRAMEWORK
+        - TEST_ENV
+        - DATABASE_TYPE
+        - EXTERNAL_SERVICES
+
+  # Architecture Prompts
+  architecture:
+    design_component:
+      name: "Design System Component"
+      description: "Create architectural design for a system component"
+      template: |
+        Design a system component with the following specifications:
+
+        **Component Name**: {{COMPONENT_NAME}}
+        **Purpose**: {{COMPONENT_PURPOSE}}
+        **Layer**: {{LAYER}}
+        **Responsibilities**: {{RESPONSIBILITIES}}
+
+        **Functional Requirements**:
+        {{#FUNCTIONAL_REQUIREMENTS}}
+        - {{FR_ID}}: {{FR_DESCRIPTION}}
+        {{/FUNCTIONAL_REQUIREMENTS}}
+
+        **Non-Functional Requirements**:
+        {{#NON_FUNCTIONAL_REQUIREMENTS}}
+        - {{NFR_ID}}: {{NFR_DESCRIPTION}}
+        {{/NON_FUNCTIONAL_REQUIREMENTS}}
+
+        **Design Constraints**:
+        - Technology Stack: {{TECH_STACK}}
+        - Performance Requirements: {{PERFORMANCE_REQUIREMENTS}}
+        - Security Requirements: {{SECURITY_REQUIREMENTS}}
+        - Scalability Requirements: {{SCALABILITY_REQUIREMENTS}}
+
+        **Expected Deliverables**:
+        1. Component architecture diagram
+        2. Interface definitions (APIs, contracts)
+        3. Data model (if applicable)
+        4. Integration points
+        5. Error handling strategy
+        6. Monitoring and logging approach
+        7. Deployment considerations
+
+        **Integration Context**: {{INTEGRATION_CONTEXT}}
+      parameters:
+        - COMPONENT_NAME
+        - COMPONENT_PURPOSE
+        - LAYER
+        - RESPONSIBILITIES
+        - FUNCTIONAL_REQUIREMENTS
+        - NON_FUNCTIONAL_REQUIREMENTS
+        - TECH_STACK
+        - PERFORMANCE_REQUIREMENTS
+        - SECURITY_REQUIREMENTS
+        - SCALABILITY_REQUIREMENTS
+        - INTEGRATION_CONTEXT
+
+    refactor_legacy:
+      name: "Legacy System Refactoring"
+      description: "Guide refactoring of legacy components to modern architecture"
+      template: |
+        Refactor the following legacy component to align with modern architecture:
+
+        **Legacy Component**: {{LEGACY_COMPONENT}}
+        **Current Issues**: {{CURRENT_ISSUES}}
+        **Target Architecture**: {{TARGET_ARCHITECTURE}}
+
+        **Refactoring Goals**:
+        {{#REFACTORING_GOALS}}
+        - {{GOAL}}
+        {{/REFACTORING_GOALS}}
+
+        **Constraints**:
+        - Backward Compatibility: {{BACKWARD_COMPATIBILITY}}
+        - Migration Strategy: {{MIGRATION_STRATEGY}}
+        - Downtime Requirements: {{DOWNTIME_REQUIREMENTS}}
+
+        **Refactoring Plan**:
+        1. Analyze current dependencies and interfaces
+        2. Design new component structure
+        3. Plan incremental migration strategy
+        4. Implement with proper testing
+        5. Validate against acceptance criteria
+
+        **Quality Gates**:
+        - All existing functionality preserved
+        - Performance improvements achieved
+        - Security enhanced
+        - Maintainability improved
+        - Test coverage maintained/improved
+
+        **Technical Context**: {{TECHNICAL_CONTEXT}}
+      parameters:
+        - LEGACY_COMPONENT
+        - CURRENT_ISSUES
+        - TARGET_ARCHITECTURE
+        - REFACTORING_GOALS
+        - BACKWARD_COMPATIBILITY
+        - MIGRATION_STRATEGY
+        - DOWNTIME_REQUIREMENTS
+        - TECHNICAL_CONTEXT
+
+  # Documentation Prompts
+  documentation:
+    generate_api_docs:
+      name: "Generate API Documentation"
+      description: "Create comprehensive API documentation"
+      template: |
+        Generate comprehensive API documentation for:
+
+        **API Name**: {{API_NAME}}
+        **Version**: {{API_VERSION}}
+        **Base URL**: {{BASE_URL}}
+
+        **Endpoints**:
+        {{#ENDPOINTS}}
+        ### {{METHOD}} {{PATH}}
+        - **Purpose**: {{PURPOSE}}
+        - **Authentication**: {{AUTH_REQUIRED}}
+        - **Rate Limiting**: {{RATE_LIMIT}}
+        {{/ENDPOINTS}}
+
+        **Documentation Requirements**:
+        1. OpenAPI 3.0 specification
+        2. Request/response examples for each endpoint
+        3. Error code descriptions
+        4. Authentication flow documentation
+        5. Rate limiting policies
+        6. Data models and schemas
+        7. Usage examples in multiple languages
+        8. Testing guidelines
+
+        **Target Audience**: {{TARGET_AUDIENCE}}
+        **Integration Context**: {{INTEGRATION_CONTEXT}}
+      parameters:
+        - API_NAME
+        - API_VERSION
+        - BASE_URL
+        - ENDPOINTS
+        - TARGET_AUDIENCE
+        - INTEGRATION_CONTEXT
+
+    generate_user_guide:
+      name: "Generate User Guide"
+      description: "Create user-facing documentation"
+      template: |
+        Create user documentation for:
+
+        **Feature**: {{FEATURE_NAME}}
+        **User Personas**: {{USER_PERSONAS}}
+        **Use Cases**: {{USE_CASES}}
+
+        **Documentation Structure**:
+        1. Overview and benefits
+        2. Getting started guide
+        3. Step-by-step tutorials
+        4. Common use cases and examples
+        5. Troubleshooting guide
+        6. FAQ section
+        7. Advanced configurations
+
+        **Requirements**:
+        - Clear, non-technical language
+        - Screenshots and diagrams where helpful
+        - Progressive disclosure (basic to advanced)
+        - Searchable and well-organized
+        - Mobile-friendly format
+
+        **Context**: {{CONTEXT}}
+      parameters:
+        - FEATURE_NAME
+        - USER_PERSONAS
+        - USE_CASES
+        - CONTEXT
+
+  # Quality Assurance Prompts
+  quality_assurance:
+    code_review:
+      name: "Code Review Checklist"
+      description: "Systematic code review based on SSOT requirements"
+      template: |
+        Review the following code against SSOT requirements:
+
+        **UoW ID**: {{UOW_ID}}
+        **Acceptance Criteria**: {{ACCEPTANCE_CRITERIA}}
+        **Code Location**: {{CODE_LOCATION}}
+
+        **Review Checklist**:
+
+        **Functional Compliance**:
+        - [ ] All acceptance criteria implemented
+        - [ ] Business logic correctly implemented
+        - [ ] Input validation comprehensive
+        - [ ] Output formatting correct
+        - [ ] Error handling appropriate
+
+        **Non-Functional Compliance**:
+        - [ ] Performance requirements met
+        - [ ] Security best practices followed
+        - [ ] Logging and monitoring implemented
+        - [ ] Resource usage optimized
+        - [ ] Scalability considerations addressed
+
+        **Code Quality**:
+        - [ ] SOLID principles applied
+        - [ ] Clean code practices followed
+        - [ ] Proper abstraction levels
+        - [ ] Consistent naming conventions
+        - [ ] Adequate documentation
+
+        **Testing**:
+        - [ ] Unit tests comprehensive
+        - [ ] Integration tests included
+        - [ ] BDD scenarios covered
+        - [ ] Edge cases tested
+        - [ ] Performance tests included
+
+        **Provide detailed feedback on each category.**
+      parameters:
+        - UOW_ID
+        - ACCEPTANCE_CRITERIA
+        - CODE_LOCATION
+
+    security_review:
+      name: "Security Review"
+      description: "Security-focused code review"
+      template: |
+        Conduct security review for:
+
+        **Component**: {{COMPONENT_NAME}}
+        **Security Requirements**: {{SECURITY_REQUIREMENTS}}
+        **Threat Model**: {{THREAT_MODEL}}
+
+        **Security Checklist**:
+
+        **Input Security**:
+        - [ ] Input validation and sanitization
+        - [ ] SQL injection prevention
+        - [ ] XSS prevention
+        - [ ] Command injection prevention
+        - [ ] File upload security
+
+        **Authentication & Authorization**:
+        - [ ] Proper authentication implementation
+        - [ ] Authorization checks complete
+        - [ ] Session management secure
+        - [ ] Password handling secure
+        - [ ] Multi-factor authentication support
+
+        **Data Protection**:
+        - [ ] Data encryption at rest
+        - [ ] Data encryption in transit
+        - [ ] Sensitive data handling
+        - [ ] PII protection measures
+        - [ ] Data retention compliance
+
+        **Infrastructure Security**:
+        - [ ] Secure configuration
+        - [ ] Secrets management
+        - [ ] Network security
+        - [ ] Container security
+        - [ ] Dependency security
+
+        **Provide security assessment and recommendations.**
+      parameters:
+        - COMPONENT_NAME
+        - SECURITY_REQUIREMENTS
+        - THREAT_MODEL
+
+  # Maintenance Prompts
+  maintenance:
+    troubleshoot_issue:
+      name: "Troubleshoot Production Issue"
+      description: "Systematic troubleshooting approach"
+      template: |
+        Troubleshoot the following production issue:
+
+        **Issue Description**: {{ISSUE_DESCRIPTION}}
+        **Affected Components**: {{AFFECTED_COMPONENTS}}
+        **Error Symptoms**: {{ERROR_SYMPTOMS}}
+        **Business Impact**: {{BUSINESS_IMPACT}}
+
+        **Troubleshooting Process**:
+
+        **1. Issue Analysis**:
+        - Identify affected UoWs and components
+        - Review recent changes and deployments
+        - Analyze error logs and monitoring data
+        - Check system resources and performance
+
+        **2. Root Cause Investigation**:
+        - Trace execution flow through affected components
+        - Identify configuration or data issues
+        - Check external dependencies
+        - Validate against acceptance criteria
+
+        **3. Resolution Strategy**:
+        - Immediate mitigation options
+        - Long-term fix implementation
+        - Testing and validation approach
+        - Deployment and rollback plan
+
+        **4. Prevention Measures**:
+        - Monitoring improvements
+        - Alerting enhancements
+        - Process improvements
+        - Documentation updates
+
+        **Context**: {{TECHNICAL_CONTEXT}}
+      parameters:
+        - ISSUE_DESCRIPTION
+        - AFFECTED_COMPONENTS
+        - ERROR_SYMPTOMS
+        - BUSINESS_IMPACT
+        - TECHNICAL_CONTEXT
+
+    performance_optimization:
+      name: "Performance Optimization"
+      description: "Systematic performance optimization approach"
+      template: |
+        Optimize performance for:
+
+        **Component**: {{COMPONENT_NAME}}
+        **Current Performance**: {{CURRENT_PERFORMANCE}}
+        **Target Performance**: {{TARGET_PERFORMANCE}}
+        **Performance Requirements**: {{PERFORMANCE_REQUIREMENTS}}
+
+        **Optimization Process**:
+
+        **1. Performance Analysis**:
+        - Profile application performance
+        - Identify bottlenecks and hotspots
+        - Analyze resource utilization
+        - Review database queries and I/O operations
+
+        **2. Optimization Strategy**:
+        - Algorithm and data structure improvements
+        - Caching strategy implementation
+        - Database optimization
+        - Network optimization
+        - Resource pooling and management
+
+        **3. Implementation Plan**:
+        - Prioritize optimizations by impact
+        - Implement changes incrementally
+        - Validate performance improvements
+        - Monitor for regressions
+
+        **4. Validation**:
+        - Load testing with realistic scenarios
+        - Performance regression testing
+        - Monitoring and alerting setup
+        - Documentation updates
+
+        **Constraints**: {{CONSTRAINTS}}
+      parameters:
+        - COMPONENT_NAME
+        - CURRENT_PERFORMANCE
+        - TARGET_PERFORMANCE
+        - PERFORMANCE_REQUIREMENTS
+        - CONSTRAINTS
+
+# Prompt Context Builders
+context_builders:
+  uow_context:
+    description: "Build complete context for UoW-based prompts"
+    data_sources:
+      - ssot/framework-requirements.yaml
+      - ssot/base/uow-base.yaml
+      - ssot/mvp-definition.yaml
+    context_fields:
+      - uow_definition
+      - acceptance_criteria
+      - dependencies
+      - implements_frs
+      - implements_nfrs
+      - mvp_phase
+      - related_components
+
+  project_context:
+    description: "Build project-wide context"
+    data_sources:
+      - meta-config.yaml
+      - setup-config/config.yaml
+      - ssot/framework-requirements.yaml
+    context_fields:
+      - tech_stack
+      - project_structure
+      - architecture_patterns
+      - coding_standards
+      - deployment_strategy
+
+  extension_context:
+    description: "Build extension-specific context"
+    data_sources:
+      - ssot/extensions/
+      - ssot/extension-presets.yaml
+      - ssot/compatibility-matrix.yaml
+    context_fields:
+      - active_extensions
+      - domain_requirements
+      - compliance_requirements
+      - feature_configurations
+
+# Prompt Usage Guidelines
+usage_guidelines:
+  best_practices:
+    - "Always include complete SSOT context in prompts"
+    - "Specify exact acceptance criteria and Gherkin scenarios"
+    - "Include non-functional requirements and constraints"
+    - "Reference related UoWs and dependencies"
+    - "Specify technology stack and patterns"
+    - "Include quality gates and validation criteria"
+
+  customization:
+    - "Adapt templates to specific project needs"
+    - "Add domain-specific terminology and patterns"
+    - "Include project-specific quality standards"
+    - "Reference established architectural decisions"
+
+  validation:
+    - "Validate generated code against acceptance criteria"
+    - "Ensure all NFRs are addressed"
+    - "Check compliance with coding standards"
+    - "Verify integration with existing components"
+
+# Prompt Template Metadata
+metadata:
+  version: "1.0.0"
+  created: "2025-01-18"
+  description: "Standard AI prompt templates for SSOT-driven development"
+  total_templates: 12
+  categories:
+    - code_generation
+    - architecture
+    - documentation
+    - quality_assurance
+    - maintenance

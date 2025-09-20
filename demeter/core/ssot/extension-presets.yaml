@@ -1,0 +1,147 @@
+# Extension Presets for Common Use Cases
+# Pre-configured combinations of extensions for typical project scenarios
+
+presets:
+  startup-ecommerce:
+    id: "startup-ecommerce"
+    name: "Startup E-Commerce MVP"
+    description: "전자상거래 스타트업을 위한 기본 구성"
+    recommended_phase: "phase_2"
+    extensions:
+      domain: ["domain/e-commerce.yaml"]
+      features: ["features/ai-ml.yaml"]
+      compliance: ["compliance/gdpr.yaml"]
+    estimated_complexity: "medium"
+    estimated_timeline: "8-12 weeks"
+    key_features:
+      - "상품 카탈로그 관리"
+      - "AI 기반 추천 시스템"
+      - "EU GDPR 준수"
+    target_users: ["스타트업", "소규모 전자상거래"]
+
+  enterprise-fintech:
+    id: "enterprise-fintech"
+    name: "Enterprise FinTech Platform"
+    description: "금융기술 기업을 위한 엔터프라이즈급 구성"
+    recommended_phase: "phase_3"
+    extensions:
+      domain: ["domain/fintech.yaml"]
+      features: ["features/blockchain.yaml", "features/ai-ml.yaml"]
+      compliance: ["compliance/pci-dss.yaml", "compliance/gdpr.yaml"]
+    estimated_complexity: "high"
+    estimated_timeline: "16-24 weeks"
+    key_features:
+      - "결제 처리 및 위험 관리"
+      - "블록체인 통합"
+      - "AI 기반 사기 탐지"
+      - "PCI DSS 완전 준수"
+    target_users: ["핀테크 기업", "금융 서비스 제공업체"]
+
+  healthcare-iot:
+    id: "healthcare-iot"
+    name: "Healthcare IoT Platform"
+    description: "헬스케어 IoT 플랫폼을 위한 구성"
+    recommended_phase: "phase_3"
+    extensions:
+      domain: ["domain/healthcare.yaml"]
+      features: ["features/iot.yaml", "features/ai-ml.yaml"]
+      compliance: ["compliance/hipaa.yaml", "compliance/gdpr.yaml"]
+    estimated_complexity: "very_high"
+    estimated_timeline: "20-32 weeks"
+    key_features:
+      - "환자 기록 관리"
+      - "의료 기기 IoT 연동"
+      - "AI 기반 진단 지원"
+      - "HIPAA 완전 준수"
+    target_users: ["의료 기관", "헬스테크 기업"]
+
+  realtime-streaming:
+    id: "realtime-streaming"
+    name: "Real-time Streaming Service"
+    description: "실시간 데이터 처리 서비스를 위한 구성"
+    recommended_phase: "phase_2"
+    extensions:
+      domain: []
+      features: ["features/streaming.yaml", "features/iot.yaml", "features/ai-ml.yaml"]
+      compliance: ["compliance/gdpr.yaml"]
+    estimated_complexity: "high"
+    estimated_timeline: "12-18 weeks"
+    key_features:
+      - "실시간 스트림 처리"
+      - "IoT 데이터 수집"
+      - "AI 기반 실시간 분석"
+      - "개인정보 보호"
+    target_users: ["스트리밍 플랫폼", "실시간 분석 서비스"]
+
+  crypto-defi:
+    id: "crypto-defi"
+    name: "Crypto DeFi Platform"
+    description: "암호화폐 탈중앙화 금융 플랫폼"
+    recommended_phase: "phase_3"
+    extensions:
+      domain: ["domain/fintech.yaml"]
+      features: ["features/blockchain.yaml"]
+      compliance: []
+    estimated_complexity: "very_high"
+    estimated_timeline: "24-36 weeks"
+    key_features:
+      - "스마트 컨트랙트 통합"
+      - "DeFi 프로토콜 연동"
+      - "암호화폐 지갑 관리"
+      - "분산 거버넌스"
+    target_users: ["DeFi 프로젝트", "블록체인 스타트업"]
+
+  basic-saas:
+    id: "basic-saas"
+    name: "Basic SaaS Application"
+    description: "기본적인 SaaS 애플리케이션 구성"
+    recommended_phase: "phase_1"
+    extensions:
+      domain: []
+      features: []
+      compliance: ["compliance/gdpr.yaml"]
+    estimated_complexity: "low"
+    estimated_timeline: "4-8 weeks"
+    key_features:
+      - "기본 CRUD 기능"
+      - "사용자 관리"
+      - "기본 보안"
+      - "GDPR 준수"
+    target_users: ["SaaS 스타트업", "프로토타이핑"]
+
+# Preset 호환성 규칙
+compatibility_rules:
+  phase_requirements:
+    phase_1: ["basic-saas"]
+    phase_2: ["startup-ecommerce", "realtime-streaming"]
+    phase_3: ["enterprise-fintech", "healthcare-iot", "crypto-defi"]
+
+  conflict_checks:
+    - preset: "healthcare-iot"
+      conflicts_with: ["crypto-defi"]
+      reason: "의료 규정과 암호화폐 규제 충돌"
+
+    - preset: "enterprise-fintech"
+      requires_compliance: ["pci-dss"]
+      reason: "금융 서비스는 PCI DSS 필수"
+
+# 사용 통계 (향후 업데이트용)
+usage_stats:
+  most_popular: ["startup-ecommerce", "basic-saas"]
+  success_rates:
+    startup-ecommerce: 0.92
+    enterprise-fintech: 0.85
+    healthcare-iot: 0.78
+    basic-saas: 0.95
+
+# 추천 시스템 설정
+recommendations:
+  based_on_team_size:
+    small: ["basic-saas", "startup-ecommerce"]
+    medium: ["realtime-streaming", "enterprise-fintech"]
+    large: ["healthcare-iot", "crypto-defi"]
+
+  based_on_timeline:
+    fast: ["basic-saas"]
+    normal: ["startup-ecommerce", "realtime-streaming"]
+    extensive: ["enterprise-fintech", "healthcare-iot", "crypto-defi"]

@@ -1,0 +1,260 @@
+# Universal MVP Definition Framework for WAVIS Demeter Template System
+# Defines Minimum Viable Product phases independent of language or project type
+
+mvp_framework:
+  version: "2.0.0"
+  description: "Universal MVP phases for SSOT-driven development (language/type independent)"
+  created: "2025-01-18"
+  philosophy: "SSOT defines WHAT to build, technology stack defines HOW to build"
+
+# Universal MVP Phases (independent of technology or project type)
+mvp_phases:
+  phase_1:
+    name: "Core MVP"
+    timeline_weeks: 2-4
+    description: "핵심 비즈니스 가치 검증을 위한 최소 기능셋"
+    focus: "핵심 비즈니스 로직과 기본 품질 확보"
+    core_principles:
+      - "Configuration management"
+      - "Basic error handling"
+      - "Core business logic"
+      - "Fundamental testing"
+    included_frs:
+      - "FR-001"  # Configuration Management
+      - "FR-009"  # Core Business Logic
+    included_nfrs:
+      - "NFR-003"  # Security
+      - "NFR-005"  # Maintainability
+    critical_uows:
+      - "UoW-000"  # Project Structure
+      - "UoW-001A" # Dependencies
+      - "UoW-001B" # Testing Framework
+      - "UoW-001C" # Configuration System
+      - "UoW-001"  # Config Loader
+      - "UoW-201"  # Business Logic
+    deferred_features:
+      - "Authentication systems"
+      - "External integrations"
+      - "Caching mechanisms"
+      - "Advanced monitoring"
+    success_criteria:
+      - "핵심 비즈니스 기능 동작"
+      - "기본 설정 관리 구현"
+      - "60% 이상 테스트 커버리지"
+      - "정적 분석 통과"
+      - "기본 에러 처리 구현"
+    delivery_milestones:
+      week_1: ["UoW-000", "UoW-001A", "UoW-001B"]
+      week_2: ["UoW-001C", "UoW-001", "UoW-201"]
+
+  phase_2:
+    name: "Extended MVP"
+    timeline_weeks: 4-6
+    description: "사용자 피드백 반영 및 확장 기능 추가"
+    focus: "인터페이스, 인증, 모니터링 등 운영 요소 추가"
+    core_principles:
+      - "User interface implementation"
+      - "Authentication and authorization"
+      - "Basic monitoring and observability"
+      - "External system integration"
+    included_frs:
+      - "FR-001"  # Configuration Management
+      - "FR-002"  # Interface (API/UI 등)
+      - "FR-005"  # Authentication & Authorization
+      - "FR-008"  # Monitoring & Observability
+      - "FR-009"  # Core Business Logic
+    included_nfrs:
+      - "NFR-001"  # Performance
+      - "NFR-002"  # Reliability
+      - "NFR-003"  # Security
+      - "NFR-005"  # Maintainability
+      - "NFR-006"  # Usability
+    critical_uows:
+      - "UoW-000"  # Project Structure
+      - "UoW-001A" # Dependencies
+      - "UoW-001B" # Testing Framework
+      - "UoW-001C" # Configuration System
+      - "UoW-001"  # Config Loader
+      - "UoW-103"  # Interface Foundation
+      - "UoW-104"  # Authentication
+      - "UoW-105"  # Error Handling
+      - "UoW-107"  # Monitoring
+      - "UoW-201"  # Business Logic
+      - "UoW-202"  # External Integration
+    deferred_features:
+      - "Advanced caching strategies"
+      - "Complex async processing"
+      - "Advanced analytics"
+      - "Performance optimization"
+    success_criteria:
+      - "사용자 인터페이스 구현"
+      - "인증 및 권한 관리 동작"
+      - "기본 모니터링 구현"
+      - "외부 시스템 연동"
+      - "70% 이상 테스트 커버리지"
+      - "성능 기준 달성"
+    delivery_milestones:
+      week_1-2: ["Phase 1 완료", "UoW-103", "UoW-104"]
+      week_3-4: ["UoW-105", "UoW-107", "UoW-202"]
+      week_5-6: ["통합 테스트", "성능 검증", "사용자 피드백 반영"]
+
+  phase_3:
+    name: "Production Ready"
+    timeline_weeks: 6-8
+    description: "운영 환경 배포 및 확장성 확보"
+    focus: "배포, 확장성, 고급 기능, 운영 최적화"
+    core_principles:
+      - "Deployment automation"
+      - "Scalability and performance"
+      - "Advanced monitoring and alerting"
+      - "Production hardening"
+    included_frs:
+      - "FR-001"  # Configuration Management
+      - "FR-002"  # Interface
+      - "FR-003"  # Data Persistence
+      - "FR-004"  # Caching Layer
+      - "FR-005"  # Authentication & Authorization
+      - "FR-006"  # Advanced Business Logic
+      - "FR-007"  # External API Integration
+      - "FR-008"  # Event Processing
+      - "FR-009"  # Monitoring & Observability
+      - "FR-010"  # Deployment & DevOps
+    included_nfrs:
+      - "NFR-001"  # Performance
+      - "NFR-002"  # Reliability
+      - "NFR-003"  # Security
+      - "NFR-004"  # Scalability
+      - "NFR-005"  # Maintainability
+      - "NFR-006"  # Usability
+      - "NFR-007"  # Portability
+    critical_uows:
+      - "UoW-000"  # Project Structure
+      - "UoW-001A" # Dependencies
+      - "UoW-001B" # Testing Framework
+      - "UoW-001C" # Configuration System
+      - "UoW-001"  # Config Loader
+      - "UoW-101"  # Database Connection
+      - "UoW-102"  # Cache Integration
+      - "UoW-103"  # Interface Foundation
+      - "UoW-104"  # Authentication
+      - "UoW-105"  # Error Handling
+      - "UoW-106"  # Async Processing
+      - "UoW-107"  # Monitoring
+      - "UoW-201"  # Business Logic
+      - "UoW-202"  # External Integration
+      - "UoW-210"  # Deployment
+    deferred_features: []  # 모든 기능 포함
+    success_criteria:
+      - "자동화된 배포 파이프라인"
+      - "부하 분산 및 확장성 구현"
+      - "고급 모니터링 및 알람"
+      - "80% 이상 테스트 커버리지"
+      - "성능 요구사항 달성"
+      - "보안 감사 통과"
+      - "문서화 완료"
+    delivery_milestones:
+      week_1-2: ["Phase 2 완료", "UoW-101", "UoW-102"]
+      week_3-4: ["UoW-106", "고급 모니터링", "성능 최적화"]
+      week_5-6: ["UoW-210", "배포 자동화", "보안 강화"]
+      week_7-8: ["부하 테스트", "운영 문서", "최종 검증"]
+
+# MVP Quality Gates
+quality_gates:
+  foundation_layer:
+    test_coverage_minimum: 80
+    sonarqube_rating: "A"
+    security_vulnerabilities: 0
+    code_smells_density: "< 5%"
+
+  business_layer:
+    test_coverage_minimum: 60
+    sonarqube_rating: "A"
+    security_vulnerabilities: 0
+    code_smells_density: "< 10%"
+
+  integration:
+    end_to_end_coverage: "Critical paths"
+    performance_baseline: "Response time < 500ms"
+    error_handling: "All error scenarios covered"
+    documentation: "API documentation complete"
+
+# Risk Assessment Framework
+risk_categories:
+  technical_risks:
+    - name: "Dependency compatibility"
+      impact: "Medium"
+      probability: "Low"
+      mitigation: "Version pinning and compatibility testing"
+
+    - name: "Performance requirements"
+      impact: "High"
+      probability: "Medium"
+      mitigation: "Early performance testing and optimization"
+
+    - name: "Security vulnerabilities"
+      impact: "Critical"
+      probability: "Medium"
+      mitigation: "Automated security scanning and regular updates"
+
+  process_risks:
+    - name: "Scope creep"
+      impact: "High"
+      probability: "High"
+      mitigation: "Strict MVP scope enforcement and change control"
+
+    - name: "Timeline pressure"
+      impact: "Medium"
+      probability: "Medium"
+      mitigation: "Buffer time and feature prioritization"
+
+# Success Metrics
+success_metrics:
+  development_velocity:
+    - "UoW completion rate: > 85% on schedule"
+    - "Defect rate: < 5% critical bugs"
+    - "Code review cycle time: < 24 hours"
+
+  quality_metrics:
+    - "Test coverage: Foundation 80%+, Business 60%+"
+    - "SonarQube rating: A across all dimensions"
+    - "Security scan: Zero critical/high vulnerabilities"
+
+  delivery_metrics:
+    - "MVP delivery: On time within timeline"
+    - "Feature completeness: 100% of critical features"
+    - "Documentation: 100% of public APIs documented"
+
+# MVP Extension Paths
+extension_paths:
+  post_mvp_features:
+    phase_2:
+      - "Caching layer implementation"
+      - "External API integration"
+      - "Advanced monitoring and alerting"
+      - "Performance optimization"
+
+    phase_3:
+      - "Async processing capabilities"
+      - "Advanced security features"
+      - "Scalability improvements"
+      - "Advanced analytics"
+
+  scaling_considerations:
+    - "Database optimization and indexing"
+    - "Load balancing and clustering"
+    - "Caching strategies"
+    - "Service decomposition"
+
+# Templates and Automation
+automation_scripts:
+  mvp_initialization: "setup-mvp.sh"
+  progress_tracking: "track-mvp-progress.py"
+  quality_verification: "verify-mvp-quality.py"
+  delivery_checklist: "mvp-delivery-checklist.md"
+
+# Integration with SSOT System
+ssot_integration:
+  merge_strategy: "MVP-first approach with deferred features marked"
+  dependency_validation: "Critical path dependencies must be included"
+  ac_validation: "All critical UoW acceptance criteria must be met"
+  extension_compatibility: "MVP must be compatible with all planned extensions"

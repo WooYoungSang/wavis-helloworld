@@ -1,0 +1,531 @@
+# 🤖 AI-Driven Specification Refinement Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Specification File**: {{SPECIFICATION_FILE}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Refinement Type**: {{REFINEMENT_TYPE}}
+- **Framework**: Demeter WAVIS v1.3 + Spec-Kit AI-Driven Refinement
+
+## 🎯 AI-Driven Refinement Philosophy
+
+This template implements the GitHub Spec-Kit approach to AI-assisted specification refinement, where AI continuously improves specifications through feedback loops, constitutional compliance analysis, and iterative enhancement based on implementation results and user feedback.
+
+### AI Refinement Principles
+- **Specifications evolve through AI-guided analysis and feedback**
+- **Constitutional compliance drives all refinement decisions**
+- **Implementation feedback informs specification improvements**
+- **Ambiguity elimination through targeted AI analysis**
+- **Continuous quality improvement through AI-driven metrics**
+
+## 🤖 AI-Driven Specification Refinement
+
+### 1. Refinement Session Header
+```yaml
+ai_refinement_session:
+  project: "{{PROJECT_NAME}}"
+  specification_version: "{{SPEC_VERSION}}"
+  refinement_date: "{{CURRENT_DATE}}"
+  ai_engine: "Demeter AI Specification Refinement Engine"
+  refinement_type: "{{REFINEMENT_TYPE}}"
+  constitutional_compliance: "{{CONSTITUTION_FILE}}"
+
+  refinement_capabilities:
+    ambiguity_detection: true
+    constitutional_alignment: true
+    implementation_feedback_integration: true
+    quality_metrics_optimization: true
+    user_story_enhancement: true
+    acceptance_criteria_refinement: true
+```
+
+### 2. Ambiguity Detection and Resolution
+```yaml
+ambiguity_detection_engine:
+  approach: "AI-powered detection of specification ambiguities"
+  principle: "Eliminate all [CLARIFY] markers through intelligent analysis"
+
+  ambiguity_analysis:
+    detection_patterns: |
+      AI Analysis for Ambiguity Detection:
+
+      1. **Unclear Requirements Analysis**:
+         ```yaml
+         ambiguous_elements:
+           {{#each clarify_markers}}
+           - marker_id: "{{marker_id}}"
+             original_text: "{{original_requirement}}"
+             ambiguity_type: "{{ambiguity_classification}}"
+             impact_assessment: "{{potential_implementation_confusion}}"
+             suggested_clarifications:
+               - "{{clarification_option_1}}"
+               - "{{clarification_option_2}}"
+               - "{{clarification_option_3}}"
+             constitutional_implications:
+               affected_principles: [{{constitutional_principles}}]
+               compliance_risk: "{{risk_level}}"
+           {{/each}}
+         ```
+
+      2. **AI-Powered Resolution Suggestions**:
+         ```yaml
+         resolution_recommendations:
+           {{#each ambiguous_elements}}
+           {{marker_id}}_resolution:
+             recommended_approach: "{{ai_recommended_resolution}}"
+             constitutional_alignment: |
+               {{constitutional_principle_analysis}}
+             implementation_clarity: |
+               # Before Resolution:
+               {{original_ambiguous_text}}
+
+               # After AI Resolution:
+               {{clarified_specification_text}}
+
+               # Constitutional Compliance:
+               {{constitutional_compliance_validation}}
+
+             quality_improvement_metrics:
+               clarity_score: "{{before_score}} → {{after_score}}"
+               testability_improvement: "{{testability_enhancement}}"
+               implementation_confidence: "{{confidence_increase}}"
+           {{/each}}
+         ```
+
+  constitutional_ambiguity_resolution:
+    pattern: |
+      AI Constitutional Analysis for Ambiguity Resolution:
+
+      ```yaml
+      constitutional_resolution_analysis:
+        {{#each ambiguous_elements}}
+        {{marker_id}}_constitutional_resolution:
+          # AI Analysis: How constitutional principles resolve ambiguity
+          library_first_guidance: |
+            {{library_first_ambiguity_resolution}}
+
+          cli_interface_clarity: |
+            {{cli_interface_specification_improvement}}
+
+          test_first_implications: |
+            {{test_first_testability_enhancement}}
+
+          simplicity_principle_application: |
+            {{simplicity_driven_clarification}}
+
+          # AI-Generated Resolution
+          final_clarified_requirement: |
+            {{ai_clarified_requirement_text}}
+
+          # Constitutional Compliance Validation
+          constitutional_compliance_score: "{{compliance_percentage}}"
+          remaining_risks: [{{remaining_ambiguity_risks}}]
+        {{/each}}
+      ```
+```
+
+### 3. Constitutional Compliance Enhancement
+```yaml
+constitutional_enhancement_engine:
+  approach: "AI-driven constitutional compliance optimization"
+  principle: "Every specification element maximizes constitutional alignment"
+
+  compliance_analysis:
+    pattern: |
+      AI Constitutional Compliance Analysis:
+
+      ```yaml
+      constitutional_compliance_enhancement:
+        overall_compliance_score: "{{current_compliance_percentage}}"
+        improvement_potential: "{{potential_improvement_percentage}}"
+
+        principle_by_principle_analysis:
+          {{#each constitutional_principles}}
+          {{principle_name}}_analysis:
+            current_compliance: "{{current_adherence_level}}"
+            specification_gaps: [{{compliance_gaps}}]
+            ai_enhancement_suggestions:
+              gap_1_resolution: |
+                {{ai_suggestion_for_gap_1}}
+              gap_2_resolution: |
+                {{ai_suggestion_for_gap_2}}
+              implementation_guidance: |
+                {{specific_implementation_recommendations}}
+
+            # AI-Enhanced Specification Elements
+            enhanced_requirements:
+              {{#each related_requirements}}
+              {{requirement_id}}_enhancement:
+                original: "{{original_requirement}}"
+                ai_enhanced: "{{constitutional_enhanced_requirement}}"
+                constitutional_improvement: "{{specific_constitutional_benefit}}"
+              {{/each}}
+          {{/each}}
+
+        cross_principle_optimization:
+          synergy_opportunities: |
+            {{ai_identified_principle_synergies}}
+          conflict_resolution: |
+            {{ai_constitutional_conflict_resolution}}
+          overall_enhancement_strategy: |
+            {{comprehensive_constitutional_enhancement_plan}}
+      ```
+
+  enhanced_specification_generation:
+    pattern: |
+      AI-Enhanced Constitutional Specification:
+
+      ```yaml
+      constitutionally_enhanced_specification:
+        {{#each functional_requirements}}
+        {{FR_ID}}_enhanced:
+          # AI-Enhanced User Story with Constitutional Compliance
+          user_story_enhanced: |
+            {{ai_enhanced_user_story_with_constitutional_guidance}}
+
+          # AI-Refined Acceptance Criteria
+          acceptance_criteria_enhanced:
+            {{#each enhanced_acceptance_criteria}}
+            - criterion: "{{ai_enhanced_criterion}}"
+              constitutional_principle: "{{supporting_constitutional_principle}}"
+              testability_score: "{{testability_improvement_score}}"
+              implementation_clarity: "{{implementation_guidance}}"
+            {{/each}}
+
+          # AI-Optimized Constitutional Compliance
+          constitutional_compliance_enhanced:
+            library_first_optimization: |
+              {{ai_optimized_library_selections}}
+            cli_interface_enhancement: |
+              {{ai_enhanced_cli_interface_design}}
+            test_first_strategy: |
+              {{ai_optimized_testing_approach}}
+            simplicity_maximization: |
+              {{ai_simplified_implementation_approach}}
+
+          # AI Quality Metrics
+          ai_quality_assessment:
+            clarity_score: "{{clarity_improvement_percentage}}"
+            constitutional_compliance: "{{constitutional_alignment_score}}"
+            implementation_confidence: "{{implementation_success_probability}}"
+            risk_mitigation: "{{identified_risk_mitigations}}"
+        {{/each}}
+      ```
+```
+
+### 4. Implementation Feedback Integration
+```yaml
+implementation_feedback_engine:
+  approach: "AI-powered integration of implementation feedback into specifications"
+  principle: "Specifications improve based on real implementation challenges"
+
+  feedback_analysis:
+    pattern: |
+      AI Implementation Feedback Analysis:
+
+      ```yaml
+      implementation_feedback_integration:
+        feedback_sources:
+          developer_feedback: "{{developer_implementation_challenges}}"
+          test_execution_results: "{{test_execution_insights}}"
+          performance_measurements: "{{performance_analysis_results}}"
+          constitutional_compliance_audit: "{{constitutional_audit_findings}}"
+
+        ai_feedback_analysis:
+          {{#each feedback_items}}
+          feedback_{{feedback_id}}:
+            original_specification_element: "{{related_spec_element}}"
+            implementation_challenge: "{{encountered_challenge}}"
+            constitutional_implications: "{{constitutional_impact_analysis}}"
+
+            # AI Analysis and Resolution
+            ai_root_cause_analysis: |
+              {{ai_identified_root_cause}}
+
+            ai_specification_improvement: |
+              {{ai_recommended_spec_enhancement}}
+
+            constitutional_compliance_enhancement: |
+              {{constitutional_improvement_recommendation}}
+
+            # Updated Specification Element
+            revised_specification: |
+              {{ai_revised_specification_element}}
+
+            # Quality Improvement Metrics
+            improvement_metrics:
+              implementation_clarity: "{{clarity_improvement}}"
+              constitutional_alignment: "{{constitutional_enhancement}}"
+              developer_confidence: "{{confidence_increase}}"
+              risk_reduction: "{{risk_mitigation_achieved}}"
+          {{/each}}
+
+        aggregate_improvements:
+          overall_specification_enhancement: |
+            {{comprehensive_specification_improvement}}
+          constitutional_compliance_boost: "{{overall_constitutional_improvement}}"
+          implementation_success_probability: "{{success_probability_increase}}"
+      ```
+
+  continuous_improvement_loop:
+    pattern: |
+      AI Continuous Improvement Strategy:
+
+      ```yaml
+      continuous_specification_refinement:
+        improvement_cycle:
+          cycle_frequency: "{{refinement_cycle_interval}}"
+          trigger_conditions:
+            - "Implementation feedback accumulation threshold reached"
+            - "Constitutional compliance score below target"
+            - "New ambiguities detected in specifications"
+            - "Performance metrics deviation from constitutional requirements"
+
+        ai_learning_integration:
+          pattern_recognition: |
+            {{ai_identified_improvement_patterns}}
+          predictive_enhancement: |
+            {{ai_predicted_specification_improvements}}
+          constitutional_optimization: |
+            {{ai_constitutional_compliance_optimization}}
+
+        quality_evolution_tracking:
+          specification_maturity_score: "{{current_maturity_level}}"
+          constitutional_alignment_trend: "{{compliance_trend_analysis}}"
+          implementation_success_rate: "{{success_rate_improvement}}"
+          developer_satisfaction_metrics: "{{developer_experience_enhancement}}"
+      ```
+```
+
+### 5. User Story and Acceptance Criteria Optimization
+```yaml
+user_story_optimization_engine:
+  approach: "AI-driven user story and acceptance criteria enhancement"
+  principle: "Every user story maximizes business value and constitutional compliance"
+
+  user_story_enhancement:
+    pattern: |
+      AI User Story Enhancement:
+
+      ```yaml
+      user_story_optimization:
+        {{#each functional_requirements}}
+        {{FR_ID}}_user_story_enhancement:
+          # Original User Story Analysis
+          original_user_story: "{{original_user_story}}"
+          ai_analysis:
+            clarity_score: "{{current_clarity_score}}"
+            business_value_clarity: "{{business_value_assessment}}"
+            constitutional_alignment: "{{constitutional_compliance_score}}"
+            testability_rating: "{{testability_assessment}}"
+
+          # AI Enhancement Process
+          ai_enhancement_analysis:
+            user_persona_refinement: |
+              {{ai_enhanced_user_persona_definition}}
+            value_proposition_clarification: |
+              {{ai_clarified_business_value}}
+            constitutional_integration: |
+              {{constitutional_principle_integration}}
+            acceptance_criteria_alignment: |
+              {{acceptance_criteria_consistency_enhancement}}
+
+          # AI-Enhanced User Story
+          enhanced_user_story: |
+            {{ai_optimized_user_story}}
+
+          # Constitutional Compliance Integration
+          constitutional_user_story_elements:
+            library_first_considerations: |
+              {{library_first_user_story_elements}}
+            cli_interface_requirements: |
+              {{cli_interface_user_story_aspects}}
+            test_first_implications: |
+              {{test_first_user_story_considerations}}
+
+          # Quality Improvement Metrics
+          enhancement_metrics:
+            clarity_improvement: "{{clarity_score_increase}}"
+            business_value_enhancement: "{{business_value_improvement}}"
+            constitutional_compliance_boost: "{{constitutional_score_increase}}"
+            implementation_confidence: "{{developer_confidence_increase}}"
+        {{/each}}
+      ```
+
+  acceptance_criteria_refinement:
+    pattern: |
+      AI Acceptance Criteria Refinement:
+
+      ```yaml
+      acceptance_criteria_optimization:
+        {{#each functional_requirements}}
+        {{FR_ID}}_acceptance_criteria_enhancement:
+          # Original Criteria Analysis
+          original_criteria: [{{original_acceptance_criteria}}]
+          ai_analysis:
+            testability_assessment: "{{criteria_testability_score}}"
+            completeness_evaluation: "{{criteria_completeness_score}}"
+            constitutional_alignment: "{{constitutional_compliance_assessment}}"
+            ambiguity_detection: [{{identified_ambiguities}}]
+
+          # AI Enhancement Process
+          ai_refinement_analysis:
+            {{#each original_acceptance_criteria}}
+            criterion_{{criterion_id}}_analysis:
+              original: "{{original_criterion}}"
+              testability_issues: [{{testability_problems}}]
+              constitutional_gaps: [{{constitutional_compliance_gaps}}]
+              ambiguity_markers: [{{ambiguous_elements}}]
+
+              # AI-Enhanced Criterion
+              ai_enhanced_criterion: |
+                {{ai_refined_acceptance_criterion}}
+              constitutional_compliance_integration: |
+                {{constitutional_principle_integration}}
+              testability_improvement: |
+                {{testability_enhancement_details}}
+            {{/each}}
+
+          # AI-Generated Additional Criteria
+          ai_suggested_additional_criteria:
+            {{#each ai_generated_criteria}}
+            additional_criterion_{{criterion_id}}: |
+              {{ai_generated_acceptance_criterion}}
+            constitutional_rationale: |
+              {{constitutional_justification}}
+            quality_enhancement: |
+              {{quality_improvement_explanation}}
+            {{/each}}
+
+          # Comprehensive Enhanced Criteria Set
+          final_enhanced_criteria:
+            {{#each final_acceptance_criteria}}
+            - criterion: "{{enhanced_criterion}}"
+              constitutional_principle: "{{supporting_principle}}"
+              test_strategy: "{{testing_approach}}"
+              quality_gate: "{{quality_validation_method}}"
+            {{/each}}
+
+          # Quality Metrics
+          enhancement_quality_metrics:
+            testability_improvement: "{{testability_score_increase}}"
+            constitutional_compliance_enhancement: "{{compliance_score_improvement}}"
+            completeness_boost: "{{completeness_improvement}}"
+            implementation_clarity: "{{clarity_enhancement}}"
+        {{/each}}
+      ```
+```
+
+### 6. Specification Quality Metrics and Optimization
+```yaml
+quality_metrics_engine:
+  approach: "AI-driven specification quality assessment and optimization"
+  principle: "Continuous quality improvement through measurable metrics"
+
+  quality_assessment:
+    pattern: |
+      AI Quality Metrics Analysis:
+
+      ```yaml
+      specification_quality_assessment:
+        overall_quality_score: "{{current_overall_quality_percentage}}"
+        improvement_potential: "{{potential_improvement_percentage}}"
+
+        quality_dimensions:
+          clarity_metrics:
+            current_score: "{{clarity_percentage}}"
+            ambiguity_count: {{ambiguity_markers_count}}
+            readability_score: "{{readability_assessment}}"
+            ai_clarity_enhancement: |
+              {{ai_clarity_improvement_recommendations}}
+
+          constitutional_compliance_metrics:
+            overall_compliance: "{{constitutional_compliance_percentage}}"
+            principle_adherence:
+              {{#each constitutional_principles}}
+              {{principle_name}}: "{{principle_compliance_score}}"
+              {{/each}}
+            ai_compliance_optimization: |
+              {{ai_constitutional_enhancement_strategy}}
+
+          testability_metrics:
+            testable_criteria_percentage: "{{testable_criteria_ratio}}"
+            test_coverage_potential: "{{estimated_test_coverage}}"
+            integration_test_readiness: "{{integration_test_preparedness}}"
+            ai_testability_enhancement: |
+              {{ai_testability_improvement_plan}}
+
+          implementation_readiness_metrics:
+            implementation_clarity: "{{implementation_guidance_quality}}"
+            dependency_specification: "{{dependency_completeness}}"
+            architecture_guidance: "{{architectural_direction_clarity}}"
+            ai_implementation_optimization: |
+              {{ai_implementation_enhancement_recommendations}}
+
+        ai_optimization_strategy:
+          priority_improvements: |
+            {{ai_prioritized_improvement_list}}
+          quick_wins: |
+            {{ai_identified_quick_improvements}}
+          strategic_enhancements: |
+            {{ai_strategic_quality_enhancement_plan}}
+          constitutional_focus_areas: |
+            {{constitutional_compliance_improvement_priorities}}
+
+        continuous_improvement_plan:
+          immediate_actions: [{{immediate_improvement_actions}}]
+          short_term_goals: [{{short_term_quality_goals}}]
+          long_term_vision: [{{long_term_quality_objectives}}]
+          success_metrics: [{{quality_success_measurements}}]
+      ```
+```
+
+## 🎯 AI Refinement Execution Instructions
+
+### Step 1: Specification Analysis and Assessment
+1. **Load Current Specification**: Parse {{SPECIFICATION_FILE}} for comprehensive analysis
+2. **Constitutional Compliance Evaluation**: Assess against {{CONSTITUTION_FILE}} principles
+3. **Quality Metrics Baseline**: Establish current quality measurement baseline
+4. **Ambiguity Detection**: Identify all unclear or ambiguous elements
+
+### Step 2: AI-Driven Enhancement Process
+1. **Ambiguity Resolution**: Use AI to resolve [CLARIFY] markers with constitutional guidance
+2. **Constitutional Optimization**: Enhance specification elements for maximum constitutional compliance
+3. **User Story Refinement**: Optimize user stories for clarity and business value
+4. **Acceptance Criteria Enhancement**: Refine criteria for testability and completeness
+
+### Step 3: Implementation Feedback Integration
+1. **Feedback Analysis**: Analyze implementation challenges and developer feedback
+2. **Specification Updates**: Incorporate lessons learned into specification improvements
+3. **Quality Validation**: Ensure enhancements improve overall specification quality
+4. **Constitutional Alignment**: Verify all changes maintain constitutional compliance
+
+### Step 4: Continuous Improvement Strategy
+1. **Quality Metrics Tracking**: Monitor specification quality improvements over time
+2. **Constitutional Compliance Monitoring**: Track constitutional adherence trends
+3. **Implementation Success Correlation**: Correlate specification quality with implementation success
+4. **Refinement Process Optimization**: Continuously improve the AI refinement process itself
+
+## ✅ Success Criteria
+
+- [ ] All [CLARIFY] markers resolved with constitutional guidance
+- [ ] Constitutional compliance score improved across all principles
+- [ ] User stories enhanced for clarity and business value
+- [ ] Acceptance criteria optimized for testability and completeness
+- [ ] Implementation feedback successfully integrated
+- [ ] Quality metrics show measurable improvement
+- [ ] Specification maturity level increased
+- [ ] Developer confidence and implementation success rate improved
+
+## 🔄 Output Format
+
+Generate a comprehensively refined specification that includes:
+1. **Ambiguity-Free Requirements**: All unclear elements resolved with constitutional guidance
+2. **Constitutionally Optimized Elements**: Every specification element maximizes constitutional compliance
+3. **Enhanced User Stories**: Optimized for clarity, business value, and constitutional alignment
+4. **Refined Acceptance Criteria**: Improved for testability, completeness, and constitutional compliance
+5. **Implementation Feedback Integration**: Lessons learned incorporated into specification improvements
+6. **Quality Improvement Report**: Detailed analysis of quality enhancements achieved
+7. **Continuous Improvement Plan**: Strategy for ongoing specification refinement
+
+Execute this AI-driven refinement process for {{SPECIFICATION_FILE}} with constitutional compliance from {{CONSTITUTION_FILE}} focusing on {{REFINEMENT_TYPE}} improvements.

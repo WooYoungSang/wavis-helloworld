@@ -1,0 +1,294 @@
+# Docker Compose Template for {{PROJECT_NAME}}
+# This file defines the multi-service development and production environment
+
+version: '3.8'
+
+services:
+  # Main Application Service
+  {{PROJECT_NAME_CLEAN}}:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: {{DOCKER_TARGET}}  # development | production
+      args:
+        GO_VERSION: {{GO_VERSION}}
+        BUILD_FLAGS: {{BUILD_FLAGS}}
+    container_name: {{PROJECT_NAME_CLEAN}}-app
+    ports:
+      - "{{APP_PORT}}:{{APP_INTERNAL_PORT}}"
+    environment:
+      - GO_ENV={{GO_ENV}}  # development | production
+    volumes:
+      {{#DEVELOPMENT_VOLUMES}}
+      - {{HOST_PATH}}:{{CONTAINER_PATH}}
+      {{/DEVELOPMENT_VOLUMES}}
+    depends_on:
+      {{#APP_DEPENDENCIES}}
+      - {{SERVICE_NAME}}
+      {{/APP_DEPENDENCIES}}
+    networks:
+      - {{NETWORK_NAME}}
+    restart: {{RESTART_POLICY}}  # unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:{{APP_INTERNAL_PORT}}/health"]
+      interval: {{HEALTH_CHECK_INTERVAL}}s
+      timeout: {{HEALTH_CHECK_TIMEOUT}}s
+      retries: {{HEALTH_CHECK_RETRIES}}
+      start_period: {{HEALTH_CHECK_START_PERIOD}}s
+    deploy:
+      resources:
+        limits:
+          memory: {{MEMORY_LIMIT}}
+          cpus: '{{CPU_LIMIT}}'
+        reservations:
+          memory: {{MEMORY_RESERVATION}}
+          cpus: '{{CPU_RESERVATION}}'
+
+  {{#DATABASE_ENABLED}}
+  # PostgreSQL Database Service
+  postgres:
+    image: postgres:{{POSTGRES_VERSION}}
+    container_name: {{PROJECT_NAME_CLEAN}}-postgres
+    environment:
+      POSTGRES_DB: {{DB_NAME}}
+      POSTGRES_USER: {{DB_USER}}
+      POSTGRES_PASSWORD: {{DB_PASSWORD}}
+      POSTGRES_INITDB_ARGS: "{{DB_INIT_ARGS}}"
+    ports:
+      - "{{DB_PORT}}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./configs/postgres/init:/docker-entrypoint-initdb.d:ro
+      {{#DB_CONFIG_VOLUMES}}
+      - {{HOST_PATH}}:{{CONTAINER_PATH}}:{{MODE}}
+      {{/DB_CONFIG_VOLUMES}}
+    networks:
+      - {{NETWORK_NAME}}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U {{DB_USER}} -d {{DB_NAME}}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: {{DB_MEMORY_LIMIT}}
+          cpus: '{{DB_CPU_LIMIT}}'
+    command: >
+      postgres
+      -c max_connections={{DB_MAX_CONNECTIONS}}
+      -c shared_buffers={{DB_SHARED_BUFFERS}}
+      -c effective_cache_size={{DB_EFFECTIVE_CACHE_SIZE}}
+      -c maintenance_work_mem={{DB_MAINTENANCE_WORK_MEM}}
+      -c checkpoint_completion_target={{DB_CHECKPOINT_COMPLETION}}
+      -c wal_buffers={{DB_WAL_BUFFERS}}
+      -c default_statistics_target={{DB_DEFAULT_STATISTICS_TARGET}}
+      -c random_page_cost={{DB_RANDOM_PAGE_COST}}
+      -c effective_io_concurrency={{DB_EFFECTIVE_IO_CONCURRENCY}}
+  {{/DATABASE_ENABLED}}
+
+  {{#REDIS_ENABLED}}
+  # Redis Cache Service
+  redis:
+    image: redis:{{REDIS_VERSION}}-alpine
+    container_name: {{PROJECT_NAME_CLEAN}}-redis
+    ports:
+      - "{{REDIS_PORT}}:6379"
+    volumes:
+      - redis_data:/data
+      - ./configs/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    networks:
+      - {{NETWORK_NAME}}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: {{REDIS_MEMORY_LIMIT}}
+          cpus: '{{REDIS_CPU_LIMIT}}'
+    command: redis-server /usr/local/etc/redis/redis.conf
+  {{/REDIS_ENABLED}}
+
+  {{#MONITORING_ENABLED}}
+  # Prometheus Monitoring
+  prometheus:
+    image: prom/prometheus:{{PROMETHEUS_VERSION}}
+    container_name: {{PROJECT_NAME_CLEAN}}-prometheus
+    ports:
+      - "{{PROMETHEUS_PORT}}:9090"
+    volumes:
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - {{NETWORK_NAME}}
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time={{PROMETHEUS_RETENTION}}'
+      - '--web.enable-lifecycle'
+
+  # Grafana Dashboard
+  grafana:
+    image: grafana/grafana:{{GRAFANA_VERSION}}
+    container_name: {{PROJECT_NAME_CLEAN}}-grafana
+    ports:
+      - "{{GRAFANA_PORT}}:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD={{GRAFANA_ADMIN_PASSWORD}}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./configs/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./configs/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    networks:
+      - {{NETWORK_NAME}}
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+  {{/MONITORING_ENABLED}}
+
+  {{#TESTING_SERVICES_ENABLED}}
+  # Test Database (for integration tests)
+  postgres-test:
+    image: postgres:{{POSTGRES_VERSION}}
+    container_name: {{PROJECT_NAME_CLEAN}}-postgres-test
+    environment:
+      POSTGRES_DB: {{TEST_DB_NAME}}
+      POSTGRES_USER: {{TEST_DB_USER}}
+      POSTGRES_PASSWORD: {{TEST_DB_PASSWORD}}
+    ports:
+      - "{{TEST_DB_PORT}}:5432"
+    networks:
+      - {{NETWORK_NAME}}
+    restart: "no"
+    tmpfs:
+      - /var/lib/postgresql/data
+    command: >
+      postgres
+      -c fsync=off
+      -c synchronous_commit=off
+      -c full_page_writes=off
+      -c checkpoint_segments=32
+      -c checkpoint_completion_target=0.9
+
+  # Test Redis (for integration tests)
+  redis-test:
+    image: redis:{{REDIS_VERSION}}-alpine
+    container_name: {{PROJECT_NAME_CLEAN}}-redis-test
+    ports:
+      - "{{TEST_REDIS_PORT}}:6379"
+    networks:
+      - {{NETWORK_NAME}}
+    restart: "no"
+    command: redis-server --save "" --appendonly no
+  {{/TESTING_SERVICES_ENABLED}}
+
+  {{#DEVELOPMENT_TOOLS_ENABLED}}
+  # Development Tools Container
+  devtools:
+    build:
+      context: .
+      dockerfile: Dockerfile.devtools
+    container_name: {{PROJECT_NAME_CLEAN}}-devtools
+    volumes:
+      - .:/workspace
+      - devtools_cache:/go/pkg/mod
+    working_dir: /workspace
+    networks:
+      - {{NETWORK_NAME}}
+    restart: "no"
+    profiles:
+      - development
+  {{/DEVELOPMENT_TOOLS_ENABLED}}
+
+  {{#SONARQUBE_ENABLED}}
+  # SonarQube Code Quality Analysis
+  sonarqube:
+    image: sonarqube:{{SONARQUBE_VERSION}}
+    container_name: {{PROJECT_NAME_CLEAN}}-sonarqube
+    ports:
+      - "{{SONARQUBE_PORT}}:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - SONAR_JDBC_URL=jdbc:postgresql://postgres:5432/{{SONAR_DB_NAME}}
+      - SONAR_JDBC_USERNAME={{SONAR_DB_USER}}
+      - SONAR_JDBC_PASSWORD={{SONAR_DB_PASSWORD}}
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    networks:
+      - {{NETWORK_NAME}}
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    profiles:
+      - quality
+  {{/SONARQUBE_ENABLED}}
+
+# Named Volumes
+volumes:
+  {{#DATABASE_ENABLED}}
+  postgres_data:
+    driver: local
+  {{/DATABASE_ENABLED}}
+  {{#REDIS_ENABLED}}
+  redis_data:
+    driver: local
+  {{/REDIS_ENABLED}}
+  {{#MONITORING_ENABLED}}
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  {{/MONITORING_ENABLED}}
+  {{#DEVELOPMENT_TOOLS_ENABLED}}
+  devtools_cache:
+    driver: local
+  {{/DEVELOPMENT_TOOLS_ENABLED}}
+  {{#SONARQUBE_ENABLED}}
+  sonarqube_data:
+    driver: local
+  sonarqube_extensions:
+    driver: local
+  sonarqube_logs:
+    driver: local
+  {{/SONARQUBE_ENABLED}}
+
+# Networks
+networks:
+  {{NETWORK_NAME}}:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: {{NETWORK_SUBNET}}
+
+# Development Profile Override
+# Use with: docker-compose --profile development up
+# Production Profile Override
+# Use with: docker-compose --profile production up
+
+{{#CUSTOM_PROFILES}}
+# {{PROFILE_NAME}} Profile Services
+{{PROFILE_SERVICES}}
+{{/CUSTOM_PROFILES}}
+
+# Environment-Specific Overrides
+# Create docker-compose.override.yml for local development
+# Create docker-compose.prod.yml for production deployment
+
+# Template Metadata
+# Generated for {{PROJECT_NAME}} on {{GENERATION_DATE}}
+# Template Version: 1.0.0
+# Project Type: {{PROJECT_TYPE}}
+# Environment: {{TARGET_ENVIRONMENT}}

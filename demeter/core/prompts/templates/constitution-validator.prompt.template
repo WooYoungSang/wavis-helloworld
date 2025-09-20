@@ -1,0 +1,366 @@
+# ⚖️ Constitutional Compliance Validator Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Validation Target**: {{VALIDATION_TARGET}}
+- **Validation Type**: {{VALIDATION_TYPE}}
+- **Framework**: Demeter WAVIS v1.3 + Spec-Kit Constitutional Governance
+
+## 🎯 Constitutional Validation Philosophy
+
+This template implements the GitHub Spec-Kit approach to constitutional governance, where the project constitution serves as the supreme authority for all development decisions. Every code change, architectural decision, and process modification must demonstrate constitutional compliance.
+
+### Validation Authority
+- **Constitution supersedes all other practices and guidelines**
+- **All development artifacts must demonstrate constitutional alignment**
+- **Violations require immediate remediation or constitutional amendment**
+- **Compliance is verified through automated and manual processes**
+
+## ⚖️ Constitutional Compliance Validation
+
+### 1. Validation Header
+```yaml
+constitutional_validation:
+  project: "{{PROJECT_NAME}}"
+  constitution_version: "{{CONSTITUTION_VERSION}}"
+  validation_date: "{{CURRENT_DATE}}"
+  validator: "Demeter Constitutional Compliance Engine"
+  validation_target: "{{VALIDATION_TARGET}}"
+  validation_scope: "{{VALIDATION_TYPE}}"
+```
+
+### 2. Core Constitutional Principles Validation
+
+#### Principle 1: Library-First Development
+```yaml
+library_first_validation:
+  check_name: "Library-First Compliance"
+  constitutional_requirement: "Prefer existing libraries over custom implementations"
+
+  validation_criteria:
+    - criterion: "New dependencies are well-maintained libraries"
+      validation_method: "Check library maintenance status, download stats, security record"
+      pass_threshold: "Active maintenance within 6 months, >1000 weekly downloads"
+
+    - criterion: "Custom implementations have library justification"
+      validation_method: "Scan for custom implementations, verify justification documentation"
+      pass_threshold: "All custom code has documented library evaluation"
+
+    - criterion: "No reinvention of existing library functionality"
+      validation_method: "Code similarity analysis against known library patterns"
+      pass_threshold: "No significant overlap with established library functionality"
+
+  automated_checks:
+    dependency_analysis: "Analyze package.json/requirements.txt for constitutional compliance"
+    code_duplication: "Scan for code that duplicates library functionality"
+    justification_presence: "Verify custom implementation justifications exist"
+
+  manual_review_triggers:
+    - "New dependencies added"
+    - "Custom implementations of common functionality"
+    - "Major architecture changes affecting library usage"
+```
+
+#### Principle 2: CLI Interface Mandate
+```yaml
+cli_interface_validation:
+  check_name: "CLI Interface Compliance"
+  constitutional_requirement: "All functionality accessible via CLI"
+
+  validation_criteria:
+    - criterion: "Every feature has corresponding CLI command"
+      validation_method: "Map features to CLI commands, identify gaps"
+      pass_threshold: "100% feature-to-CLI mapping"
+
+    - criterion: "CLI commands follow consistent patterns"
+      validation_method: "Analyze CLI command structure and parameter patterns"
+      pass_threshold: "All commands follow established CLI conventions"
+
+    - criterion: "CLI help and documentation complete"
+      validation_method: "Verify help text, examples, and documentation"
+      pass_threshold: "All CLI commands have comprehensive help and examples"
+
+  automated_checks:
+    feature_cli_mapping: "Scan codebase for features without CLI access"
+    cli_pattern_consistency: "Validate CLI command naming and parameter patterns"
+    help_completeness: "Check CLI help text coverage and quality"
+
+  manual_review_triggers:
+    - "New features added without CLI interface"
+    - "CLI pattern deviations"
+    - "Missing or inadequate CLI documentation"
+```
+
+#### Principle 3: Test-First Imperative
+```yaml
+test_first_validation:
+  check_name: "Test-First Compliance"
+  constitutional_requirement: "Tests written before implementation"
+
+  validation_criteria:
+    - criterion: "All new functionality has preceding tests"
+      validation_method: "Git history analysis for test-before-implementation pattern"
+      pass_threshold: "100% of features show test-first commit pattern"
+
+    - criterion: "Test coverage meets constitutional requirements"
+      validation_method: "Code coverage analysis against constitutional thresholds"
+      pass_threshold: "Meets or exceeds constitutional coverage requirements"
+
+    - criterion: "Tests validate constitutional compliance"
+      validation_method: "Verify tests check constitutional principle adherence"
+      pass_threshold: "Tests explicitly validate constitutional requirements"
+
+  automated_checks:
+    commit_pattern_analysis: "Analyze git history for test-first patterns"
+    coverage_threshold_check: "Validate test coverage against constitutional minimums"
+    test_quality_assessment: "Analyze test effectiveness and constitutional alignment"
+
+  manual_review_triggers:
+    - "Implementation commits without preceding test commits"
+    - "Coverage below constitutional thresholds"
+    - "Tests that don't validate constitutional compliance"
+```
+
+#### Principle 4: Simplicity Over Complexity
+```yaml
+simplicity_validation:
+  check_name: "Simplicity Compliance"
+  constitutional_requirement: "Choose simple solutions over complex architectures"
+
+  validation_criteria:
+    - criterion: "Architecture decisions demonstrate simplicity justification"
+      validation_method: "Review architecture decisions for complexity justification"
+      pass_threshold: "All complex decisions have simplicity evaluation"
+
+    - criterion: "Code complexity remains within constitutional bounds"
+      validation_method: "Cyclomatic complexity analysis and code metrics"
+      pass_threshold: "Complexity metrics within constitutional limits"
+
+    - criterion: "Simple alternatives were considered and documented"
+      validation_method: "Check for alternative analysis in design documents"
+      pass_threshold: "Complex solutions have documented simple alternative evaluation"
+
+  automated_checks:
+    complexity_metrics: "Calculate and validate code complexity metrics"
+    architecture_simplicity: "Analyze system design for unnecessary complexity"
+    decision_documentation: "Verify simplicity justifications in decisions"
+
+  manual_review_triggers:
+    - "High complexity metrics"
+    - "New architectural patterns without simplicity analysis"
+    - "Complex solutions without documented alternatives"
+```
+
+#### Constitutional Principles 5-9 Validation
+```yaml
+remaining_principles_validation:
+  anti_abstraction_validation:
+    check_name: "Anti-Premature Abstraction Compliance"
+    validation_method: "Scan for abstractions without concrete use cases"
+    pass_threshold: "All abstractions have demonstrated concrete value"
+
+  integration_first_validation:
+    check_name: "Integration-First Testing Compliance"
+    validation_method: "Analyze test suite composition for integration test priority"
+    pass_threshold: "Integration tests comprise majority of test coverage"
+
+  minimal_structure_validation:
+    check_name: "Minimal Project Structure Compliance"
+    validation_method: "Analyze directory structure for unnecessary complexity"
+    pass_threshold: "Directory structure justified by constitutional necessity"
+
+  framework_direct_validation:
+    check_name: "Framework Direct Usage Compliance"
+    validation_method: "Scan for framework abstraction layers"
+    pass_threshold: "Frameworks used directly without unnecessary abstraction"
+
+  comprehensive_testing_validation:
+    check_name: "Comprehensive Testing Compliance"
+    validation_method: "Validate test coverage completeness"
+    pass_threshold: "Meets constitutional test coverage requirements"
+```
+
+### 3. Domain-Specific Constitutional Validation
+
+#### E-commerce Constitutional Compliance
+```yaml
+ecommerce_constitutional_validation:
+  payment_first_security:
+    check_name: "Payment-First Security Compliance"
+    validation_criteria:
+      - "PCI-DSS constitutional requirements met"
+      - "Payment data handling follows constitutional security protocols"
+      - "Security testing covers constitutional payment scenarios"
+
+  gdpr_first_privacy:
+    check_name: "GDPR-First Privacy Compliance"
+    validation_criteria:
+      - "Customer data handling meets constitutional GDPR requirements"
+      - "Privacy by design implemented constitutionally"
+      - "Data subject rights supported constitutionally"
+```
+
+#### FinTech Constitutional Compliance
+```yaml
+fintech_constitutional_validation:
+  compliance_first_development:
+    check_name: "Compliance-First Development"
+    validation_criteria:
+      - "Regulatory compliance built into constitutional architecture"
+      - "Compliance testing integrated constitutionally"
+      - "Audit trails meet constitutional requirements"
+
+  audit_first_logging:
+    check_name: "Audit-First Logging Compliance"
+    validation_criteria:
+      - "Financial transactions have constitutional audit trails"
+      - "Logging meets constitutional compliance standards"
+      - "Audit data integrity ensured constitutionally"
+```
+
+### 4. Project-Specific Constitutional Validation
+```yaml
+project_specific_validation:
+  custom_principle_validation:
+    check_name: "Project-Specific Constitutional Compliance"
+    validation_method: "Validate against project-specific constitutional principles"
+    criteria: "Project-specific principles from {{CONSTITUTION_FILE}}"
+
+  team_constitutional_adherence:
+    check_name: "Team Constitutional Practice Compliance"
+    validation_method: "Assess team practices against constitutional requirements"
+    criteria: "Team process constitutional alignment"
+```
+
+### 5. Automated Constitutional Enforcement
+```yaml
+automated_enforcement:
+  ci_cd_integration:
+    pre_commit_hooks:
+      - "Constitutional compliance linting"
+      - "Test-first pattern validation"
+      - "Complexity threshold enforcement"
+
+    build_pipeline_checks:
+      - "Constitutional coverage validation"
+      - "Library-first dependency analysis"
+      - "CLI interface completeness check"
+
+    deployment_gates:
+      - "Full constitutional compliance verification"
+      - "Performance constitutional requirements validation"
+      - "Security constitutional standards enforcement"
+
+  continuous_monitoring:
+    daily_checks:
+      - "Constitutional compliance drift detection"
+      - "New violations identification"
+      - "Constitutional metric tracking"
+
+    weekly_reports:
+      - "Constitutional health assessment"
+      - "Compliance trend analysis"
+      - "Constitutional violation resolution tracking"
+```
+
+### 6. Manual Constitutional Review Process
+```yaml
+manual_review_process:
+  code_review_constitutional_checklist:
+    - [ ] "Changes align with all constitutional principles"
+    - [ ] "New functionality includes constitutional compliance verification"
+    - [ ] "Architecture decisions reference constitutional requirements"
+    - [ ] "Test strategy follows constitutional testing principles"
+    - [ ] "Documentation includes constitutional compliance notes"
+
+  architecture_review_constitutional_assessment:
+    - [ ] "Architectural changes preserve constitutional compliance"
+    - [ ] "Design decisions demonstrate constitutional alignment"
+    - [ ] "Alternative approaches evaluated against constitutional principles"
+    - [ ] "Constitutional impact of changes documented"
+
+  constitutional_audit_checklist:
+    - [ ] "All constitutional principles demonstrably followed"
+    - [ ] "Violations identified and remediation planned"
+    - [ ] "Constitutional metrics meet established thresholds"
+    - [ ] "Team constitutional compliance awareness validated"
+```
+
+### 7. Constitutional Violation Handling
+```yaml
+violation_handling:
+  severity_classification:
+    critical_violations:
+      - "Test-first imperative violations"
+      - "Security constitutional breaches"
+      - "Compliance constitutional failures"
+      action: "Immediate build failure and rollback"
+
+    major_violations:
+      - "Library-first principle violations"
+      - "CLI interface mandate failures"
+      - "Simplicity principle breaches"
+      action: "Build warning with mandatory resolution timeline"
+
+    minor_violations:
+      - "Documentation constitutional gaps"
+      - "Minor complexity threshold exceedances"
+      - "Non-critical pattern deviations"
+      action: "Warning with recommended resolution"
+
+  resolution_process:
+    immediate_resolution:
+      - "Fix violation to meet constitutional requirements"
+      - "Document resolution and constitutional alignment"
+      - "Verify resolution through constitutional validation"
+
+    constitutional_amendment:
+      - "Propose constitutional amendment if principle needs modification"
+      - "Follow constitutional amendment process"
+      - "Update all related processes and documentation"
+```
+
+## 🎯 Validation Execution Instructions
+
+### Step 1: Load Constitutional Requirements
+1. **Parse Constitution**: Load and parse {{CONSTITUTION_FILE}}
+2. **Extract Principles**: Identify all constitutional principles and requirements
+3. **Understand Context**: Analyze project-specific constitutional extensions
+
+### Step 2: Execute Automated Validation
+1. **Core Principles**: Run automated checks for all 9 base constitutional principles
+2. **Domain Principles**: Execute domain-specific constitutional validation
+3. **Project Principles**: Validate against project-specific constitutional requirements
+4. **Quality Standards**: Verify compliance with constitutional quality metrics
+
+### Step 3: Manual Review Coordination
+1. **Review Checklist**: Generate constitutional compliance checklist for manual review
+2. **Flag Issues**: Identify items requiring manual constitutional assessment
+3. **Documentation**: Ensure all constitutional compliance decisions are documented
+
+### Step 4: Violation Assessment and Resolution
+1. **Classify Violations**: Categorize constitutional violations by severity
+2. **Generate Reports**: Create detailed constitutional compliance report
+3. **Recommend Actions**: Provide specific recommendations for constitutional alignment
+4. **Track Resolution**: Monitor constitutional violation resolution progress
+
+## ✅ Validation Success Criteria
+
+- [ ] All constitutional principles demonstrably followed
+- [ ] Automated validation passes all constitutional checks
+- [ ] Manual review confirms constitutional compliance
+- [ ] Violations are properly classified and addressed
+- [ ] Constitutional compliance is documented and verified
+- [ ] Project maintains constitutional alignment
+
+## 🔄 Output Format
+
+Generate a comprehensive constitutional compliance report that includes:
+1. **Compliance Status**: Overall constitutional compliance assessment
+2. **Principle-by-Principle Analysis**: Detailed validation for each constitutional principle
+3. **Violation Report**: Any constitutional violations identified with severity classification
+4. **Recommendations**: Specific actions to achieve or maintain constitutional compliance
+5. **Metrics**: Constitutional compliance metrics and trends
+
+Execute this constitutional validation for {{VALIDATION_TARGET}} against {{CONSTITUTION_FILE}}.

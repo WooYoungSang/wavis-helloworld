@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSOT Verification Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+        .summary { display: flex; gap: 20px; margin-bottom: 20px; }
+        .metric-card { background-color: #e8f4fd; padding: 15px; border-radius: 5px; flex: 1; text-align: center; }
+        .metric-value { font-size: 2em; font-weight: bold; color: #0066cc; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        .success { color: #28a745; }
+        .category { margin-bottom: 30px; }
+        .category h3 { color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 5px; }
+        .issue-item { margin-bottom: 10px; padding: 10px; border-left: 4px solid; }
+        .issue-error { border-left-color: #dc3545; background-color: #f8d7da; }
+        .issue-warning { border-left-color: #ffc107; background-color: #fff3cd; }
+        .details { font-size: 0.9em; color: #666; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 SSOT Verification Report</h1>
+        <p><strong>Generated:</strong> 2025-09-18T19:26:47.676958</p>
+        <p><strong>Project:</strong> /home/jang/Workspace/wavis-template</p>
+    </div>
+
+    <div class="summary">
+        <div class="metric-card">
+            <h3>Success Rate</h3>
+            <div class="metric-value success">96.2%</div>
+            <p>561/583 checks passed</p>
+        </div>
+        <div class="metric-card">
+            <h3>Errors</h3>
+            <div class="metric-value error">25</div>
+            <p>Critical issues found</p>
+        </div>
+        <div class="metric-card">
+            <h3>Warnings</h3>
+            <div class="metric-value warning">67</div>
+            <p>Potential issues found</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <h3>Structural Integrity</h3>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Missing required section 'units_of_work' in framework-requirements.yaml
+            
+        </div>
+
+    </div>
+
+    <div class="category">
+        <h3>Requirement Completeness</h3>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-001 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-001', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-002 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-002', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-003 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-003', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-004 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-004', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-005 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-005', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-006 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-006', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-007 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-007', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-008 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-008', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-009 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-009', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Functional requirement FR-010 missing required field: title
+            <div class="details">Details: {'source_file': 'fr-base', 'requirement_id': 'FR-010', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Non_Functional requirement NFR-001 missing required field: title
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-001', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Non_Functional requirement NFR-002 missing required field: title
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-002', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Non_Functional requirement NFR-003 missing required field: title
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-003', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Non_Functional requirement NFR-004 missing required field: title
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-004', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Non_Functional requirement NFR-005 missing required field: title
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-005', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Non_Functional requirement NFR-006 missing required field: title
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-006', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Non_Functional requirement NFR-007 missing required field: title
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-007', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-001 should have specific requirements list
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-001 should have measurement criteria
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-002 should have specific requirements list
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-002 should have measurement criteria
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-003 should have specific requirements list
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-003 should have measurement criteria
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-004 should have specific requirements list
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-004 should have measurement criteria
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-005 should have specific requirements list
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-005'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-005 should have measurement criteria
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-005'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-006 should have specific requirements list
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-006'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-006 should have measurement criteria
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-006'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-007 should have specific requirements list
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-007'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> NFR NFR-007 should have measurement criteria
+            <div class="details">Details: {'source_file': 'nfr-base', 'requirement_id': 'NFR-007'}</div>
+        </div>
+
+    </div>
+
+    <div class="category">
+        <h3>Contract Validation</h3>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Contract contract-schema missing required field: contract_id
+            <div class="details">Details: {'contract_file': 'contract-schema', 'missing_field': 'contract_id'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Contract contract-schema missing required field: title
+            <div class="details">Details: {'contract_file': 'contract-schema', 'missing_field': 'title'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Contract contract-schema missing required field: description
+            <div class="details">Details: {'contract_file': 'contract-schema', 'missing_field': 'description'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Contract contract-schema missing required field: applies_to
+            <div class="details">Details: {'contract_file': 'contract-schema', 'missing_field': 'applies_to'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Contract uow-001-contract has invalid contract_id format: UoW-001-CONTRACT
+            <div class="details">Details: {'contract_file': 'uow-001-contract', 'invalid_id': 'UoW-001-CONTRACT'}</div>
+        </div>
+
+    </div>
+
+    <div class="category">
+        <h3>Bdd Validation</h3>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-000, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-000', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-000, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-000', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-000, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-000', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-000, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-000', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001A, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001A', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001A, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001A', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001A, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001A', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001B, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001B', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001C, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001C', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001C, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001C', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001D, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001D', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001D, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001D', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001D, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001D', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001D, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001D', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-001, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-001', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-002, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-002', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-002, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-002', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-003, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-003', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-101, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-101', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-101, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-101', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-101, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-101', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-101, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-101', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-102, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-102', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-102, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-102', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-102, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-102', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-103, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-103', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-103, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-103', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-103, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-103', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-104, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-104', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-104, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-104', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-104, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-104', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-104, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-104', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-105, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-105', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-105, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-105', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-105, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-105', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-105, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-105', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-106, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-106', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-106, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-106', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-106, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-106', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-107, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-107', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-107, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-107', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-107, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-107', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-201, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-201', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-201, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-201', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-201, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-201', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-201, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-201', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-202, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-202', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-202, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-202', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-202, AC AC-003: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-202', 'ac_id': 'AC-003'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-202, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-202', 'ac_id': 'AC-004'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-210, AC AC-001: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-210', 'ac_id': 'AC-001'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-210, AC AC-002: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-210', 'ac_id': 'AC-002'}</div>
+        </div>
+
+        <div class="issue-item issue-warning">
+            <strong>⚠️ Warning:</strong> UoW UoW-210, AC AC-004: Then clause should describe observable outcome
+            <div class="details">Details: {'source_file': 'uow-base', 'uow_id': 'UoW-210', 'ac_id': 'AC-004'}</div>
+        </div>
+
+    </div>
+
+    <div class="category">
+        <h3>Extension Compatibility</h3>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Domain extension 'fintech' requires compliance extension 'compliance/pci-dss.yaml'
+            <div class="details">Details: {'domain': 'fintech', 'missing_requirement': 'compliance/pci-dss.yaml'}</div>
+        </div>
+
+        <div class="issue-item issue-error">
+            <strong>❌ Error:</strong> Domain extension 'healthcare' requires compliance extension 'compliance/hipaa.yaml'
+            <div class="details">Details: {'domain': 'healthcare', 'missing_requirement': 'compliance/hipaa.yaml'}</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

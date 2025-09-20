@@ -1,0 +1,139 @@
+# Domain Detection Patterns
+# Configuration for automatic domain detection from requirements
+
+domains:
+  e-commerce:
+    keywords:
+      en: [product, cart, shopping, order, payment, inventory, customer, checkout, catalog, store, shop, buy, sell, marketplace, retail, commerce]
+      ko: [제품, 장바구니, 주문, 결제, 재고, 고객, 쇼핑, 상점, 상거래, 소매]
+    patterns:
+      - "online shop"
+      - "e-commerce"
+      - "marketplace"
+      - "shopping platform"
+      - "retail system"
+    extensions:
+      required: ["domain/e-commerce.yaml"]
+      recommended: ["compliance/gdpr.yaml", "features/payment.yaml"]
+    confidence_threshold: 0.3
+
+  fintech:
+    keywords:
+      en: [transaction, account, transfer, banking, finance, money, payment, wallet, currency, exchange, trading, invest, loan, credit]
+      ko: [거래, 계좌, 송금, 은행, 금융, 투자, 화폐, 지갑, 대출, 신용]
+    patterns:
+      - "financial service"
+      - "payment system"
+      - "banking application"
+      - "trading platform"
+    extensions:
+      required: ["domain/fintech.yaml", "compliance/pci-dss.yaml"]
+      recommended: ["features/blockchain.yaml", "features/ai-ml.yaml"]
+    confidence_threshold: 0.3
+
+  healthcare:
+    keywords:
+      en: [patient, medical, diagnosis, treatment, doctor, hospital, health, clinic, medicine, prescription, record, appointment]
+      ko: [환자, 의료, 진료, 치료, 의사, 병원, 건강, 처방, 예약]
+    patterns:
+      - "hospital system"
+      - "medical records"
+      - "healthcare platform"
+      - "clinic management"
+    extensions:
+      required: ["domain/healthcare.yaml", "compliance/hipaa.yaml"]
+      recommended: ["features/ai-ml.yaml"]
+    confidence_threshold: 0.3
+
+  iot:
+    keywords:
+      en: [sensor, device, real-time, mqtt, telemetry, monitoring, hardware, embedded, automation, gateway, edge]
+      ko: [센서, 디바이스, 실시간, 모니터링, 하드웨어, 자동화, 게이트웨이]
+    patterns:
+      - "iot platform"
+      - "sensor network"
+      - "device management"
+      - "industrial automation"
+    extensions:
+      required: ["features/iot.yaml"]
+      recommended: ["features/streaming.yaml", "features/ai-ml.yaml"]
+    confidence_threshold: 0.2
+
+compliance:
+  gdpr:
+    keywords:
+      en: [gdpr, privacy, personal data, consent, data protection, data subject]
+      ko: [개인정보, 프라이버시, 데이터보호, 동의]
+    patterns:
+      - "data privacy"
+      - "personal information"
+      - "consent management"
+    extension: "compliance/gdpr.yaml"
+
+  hipaa:
+    keywords:
+      en: [hipaa, phi, protected health, medical record, patient data]
+      ko: [의료정보, 환자데이터]
+    patterns:
+      - "protected health information"
+      - "medical data protection"
+    extension: "compliance/hipaa.yaml"
+
+  pci-dss:
+    keywords:
+      en: [pci, payment card, credit card, card data, cardholder]
+      ko: [신용카드, 카드결제, 카드데이터]
+    patterns:
+      - "payment card industry"
+      - "card payment processing"
+    extension: "compliance/pci-dss.yaml"
+
+features:
+  ai-ml:
+    keywords:
+      en: [ai, ml, machine learning, artificial intelligence, recommendation, prediction, analytics, neural]
+      ko: [인공지능, 추천, 예측, 분석, 머신러닝]
+    patterns:
+      - "recommendation engine"
+      - "predictive analytics"
+      - "machine learning model"
+    extension: "features/ai-ml.yaml"
+
+  blockchain:
+    keywords:
+      en: [blockchain, crypto, cryptocurrency, smart contract, distributed ledger, web3, defi]
+      ko: [블록체인, 암호화폐, 스마트컨트랙트]
+    patterns:
+      - "smart contract"
+      - "distributed ledger"
+      - "cryptocurrency"
+    extension: "features/blockchain.yaml"
+
+  streaming:
+    keywords:
+      en: [real-time, websocket, stream, live, push notification, event-driven, messaging]
+      ko: [실시간, 스트리밍, 라이브, 푸시알림, 이벤트]
+    patterns:
+      - "real-time updates"
+      - "live streaming"
+      - "push notifications"
+      - "event-driven architecture"
+    extension: "features/streaming.yaml"
+
+# Analysis Configuration
+analysis:
+  confidence_levels:
+    high: 0.4      # Strong match, use with confidence
+    medium: 0.2    # Some indicators, review recommended
+    low: 0.1       # Weak signals, manual selection suggested
+
+  default_domain: "general"
+
+  scoring:
+    keyword_weight: 1.0
+    pattern_weight: 1.5  # Patterns are weighted higher than individual keywords
+
+  output_format:
+    max_recommendations: 5
+    include_reasoning: true
+    include_commands: true

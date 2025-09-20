@@ -1,0 +1,315 @@
+# 🏛️ Project Constitution Generator Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **Extensions**: {{EXTENSIONS}}
+- **Domain**: {{PROJECT_DOMAIN}}
+- **Team Size**: {{TEAM_SIZE}}
+- **Framework**: Demeter WAVIS v1.3 + GitHub SDD + Spec-Kit Constitution
+
+## 🎯 Constitution Philosophy
+
+This template implements the GitHub Spec-Kit approach to project governance through executable constitutions that serve as the ultimate authority for all development decisions.
+
+### Constitution as Governance
+- **Project Constitution supersedes all other practices**
+- **Every development decision must align with constitutional principles**
+- **Constitution evolves through formal amendment process**
+- **All code, architecture, and processes must demonstrate constitutional compliance**
+
+## 📜 Project Constitution Generation
+
+### 1. Constitution Header
+```yaml
+constitution:
+  project_name: "{{PROJECT_NAME}}"
+  version: "1.0.0"
+  created_date: "{{CURRENT_DATE}}"
+  methodology: "GitHub SDD + Spec-Kit Constitution"
+  authority: "Supreme governance document for {{PROJECT_NAME}}"
+
+  amendment_process:
+    proposal_method: "Pull Request with constitutional impact assessment"
+    approval_threshold: "Team consensus or majority vote"
+    implementation_timeline: "Immediate with migration plan"
+    documentation_requirement: "Full rationale and impact analysis"
+```
+
+### 2. Core Constitutional Principles
+
+#### Base Constitutional Principles (Inherited from SDD)
+```yaml
+core_principles:
+  principle_1_library_first:
+    name: "Library-First Development"
+    description: "Prefer existing, well-maintained libraries over custom implementations"
+    enforcement: "mandatory"
+    exceptions: "Only when no suitable library exists or performance critical"
+    validation: "All new dependencies must be justified in PR"
+
+  principle_2_cli_interface:
+    name: "CLI Interface Mandate"
+    description: "All functionality must be accessible via command-line interface"
+    enforcement: "mandatory"
+    exceptions: "GUI-only features require constitutional amendment"
+    validation: "Every feature must have corresponding CLI command"
+
+  principle_3_test_first:
+    name: "Test-First Imperative"
+    description: "Tests must be written before implementation"
+    enforcement: "non_negotiable"
+    exceptions: "None - this is absolute"
+    validation: "PR cannot merge without tests preceding implementation"
+
+  principle_4_simplicity:
+    name: "Simplicity Over Complexity"
+    description: "Choose simple, direct solutions over complex architectures"
+    enforcement: "mandatory"
+    exceptions: "Complexity only when simple solutions fail to meet requirements"
+    validation: "Architecture decisions must justify complexity"
+
+  principle_5_anti_abstraction:
+    name: "Anti-Premature Abstraction"
+    description: "Avoid abstractions until concrete need is demonstrated"
+    enforcement: "mandatory"
+    exceptions: "Well-established patterns with clear benefits"
+    validation: "Every abstraction must demonstrate concrete value"
+
+  principle_6_integration_first:
+    name: "Integration-First Testing"
+    description: "Prioritize integration tests over unit tests"
+    enforcement: "mandatory"
+    exceptions: "Unit tests for complex algorithms or business logic"
+    validation: "Test suites must demonstrate integration coverage"
+
+  principle_7_minimal_structure:
+    name: "Minimal Project Structure"
+    description: "Keep project structure flat and simple"
+    enforcement: "mandatory"
+    exceptions: "Large codebases may require deeper nesting"
+    validation: "New directories require constitutional justification"
+
+  principle_8_framework_direct:
+    name: "Framework Direct Usage"
+    description: "Use frameworks directly without abstraction layers"
+    enforcement: "mandatory"
+    exceptions: "Cross-framework compatibility requirements"
+    validation: "Framework usage must be direct and unabstracted"
+
+  principle_9_comprehensive_testing:
+    name: "Comprehensive Test Coverage"
+    description: "Ensure complete test coverage for all functionality"
+    enforcement: "mandatory"
+    exceptions: "UI interactions may have lower coverage"
+    validation: "Coverage metrics must meet constitutional thresholds"
+```
+
+#### Domain-Specific Constitutional Extensions
+```yaml
+domain_principles:
+  {{EXTENSIONS}}_specific:
+    # E-commerce specific principles
+    ecommerce_principles:
+      - name: "Payment-First Security"
+        description: "All payment-related code follows PCI-DSS constitutional compliance"
+        enforcement: "critical"
+      - name: "GDPR-First Privacy"
+        description: "All customer data handling follows GDPR constitutional requirements"
+        enforcement: "critical"
+
+    # FinTech specific principles
+    fintech_principles:
+      - name: "Compliance-First Development"
+        description: "All financial operations must demonstrate regulatory compliance"
+        enforcement: "critical"
+      - name: "Audit-First Logging"
+        description: "All financial transactions must have comprehensive audit trails"
+        enforcement: "critical"
+
+    # Healthcare specific principles
+    healthcare_principles:
+      - name: "HIPAA-First Privacy"
+        description: "All patient data handling follows HIPAA constitutional requirements"
+        enforcement: "critical"
+      - name: "Security-First Architecture"
+        description: "Medical data systems must implement defense-in-depth security"
+        enforcement: "critical"
+
+    # IoT specific principles
+    iot_principles:
+      - name: "Real-Time-First Design"
+        description: "IoT systems must prioritize real-time responsiveness"
+        enforcement: "high"
+      - name: "Edge-First Processing"
+        description: "Process data at edge when possible to reduce latency"
+        enforcement: "high"
+```
+
+#### Project-Specific Constitutional Principles
+```yaml
+project_specific_principles:
+  # Generate based on project requirements and team preferences
+  custom_principle_1:
+    name: "[Generated based on project needs]"
+    description: "[Derived from project requirements and team practices]"
+    enforcement: "[Critical|High|Medium]"
+    rationale: "[Why this principle is essential for this project]"
+
+  custom_principle_2:
+    name: "[Generated based on technical constraints]"
+    description: "[Addressing specific technical or business constraints]"
+    enforcement: "[Critical|High|Medium]"
+    rationale: "[Business or technical justification]"
+```
+
+### 3. Quality Standards and Metrics
+```yaml
+quality_constitution:
+  code_quality:
+    test_coverage_minimum: "80% for critical paths, 60% for supporting code"
+    performance_requirements:
+      api_response_time: "< 200ms for 95th percentile"
+      database_query_time: "< 100ms for 90th percentile"
+      ui_load_time: "< 2 seconds initial load"
+
+  security_standards:
+    authentication: "Multi-factor authentication required for admin functions"
+    encryption: "All sensitive data encrypted at rest and in transit"
+    access_control: "Principle of least privilege enforced"
+
+  documentation_requirements:
+    api_documentation: "OpenAPI specification required for all endpoints"
+    architecture_documentation: "System design documents for all major components"
+    constitutional_compliance: "All significant decisions must document constitutional alignment"
+```
+
+### 4. Development Process Constitution
+```yaml
+process_constitution:
+  development_workflow:
+    branch_strategy: "Constitutional compliance required before merge"
+    review_process: "All PRs must demonstrate constitutional adherence"
+    testing_requirements: "Constitutional test compliance verified in CI/CD"
+
+  architecture_decisions:
+    decision_authority: "Constitutional principles guide all architectural choices"
+    documentation_requirement: "Architecture Decision Records (ADRs) must reference constitution"
+    review_process: "Architectural changes require constitutional compliance assessment"
+
+  deployment_process:
+    constitutional_validation: "Deployments must pass constitutional compliance checks"
+    rollback_criteria: "Constitutional violations trigger automatic rollback"
+    monitoring_requirements: "Constitutional compliance must be continuously monitored"
+```
+
+### 5. Amendment and Evolution Process
+```yaml
+amendment_process:
+  proposal_requirements:
+    impact_assessment: "Full analysis of constitutional change impact"
+    migration_plan: "Plan for transitioning existing code to new constitutional requirements"
+    team_consensus: "Majority approval or unanimous consent depending on change scope"
+
+  types_of_amendments:
+    minor_clarifications:
+      approval_threshold: "Simple majority"
+      implementation_timeline: "Immediate"
+
+    principle_modifications:
+      approval_threshold: "2/3 majority"
+      implementation_timeline: "30-day migration period"
+
+    fundamental_changes:
+      approval_threshold: "Unanimous consent"
+      implementation_timeline: "90-day comprehensive migration"
+
+  constitutional_review:
+    frequency: "Quarterly constitutional review meetings"
+    triggers: "Major architecture changes, team composition changes, domain pivots"
+    documentation: "All reviews must be documented with decisions and rationale"
+```
+
+### 6. Enforcement and Compliance
+```yaml
+enforcement_mechanisms:
+  automated_enforcement:
+    ci_cd_integration: "Constitutional compliance checks in build pipeline"
+    static_analysis: "Code analysis tools configured for constitutional compliance"
+    test_validation: "Test suites must validate constitutional adherence"
+
+  manual_review:
+    code_review_checklist: "Constitutional compliance verification in all PRs"
+    architecture_review: "Regular reviews of architectural constitutional compliance"
+    process_audit: "Periodic audits of development process constitutional adherence"
+
+  violation_handling:
+    immediate_violations: "Builds fail on critical constitutional violations"
+    minor_violations: "Warnings with required resolution timeline"
+    repeat_violations: "Team discussion and potential constitutional amendment"
+```
+
+### 7. Constitutional Metrics and Monitoring
+```yaml
+constitutional_metrics:
+  compliance_tracking:
+    daily_metrics:
+      - "Constitutional compliance percentage in CI/CD"
+      - "Number of constitutional violations detected"
+      - "Time to resolve constitutional issues"
+
+    weekly_metrics:
+      - "Architectural decisions constitutional alignment"
+      - "Team constitutional compliance awareness"
+      - "Constitutional principle evolution tracking"
+
+    monthly_metrics:
+      - "Overall constitutional health score"
+      - "Constitutional amendment frequency and impact"
+      - "Team satisfaction with constitutional governance"
+
+  continuous_improvement:
+    feedback_collection: "Regular team feedback on constitutional effectiveness"
+    principle_refinement: "Data-driven constitutional principle optimization"
+    process_evolution: "Constitutional process improvement based on metrics"
+```
+
+## 🎯 Constitution Generation Instructions
+
+### Step 1: Analyze Project Context
+1. **Domain Analysis**: Based on {{EXTENSIONS}}, determine relevant domain-specific principles
+2. **Team Analysis**: Consider {{TEAM_SIZE}} and team maturity for appropriate enforcement levels
+3. **Project Analysis**: Analyze {{PROJECT_NAME}} requirements for custom principles
+
+### Step 2: Generate Project Constitution
+1. **Core Principles**: Apply all 9 base SDD principles with project-specific enforcement details
+2. **Domain Extensions**: Add relevant domain-specific constitutional principles
+3. **Project Customization**: Generate 2-3 project-specific principles based on unique requirements
+4. **Quality Standards**: Define measurable quality metrics aligned with constitutional principles
+
+### Step 3: Establish Governance
+1. **Process Definition**: Define constitutional compliance processes
+2. **Enforcement Mechanisms**: Set up automated and manual enforcement
+3. **Amendment Process**: Establish clear process for constitutional evolution
+4. **Metrics and Monitoring**: Define success metrics for constitutional governance
+
+### Step 4: Validation and Documentation
+1. **Team Review**: Present constitution to team for feedback and approval
+2. **Implementation Planning**: Create migration plan for existing code
+3. **Tool Configuration**: Configure CI/CD and development tools for constitutional enforcement
+4. **Training**: Ensure team understands constitutional principles and compliance requirements
+
+## ✅ Success Criteria
+
+- [ ] Constitution includes all 9 base SDD principles with project-specific enforcement
+- [ ] Domain-specific principles are appropriately applied
+- [ ] Project-specific principles address unique requirements and constraints
+- [ ] Quality standards are measurable and achievable
+- [ ] Enforcement mechanisms are clearly defined and implementable
+- [ ] Amendment process enables constitutional evolution
+- [ ] Team understands and accepts constitutional governance
+
+## 🔄 Output Format
+
+Generate a complete `{{PROJECT_NAME}}-constitution.yaml` file that serves as the supreme governance document for the project, ensuring all development decisions align with constitutional principles while enabling project success.
+
+Execute this constitution generation process for {{PROJECT_NAME}} with {{EXTENSIONS}} domain extensions.

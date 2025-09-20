@@ -1,0 +1,181 @@
+# FinTech Domain Extension
+# Additional requirements for financial technology applications
+
+extension:
+  id: "domain-fintech"
+  name: "FinTech Domain Extension"
+  version: "1.0.0"
+  description: "금융기술 도메인을 위한 요구사항 확장"
+  category: "domain"
+  compatibility:
+    mvp_phases: ["phase_2", "phase_3"]
+    conflicts: []
+    requires: []
+
+functional_requirements:
+  FR-FT-001:
+    id: "FR-FT-001"
+    title: "Payment Processing"
+    description: "다양한 결제 수단 처리 및 관리"
+    priority: "Critical"
+    category: "FinTech"
+    acceptance_criteria:
+      AC-1: "신용카드, 직불카드, 디지털 지갑 지원"
+      AC-2: "PCI DSS 준수 결제 처리"
+      AC-3: "결제 상태 실시간 추적"
+      AC-4: "환불 및 부분 환불 처리"
+    business_value: "안전하고 다양한 결제 옵션 제공"
+    dependencies: ["FR-003", "FR-005"]
+    estimated_effort: "high"
+
+  FR-FT-002:
+    id: "FR-FT-002"
+    title: "Risk Management System"
+    description: "금융 위험 평가 및 관리"
+    priority: "Critical"
+    category: "FinTech"
+    acceptance_criteria:
+      AC-1: "실시간 위험 점수 계산"
+      AC-2: "이상 거래 탐지 및 차단"
+      AC-3: "규제 준수 모니터링"
+      AC-4: "위험 대시보드 및 알림"
+    business_value: "금융 리스크 최소화"
+    dependencies: ["FR-003", "FR-007"]
+    estimated_effort: "high"
+
+  FR-FT-003:
+    id: "FR-FT-003"
+    title: "KYC/AML Compliance"
+    description: "고객 신원 확인 및 자금세탁방지"
+    priority: "Critical"
+    category: "FinTech"
+    acceptance_criteria:
+      AC-1: "신원 문서 자동 검증"
+      AC-2: "제재 목록 대조 검사"
+      AC-3: "의심 거래 보고서 생성"
+      AC-4: "컴플라이언스 감사 추적"
+    business_value: "규제 준수 및 법적 리스크 방지"
+    dependencies: ["FR-005", "FR-007"]
+    estimated_effort: "high"
+
+  FR-FT-004:
+    id: "FR-FT-004"
+    title: "Financial Reporting"
+    description: "금융 보고서 생성 및 관리"
+    priority: "High"
+    category: "FinTech"
+    acceptance_criteria:
+      AC-1: "실시간 재무 데이터 집계"
+      AC-2: "규제 보고서 자동 생성"
+      AC-3: "다양한 보고서 형식 지원"
+      AC-4: "보고서 스케줄링 및 배포"
+    business_value: "정확한 재무 보고 및 규제 대응"
+    dependencies: ["FR-003", "FR-007"]
+    estimated_effort: "medium"
+
+non_functional_requirements:
+  NFR-FT-001:
+    id: "NFR-FT-001"
+    title: "Financial Security"
+    description: "금융 서비스 특화 보안 요구사항"
+    category: "Security"
+    requirements:
+      - "결제 데이터 암호화 (AES-256)"
+      - "다중 인증 (MFA) 강제"
+      - "금융 데이터 접근 로그 유지"
+      - "보안 사고 대응 프로세스"
+    measurement:
+      - "보안 감사 통과율 100%"
+      - "데이터 유출 사고 0건"
+    priority: "Critical"
+    extends: "NFR-003"
+
+  NFR-FT-002:
+    id: "NFR-FT-002"
+    title: "Financial Performance"
+    description: "금융 거래 성능 요구사항"
+    category: "Performance"
+    requirements:
+      - "결제 처리 시간 < 2초"
+      - "위험 평가 응답 < 500ms"
+      - "동시 거래 처리 10,000건/초"
+    measurement:
+      - "99.9% 결제 성공률 유지"
+      - "평균 응답 시간 모니터링"
+    priority: "Critical"
+    extends: "NFR-001"
+
+units_of_work:
+  UoW-FT-401:
+    id: "UoW-FT-401"
+    title: "Payment Gateway Integration"
+    description: "결제 게이트웨이 통합 구현"
+    category: "FinTech"
+    priority: "Critical"
+    estimated_effort: "high"
+    dependencies: ["UoW-104", "UoW-101"]
+    related_frs: ["FR-FT-001"]
+    related_nfrs: ["NFR-FT-001", "NFR-FT-002"]
+    acceptance_criteria:
+      AC-1: "다중 결제 수단 지원"
+      AC-2: "PCI DSS 준수 구현"
+      AC-3: "결제 상태 추적 시스템"
+      AC-4: "환불 처리 기능"
+
+  UoW-FT-402:
+    id: "UoW-FT-402"
+    title: "Risk Engine Implementation"
+    description: "위험 평가 엔진 구현"
+    category: "FinTech"
+    priority: "Critical"
+    estimated_effort: "high"
+    dependencies: ["UoW-106", "UoW-201"]
+    related_frs: ["FR-FT-002"]
+    related_nfrs: ["NFR-FT-002"]
+    acceptance_criteria:
+      AC-1: "실시간 위험 점수 계산"
+      AC-2: "ML 기반 이상 탐지"
+      AC-3: "위험 규칙 엔진 구현"
+      AC-4: "위험 대시보드 구축"
+
+  UoW-FT-403:
+    id: "UoW-FT-403"
+    title: "KYC/AML System"
+    description: "고객확인 및 자금세탁방지 시스템"
+    category: "FinTech"
+    priority: "Critical"
+    estimated_effort: "high"
+    dependencies: ["UoW-104", "UoW-202"]
+    related_frs: ["FR-FT-003"]
+    related_nfrs: ["NFR-FT-001"]
+    acceptance_criteria:
+      AC-1: "문서 검증 자동화"
+      AC-2: "제재 목록 검사"
+      AC-3: "의심 거래 모니터링"
+      AC-4: "컴플라이언스 보고"
+
+  UoW-FT-404:
+    id: "UoW-FT-404"
+    title: "Financial Reporting System"
+    description: "금융 보고서 생성 시스템"
+    category: "FinTech"
+    priority: "High"
+    estimated_effort: "medium"
+    dependencies: ["UoW-101", "UoW-106"]
+    related_frs: ["FR-FT-004"]
+    related_nfrs: ["NFR-FT-002"]
+    acceptance_criteria:
+      AC-1: "실시간 데이터 집계"
+      AC-2: "보고서 템플릿 시스템"
+      AC-3: "스케줄링 기능"
+      AC-4: "다양한 출력 형식 지원"
+
+integration:
+  framework_requirements:
+    extends:
+      - "FR-003"  # Data Persistence - 금융 데이터 저장
+      - "FR-005"  # Authentication - KYC 연동
+      - "FR-007"  # Analytics - 위험 분석
+    modifies:
+      - "NFR-003": "금융 특화 보안 요구사항 추가"
+      - "NFR-001": "금융 거래 성능 요구사항 추가"

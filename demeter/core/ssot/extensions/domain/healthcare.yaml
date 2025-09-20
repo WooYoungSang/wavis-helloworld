@@ -1,0 +1,181 @@
+# Healthcare Domain Extension
+# Additional requirements for healthcare applications
+
+extension:
+  id: "domain-healthcare"
+  name: "Healthcare Domain Extension"
+  version: "1.0.0"
+  description: "헬스케어 도메인을 위한 요구사항 확장"
+  category: "domain"
+  compatibility:
+    mvp_phases: ["phase_2", "phase_3"]
+    conflicts: []
+    requires: ["compliance-hipaa"]
+
+functional_requirements:
+  FR-HC-001:
+    id: "FR-HC-001"
+    title: "Patient Record Management"
+    description: "환자 의료 기록 관리 시스템"
+    priority: "Critical"
+    category: "Healthcare"
+    acceptance_criteria:
+      AC-1: "환자 정보 등록 및 수정"
+      AC-2: "의료 기록 히스토리 추적"
+      AC-3: "진료과별 기록 분류"
+      AC-4: "의료진별 접근 권한 관리"
+    business_value: "체계적인 환자 관리"
+    dependencies: ["FR-003", "FR-005"]
+    estimated_effort: "high"
+
+  FR-HC-002:
+    id: "FR-HC-002"
+    title: "Appointment Scheduling"
+    description: "진료 예약 관리 시스템"
+    priority: "High"
+    category: "Healthcare"
+    acceptance_criteria:
+      AC-1: "온라인 예약 시스템"
+      AC-2: "의료진 스케줄 관리"
+      AC-3: "예약 알림 및 리마인더"
+      AC-4: "대기자 명단 관리"
+    business_value: "효율적인 진료 예약 관리"
+    dependencies: ["FR-002", "FR-008"]
+    estimated_effort: "medium"
+
+  FR-HC-003:
+    id: "FR-HC-003"
+    title: "Medical Imaging System"
+    description: "의료 영상 관리 및 조회"
+    priority: "High"
+    category: "Healthcare"
+    acceptance_criteria:
+      AC-1: "DICOM 이미지 업로드 및 저장"
+      AC-2: "영상 조회 및 비교 기능"
+      AC-3: "영상 판독 결과 관리"
+      AC-4: "영상 아카이빙 시스템"
+    business_value: "의료 영상 통합 관리"
+    dependencies: ["FR-003", "FR-002"]
+    estimated_effort: "high"
+
+  FR-HC-004:
+    id: "FR-HC-004"
+    title: "Prescription Management"
+    description: "처방전 관리 시스템"
+    priority: "High"
+    category: "Healthcare"
+    acceptance_criteria:
+      AC-1: "전자 처방전 작성"
+      AC-2: "약물 상호작용 검사"
+      AC-3: "처방 이력 관리"
+      AC-4: "약국 연동 시스템"
+    business_value: "안전한 처방 관리"
+    dependencies: ["FR-005", "FR-002"]
+    estimated_effort: "medium"
+
+non_functional_requirements:
+  NFR-HC-001:
+    id: "NFR-HC-001"
+    title: "Medical Data Privacy"
+    description: "의료 데이터 개인정보 보호"
+    category: "Security"
+    requirements:
+      - "PHI 데이터 암호화 (AES-256)"
+      - "역할 기반 접근 제어 (RBAC)"
+      - "감사 로그 유지 (최소 7년)"
+      - "데이터 익명화 기능"
+    measurement:
+      - "HIPAA 준수율 100%"
+      - "데이터 유출 사고 0건"
+    priority: "Critical"
+    extends: "NFR-003"
+
+  NFR-HC-002:
+    id: "NFR-HC-002"
+    title: "Healthcare Availability"
+    description: "의료 시스템 가용성 요구사항"
+    category: "Reliability"
+    requirements:
+      - "시스템 가용성 99.9% 이상"
+      - "응급 상황 대응 시간 < 30초"
+      - "자동 백업 및 복구"
+    measurement:
+      - "다운타임 월 43분 이하"
+      - "백업 성공률 100%"
+    priority: "Critical"
+    extends: "NFR-002"
+
+units_of_work:
+  UoW-HC-501:
+    id: "UoW-HC-501"
+    title: "EHR System Implementation"
+    description: "전자의무기록 시스템 구현"
+    category: "Healthcare"
+    priority: "Critical"
+    estimated_effort: "high"
+    dependencies: ["UoW-104", "UoW-101"]
+    related_frs: ["FR-HC-001"]
+    related_nfrs: ["NFR-HC-001", "NFR-HC-002"]
+    acceptance_criteria:
+      AC-1: "환자 정보 CRUD 기능"
+      AC-2: "의료 기록 템플릿"
+      AC-3: "접근 권한 관리"
+      AC-4: "감사 로그 기록"
+
+  UoW-HC-502:
+    id: "UoW-HC-502"
+    title: "Appointment System"
+    description: "예약 관리 시스템 구현"
+    category: "Healthcare"
+    priority: "High"
+    estimated_effort: "medium"
+    dependencies: ["UoW-103", "UoW-107"]
+    related_frs: ["FR-HC-002"]
+    related_nfrs: ["NFR-HC-002"]
+    acceptance_criteria:
+      AC-1: "온라인 예약 인터페이스"
+      AC-2: "스케줄 관리 기능"
+      AC-3: "알림 시스템"
+      AC-4: "대기자 관리"
+
+  UoW-HC-503:
+    id: "UoW-HC-503"
+    title: "Medical Imaging Module"
+    description: "의료 영상 관리 모듈"
+    category: "Healthcare"
+    priority: "High"
+    estimated_effort: "high"
+    dependencies: ["UoW-101", "UoW-102"]
+    related_frs: ["FR-HC-003"]
+    related_nfrs: ["NFR-HC-001"]
+    acceptance_criteria:
+      AC-1: "DICOM 파일 처리"
+      AC-2: "영상 뷰어 구현"
+      AC-3: "판독 결과 관리"
+      AC-4: "아카이빙 기능"
+
+  UoW-HC-504:
+    id: "UoW-HC-504"
+    title: "E-Prescription System"
+    description: "전자 처방전 시스템"
+    category: "Healthcare"
+    priority: "High"
+    estimated_effort: "medium"
+    dependencies: ["UoW-104", "UoW-202"]
+    related_frs: ["FR-HC-004"]
+    related_nfrs: ["NFR-HC-001"]
+    acceptance_criteria:
+      AC-1: "처방전 작성 인터페이스"
+      AC-2: "약물 데이터베이스 연동"
+      AC-3: "상호작용 검사"
+      AC-4: "약국 연동 API"
+
+integration:
+  framework_requirements:
+    extends:
+      - "FR-003"  # Data Persistence - 의료 데이터 저장
+      - "FR-005"  # Authentication - 의료진 인증
+      - "FR-008"  # Monitoring - 시스템 모니터링
+    modifies:
+      - "NFR-003": "의료 데이터 보안 요구사항 추가"
+      - "NFR-002": "의료 시스템 가용성 요구사항 추가"

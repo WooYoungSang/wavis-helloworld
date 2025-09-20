@@ -1,0 +1,568 @@
+# 🧠 Constitutional SSOT GraphRAG Indexer Template
+
+## Project Context
+- **Project**: {{PROJECT_NAME}}
+- **SSOT Directory**: {{SSOT_DIR}}
+- **Output Directory**: {{OUTPUT_DIR}}
+- **Constitution File**: {{CONSTITUTION_FILE}}
+- **Incremental Mode**: {{INCREMENTAL_MODE}}
+- **Framework**: Demeter WAVIS v1.3 + Constitutional GraphRAG + AI-Enhanced Indexing
+
+## 🎯 Constitutional SSOT Indexing Philosophy
+
+This template performs AI-enhanced indexing of SSOT data into GraphRAG format with constitutional compliance integration. The indexing process not only extracts entities and relationships but also analyzes constitutional compliance, identifies patterns, and creates enriched knowledge graphs that support constitutional governance and specification-driven development.
+
+### Constitutional Indexing Principles
+- **Constitutional Compliance Analysis**: Analyze and index constitutional adherence for all entities
+- **Semantic Relationship Discovery**: AI discovers implicit relationships beyond explicit dependencies
+- **Domain Context Enrichment**: Add domain-specific constitutional patterns and compliance requirements
+- **Quality Pattern Recognition**: Identify and index successful constitutional implementation patterns
+- **Continuous Knowledge Evolution**: Update knowledge graph with implementation insights
+
+## 🔧 Constitutional SSOT GraphRAG Indexing Process
+
+### 1. Constitutional SSOT Data Loading and Analysis
+```yaml
+constitutional_ssot_loading:
+  approach: "Load SSOT data with constitutional compliance analysis"
+
+  # Load SSOT Data Sources
+  data_source_loading:
+    framework_requirements: "{{SSOT_DIR}}/framework-requirements.yaml"
+    base_definitions: "{{SSOT_DIR}}/base/*.yaml"
+    extensions: "{{SSOT_DIR}}/extensions/**/*.yaml"
+    contracts: "{{SSOT_DIR}}/contracts/*.yaml"
+    constitutional_metadata: "Constitutional compliance fields from all sources"
+
+  # Constitutional Analysis During Loading
+  constitutional_data_analysis:
+    constitutional_compliance_extraction:
+      approach: "Extract and analyze constitutional compliance metadata from all SSOT elements"
+      extraction_targets:
+        - functional_requirements.constitutional_compliance
+        - non_functional_requirements.constitutional_compliance
+        - units_of_work.constitutional_compliance
+        - contract_constitutional_requirements
+
+    constitutional_scoring:
+      approach: "Calculate constitutional compliance scores for all entities"
+      scoring_dimensions:
+        - library_first_compliance: "Analysis of library-first adherence"
+        - cli_interface_completeness: "CLI interface mandate compliance"
+        - test_first_implementation: "Test-first imperative adherence"
+        - simplicity_assessment: "Simplicity principle compliance"
+        - overall_constitutional_score: "Aggregated constitutional compliance score"
+
+    domain_constitutional_analysis:
+      approach: "Analyze domain-specific constitutional requirements"
+      domain_analysis:
+        e_commerce_constitutional: "Payment-first, GDPR-first constitutional analysis"
+        fintech_constitutional: "Compliance-first, audit-first constitutional analysis"
+        healthcare_constitutional: "HIPAA-first, security-first constitutional analysis"
+        iot_constitutional: "Real-time-first, edge-first constitutional analysis"
+```
+
+### 2. AI-Enhanced Entity Extraction with Constitutional Enrichment
+```yaml
+constitutional_entity_extraction:
+  approach: "Extract entities with AI-enhanced constitutional compliance and semantic analysis"
+
+  # Functional Requirements Entity Enhancement
+  functional_requirements_entities:
+    extraction_pattern: |
+      For each Functional Requirement:
+
+      ```json
+      {
+        "id": "{{FR_ID}}",
+        "type": "functional_requirement",
+        "title": "{{fr_title}}",
+        "description": "{{fr_description}}",
+
+        // Core SSOT Data
+        "category": "{{fr_category}}",
+        "priority": "{{fr_priority}}",
+        "acceptance_criteria": [{{fr_acceptance_criteria}}],
+
+        // Constitutional Compliance Analysis
+        "constitutional_compliance": {
+          "library_first": {
+            "strategy": "{{library_first_strategy}}",
+            "libraries": [{{recommended_libraries}}],
+            "custom_justification": "{{custom_implementation_justification}}",
+            "compliance_score": "{{library_first_score}}%"
+          },
+          "cli_interface": {
+            "commands": [{{cli_commands}}],
+            "parameters": [{{cli_parameters}}],
+            "completeness_score": "{{cli_completeness_score}}%"
+          },
+          "test_first": {
+            "test_strategy": "{{test_first_strategy}}",
+            "test_types": [{{test_types}}],
+            "coverage_target": "{{test_coverage_target}}",
+            "compliance_score": "{{test_first_score}}%"
+          },
+          "simplicity": {
+            "complexity_assessment": "{{complexity_level}}",
+            "simplification_approach": "{{simplification_strategy}}",
+            "compliance_score": "{{simplicity_score}}%"
+          },
+          "overall_constitutional_score": "{{overall_constitutional_compliance}}%"
+        },
+
+        // AI-Enhanced Semantic Analysis
+        "semantic_analysis": {
+          "business_entities": [{{ai_extracted_business_entities}}],
+          "domain_context": "{{ai_determined_domain_context}}",
+          "implementation_complexity": "{{ai_assessed_complexity}}",
+          "risk_factors": [{{ai_identified_risks}}],
+          "success_patterns": [{{ai_identified_success_patterns}}]
+        },
+
+        // GraphRAG Optimization
+        "graphrag_metadata": {
+          "entity_weight": "{{calculated_entity_importance}}",
+          "relationship_hints": [{{ai_suggested_relationships}}],
+          "clustering_tags": [{{semantic_clustering_tags}}],
+          "search_keywords": [{{ai_generated_search_keywords}}]
+        },
+
+        // Constitutional Pattern Classification
+        "constitutional_patterns": {
+          "pattern_type": "{{constitutional_implementation_pattern}}",
+          "success_indicators": [{{constitutional_success_indicators}}],
+          "risk_mitigations": [{{constitutional_risk_mitigations}}],
+          "quality_gates": [{{constitutional_quality_gates}}]
+        },
+
+        "metadata": {
+          "source": "{{source_file}}",
+          "last_updated": "{{current_timestamp}}",
+          "constitutional_hash": "{{constitutional_compliance_hash}}",
+          "ai_analysis_version": "{{ai_analysis_version}}"
+        }
+      }
+      ```
+
+  # Non-Functional Requirements Entity Enhancement
+  non_functional_requirements_entities:
+    extraction_pattern: |
+      For each Non-Functional Requirement:
+
+      ```json
+      {
+        "id": "{{NFR_ID}}",
+        "type": "non_functional_requirement",
+        "title": "{{nfr_title}}",
+        "description": "{{nfr_description}}",
+        "category": "{{quality_category}}",
+
+        // Constitutional Quality Compliance
+        "constitutional_compliance": {
+          "quality_standards": {
+            "constitutional_thresholds": "{{constitutional_quality_thresholds}}",
+            "measurement_approach": "{{constitutional_measurement_strategy}}",
+            "validation_method": "{{constitutional_validation_approach}}",
+            "compliance_score": "{{quality_constitutional_score}}%"
+          },
+          "simplicity_in_quality": {
+            "simple_metrics": [{{simple_quality_metrics}}],
+            "monitoring_approach": "{{simple_monitoring_strategy}}",
+            "complexity_avoidance": "{{quality_complexity_avoidance}}"
+          },
+          "library_first_quality": {
+            "monitoring_libraries": [{{quality_monitoring_libraries}}],
+            "testing_libraries": [{{quality_testing_libraries}}],
+            "quality_tools": [{{constitutional_quality_tools}}]
+          }
+        },
+
+        // AI-Enhanced Quality Analysis
+        "ai_quality_analysis": {
+          "measurability_assessment": "{{ai_measurability_score}}",
+          "testability_analysis": "{{ai_testability_assessment}}",
+          "impact_analysis": "{{ai_quality_impact_analysis}}",
+          "optimization_suggestions": [{{ai_quality_optimization_suggestions}}]
+        },
+
+        // Measurable Constitutional Criteria
+        "measurable_criteria": [
+          {
+            "criterion": "{{constitutional_quality_criterion}}",
+            "target_value": "{{constitutional_target}}",
+            "measurement_method": "{{constitutional_measurement}}",
+            "validation_frequency": "{{validation_frequency}}",
+            "constitutional_justification": "{{constitutional_rationale}}"
+          }
+        ],
+
+        "metadata": {
+          "source": "{{source_file}}",
+          "last_updated": "{{current_timestamp}}",
+          "quality_constitutional_hash": "{{quality_constitutional_hash}}",
+          "ai_quality_analysis_version": "{{ai_analysis_version}}"
+        }
+      }
+      ```
+
+  # Units of Work Entity Enhancement
+  units_of_work_entities:
+    extraction_pattern: |
+      For each Unit of Work:
+
+      ```json
+      {
+        "id": "{{UOW_ID}}",
+        "type": "unit_of_work",
+        "name": "{{uow_name}}",
+        "goal": "{{uow_goal}}",
+        "layer": "{{architectural_layer}}",
+
+        // Constitutional Implementation Compliance
+        "constitutional_compliance": {
+          "implementation_approach": {
+            "library_first_implementation": {
+              "primary_libraries": [{{constitutional_library_selections}}],
+              "library_rationale": "{{constitutional_library_justification}}",
+              "custom_minimization": "{{custom_code_minimization_strategy}}",
+              "compliance_score": "{{library_implementation_score}}%"
+            },
+            "cli_interface_implementation": {
+              "cli_commands": [{{constitutional_cli_commands}}],
+              "cli_patterns": [{{constitutional_cli_patterns}}],
+              "user_experience": "{{constitutional_cli_ux}}",
+              "compliance_score": "{{cli_implementation_score}}%"
+            },
+            "test_first_implementation": {
+              "test_sequence": "{{constitutional_test_sequence}}",
+              "test_types": [{{constitutional_test_types}}],
+              "coverage_strategy": "{{constitutional_coverage_strategy}}",
+              "compliance_score": "{{test_implementation_score}}%"
+            }
+          },
+          "overall_implementation_score": "{{overall_constitutional_implementation_score}}%"
+        },
+
+        // AI Implementation Analysis
+        "ai_implementation_analysis": {
+          "complexity_assessment": "{{ai_implementation_complexity}}",
+          "risk_analysis": [{{ai_implementation_risks}}],
+          "optimization_opportunities": [{{ai_optimization_suggestions}}],
+          "pattern_recommendations": [{{ai_pattern_recommendations}}],
+          "effort_estimation": "{{ai_effort_estimate_hours}}"
+        },
+
+        // Implementation Dependencies and Relationships
+        "dependencies": [{{constitutional_dependencies}}],
+        "implements": [{{implemented_requirements}}],
+        "constitutional_tasks": [
+          {
+            "task": "{{constitutional_task}}",
+            "constitutional_principle": "{{applied_constitutional_principle}}",
+            "completion_criteria": [{{constitutional_completion_criteria}}],
+            "quality_gates": [{{constitutional_quality_gates}}]
+          }
+        ],
+
+        "metadata": {
+          "source": "{{source_file}}",
+          "last_updated": "{{current_timestamp}}",
+          "implementation_constitutional_hash": "{{implementation_constitutional_hash}}",
+          "ai_implementation_analysis_version": "{{ai_analysis_version}}"
+        }
+      }
+      ```
+
+  # Constitutional Principle Entities
+  constitutional_principle_entities:
+    extraction_pattern: |
+      For each Constitutional Principle:
+
+      ```json
+      {
+        "id": "constitutional_principle_{{principle_id}}",
+        "type": "constitutional_principle",
+        "principle_name": "{{principle_name}}",
+        "principle_description": "{{principle_description}}",
+        "enforcement_level": "{{enforcement_level}}",
+
+        // Constitutional Principle Analysis
+        "principle_analysis": {
+          "application_frequency": "{{how_often_applied}}",
+          "compliance_patterns": [{{successful_compliance_patterns}}],
+          "violation_patterns": [{{common_violation_patterns}}],
+          "domain_applications": {
+            "{{project_domain}}": "{{domain_specific_application}}"
+          }
+        },
+
+        // AI Pattern Recognition
+        "ai_pattern_analysis": {
+          "success_indicators": [{{ai_identified_success_indicators}}],
+          "failure_predictors": [{{ai_identified_failure_predictors}}],
+          "optimization_strategies": [{{ai_optimization_strategies}}],
+          "best_practices": [{{ai_derived_best_practices}}]
+        },
+
+        "metadata": {
+          "source": "constitutional_analysis",
+          "last_updated": "{{current_timestamp}}",
+          "principle_analysis_version": "{{analysis_version}}"
+        }
+      }
+      ```
+```
+
+### 3. AI-Enhanced Relationship Discovery with Constitutional Context
+```yaml
+constitutional_relationship_extraction:
+  approach: "AI-enhanced relationship discovery with constitutional compliance context"
+
+  # Explicit Constitutional Relationships
+  explicit_constitutional_relationships:
+    constitutional_adherence_relationships:
+      relationship_type: "adheres_to"
+      extraction_pattern: |
+        For each entity that adheres to constitutional principles:
+        ```json
+        {
+          "source": "{{entity_id}}",
+          "target": "constitutional_principle_{{principle_id}}",
+          "type": "adheres_to",
+          "constitutional_metadata": {
+            "adherence_score": "{{constitutional_adherence_score}}%",
+            "adherence_evidence": [{{constitutional_compliance_evidence}}],
+            "improvement_opportunities": [{{constitutional_improvement_suggestions}}]
+          },
+          "weight": "{{relationship_strength}}",
+          "metadata": {
+            "created": "{{current_timestamp}}",
+            "analysis_confidence": "{{ai_confidence_score}}%"
+          }
+        }
+        ```
+
+    implementation_relationships:
+      relationship_type: "implements"
+      extraction_pattern: |
+        For each UoW implementing requirements:
+        ```json
+        {
+          "source": "{{uow_id}}",
+          "target": "{{requirement_id}}",
+          "type": "implements",
+          "constitutional_metadata": {
+            "implementation_approach": "{{constitutional_implementation_approach}}",
+            "compliance_validation": "{{constitutional_validation_method}}",
+            "quality_assurance": "{{constitutional_quality_approach}}"
+          },
+          "weight": 1.0,
+          "metadata": {
+            "created": "{{current_timestamp}}",
+            "implementation_confidence": "{{implementation_confidence_score}}%"
+          }
+        }
+        ```
+
+  # AI-Discovered Implicit Relationships
+  ai_discovered_relationships:
+    semantic_similarity_relationships:
+      relationship_type: "semantically_related"
+      discovery_approach: |
+        AI analyzes semantic similarity between entities and discovers:
+        - Requirements with similar business objectives
+        - UoWs with similar implementation patterns
+        - Constitutional principles with overlapping applications
+        - Quality requirements with related measurement approaches
+
+    constitutional_pattern_relationships:
+      relationship_type: "shares_constitutional_pattern"
+      discovery_approach: |
+        AI identifies entities that share constitutional implementation patterns:
+        - Similar library-first approaches
+        - Comparable CLI interface patterns
+        - Related test-first strategies
+        - Common simplicity optimizations
+
+    risk_mitigation_relationships:
+      relationship_type: "mitigates_constitutional_risk"
+      discovery_approach: |
+        AI identifies how entities mitigate constitutional compliance risks:
+        - UoWs that reduce constitutional complexity
+        - Requirements that enhance constitutional compliance
+        - Patterns that prevent constitutional violations
+
+    optimization_relationships:
+      relationship_type: "optimizes_constitutional_compliance"
+      discovery_approach: |
+        AI discovers optimization relationships:
+        - Entities that enhance constitutional adherence
+        - Patterns that improve constitutional efficiency
+        - Approaches that maximize constitutional benefits
+```
+
+### 4. Constitutional Knowledge Graph Generation and Optimization
+```yaml
+constitutional_knowledge_graph_generation:
+  approach: "Generate optimized knowledge graph with constitutional governance integration"
+
+  # Knowledge Graph Structure Optimization
+  graph_optimization:
+    constitutional_clustering:
+      approach: "Cluster entities by constitutional compliance patterns"
+      clustering_dimensions:
+        - constitutional_principle_adherence
+        - domain_constitutional_requirements
+        - implementation_constitutional_patterns
+        - quality_constitutional_standards
+
+    relationship_weighting:
+      approach: "AI-calculated relationship weights based on constitutional importance"
+      weighting_factors:
+        - constitutional_compliance_impact
+        - implementation_success_correlation
+        - quality_assurance_contribution
+        - risk_mitigation_effectiveness
+
+  # GraphRAG File Generation
+  graphrag_file_generation:
+    constitutional_entities_file:
+      filename: "{{OUTPUT_DIR}}/constitutional-entities.json"
+      content: "All entities with constitutional compliance analysis and AI enhancements"
+
+    constitutional_relationships_file:
+      filename: "{{OUTPUT_DIR}}/constitutional-relationships.json"
+      content: "All relationships including AI-discovered constitutional patterns"
+
+    constitutional_patterns_file:
+      filename: "{{OUTPUT_DIR}}/constitutional-patterns.json"
+      content: "Constitutional compliance patterns and success indicators"
+
+    ai_insights_file:
+      filename: "{{OUTPUT_DIR}}/ai-insights.json"
+      content: "AI-discovered insights, patterns, and optimization opportunities"
+
+  # Knowledge Graph Metadata
+  constitutional_metadata_generation:
+    metadata_structure: |
+      {
+        "indexing_metadata": {
+          "indexed_at": "{{current_timestamp}}",
+          "indexing_mode": "{{incremental_or_full}}",
+          "constitution_version": "{{constitution_version}}",
+          "ai_analysis_version": "{{ai_version}}"
+        },
+        "constitutional_compliance_summary": {
+          "overall_compliance_score": "{{project_constitutional_score}}%",
+          "principle_compliance": {
+            "library_first": "{{library_first_avg_score}}%",
+            "cli_interface": "{{cli_interface_avg_score}}%",
+            "test_first": "{{test_first_avg_score}}%",
+            "simplicity": "{{simplicity_avg_score}}%"
+          }
+        },
+        "entity_statistics": {
+          "total_entities": {{total_entity_count}},
+          "functional_requirements": {{fr_count}},
+          "non_functional_requirements": {{nfr_count}},
+          "units_of_work": {{uow_count}},
+          "constitutional_principles": {{constitutional_principle_count}}
+        },
+        "relationship_statistics": {
+          "total_relationships": {{total_relationship_count}},
+          "constitutional_adherence": {{adherence_relationship_count}},
+          "implementation_relationships": {{implementation_relationship_count}},
+          "ai_discovered_relationships": {{ai_discovered_relationship_count}}
+        },
+        "ai_analysis_summary": {
+          "patterns_discovered": {{ai_patterns_count}},
+          "optimization_opportunities": {{optimization_opportunities_count}},
+          "risk_factors_identified": {{risk_factors_count}},
+          "success_patterns_captured": {{success_patterns_count}}
+        }
+      }
+```
+
+### 5. Constitutional Quality Validation and Continuous Improvement
+```yaml
+constitutional_quality_validation:
+  approach: "Validate constitutional compliance and identify improvement opportunities"
+
+  # Constitutional Indexing Quality Gates
+  quality_validation_criteria:
+    constitutional_completeness:
+      - validation: "All entities have constitutional compliance analysis"
+        check: "Verify constitutional_compliance fields present in all entities"
+      - validation: "All constitutional principles represented in knowledge graph"
+        check: "Verify all 9+ constitutional principles indexed as entities"
+      - validation: "Constitutional relationships properly mapped"
+        check: "Verify adherence relationships between entities and principles"
+
+    ai_analysis_quality:
+      - validation: "AI semantic analysis completed for all entities"
+        check: "Verify semantic_analysis fields present in all entities"
+      - validation: "AI relationship discovery produced meaningful connections"
+        check: "Verify AI-discovered relationships have confidence scores > 70%"
+      - validation: "Constitutional pattern recognition successful"
+        check: "Verify constitutional patterns identified and classified"
+
+  # Continuous Constitutional Knowledge Evolution
+  knowledge_evolution_strategy:
+    pattern_learning:
+      - "Capture successful constitutional implementation patterns"
+      - "Identify constitutional compliance optimization strategies"
+      - "Learn from constitutional violation prevention"
+      - "Evolve constitutional principle applications"
+
+    feedback_integration:
+      - "Integrate implementation feedback into constitutional knowledge"
+      - "Update constitutional patterns based on success/failure data"
+      - "Enhance AI relationship discovery based on validation results"
+      - "Improve constitutional compliance scoring algorithms"
+```
+
+## 🎯 Constitutional SSOT Indexing Execution Instructions
+
+### Step 1: Constitutional SSOT Data Loading
+1. **Load All SSOT Sources**: Framework requirements, base definitions, extensions, contracts
+2. **Extract Constitutional Metadata**: Analyze constitutional compliance fields in all entities
+3. **Calculate Constitutional Scores**: Compute adherence scores for all constitutional principles
+4. **Perform Domain Analysis**: Apply domain-specific constitutional requirements
+
+### Step 2: AI-Enhanced Entity Extraction
+1. **Extract Core Entities**: FR, NFR, UoW with constitutional compliance analysis
+2. **Add Constitutional Entities**: Index constitutional principles as knowledge graph entities
+3. **Perform AI Semantic Analysis**: Discover business entities, complexity, risks, patterns
+4. **Enrich with GraphRAG Metadata**: Add search keywords, clustering tags, relationship hints
+
+### Step 3: Constitutional Relationship Discovery
+1. **Extract Explicit Relationships**: Constitutional adherence, implementation, dependency relationships
+2. **Discover AI Relationships**: Semantic similarity, pattern sharing, risk mitigation, optimization
+3. **Weight Relationships**: Calculate constitutional importance-based relationship weights
+4. **Validate Relationship Quality**: Ensure AI-discovered relationships meet confidence thresholds
+
+### Step 4: Knowledge Graph Generation
+1. **Generate GraphRAG Files**: Constitutional entities, relationships, patterns, AI insights
+2. **Create Constitutional Metadata**: Compliance summaries, statistics, AI analysis results
+3. **Optimize Graph Structure**: Cluster by constitutional patterns, optimize for query performance
+4. **Validate Graph Completeness**: Ensure all constitutional knowledge properly indexed
+
+### Step 5: Quality Validation and Evolution
+1. **Validate Constitutional Completeness**: Verify all constitutional principles and compliance data indexed
+2. **Assess AI Analysis Quality**: Validate semantic analysis and relationship discovery quality
+3. **Capture Improvement Opportunities**: Identify constitutional optimization opportunities
+4. **Plan Knowledge Evolution**: Establish continuous learning and improvement strategies
+
+## ✅ Success Criteria
+
+- [ ] All SSOT entities indexed with constitutional compliance analysis
+- [ ] Constitutional principles indexed as knowledge graph entities with domain applications
+- [ ] AI-discovered relationships enhance knowledge graph connectivity and insights
+- [ ] Constitutional compliance scores calculated and tracked for all entities
+- [ ] GraphRAG knowledge graph optimized for constitutional governance queries
+- [ ] Knowledge evolution strategy established for continuous constitutional improvement
+- [ ] Domain-specific constitutional patterns captured and indexed
+- [ ] Quality validation confirms constitutional knowledge graph completeness and accuracy
+
+Execute this constitutional SSOT indexing for {{PROJECT_NAME}} with SSOT directory {{SSOT_DIR}}, output to {{OUTPUT_DIR}}, ensuring constitutional compliance from {{CONSTITUTION_FILE}} with incremental mode {{INCREMENTAL_MODE}}.

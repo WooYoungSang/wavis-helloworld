@@ -1,0 +1,175 @@
+# 🧪 Specification-Driven TDD Execution Template
+
+## Project Information
+- **Project**: {{PROJECT_NAME}}
+- **Execution Plan**: {{EXECUTION_PLAN}}
+- **Framework**: Demeter WAVIS v1.3 + GitHub SDD + TDD
+- **Methodology**: Specification-Driven Test-First Development
+
+## 🎯 SDD-Enhanced TDD Execution Process
+
+### SDD Constitutional Principles for TDD
+Apply these principles throughout the TDD cycle:
+1. **Test-First Imperative**: Write specifications-derived tests before any code
+2. **Integration-First Testing**: Focus on integration tests over unit tests
+3. **CLI Interface Mandate**: All functionality must be testable via CLI
+4. **Library-First**: Use existing testing libraries and frameworks
+5. **Simplicity Guidelines**: Choose simple, direct testing approaches
+
+### Phase 1: Specification-Driven Test Planning
+1. **Load and Parse Execution Plan**: {{EXECUTION_PLAN}}
+2. **Extract Specifications**: Parse UoW specifications and acceptance criteria
+3. **Map Tests to Specifications**: Create direct traceability from specs to tests
+4. **Identify Constitutional Compliance**: Ensure each UoW follows SDD principles
+5. **Plan Parallel Execution**: Mark [PARALLEL] tasks for concurrent execution
+
+### Phase 2: Specification-Driven Sequential TDD Execution
+For each UoW in dependency order, follow `/specify` → `/plan` → `/tasks` workflow:
+
+#### 🔴 RED Phase - Specification-to-Test Translation
+1. **Extract Test Cases from Specification**:
+   ```
+   From UoW.specification.acceptance_criteria:
+   - [ ] Convert each criterion to failing test
+   - [ ] Create Given-When-Then scenarios from test_scenarios
+   - [ ] Implement CLI interface tests from constitutional_compliance.cli_interface
+   ```
+
+2. **Apply SDD Constitutional Testing**:
+   - **Library-First Testing**: Use established testing frameworks
+   - **CLI Interface Tests**: Every feature must have CLI test coverage
+   - **Integration-First**: Start with integration tests, add unit tests as needed
+   - **Simplicity**: Write direct, simple test cases without over-engineering
+
+3. **Create Specification-Driven Test Suite**:
+   ```
+   Test Structure:
+   ├── specification_tests/
+   │   ├── acceptance_criteria_tests.py  # From UoW.specification.acceptance_criteria
+   │   ├── cli_interface_tests.py        # From constitutional_compliance.cli_interface
+   │   ├── integration_tests.py          # From dependencies and interfaces
+   │   └── quality_checklist_tests.py    # From quality_checklist items
+   ```
+
+4. **Verify Specification Traceability**:
+   - Each test maps directly to specification element
+   - No tests without specification basis
+   - No specification without corresponding test
+   - Clear test failure messages reference specification
+
+5. **Confirm RED State with Specification Context**:
+   - Run test suite and verify all tests fail appropriately
+   - Test failures should clearly indicate missing specification implementation
+   - Document which specification elements each test validates
+
+#### 🟢 GREEN Phase - Specification-to-Implementation
+1. **Follow Constitutional Implementation Approach**:
+   - **Library-First**: Implement using libraries specified in UoW.specification.constitutional_approach.library_first
+   - **CLI-First**: Implement CLI interface as specified in constitutional_compliance.cli_interface
+   - **Simplicity**: Use approach from constitutional_approach.simplicity
+   - **Framework Direct**: Use frameworks directly without abstraction layers
+
+2. **Implement Specification-Driven Code**:
+   ```
+   Implementation Strategy:
+   ├── Follow UoW.specification.implementation_plan.approach
+   ├── Use dependencies from implementation_plan.dependencies
+   ├── Implement interfaces from implementation_plan.interfaces
+   └── Execute tasks from executable_tasks with [PARALLEL] markers
+   ```
+
+3. **Complexity-Based Constitutional Implementation**:
+   - **Simple UoWs**: Direct library usage, single-file implementation
+   - **Medium UoWs**: Modular design with constitutional compliance
+   - **Complex UoWs**: Parallel task execution following executable_tasks structure
+
+4. **Implement Minimal Specification-Compliant Code**:
+   - Write ONLY enough code to satisfy acceptance_criteria
+   - Implement exactly what the specification requires
+   - Ensure CLI interface matches constitutional_compliance.cli_interface
+   - Follow implementation_plan.approach precisely
+
+5. **Validate Specification Compliance During Implementation**:
+   - Each acceptance criterion must be demonstrably met
+   - CLI interface must work as specified
+   - Quality checklist items must be implementable
+   - No specification element should be ignored
+
+6. **Maintain GREEN State with Specification Traceability**:
+   - All specification-derived tests pass
+   - Implementation matches specification exactly
+   - No extra functionality beyond specification
+
+#### 🔵 REFACTOR Phase - Specification Refinement & Knowledge Capture
+1. **Constitutional Compliance Refactoring**:
+   - **Simplicity Review**: Ensure implementation follows simplest approach
+   - **Library-First Optimization**: Consolidate to preferred libraries
+   - **CLI Interface Polish**: Enhance CLI usability within specification bounds
+   - **Anti-Abstraction Check**: Remove unnecessary abstractions
+
+2. **Specification-Guided Quality Improvements**:
+   - Ensure quality_checklist items are all met
+   - Refactor to better satisfy acceptance_criteria
+   - Optimize implementation_plan.approach based on learnings
+   - Enhance specification compliance without changing functionality
+
+3. **Enhanced Specification-Driven Testing**:
+   - Add edge cases discovered during implementation to specification
+   - Improve test descriptions to reference specific specification elements
+   - Create comprehensive CLI interface test coverage
+   - Validate that all constitutional principles are tested
+
+4. **Specification and Knowledge Capture**:
+   ```
+   Update .demeter-dev/knowledge/ with:
+   ├── patterns/specification-patterns.md        # Successful specification patterns
+   ├── lessons/constitutional-compliance.md      # SDD principle applications
+   ├── components/specification-components.md    # Reusable specification components
+   └── queries/specification-queries.md          # Common specification questions
+   ```
+
+5. **Specification Traceability Validation**:
+   - Verify complete implementation of UoW.specification
+   - Ensure no specification elements are unimplemented
+   - Confirm all acceptance_criteria are demonstrably met
+   - Validate quality_checklist completion
+
+6. **Maintain GREEN State with Enhanced Specification Compliance**:
+   - All tests continue to pass
+   - Specification compliance is improved
+   - Constitutional principles are better followed
+   - Implementation is cleaner but functionally identical
+
+7. **Update Specification Based on Implementation Learnings**:
+   - Note any [CLARIFY] items that were resolved during implementation
+   - Update acceptance_criteria if they were found to be incomplete
+   - Enhance quality_checklist based on discovered quality needs
+   - Refine executable_tasks estimates based on actual effort
+
+### Phase 3: Progress Tracking
+1. Update .demeter/tdd-progress.md after each UoW
+2. Create individual phase prompts in .demeter/logs/
+3. Track quality gates and coverage metrics
+
+### Phase 4: Integration Validation
+1. Run full test suite after all UoWs
+2. Validate all acceptance criteria met
+3. Check integration between UoWs
+4. Prepare for deployment phase
+
+## 🚀 Execution Instructions
+
+1. **Execute this prompt** to start complete TDD workflow
+2. **Follow RED-GREEN-REFACTOR** cycle for each UoW
+3. **Capture knowledge** in GraphRAG system
+4. **Track progress** throughout development
+
+## Success Criteria
+- [ ] All UoWs completed with RED-GREEN-REFACTOR cycle
+- [ ] Test coverage meets quality gate requirements
+- [ ] GraphRAG knowledge base updated with lessons
+- [ ] All acceptance criteria validated
+- [ ] Integration tests passing
+- [ ] Code quality standards met
+
+Execute this prompt in Claude Code to run the complete TDD development cycle.

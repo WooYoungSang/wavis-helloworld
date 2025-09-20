@@ -1,0 +1,176 @@
+module github.com/{{GITHUB_USERNAME}}/{{PROJECT_NAME}}
+
+go {{GO_VERSION}}
+
+require (
+	// HTTP Framework
+	{{#HTTP_FRAMEWORK_GIN}}
+	github.com/gin-gonic/gin v{{GIN_VERSION}}
+	{{/HTTP_FRAMEWORK_GIN}}
+	{{#HTTP_FRAMEWORK_FIBER}}
+	github.com/gofiber/fiber/v2 v{{FIBER_VERSION}}
+	{{/HTTP_FRAMEWORK_FIBER}}
+	{{#HTTP_FRAMEWORK_ECHO}}
+	github.com/labstack/echo/v4 v{{ECHO_VERSION}}
+	{{/HTTP_FRAMEWORK_ECHO}}
+
+	// Database Drivers
+	{{#DATABASE_POSTGRES}}
+	github.com/lib/pq v{{POSTGRES_DRIVER_VERSION}}
+	github.com/jmoiron/sqlx v{{SQLX_VERSION}}
+	{{/DATABASE_POSTGRES}}
+	{{#DATABASE_MYSQL}}
+	github.com/go-sql-driver/mysql v{{MYSQL_DRIVER_VERSION}}
+	{{/DATABASE_MYSQL}}
+	{{#DATABASE_SQLITE}}
+	github.com/mattn/go-sqlite3 v{{SQLITE_DRIVER_VERSION}}
+	{{/DATABASE_SQLITE}}
+
+	// Redis Client
+	{{#REDIS_ENABLED}}
+	github.com/redis/go-redis/v9 v{{REDIS_VERSION}}
+	{{/REDIS_ENABLED}}
+
+	// Configuration Management
+	{{#CONFIG_VIPER}}
+	github.com/spf13/viper v{{VIPER_VERSION}}
+	{{/CONFIG_VIPER}}
+	{{#CONFIG_KOANF}}
+	github.com/knadh/koanf v{{KOANF_VERSION}}
+	{{/CONFIG_KOANF}}
+
+	// Logging
+	{{#LOGGING_LOGRUS}}
+	github.com/sirupsen/logrus v{{LOGRUS_VERSION}}
+	{{/LOGGING_LOGRUS}}
+	{{#LOGGING_ZAP}}
+	go.uber.org/zap v{{ZAP_VERSION}}
+	{{/LOGGING_ZAP}}
+	{{#LOGGING_ZEROLOG}}
+	github.com/rs/zerolog v{{ZEROLOG_VERSION}}
+	{{/LOGGING_ZEROLOG}}
+
+	// Monitoring and Metrics
+	{{#MONITORING_PROMETHEUS}}
+	github.com/prometheus/client_golang v{{PROMETHEUS_CLIENT_VERSION}}
+	{{/MONITORING_PROMETHEUS}}
+	{{#MONITORING_OTEL}}
+	go.opentelemetry.io/otel v{{OTEL_VERSION}}
+	go.opentelemetry.io/otel/exporters/prometheus v{{OTEL_PROMETHEUS_VERSION}}
+	{{/MONITORING_OTEL}}
+
+	// Validation
+	{{#VALIDATION_VALIDATOR}}
+	github.com/go-playground/validator/v10 v{{VALIDATOR_VERSION}}
+	{{/VALIDATION_VALIDATOR}}
+	{{#VALIDATION_OZZO}}
+	github.com/go-ozzo/ozzo-validation/v4 v{{OZZO_VALIDATION_VERSION}}
+	{{/VALIDATION_OZZO}}
+
+	// HTTP Client
+	{{#HTTP_CLIENT_RESTY}}
+	github.com/go-resty/resty/v2 v{{RESTY_VERSION}}
+	{{/HTTP_CLIENT_RESTY}}
+	{{#HTTP_CLIENT_RETRYABLEHTTP}}
+	github.com/hashicorp/go-retryablehttp v{{RETRYABLEHTTP_VERSION}}
+	{{/HTTP_CLIENT_RETRYABLEHTTP}}
+
+	// Concurrency and Utilities
+	{{#CONCURRENCY_ERRGROUP}}
+	golang.org/x/sync v{{SYNC_VERSION}}
+	{{/CONCURRENCY_ERRGROUP}}
+	{{#UTILITIES_LO}}
+	github.com/samber/lo v{{LO_VERSION}}
+	{{/UTILITIES_LO}}
+
+	// Security
+	{{#SECURITY_JWT}}
+	github.com/golang-jwt/jwt/v5 v{{JWT_VERSION}}
+	{{/SECURITY_JWT}}
+	{{#SECURITY_BCRYPT}}
+	golang.org/x/crypto v{{CRYPTO_VERSION}}
+	{{/SECURITY_BCRYPT}}
+
+	// Migration
+	{{#MIGRATION_MIGRATE}}
+	github.com/golang-migrate/migrate/v4 v{{MIGRATE_VERSION}}
+	{{/MIGRATION_MIGRATE}}
+	{{#MIGRATION_GOOSE}}
+	github.com/pressly/goose/v3 v{{GOOSE_VERSION}}
+	{{/MIGRATION_GOOSE}}
+
+	// Project-Specific Dependencies
+	{{#PROJECT_DEPENDENCIES}}
+	{{DEPENDENCY_NAME}} {{DEPENDENCY_VERSION}}  // {{DEPENDENCY_PURPOSE}}
+	{{/PROJECT_DEPENDENCIES}}
+)
+
+require (
+	// Testing Dependencies (test-only)
+	{{#TESTING_TESTIFY}}
+	github.com/stretchr/testify v{{TESTIFY_VERSION}}
+	{{/TESTING_TESTIFY}}
+	{{#TESTING_GINKGO}}
+	github.com/onsi/ginkgo/v2 v{{GINKGO_VERSION}}
+	github.com/onsi/gomega v{{GOMEGA_VERSION}}
+	{{/TESTING_GINKGO}}
+	{{#TESTING_TESTCONTAINERS}}
+	github.com/testcontainers/testcontainers-go v{{TESTCONTAINERS_VERSION}}
+	{{/TESTING_TESTCONTAINERS}}
+	{{#TESTING_MOCK}}
+	github.com/golang/mock v{{MOCK_VERSION}}
+	{{/TESTING_MOCK}}
+
+	// Development Dependencies
+	{{#DEV_AIR}}
+	github.com/cosmtrek/air v{{AIR_VERSION}}  // Hot reload
+	{{/DEV_AIR}}
+	{{#DEV_GODOTENV}}
+	github.com/joho/godotenv v{{GODOTENV_VERSION}}  // Load .env files
+	{{/DEV_GODOTENV}}
+)
+
+// Replace directives for local development
+{{#LOCAL_REPLACES}}
+replace {{REPLACE_MODULE}} => {{REPLACE_PATH}}
+{{/LOCAL_REPLACES}}
+
+// Exclude problematic or unwanted modules
+{{#EXCLUDES}}
+exclude {{EXCLUDE_MODULE}} {{EXCLUDE_VERSION}}
+{{/EXCLUDES}}
+
+// Retract specific versions if needed
+{{#RETRACTS}}
+retract {{RETRACT_VERSION}}  // {{RETRACT_REASON}}
+{{/RETRACTS}}
+
+// Go version requirements
+{{#GO_VERSION_REQUIREMENTS}}
+// This module requires Go {{REQUIRED_GO_VERSION}} or later
+// Features used: {{FEATURES_USED}}
+{{/GO_VERSION_REQUIREMENTS}}
+
+// Module metadata and documentation
+// Project: {{PROJECT_NAME}}
+// Description: {{PROJECT_DESCRIPTION}}
+// License: {{PROJECT_LICENSE}}
+// Author: {{PROJECT_AUTHOR}}
+// Homepage: https://github.com/{{GITHUB_USERNAME}}/{{PROJECT_NAME}}
+// Documentation: https://github.com/{{GITHUB_USERNAME}}/{{PROJECT_NAME}}/blob/main/README.md
+//
+// Dependencies Strategy:
+// - HTTP Framework: {{HTTP_FRAMEWORK_CHOICE}} for {{HTTP_FRAMEWORK_REASON}}
+// - Database: {{DATABASE_CHOICE}} for {{DATABASE_REASON}}
+// - Caching: {{CACHE_CHOICE}} for {{CACHE_REASON}}
+// - Logging: {{LOGGING_CHOICE}} for {{LOGGING_REASON}}
+// - Testing: {{TESTING_CHOICE}} for {{TESTING_REASON}}
+//
+// Version Pinning Strategy:
+// - Major versions: Pinned to avoid breaking changes
+// - Minor versions: Allow updates for security patches
+// - Security-critical: Always use latest patch versions
+//
+// Template Version: 1.0.0
+// Generated: {{GENERATION_DATE}}
+// Go Module Template for {{PROJECT_TYPE}} projects
