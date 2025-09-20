@@ -1,70 +1,10 @@
-#!/bin/bash
-
-# 🌾 Demeter WAVIS v2.0 - Implementation Phase (Phase 3-6)
-# Constitutional TDD development cycles and quality verification
-#
-# Usage: ./demeter-implement.sh [uow-target] [complexity-level]
-
-set -e
-
-# Configuration
-UOW_TARGET="${1:-all}"
-COMPLEXITY_LEVEL="${2:-auto}"
-PROJECT_PATH="$(pwd)"
-PROJECT_NAME="$(basename "$PROJECT_PATH")"
-
-# Try to read requirements file from setup phase
-REQUIREMENTS_FILE=""
-if [ -f ".demeter/SETUP_WORKFLOW.prompt" ]; then
-    REQUIREMENTS_FILE=$(grep "Requirements File:" .demeter/SETUP_WORKFLOW.prompt | cut -d: -f2 | xargs)
-fi
-
-# Colors
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-CYAN='\033[0;36m'
-NC='\033[0m'
-
-log_success() { echo -e "${GREEN}✅ $1${NC}"; }
-log_info() { echo -e "${CYAN}ℹ️  $1${NC}"; }
-
-main() {
-    echo -e "${GREEN}🌾 Demeter v2.0 - Implementation Phase (Phase 3-6)${NC}"
-    echo "Project: $PROJECT_NAME"
-    echo "UoW Target: $UOW_TARGET"
-    echo "Complexity: $COMPLEXITY_LEVEL"
-    echo "Requirements: ${REQUIREMENTS_FILE:-inherited from setup}"
-    echo ""
-
-    # Check if setup phase was completed
-    if [ ! -f ".demeter/SETUP_WORKFLOW.prompt" ]; then
-        # Check if we're in the parent directory and DontPressButton exists
-        if [ -d "DontPressButton" ] && [ -f "DontPressButton/.demeter/SETUP_WORKFLOW.prompt" ]; then
-            echo -e "${YELLOW}🔄 Detected DontPressButton project, switching to project directory...${NC}"
-            cd DontPressButton
-            PROJECT_PATH="$(pwd)"
-            PROJECT_NAME="$(basename "$PROJECT_PATH")"
-        else
-            echo -e "${YELLOW}⚠️  Setup phase not detected. Please run ./demeter-setup.sh first.${NC}"
-            echo "Current directory: $(pwd)"
-            echo "Looking for: .demeter/SETUP_WORKFLOW.prompt"
-            exit 1
-        fi
-    fi
-
-    # Create implementation directory structure
-    mkdir -p ".demeter/prompts"
-    mkdir -p ".demeter/logs"
-
-    # Generate implementation workflow prompt
-    cat > ".demeter/IMPLEMENTATION_WORKFLOW.prompt" << EOF
 # 🌾 Demeter v2.0 - Implementation Workflow (Phase 3-6)
 
 ## Project Information
-- **Project**: $PROJECT_NAME
-- **UoW Target**: $UOW_TARGET
-- **Complexity Level**: $COMPLEXITY_LEVEL
-- **Requirements**: ${REQUIREMENTS_FILE:-inherited from setup phase}
+- **Project**: DontPressButton
+- **UoW Target**: UoW-001
+- **Complexity Level**: auto
+- **Requirements**: inherited from setup phase
 - **Framework**: Demeter WAVIS v2.0 Constitutional SDD
 - **Execution Plan**: batch/execution-plan.yaml
 
@@ -260,19 +200,6 @@ After successful implementation completion:
 1. Verify all constitutional quality gates have passed
 2. Review constitutional compliance metrics
 3. Validate GraphRAG knowledge capture
-4. Proceed to Deployment Phase: \`./demeter-deploy.sh\`
+4. Proceed to Deployment Phase: `./demeter-deploy.sh`
 
 Execute this prompt in Claude Code to complete the Implementation Phase (Phase 3-6) with full constitutional compliance and AI-enhanced development.
-EOF
-
-    log_success "Implementation workflow prompt created: .demeter/IMPLEMENTATION_WORKFLOW.prompt"
-    echo ""
-    echo -e "${YELLOW}🚀 Next Steps:${NC}"
-    echo "1. Execute in Claude Code: .demeter/IMPLEMENTATION_WORKFLOW.prompt"
-    echo "2. Monitor constitutional compliance throughout TDD cycles"
-    echo "3. Proceed with: ./demeter-deploy.sh"
-    echo ""
-    log_info "Implementation phase ready - Constitutional TDD cycles await!"
-}
-
-main "$@"

@@ -1,6 +1,11 @@
 // Jest setup for DontPressButton
 // Constitutional SDD Testing Framework Setup
 
+// Fix TextEncoder/TextDecoder for Node.js compatibility
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 // Constitutional Principle: Test-First Imperative
 // All tests must be written before implementation
 

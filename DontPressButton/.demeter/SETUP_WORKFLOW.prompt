@@ -31,7 +31,7 @@
 
 ### Phase 1: Requirements & SSOT Generation
 1. **AI-Enhanced Requirements Analysis**:
-     - Analyze provided requirements file: docs/requirement.md
+      - Analyze provided requirements file: docs/requirement.md
    - Auto-determine domain extensions from requirements content
    - Apply constitutional principles to requirements
    - Generate constitutional compliance specifications

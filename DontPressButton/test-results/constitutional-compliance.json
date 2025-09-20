@@ -1,0 +1,578 @@
+{
+  "config": {
+    "configFile": "/home/jang/Workspace/hello-world/DontPressButton/playwright.config.js",
+    "rootDir": "/home/jang/Workspace/hello-world/DontPressButton/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 7
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/constitutional-compliance.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/jang/Workspace/hello-world/DontPressButton/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 7
+        },
+        "id": "chromium-desktop",
+        "name": "chromium-desktop",
+        "testDir": "/home/jang/Workspace/hello-world/DontPressButton/tests",
+        "testIgnore": [
+          "**/unit/**",
+          "**/integration/**"
+        ],
+        "testMatch": [
+          "**/e2e/**/*.spec.js",
+          "**/accessibility/**/*.test.js",
+          "**/performance/**/*.test.js"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "/home/jang/Workspace/hello-world/DontPressButton/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 7
+        },
+        "id": "chromium-mobile",
+        "name": "chromium-mobile",
+        "testDir": "/home/jang/Workspace/hello-world/DontPressButton/tests",
+        "testIgnore": [
+          "**/unit/**",
+          "**/integration/**"
+        ],
+        "testMatch": [
+          "**/e2e/**/*.spec.js",
+          "**/accessibility/**/*.test.js",
+          "**/performance/**/*.test.js"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "/home/jang/Workspace/hello-world/DontPressButton/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 7
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/home/jang/Workspace/hello-world/DontPressButton/tests",
+        "testIgnore": [
+          "**/unit/**",
+          "**/integration/**"
+        ],
+        "testMatch": [
+          "**/e2e/**/*.spec.js",
+          "**/accessibility/**/*.test.js",
+          "**/performance/**/*.test.js"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "/home/jang/Workspace/hello-world/DontPressButton/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 7
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/home/jang/Workspace/hello-world/DontPressButton/tests",
+        "testIgnore": [
+          "**/unit/**",
+          "**/integration/**"
+        ],
+        "testMatch": [
+          "**/e2e/**/*.spec.js",
+          "**/accessibility/**/*.test.js",
+          "**/performance/**/*.test.js"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "/home/jang/Workspace/hello-world/DontPressButton/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 7
+        },
+        "id": "accessibility",
+        "name": "accessibility",
+        "testDir": "/home/jang/Workspace/hello-world/DontPressButton/tests",
+        "testIgnore": [
+          "**/unit/**",
+          "**/integration/**"
+        ],
+        "testMatch": [
+          "**/e2e/**/*.spec.js",
+          "**/accessibility/**/*.test.js",
+          "**/performance/**/*.test.js"
+        ],
+        "timeout": 15000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 16,
+    "webServer": {
+      "command": "npm run dev",
+      "port": 8000,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "e2e/user-journey.spec.js",
+      "file": "e2e/user-journey.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "UoW-006: Complete User Journey Testing",
+          "file": "e2e/user-journey.spec.js",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should complete full user journey from click 1 to payment completion",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1806,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-20T05:51:40.345Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "81b27b5dd525aed7b26f-cab7c188d7ee7b859245",
+              "file": "e2e/user-journey.spec.js",
+              "line": 27,
+              "column": 5
+            },
+            {
+              "title": "should complete alternative user journey with \"No\" selection",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 7115,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#payment-modal')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#payment-modal')\u001b[22m\n\u001b[2m    9 × locator resolved to <dialog role=\"dialog\" aria-modal=\"true\" id=\"payment-modal\" aria-labelledby=\"modal-title\">…</dialog>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#payment-modal')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#payment-modal')\u001b[22m\n\u001b[2m    9 × locator resolved to <dialog role=\"dialog\" aria-modal=\"true\" id=\"payment-modal\" aria-labelledby=\"modal-title\">…</dialog>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:138:29",
+                        "location": {
+                          "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                          "column": 29,
+                          "line": 138
+                        },
+                        "snippet": "  136 |\n  137 |         // Modal should appear again since payment wasn't completed\n> 138 |         await expect(modal).toBeVisible();\n      |                             ^\n  139 |     });\n  140 |\n  141 |     test('should maintain performance throughout complete user journey', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                            "column": 29,
+                            "line": 138
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#payment-modal')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#payment-modal')\u001b[22m\n\u001b[2m    9 × locator resolved to <dialog role=\"dialog\" aria-modal=\"true\" id=\"payment-modal\" aria-labelledby=\"modal-title\">…</dialog>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n\n  136 |\n  137 |         // Modal should appear again since payment wasn't completed\n> 138 |         await expect(modal).toBeVisible();\n      |                             ^\n  139 |     });\n  140 |\n  141 |     test('should maintain performance throughout complete user journey', async ({ page }) => {\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:138:29"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-20T05:51:40.342Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-5a30b-r-journey-with-No-selection-chromium-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-5a30b-r-journey-with-No-selection-chromium-desktop/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-5a30b-r-journey-with-No-selection-chromium-desktop/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                        "column": 29,
+                        "line": 138
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "81b27b5dd525aed7b26f-8aebecf156132baf572a",
+              "file": "e2e/user-journey.spec.js",
+              "line": 106,
+              "column": 5
+            },
+            {
+              "title": "should maintain performance throughout complete user journey",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 919,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m100\u001b[39m\nReceived:   \u001b[31m244.20000004768372\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m100\u001b[39m\nReceived:   \u001b[31m244.20000004768372\u001b[39m\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:165:34",
+                        "location": {
+                          "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                          "column": 34,
+                          "line": 165
+                        },
+                        "snippet": "  163 |\n  164 |             // Constitutional: Each interaction must be < 100ms\n> 165 |             expect(responseTime).toBeLessThan(100);\n      |                                  ^\n  166 |         }\n  167 |\n  168 |         // Verify consistent performance across all clicks"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                            "column": 34,
+                            "line": 165
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m100\u001b[39m\nReceived:   \u001b[31m244.20000004768372\u001b[39m\n\n  163 |\n  164 |             // Constitutional: Each interaction must be < 100ms\n> 165 |             expect(responseTime).toBeLessThan(100);\n      |                                  ^\n  166 |         }\n  167 |\n  168 |         // Verify consistent performance across all clicks\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:165:34"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-20T05:51:40.346Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-cd60a-ghout-complete-user-journey-chromium-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-cd60a-ghout-complete-user-journey-chromium-desktop/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-cd60a-ghout-complete-user-journey-chromium-desktop/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                        "column": 34,
+                        "line": 165
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "81b27b5dd525aed7b26f-b51fb23228e97d00308a",
+              "file": "e2e/user-journey.spec.js",
+              "line": 141,
+              "column": 5
+            },
+            {
+              "title": "should handle rapid clicking during user journey",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1308,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-20T05:51:40.339Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "81b27b5dd525aed7b26f-ece29626982bd9486f36",
+              "file": "e2e/user-journey.spec.js",
+              "line": 183,
+              "column": 5
+            },
+            {
+              "title": "should maintain accessibility throughout user journey",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 758,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:225:62",
+                        "location": {
+                          "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                          "column": 62,
+                          "line": 225
+                        },
+                        "snippet": "  223 |             // Verify focus remains manageable\n  224 |             const focusedElement = await page.evaluate(() => document.activeElement.id);\n> 225 |             expect(['main-button'].includes(focusedElement)).toBe(true);\n      |                                                              ^\n  226 |         }\n  227 |\n  228 |         // Verify modal accessibility"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                            "column": 62,
+                            "line": 225
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  223 |             // Verify focus remains manageable\n  224 |             const focusedElement = await page.evaluate(() => document.activeElement.id);\n> 225 |             expect(['main-button'].includes(focusedElement)).toBe(true);\n      |                                                              ^\n  226 |         }\n  227 |\n  228 |         // Verify modal accessibility\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:225:62"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-20T05:51:40.341Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-2ed38-ity-throughout-user-journey-chromium-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-2ed38-ity-throughout-user-journey-chromium-desktop/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-2ed38-ity-throughout-user-journey-chromium-desktop/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                        "column": 62,
+                        "line": 225
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "81b27b5dd525aed7b26f-c21731faf744c9b619e0",
+              "file": "e2e/user-journey.spec.js",
+              "line": 211,
+              "column": 5
+            },
+            {
+              "title": "should handle configuration changes during user journey",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 1236,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-20T05:51:40.348Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "81b27b5dd525aed7b26f-bd463440f28c8c1329ac",
+              "file": "e2e/user-journey.spec.js",
+              "line": 254,
+              "column": 5
+            },
+            {
+              "title": "should maintain constitutional compliance markers throughout journey",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "failed",
+                      "duration": 1253,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"1.0.0-uow00\u001b[7m6\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"1.0.0-uow00\u001b[7m7\u001b[27m\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"1.0.0-uow00\u001b[7m6\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"1.0.0-uow00\u001b[7m7\u001b[27m\"\u001b[39m\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:333:25",
+                        "location": {
+                          "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                          "column": 25,
+                          "line": 333
+                        },
+                        "snippet": "  331 |             return window.DontPressButton.version;\n  332 |         });\n> 333 |         expect(version).toBe('1.0.0-uow006'); // Updated for UoW-006\n      |                         ^\n  334 |     });\n  335 |\n  336 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                            "column": 25,
+                            "line": 333
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"1.0.0-uow00\u001b[7m6\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"1.0.0-uow00\u001b[7m7\u001b[27m\"\u001b[39m\n\n  331 |             return window.DontPressButton.version;\n  332 |         });\n> 333 |         expect(version).toBe('1.0.0-uow006'); // Updated for UoW-006\n      |                         ^\n  334 |     });\n  335 |\n  336 | });\n    at /home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js:333:25"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-20T05:51:40.345Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-d74a6--markers-throughout-journey-chromium-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-d74a6--markers-throughout-journey-chromium-desktop/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/jang/Workspace/hello-world/DontPressButton/test-results/e2e-user-journey-UoW-006-C-d74a6--markers-throughout-journey-chromium-desktop/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/jang/Workspace/hello-world/DontPressButton/tests/e2e/user-journey.spec.js",
+                        "column": 25,
+                        "line": 333
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "81b27b5dd525aed7b26f-f86ad450887602d7a879",
+              "file": "e2e/user-journey.spec.js",
+              "line": 293,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-09-20T05:51:40.001Z",
+    "duration": 7532.133,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

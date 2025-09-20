@@ -4,7 +4,16 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './tests/e2e',
+  testDir: './tests',
+  testMatch: [
+    '**/e2e/**/*.spec.js',
+    '**/accessibility/**/*.test.js',
+    '**/performance/**/*.test.js'
+  ],
+  testIgnore: [
+    '**/unit/**',
+    '**/integration/**'
+  ],
 
   // Constitutional Principle: Integration-First Testing
   fullyParallel: true,
@@ -79,7 +88,5 @@ export default defineConfig({
   // Test timeout aligned with constitutional requirements
   timeout: 30000,
 
-  // Global test configuration
-  globalSetup: './tests/global-setup.js',
-  globalTeardown: './tests/global-teardown.js',
+  // Global test configuration (optional files removed for simplicity)
 });

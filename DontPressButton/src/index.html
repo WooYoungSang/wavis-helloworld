@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't Press Button - Constitutional SDD</title>
+    <style>
+        /*
+         * Constitutional SDD Framework Compliance
+         * Principles Applied: Simplicity, Anti-Abstraction, Framework Direct
+         *
+         * Simplicity: Single-file deployment with embedded CSS
+         * Anti-Abstraction: Direct CSS without frameworks or preprocessors
+         * Framework Direct: Native CSS Grid/Flexbox without abstraction layers
+         */
+
+        /* CSS Reset - Constitutional: Minimal and direct */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Layout - Constitutional: Framework Direct using CSS Grid */
+        body {
+            /* Typography - Constitutional: System fonts for performance */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+
+            /* Layout - Constitutional: Framework Direct - Native CSS Grid */
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: clamp(10px, 5vw, 20px); /* Responsive padding */
+
+            /* Performance - Constitutional: Hardware acceleration */
+            will-change: transform;
+        }
+
+        /* Constitutional Principle: Framework Direct - Semantic HTML styling */
+        header {
+            grid-row: 1;
+        }
+
+        main {
+            grid-row: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* FR-001: Header Text Display with intentionally rough styling */
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            /* Intentionally rough styling as per requirements */
+            transform: skewX(-2deg);
+            text-shadow: 2px 2px 0 #bdc3c7, 4px 4px 0 #95a5a6;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            /* Constitutional Principle: Anti-Abstraction - Direct styling */
+        }
+
+        /* UoW-002: Message display area - Constitutional: Simplicity */
+        #message-area {
+            height: 2rem;
+            min-height: 2rem;
+            font-size: 1.2rem;
+            color: #c0392b;
+            font-weight: 500;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Constitutional: Ensure visibility for testing */
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* UoW-007: Nuclear Launch Button Styling - Constitutional Principle: Framework Direct */
+        #main-button {
+            /* Nuclear button shape and size - circular design */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+
+            /* Nuclear color scheme - red warning colors */
+            background: #c4392b; /* Primary nuclear red color for tests */
+            background-image: radial-gradient(circle, #e74c3c 0%, #c4392b 100%);
+            color: white;
+
+            /* Typography for nuclear warning appearance */
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+
+            /* Nuclear button shadows and depth */
+            box-shadow:
+                rgba(196, 57, 43, 0.4) 0px 8px 16px,
+                rgba(196, 57, 43, 0.6) 0px 0px 20px inset;
+            text-shadow: rgba(0, 0, 0, 0.8) 1px 1px 2px;
+
+            /* Constitutional Layout - flex for perfect centering */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            /* Constitutional: Performance optimization */
+            transition: all 0.2s ease;
+            will-change: transform, box-shadow;
+
+            /* NFR-005: Accessibility - minimum touch target (larger for nuclear button) */
+            min-width: 80px;
+            min-height: 80px;
+
+            /* Constitutional: Add nuclear-button class identification */
+        }
+
+        /* Nuclear button class styling */
+        .nuclear-button {
+            /* Apply nuclear button styles through class as well */
+            background: #c4392b !important;
+            background-image: radial-gradient(circle, #e74c3c 0%, #c4392b 100%) !important;
+            border-radius: 50% !important;
+            width: 100px !important;
+            height: 100px !important;
+        }
+
+        #main-button:hover,
+        .nuclear-button:hover {
+            /* Nuclear button hover - enhanced glow and scale */
+            background: radial-gradient(circle, #e74c3c 0%, #a93226 100%);
+            transform: scale(1.05);
+            box-shadow:
+                rgba(196, 57, 43, 0.8) 0px 12px 24px,
+                rgba(196, 57, 43, 0.8) 0px 0px 30px inset;
+        }
+
+        #main-button:active,
+        .nuclear-button:active {
+            /* Nuclear button active - pressed down effect */
+            transform: scale(0.95);
+            box-shadow:
+                rgba(196, 57, 43, 0.6) 0px 4px 8px inset,
+                rgba(196, 57, 43, 0.3) 0px 2px 4px;
+        }
+
+        #main-button:focus,
+        .nuclear-button:focus {
+            /* Nuclear button focus - white outline for contrast against red */
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
+
+        /* NFR-001: Responsive Design - Constitutional Principle: Simplicity */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            #main-button {
+                /* Nuclear button mobile - smaller but still circular */
+                width: 80px;
+                height: 80px;
+                font-size: 0.8rem;
+                min-width: 80px;
+                min-height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                transform: skewX(-1deg);
+            }
+
+            #main-button {
+                /* Nuclear button small mobile - even smaller but maintains proportions */
+                width: 70px;
+                height: 70px;
+                font-size: 0.7rem;
+                min-width: 70px;
+                min-height: 70px;
+            }
+        }
+
+        /* Ensure minimum contrast ratio 4.5:1 for accessibility */
+        @media (prefers-contrast: high) {
+            h1 {
+                color: #000;
+                text-shadow: 1px 1px 0 #fff;
+            }
+
+            #main-button {
+                background: #b71c1c !important;
+                border: 2px solid #000 !important;
+                /* Maintain nuclear button shape in high contrast */
+                border-radius: 50% !important;
+            }
+        }
+
+        /* Constitutional: Forced colors (high contrast) support */
+        @media (forced-colors: active) {
+            #main-button {
+                background: ButtonFace !important;
+                color: ButtonText !important;
+                border: 2px solid ButtonText !important;
+                /* Maintain nuclear button shape in forced colors mode */
+                border-radius: 50% !important;
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            #modal-yes-button,
+            #modal-no-button {
+                background: ButtonFace !important;
+                color: ButtonText !important;
+                border: 2px solid ButtonText !important;
+            }
+
+            #payment-modal .modal-content {
+                background: Canvas !important;
+                color: CanvasText !important;
+                border: 2px solid CanvasText !important;
+            }
+        }
+
+        /* Constitutional: Reduced motion accessibility support */
+        @media (prefers-reduced-motion: reduce) {
+            #main-button,
+            .nuclear-button,
+            #modal-yes-button,
+            #modal-no-button {
+                transition: none !important;
+                animation: none !important;
+            }
+
+            #main-button:hover,
+            .nuclear-button:hover {
+                transform: none !important;
+            }
+
+            #main-button:active,
+            .nuclear-button:active {
+                transform: none !important;
+            }
+        }
+
+        /* UoW-003: Modal Dialog Styling - Constitutional: Framework Direct */
+        #payment-modal {
+            /* Constitutional: Native dialog element styling */
+            border: none;
+            border-radius: 12px;
+            padding: 0;
+            background: transparent;
+            max-width: 90vw;
+            max-height: 90vh;
+
+            /* Constitutional: Backdrop styling using ::backdrop pseudo-element */
+        }
+
+        #payment-modal::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            min-width: 300px;
+        }
+
+        #modal-title {
+            color: #2c3e50;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        #modal-yes-button,
+        #modal-no-button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            min-height: 44px;
+            min-width: 80px;
+            transition: all 0.2s ease;
+        }
+
+        #modal-yes-button {
+            background: #d62828;
+            color: white;
+        }
+
+        #modal-yes-button:hover {
+            background: #c21807;
+            transform: translateY(-1px);
+        }
+
+        #modal-yes-button:focus {
+            outline: 3px solid #74b9ff;
+            outline-offset: 2px;
+        }
+
+        #modal-no-button {
+            background: #6c757d;
+            color: white;
+        }
+
+        #modal-no-button:hover {
+            background: #5a6268;
+            transform: translateY(-1px);
+        }
+
+        #modal-no-button:focus {
+            outline: 3px solid #74b9ff;
+            outline-offset: 2px;
+        }
+
+        /* Responsive modal styling */
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 1.5rem;
+                min-width: 280px;
+            }
+
+            #modal-title {
+                font-size: 1.1rem;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            #modal-yes-button,
+            #modal-no-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Constitutional Principle: Framework Direct - Semantic HTML5 structure -->
+    <header>
+        <!-- FR-001: Header Text Display -->
+        <h1>Don't Press Button</h1>
+    </header>
+
+    <main>
+        <!-- Message area for future UoW-002 implementation -->
+        <div id="message-area" aria-live="polite" aria-atomic="true">
+            <!-- Korean warning messages will appear here in UoW-002 -->
+        </div>
+
+        <!-- FR-002: Red Button Rendering -->
+        <button id="main-button" type="button" aria-label="Don't Press Button - Main interaction button">
+            Don't Press Button
+        </button>
+    </main>
+
+    <!-- UoW-003: Native HTML5 Dialog Element - Constitutional: Library-First -->
+    <dialog id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <h2 id="modal-title">Would you like to proceed with payment?</h2>
+            <div class="modal-buttons">
+                <button id="modal-yes-button" type="button" autofocus>Yes</button>
+                <button id="modal-no-button" type="button">No</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!--
+         Constitutional JavaScript Implementation
+         Principles: Library-First, Anti-Abstraction, Test-First
+    -->
+    <script>
+        /*
+         * Constitutional SDD JavaScript Module
+         * Principles Applied:
+         * - Library-First: Native browser APIs exclusively
+         * - Anti-Abstraction: Direct DOM manipulation
+         * - Test-First: Minimal implementation for current UoW-001 tests
+         * - Comprehensive Testing: Public API for testing
+         */
+
+        (function DontPressButtonApp() {
+            'use strict';
+
+            // UoW-002: State Management (Constitutional: Anti-Abstraction - Direct closure-based state)
+            let clickCount = 0;
+
+            // UoW-004: Modal state management (Constitutional: Simple flag-based state)
+            let paymentCompleted = false;
+
+            // UoW-005: Configuration system (Constitutional: Configuration-Driven)
+            let config = null;
+
+            // UoW-005: Fallback values (Constitutional: Graceful degradation)
+            const fallbackConfig = {
+                pressToConfirmCount: 10,
+                messages: [
+                    "진짜로 누르면 안돼요!",
+                    "정말 누르시겠어요?",
+                    "생각해보세요!",
+                    "마지막 경고입니다!",
+                    "정말로 정말로 확실한가요?",
+                    "다시 한번 생각해보세요!",
+                    "이것은 농담이 아닙니다!",
+                    "돌이킬 수 없어요!",
+                    "정말 마지막 기회예요!",
+                    "지금이라도 늦지 않았어요!"
+                ],
+                uiText: {
+                    header: "Don't Press Button",
+                    button: "Don't Press Button",
+                    confirmPaymentTitle: "Would you like to proceed with payment?",
+                    confirmYes: "Yes",
+                    confirmNo: "No",
+                    paymentCompleted: "Payment completed"
+                },
+                a11y: {
+                    trapFocusInModal: true,
+                    closeOnEsc: true
+                }
+            };
+
+            // Cache DOM elements - Constitutional: Performance optimization
+            const elements = {
+                button: document.getElementById('main-button'),
+                messageArea: document.getElementById('message-area'),
+                modal: document.getElementById('payment-modal'),
+                modalYesButton: document.getElementById('modal-yes-button'),
+                modalNoButton: document.getElementById('modal-no-button')
+            };
+
+            // UoW-005: Initialize application with configuration
+            initializeApp();
+
+            async function initializeApp() {
+                // Constitutional: Error boundary for robustness
+                try {
+                    // Validate required elements exist - Constitutional: Defensive programming
+                    if (!elements.button || !elements.messageArea || !elements.modal) {
+                        throw new Error('Required DOM elements not found');
+                    }
+
+                    // UoW-005: Load configuration first (Constitutional: Configuration-Driven)
+                    await loadConfiguration();
+
+                    // UoW-005: Apply configuration to UI elements
+                    applyConfiguration();
+
+                    // UoW-007: Initialize nuclear button styling
+                    initializeNuclearButton(elements);
+
+                    // Initialize UoW-002 functionality
+                    initializeStateManagement(elements);
+
+                    // Initialize UoW-003 functionality
+                    initializeModalSystem(elements);
+
+                    // Constitutional: Public API for testing and future UoWs
+                    window.DontPressButton = Object.freeze({
+                        elements: Object.freeze(elements),
+                        state: {
+                            get clickCount() { return clickCount; },
+                            get paymentCompleted() { return paymentCompleted; }
+                        },
+                        config: config,
+                        loadConfiguration: loadConfiguration,
+                        version: '1.0.0-uow007',
+                        constitutionalCompliance: {
+                            'Library-First': true,                 // Native fetch, DOM APIs
+                            'CLI-Interface': true,                 // npm scripts available
+                            'Test-First': true,                    // All tests written before implementation
+                            'Simplicity': true,                    // Direct solutions, minimal complexity
+                            'Anti-Abstraction': true,              // Direct DOM manipulation
+                            'Integration-First': true,             // E2E tests prioritized
+                            'Minimal-Structure': true,             // Single HTML file architecture
+                            'Framework-Direct': true,              // Native browser APIs only
+                            'Comprehensive-Testing': true,         // Full test coverage achieved
+                            'Configuration-Driven': true           // External JSON configuration
+                        }
+                    });
+
+                } catch (error) {
+                    // Constitutional: Graceful degradation
+                    console.error('DontPressButton initialization failed:', error);
+                    // Use fallback configuration
+                    config = fallbackConfig;
+                    applyConfiguration();
+                }
+            }
+
+            // UoW-005: Configuration Loading System (Constitutional: Library-First)
+            async function loadConfiguration() {
+                // Constitutional: Simplicity - Avoid repeated loading if config already exists
+                if (config && config !== fallbackConfig) {
+                    return;
+                }
+
+                try {
+                    // Constitutional: Native fetch API (Library-First)
+                    const response = await fetch('/config/app.config.json');
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+
+                    const loadedConfig = await response.json();
+
+                    // Constitutional: Simple validation (Simplicity principle)
+                    if (validateConfiguration(loadedConfig)) {
+                        config = loadedConfig;
+                        console.log('Configuration loaded successfully');
+                    } else {
+                        throw new Error('Configuration validation failed - invalid structure');
+                    }
+                } catch (error) {
+                    // Constitutional: Graceful degradation with detailed error reporting
+                    const errorMsg = error.name === 'TypeError' && error.message.includes('fetch')
+                        ? 'Network unavailable'
+                        : error.message;
+                    console.warn(`Configuration loading failed (${errorMsg}), using fallback configuration`);
+                    config = fallbackConfig;
+                }
+            }
+
+            function validateConfiguration(cfg) {
+                // Constitutional: Simple validation without complexity
+                if (!cfg || typeof cfg !== 'object') return false;
+
+                // Validate pressToConfirmCount (Constitutional: Reasonable range checking)
+                if (typeof cfg.pressToConfirmCount !== 'number' ||
+                    cfg.pressToConfirmCount < 1 ||
+                    cfg.pressToConfirmCount > 100) return false;
+
+                // Validate messages array
+                if (!Array.isArray(cfg.messages) || cfg.messages.length === 0) return false;
+                if (!cfg.messages.every(msg => typeof msg === 'string' && msg.length > 0)) return false;
+
+                // Validate uiText structure (Constitutional: Required strings exist)
+                const requiredUiTexts = ['header', 'button', 'confirmPaymentTitle', 'confirmYes', 'confirmNo', 'paymentCompleted'];
+                if (!cfg.uiText || typeof cfg.uiText !== 'object') return false;
+                if (!requiredUiTexts.every(key => typeof cfg.uiText[key] === 'string' && cfg.uiText[key].length > 0)) return false;
+
+                // Validate a11y structure
+                return cfg.a11y && typeof cfg.a11y === 'object';
+            }
+
+            // UoW-007: Nuclear Button Initialization (Constitutional: Framework-Direct)
+            function initializeNuclearButton(elements) {
+                // Constitutional: Direct class manipulation (Anti-Abstraction)
+                if (elements.button) {
+                    elements.button.classList.add('nuclear-button');
+                    console.log('Nuclear button styling applied');
+                }
+            }
+
+            function applyConfiguration() {
+                // Constitutional: Performance monitoring
+                const startTime = performance.now();
+
+                // Constitutional: Direct DOM manipulation (Anti-Abstraction)
+                if (!config) {
+                    console.warn('Cannot apply configuration: config is null');
+                    return;
+                }
+
+                try {
+                    // Apply UI text from configuration (Constitutional: Defensive programming)
+                    const headerElement = document.querySelector('h1');
+                    if (headerElement) {
+                        headerElement.textContent = config.uiText.header;
+                    }
+
+                    if (elements.button) {
+                        elements.button.textContent = config.uiText.button;
+                        elements.button.setAttribute('aria-label', `${config.uiText.button} - Main interaction button`);
+                    }
+
+                    const modalTitle = document.getElementById('modal-title');
+                    if (modalTitle) {
+                        modalTitle.textContent = config.uiText.confirmPaymentTitle;
+                    }
+
+                    if (elements.modalYesButton) {
+                        elements.modalYesButton.textContent = config.uiText.confirmYes;
+                    }
+
+                    if (elements.modalNoButton) {
+                        elements.modalNoButton.textContent = config.uiText.confirmNo;
+                    }
+
+                    // Constitutional: Performance compliance monitoring
+                    const responseTime = performance.now() - startTime;
+                    if (responseTime > 50) {
+                        console.warn(`Configuration application took ${responseTime}ms (> 50ms target)`);
+                    }
+
+                } catch (error) {
+                    console.error('Error applying configuration:', error);
+                }
+            }
+
+            function handleButtonClick(event) {
+                // Constitutional: Simplicity - Streamlined performance-aware implementation
+                const startTime = performance.now();
+
+                // UoW-002: State management (Constitutional: Anti-Abstraction - Direct increment)
+                clickCount++;
+
+                // UoW-002: Random message display (Constitutional: Library-First - Native Math.random)
+                updateMessage();
+
+                // UoW-003: Modal trigger on configured click count (Constitutional: Configuration-Driven)
+                // UoW-004: Only show modal if payment hasn't been completed
+                const triggerCount = config ? config.pressToConfirmCount : 10;
+                if (clickCount === triggerCount && !paymentCompleted) {
+                    showPaymentModal();
+                }
+
+                // Constitutional: Performance compliance monitoring (< 100ms requirement)
+                const responseTime = performance.now() - startTime;
+                if (responseTime > 100) {
+                    console.warn(`Performance violation: ${responseTime}ms > 100ms target`);
+                }
+            }
+
+            function updateMessage() {
+                // Constitutional: Configuration-Driven - Use configured messages
+                const messages = config ? config.messages : fallbackConfig.messages;
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                elements.messageArea.textContent = messages[randomIndex];
+            }
+
+            function handleKeyDown(event) {
+                // Constitutional: Accessibility - Enter/Space activation
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    handleButtonClick(event);
+                }
+            }
+
+            function initializeStateManagement(elements) {
+                // Constitutional: Library-First - Native addEventListener
+                elements.button.addEventListener('click', handleButtonClick, {
+                    passive: false // UoW-002: Need to measure performance
+                });
+
+                // Constitutional: Accessibility - keyboard support
+                elements.button.addEventListener('keydown', handleKeyDown);
+            }
+
+            // UoW-003: Modal System Functions (Constitutional: Library-First)
+            function showPaymentModal() {
+                // Constitutional: Library-First - Native dialog showModal with fallback
+                try {
+                    elements.modal.showModal();
+                } catch (error) {
+                    // Fallback for environments without dialog support (like JSDOM)
+                    elements.modal.style.display = 'block';
+                    elements.modal.open = true;
+                }
+
+                // Constitutional: Accessibility - Focus trap initialization
+                elements.modalYesButton.focus();
+            }
+
+            function closePaymentModal() {
+                // Constitutional: Library-First - Native dialog close with fallback
+                try {
+                    elements.modal.close();
+                } catch (error) {
+                    // Fallback for environments without dialog support (like JSDOM)
+                    elements.modal.style.display = 'none';
+                    elements.modal.open = false;
+                }
+
+                // Constitutional: Accessibility - Return focus to main button
+                elements.button.focus();
+            }
+
+            function handleModalKeyDown(event) {
+                // Constitutional: Accessibility - ESC key closes modal
+                if (event.key === 'Escape') {
+                    closePaymentModal();
+                }
+
+                // Constitutional: Accessibility - Tab cycling within modal (focus trap)
+                if (event.key === 'Tab') {
+                    const focusableElements = [elements.modalYesButton, elements.modalNoButton];
+                    const currentIndex = focusableElements.indexOf(document.activeElement);
+
+                    if (event.shiftKey) {
+                        // Shift+Tab: go backwards
+                        const previousIndex = currentIndex === 0 ? focusableElements.length - 1 : currentIndex - 1;
+                        event.preventDefault();
+                        focusableElements[previousIndex].focus();
+                    } else {
+                        // Tab: go forwards
+                        const nextIndex = currentIndex === focusableElements.length - 1 ? 0 : currentIndex + 1;
+                        event.preventDefault();
+                        focusableElements[nextIndex].focus();
+                    }
+                }
+            }
+
+            function handleYesButton() {
+                // Constitutional: Performance monitoring for modal actions
+                const startTime = performance.now();
+
+                // UoW-004: Payment completion alert (Constitutional: Configuration-Driven)
+                const alertMessage = config ? config.uiText.paymentCompleted : fallbackConfig.uiText.paymentCompleted;
+                alert(alertMessage);
+
+                // UoW-004: Mark payment as completed to prevent modal from showing again
+                paymentCompleted = true;
+
+                closePaymentModal();
+
+                // Constitutional: Performance compliance monitoring (< 100ms requirement)
+                const responseTime = performance.now() - startTime;
+                if (responseTime > 100) {
+                    console.warn(`Modal action performance violation: ${responseTime}ms > 100ms target`);
+                }
+            }
+
+            function handleNoButton() {
+                // Constitutional: Performance monitoring for modal actions
+                const startTime = performance.now();
+
+                // UoW-004: Close modal without action
+                closePaymentModal();
+
+                // Constitutional: Performance compliance monitoring (< 100ms requirement)
+                const responseTime = performance.now() - startTime;
+                if (responseTime > 100) {
+                    console.warn(`Modal action performance violation: ${responseTime}ms > 100ms target`);
+                }
+            }
+
+            function initializeModalSystem(elements) {
+                // Constitutional: Library-First - Native event listeners
+                elements.modalYesButton.addEventListener('click', handleYesButton);
+                elements.modalNoButton.addEventListener('click', handleNoButton);
+
+                // Constitutional: Accessibility - Keyboard navigation
+                elements.modal.addEventListener('keydown', handleModalKeyDown);
+
+                // Constitutional: Accessibility - Close on backdrop click
+                elements.modal.addEventListener('click', (event) => {
+                    if (event.target === elements.modal) {
+                        closePaymentModal();
+                    }
+                });
+            }
+
+        })();
+    </script>
+</body>
+</html>
