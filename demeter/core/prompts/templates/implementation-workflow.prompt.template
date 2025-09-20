@@ -1,0 +1,204 @@
+# 🌾 Demeter v2.0 - Implementation Workflow Template (Phase 3-6)
+
+## Project Information
+- **Project**: {{PROJECT_NAME}}
+- **UoW Target**: {{UOW_TARGET}}
+- **Complexity Level**: {{COMPLEXITY_LEVEL}}
+- **Framework**: Demeter WAVIS v2.0 Constitutional SDD
+- **Execution Plan**: batch/execution-plan.yaml
+
+## 🎯 Implementation Phase Execution (Phase 3-6)
+
+### Constitutional TDD Development Cycles
+
+Execute complete RED-GREEN-REFACTOR cycles for all UoWs with constitutional compliance:
+
+#### 🔴 Phase 3: RED (Constitutional Test Specification)
+
+**Constitutional Test Strategy**:
+1. **Library-First Testing**:
+   - Write tests that expect library-based solutions
+   - Test against established library APIs
+   - Validate library integration patterns
+   - Document library selection rationale
+
+2. **CLI Interface Testing**:
+   - Test CLI command availability and syntax
+   - Validate command help text and error messages
+   - Test standardized interface compliance
+   - Verify user experience consistency
+
+3. **Constitutional Compliance Testing**:
+   - Test constitutional principle adherence
+   - Validate governance rule compliance
+   - Check for principle violations
+   - Measure constitutional debt
+
+**Test Creation Process**:
+1. Query GraphRAG knowledge for testing patterns and similar UoWs
+2. Convert acceptance criteria to failing tests:
+   - Unit tests for individual components (Library-First focus)
+   - Integration tests for dependencies (Integration-First)
+   - CLI interface tests (standardized commands)
+   - Constitutional compliance tests (9 principles)
+   - Edge cases and error scenarios
+3. Verify all tests FAIL initially (RED state achieved)
+4. Document test coverage plan with constitutional requirements
+
+#### 🟢 Phase 4: GREEN (Constitutional Implementation)
+
+**Constitutional Implementation Strategy**:
+1. **Library-First Implementation**:
+   - Identify and use established libraries for all functionality
+   - Minimize custom implementations (prefer library solutions)
+   - Document library selection and integration approach
+   - Follow library best practices and patterns
+
+2. **CLI Interface Implementation**:
+   - Implement standardized command structure
+   - Follow project CLI conventions and standards
+   - Ensure consistent error messaging and help text
+   - Optimize command performance and user experience
+
+3. **Simplicity and Anti-Abstraction**:
+   - Write minimal code to pass tests (simplicity principle)
+   - Avoid unnecessary abstraction layers
+   - Use direct, readable implementations
+   - Single responsibility per implementation unit
+
+4. **Test-First Compliance**:
+   - Implement ONLY enough code to make tests pass
+   - Maintain constitutional compliance throughout
+   - Follow complexity-based approach:
+     * Simple: Direct single-component implementation
+     * Medium: Modular component-based development
+     * Complex: Coordinated multi-component implementation
+
+**Implementation Process**:
+- Apply all 9 Constitutional Principles during implementation
+- Use GraphRAG knowledge for proven implementation patterns
+- Ensure GREEN state achievement (all tests pass)
+- Document implementation decisions and constitutional choices
+
+#### 🔵 Phase 5: REFACTOR (Constitutional Enhancement)
+
+**Constitutional Refactoring Focus**:
+1. **Library-First Optimization**:
+   - Improve library integration efficiency
+   - Consolidate custom implementations into library patterns
+   - Optimize library usage and performance
+   - Document library migration paths
+
+2. **CLI Interface Enhancement**:
+   - Improve user experience and command discoverability
+   - Optimize performance and responsiveness
+   - Add comprehensive help and documentation
+   - Enhance error handling and user feedback
+
+3. **Simplicity Refinement**:
+   - Reduce code complexity metrics (target <10 cyclomatic complexity)
+   - Improve naming and readability
+   - Eliminate unnecessary abstractions
+   - Streamline data flows and transformations
+
+4. **Constitutional Debt Reduction**:
+   - Address any constitutional principle violations
+   - Strengthen governance rule compliance
+   - Improve constitutional test coverage
+   - Document constitutional decisions and rationale
+
+**Refactoring Process**:
+- Apply SOLID principles while maintaining constitutional compliance
+- Remove duplication (DRY) without adding abstraction complexity
+- Capture constitutional patterns in GraphRAG knowledge base
+- Maintain GREEN state throughout refactoring
+
+#### 📊 Phase 6: Constitutional Quality Verification
+
+**Quality Verification Framework**:
+1. **Constitutional Compliance Audit**:
+   - Library-First verification: >95% library usage vs custom implementations
+   - CLI Interface validation: 100% CLI standards compliance
+   - Test-First verification: 100% test-first development adherence
+   - Simplicity assessment: <10 cyclomatic complexity average
+   - Anti-Abstraction check: <3 abstraction layers maximum
+
+2. **Traditional Quality Gates**:
+   - Foundation layer: >80% test coverage
+   - Business logic layer: >60% test coverage
+   - Constitutional compliance: >90% test coverage
+   - Integration testing: >70% coverage
+   - Performance requirements validation
+
+3. **Constitutional Debt Measurement**:
+   - Count and categorize principle violations
+   - Assess governance rule non-compliance
+   - Identify constitutional test coverage gaps
+   - Measure documentation completeness
+
+**Quality Verification Process**:
+- Automated constitutional compliance checks
+- Manual governance rule validation
+- Performance and security testing
+- Code quality metrics analysis
+- Constitutional pattern validation
+
+## 🧠 AI-Enhanced Development Integration
+
+### GraphRAG Knowledge Application
+1. **Pattern Recognition**: Apply similar implementation patterns from knowledge base
+2. **Constitutional Guidance**: Get AI recommendations for constitutional compliance
+3. **Library Recommendations**: Leverage knowledge for optimal library selection
+4. **Implementation Insights**: Use historical lessons for better implementation decisions
+
+### Constitutional Decision Support
+1. **Complexity Assessment**: AI-guided complexity level determination
+2. **Implementation Strategy**: Constitutional principle-based approach recommendations
+3. **Quality Optimization**: AI-suggested improvements for constitutional compliance
+4. **Knowledge Capture**: Automatic pattern and lesson documentation
+
+## 🎯 Implementation Success Criteria
+
+### Constitutional Compliance Metrics
+- [ ] Library-First compliance: >95% library usage
+- [ ] CLI Interface standards: 100% compliance
+- [ ] Test-First adherence: 100% TDD methodology
+- [ ] Simplicity metrics: <10 average complexity
+- [ ] Constitutional debt: <5% violation ratio
+- [ ] Governance compliance: >85% overall score
+
+### Technical Quality Metrics
+- [ ] All UoWs completed with constitutional TDD cycles
+- [ ] Constitutional quality gates passed
+- [ ] Test coverage requirements met
+- [ ] Performance requirements satisfied
+- [ ] Security and compliance validation complete
+
+### Knowledge Management Metrics
+- [ ] Constitutional patterns documented and shared
+- [ ] Implementation lessons captured in GraphRAG
+- [ ] Reusable components registered and available
+- [ ] Constitutional templates updated with new insights
+
+## 🚀 Implementation Execution Guide
+
+### Execution Strategy by Complexity Level:
+- **Simple Projects**: Direct single-agent implementation focusing on constitutional basics
+- **Medium Projects**: Modular development with enhanced constitutional integration
+- **Complex Projects**: Multi-agent coordination with advanced constitutional governance
+
+### UoW Processing:
+1. Process UoWs in dependency order from execution plan
+2. Apply constitutional principles consistently across all UoWs
+3. Use GraphRAG knowledge for each UoW implementation
+4. Capture lessons and patterns for future UoWs
+
+## 🔄 Next Steps
+
+After successful implementation completion:
+1. Verify all constitutional quality gates have passed
+2. Review constitutional compliance metrics
+3. Validate GraphRAG knowledge capture
+4. Proceed to Deployment Phase: `./demeter-deploy.sh`
+
+Execute this template to complete the Implementation Phase (Phase 3-6) with full constitutional compliance and AI-enhanced development.

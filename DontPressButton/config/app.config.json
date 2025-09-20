@@ -1,0 +1,38 @@
+{
+  "pressToConfirmCount": 10,
+  "persistCount": false,
+  "messages": [
+    "분명 누르지 말랬죠?",
+    "왜 누르셨나요…?",
+    "다음엔 참아볼까요?",
+    "진짜 누르지 말랬는데요.",
+    "혹시 경고를 못 보신 건가요?",
+    "또 눌렀네요. 이유가 있나요?",
+    "그러다 큰일 납니다(?)",
+    "눌러보라고 쓴 거 아닙니다.",
+    "이건 테스트가 아니에요.",
+    "정말 마지막 경고입니다(아마도).",
+    "손가락을 잠시 쉬게 하세요.",
+    "그 호기심, 위험합니다.",
+    "버튼과 거리두기 해요.",
+    "클릭 자제 부탁드립니다.",
+    "버튼이 슬퍼합니다.",
+    "당신의 인내심을 믿습니다.",
+    "이쯤이면 멈춰도 되죠?",
+    "다음 클릭은 비추천입니다.",
+    "정말 정말 누르지 마세요.",
+    "여기까지 온 건 비밀로 하죠."
+  ],
+  "uiText": {
+    "header": "Don't Press Button",
+    "button": "Don't Press Button",
+    "confirmPaymentTitle": "Would you like to proceed with payment?",
+    "confirmYes": "Yes",
+    "confirmNo": "No",
+    "paymentCompleted": "Payment completed"
+  },
+  "a11y": {
+    "trapFocusInModal": true,
+    "closeOnEsc": true
+  }
+}

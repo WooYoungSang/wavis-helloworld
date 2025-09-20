@@ -127,52 +127,66 @@ constitutional_intelligence:
 
 ## 🚀 v2.0 Constitutional Quick Start
 
-### 1. Constitutional Project Initialization
+### **🔧 Option 1: 3-Step Workflow (RECOMMENDED)**
 
+#### **Step 1: Setup Phase (Phase 0-2)**
 ```bash
-# Create project with constitutional foundation
-./demeter-init.sh my-shop "e-commerce,gdpr"
+# Constitutional foundation & planning
+./demeter-setup.sh my-shop "requirements.md"
 cd my-shop
 
-# AI-generated constitutional setup:
-# - PROJECT-constitution.yaml (governance rules)
-# - Constitutional SSOT templates
-# - GraphRAG knowledge base
-# - Compliance monitoring
+# Execute in Claude Code: .demeter/SETUP_WORKFLOW.prompt
+# • Phase 0: Project initialization & constitutional setup
+# • Phase 1: AI analyzes requirements.md → auto-determines extensions (e-commerce,gdpr)
+# • Phase 2: Architecture planning & execution roadmap
 ```
 
-### 2. Constitutional Specification-Driven Development
+#### **Step 2: Implementation Phase (Phase 3-6)**
+```bash
+# Constitutional TDD development
+./demeter-implement.sh
 
-```markdown
-# Execute in Claude Code: .demeter/MASTER_LIFECYCLE.prompt
-
-## Phase 0-1: Constitutional Foundation
-- Constitutional project structure
-- 9 principles integration
-- Governance rule establishment
-- SSOT with constitutional compliance
-
-## Phase 2: Constitutional Architecture
-- Library-first design
-- CLI interface standards
-- Test-first framework
-- Simplicity guidelines
-
-## Phase 3-5: Constitutional TDD
-- RED: Constitutional compliance tests
-- GREEN: Principle-aligned implementation
-- REFACTOR: Constitutional debt reduction
-
-## Phase 6-7: Constitutional Deployment
-- Governance compliance verification
-- Constitutional monitoring setup
-- Production principle enforcement
+# Execute in Claude Code: .demeter/IMPLEMENTATION_WORKFLOW.prompt
+# • Phase 3: RED - Constitutional test specification
+# • Phase 4: GREEN - Constitutional implementation
+# • Phase 5: REFACTOR - Constitutional enhancement
+# • Phase 6: Quality verification & compliance audit
 ```
 
-### 3. Constitutional Quality Assurance
+#### **Step 3: Deployment Phase (Phase 7)**
+```bash
+# Constitutional production deployment
+./demeter-deploy.sh
+
+# Execute in Claude Code: .demeter/DEPLOYMENT_WORKFLOW.prompt
+# • Phase 7: Production deployment & constitutional monitoring
+# • Constitutional compliance validation in production
+# • Governance monitoring and alerting setup
+```
+
+### **⚡ Option 2: Master Orchestration**
+```bash
+# All 3 steps with guided pauses for review
+./demeter-master.sh my-shop "requirements.md"
+
+# Executes: Setup → Pause → Implementation → Pause → Deployment
+# Review prompts at each pause before proceeding
+# AI auto-determines extensions from requirements.md
+```
+
+### **🚀 Option 3: All-in-One (Advanced)**
+```bash
+# Single consolidated execution (no requirements file)
+./demeter-master.sh my-shop
+
+# Execute in Claude Code: .demeter/CONSOLIDATED_MASTER.prompt
+# All phases 0-7 in continuous execution with general templates
+```
+
+### Constitutional Quality Gates
 
 ```yaml
-constitutional_quality_gates:
+constitutional_compliance_requirements:
   library_first_compliance: ">95%"
   cli_interface_standards: "100%"
   test_first_adherence: "100%"
@@ -181,19 +195,29 @@ constitutional_quality_gates:
   governance_compliance: ">85%"
 ```
 
-## 📋 v2.0 새로운 프롬프트 템플릿
+## 📋 v2.0 Workflow Scripts & Templates
 
-### Constitutional Core Templates
+### **3-Step Execution Scripts**
+- **demeter-setup.sh**: Phase 0-2 (Constitutional foundation & planning)
+- **demeter-implement.sh**: Phase 3-6 (Constitutional TDD development)
+- **demeter-deploy.sh**: Phase 7 (Constitutional production deployment)
+- **demeter-master.sh**: Orchestrates all 3 steps with review pauses
+
+### **Phase-Specific Prompt Templates**
+- **setup-workflow.prompt.template**: Constitutional setup workflow (Phase 0-2)
+- **implementation-workflow.prompt.template**: Constitutional TDD workflow (Phase 3-6)
+- **deployment-workflow.prompt.template**: Constitutional deployment workflow (Phase 7)
+
+### **Constitutional Core Templates**
 - **constitution.prompt.template**: 프로젝트 헌법 생성
 - **ssot-generation.prompt.template**: 헌법적 SSOT 생성 (Enhanced)
 - **ai-refinement.prompt.template**: AI 기반 명세 개선
 
-### Advanced Workflow Templates
+### **Advanced Workflow Templates**
 - **iterate-workflow.prompt.template**: 헌법적 TDD 사이클
-- **master-workflow.prompt.template**: 완전한 라이프사이클
 - **integrated-master-workflow.prompt.template**: 통합 마스터 워크플로우
 
-### Specialized Tools Templates
+### **Specialized Tools Templates**
 - **ssot-indexer.prompt.template**: GraphRAG 인덱싱
 - **ssot-verification.prompt.template**: 헌법적 검증
 - **bdd-feature-generation.prompt.template**: 헌법적 BDD

@@ -1,0 +1,62 @@
+{
+  "name": "dont-press-button",
+  "version": "1.0.0",
+  "description": "Interactive micro-interaction web app following Constitutional SDD principles",
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000 --directory .",
+    "test": "jest",
+    "test:e2e": "playwright test",
+    "test:a11y": "axe-core tests/accessibility",
+    "test:performance": "lighthouse src/index.html",
+    "build": "echo 'No build needed - single file deployment'",
+    "lint": "echo 'No linting needed - constitutional compliance verified'",
+    "deploy": "cp src/index.html dist/index.html"
+  },
+  "keywords": [
+    "micro-interaction",
+    "constitutional-sdd",
+    "accessibility",
+    "demeter-framework"
+  ],
+  "author": "DontPressButton Team",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "@playwright/test": "^1.40.0",
+    "@axe-core/playwright": "^4.8.0",
+    "lighthouse": "^11.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,html}",
+      "!src/**/*.test.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "constitutional": {
+    "framework": "Demeter WAVIS v2.0",
+    "principles": [
+      "Library-First",
+      "CLI-Interface",
+      "Test-First",
+      "Simplicity",
+      "Anti-Abstraction",
+      "Integration-First",
+      "Minimal-Structure",
+      "Framework-Direct",
+      "Comprehensive-Testing"
+    ],
+    "compliance": "mandatory"
+  }
+}
